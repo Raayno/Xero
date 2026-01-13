@@ -7,13 +7,9 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    // UI
+    // ✅ UI reference
     [Header("UI")]
     public PlayerHealthUI healthUI;
-
-    // Damage Text
-    [Header("Damage Text")]
-    public PlayerDamageText damageText;
 
     [Header("Death Teleport")]
     public Transform resetPoint;
@@ -25,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
     Color originalColor;
 
-    // Read-only access
+    // ✅ READ-ONLY access for UI
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
 
@@ -36,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
         if (playerRenderer != null)
             originalColor = playerRenderer.material.color;
 
+        // update UI on start
         healthUI?.UpdateHealthUI();
     }
 
@@ -44,18 +41,14 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Max(0, currentHealth);
 
-        bool isDeathHit = currentHealth <= 0;
-
-        // 🔥 SHOW DAMAGE NUMBER (different color if death hit)
-        damageText?.ShowDamage(damage, isDeathHit);
-
         StartCoroutine(HitFlash());
 
         Debug.Log($"Player HP: {currentHealth}/{maxHealth}");
 
+        // update UI on damage
         healthUI?.UpdateHealthUI();
 
-        if (isDeathHit)
+        if (currentHealth <= 0)
         {
             HandleDeath();
         }
@@ -80,6 +73,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth = maxHealth;
 
+        // update UI after respawn
         healthUI?.UpdateHealthUI();
     }
 }

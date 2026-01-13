@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     // ================= COMBAT =================
     [Header("Combat")]
-    public EnemyParryController currentEnemy;
+    public EnemyParryController currentEnemy; // assigned by enemy
 
     [Tooltip("ALLOW movement even in combat (for testing)")]
     public bool allowMovementInCombat = false;
@@ -35,10 +35,6 @@ public class PlayerController : MonoBehaviour
     [Header("Rotation")]
     public float lookSpeed = 10f;
 
-    // ================= ANIMATION =================
-    [Header("Animation")]
-    public Animator animator;
-
     // ================= INTERNAL =================
     Vector2 move;
     Vector3 currentVelocity;
@@ -56,18 +52,19 @@ public class PlayerController : MonoBehaviour
         HandleCombatState();
         HandleMovementFacing();
         HandleMovementTranslation();
-        HandleAnimation();
     }
 
     // ================= COMBAT STATE =================
     void HandleCombatState()
     {
+        // ENTER COMBAT
         if (!inCombat && currentEnemy != null)
         {
             inCombat = true;
             combatLockPosition = transform.position;
         }
 
+        // EXIT COMBAT
         if (inCombat && currentEnemy == null)
         {
             inCombat = false;
@@ -77,6 +74,7 @@ public class PlayerController : MonoBehaviour
     // ================= FACING =================
     void HandleMovementFacing()
     {
+        // Still allow rotation even when movement locked
         Vector3 desiredFacing = Vector3.zero;
 
         if (Mathf.Abs(move.x) > 0.01f || Mathf.Abs(move.y) > 0.01f)
@@ -148,22 +146,4 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(currentVelocity * Time.deltaTime, Space.World);
     }
-
-    // ================= ANIMATION =================
- void HandleAnimation()
-{
-    if (!animator) return;
-
-    float speed = currentVelocity.magnitude;
-
-    // SNAP-to-zero threshold (animation only)
-    if (speed < 0.05f)
-        speed = 0f;
-
-    float normalizedSpeed = speed / maxSpeed;
-
-    animator.SetFloat("Speed", normalizedSpeed);
-}
-
-
 }
