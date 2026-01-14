@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public EnemyParryController currentEnemy;
 
     [Tooltip("ALLOW movement even in combat (for testing)")]
-    public bool allowMovementInCombat = false;
+    public bool allowMovementInCombat = true;
 
     bool inCombat;
     Vector3 combatLockPosition;
@@ -56,18 +56,20 @@ public class PlayerController : MonoBehaviour
         HandleCombatState();
         HandleMovementFacing();
         HandleMovementTranslation();
-        HandleAnimation();
+        HandleAnimationState(); // 🔑 OLD FIXED ANIMATION HANDLER
     }
 
     // ================= COMBAT STATE =================
     void HandleCombatState()
     {
+        // ENTER COMBAT
         if (!inCombat && currentEnemy != null)
         {
             inCombat = true;
             combatLockPosition = transform.position;
         }
 
+        // EXIT COMBAT
         if (inCombat && currentEnemy == null)
         {
             inCombat = false;
@@ -149,21 +151,18 @@ public class PlayerController : MonoBehaviour
         transform.Translate(currentVelocity * Time.deltaTime, Space.World);
     }
 
-    // ================= ANIMATION =================
- void HandleAnimation()
-{
-    if (!animator) return;
+    // ================= ANIMATION (OLD FIX) =================
+    void HandleAnimationState()
+    {
+        if (animator == null)
+            return;
 
-    float speed = currentVelocity.magnitude;
+        float speed = currentVelocity.magnitude;
 
-    // SNAP-to-zero threshold (animation only)
-    if (speed < 0.05f)
-        speed = 0f;
+        // 🔑 FIX: snap tiny float noise to zero
+        if (speed < 0.01f)
+            speed = 0f;
 
-    float normalizedSpeed = speed / maxSpeed;
-
-    animator.SetFloat("Speed", normalizedSpeed);
-}
-
-
+        animator.SetFloat("Speed", speed);
+    }
 }

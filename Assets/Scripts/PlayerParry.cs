@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerParry : MonoBehaviour
 {
@@ -18,15 +19,9 @@ public class PlayerParry : MonoBehaviour
         controller = GetComponent<PlayerController>();
     }
 
-    void Update()
-    {
-        if (controller.currentEnemy == null || !controller.currentEnemy.attackActive)
-            parryConsumed = false;
-    }
-
     public void OnParry(InputAction.CallbackContext context)
     {
-        if (!context.performed || !canParry)
+        if (!context.performed || !canParry || parryConsumed)
             return;
 
         TryParry();
@@ -34,9 +29,6 @@ public class PlayerParry : MonoBehaviour
 
     void TryParry()
     {
-        if (parryConsumed)
-            return;
-
         if (controller.currentEnemy == null)
             return;
 
@@ -52,10 +44,16 @@ public class PlayerParry : MonoBehaviour
 
         Debug.Log("Parry Successful");
 
-        StartCoroutine(ParryCooldownRoutine());
+        StartCoroutine(Cooldown());
     }
 
-    System.Collections.IEnumerator ParryCooldownRoutine()
+    // 🔑 CALLED BY ENEMY WHEN A NEW WINDOW OPENS
+    public void ResetParryWindow()
+    {
+        parryConsumed = false;
+    }
+
+    IEnumerator Cooldown()
     {
         canParry = false;
         yield return new WaitForSeconds(parryCooldown);

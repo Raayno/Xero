@@ -7,7 +7,7 @@ public class EnemyActivation : MonoBehaviour
     public float activationRange = 3f;
 
     EnemyParryController parryController;
-    bool isActive;
+    bool combatStarted;
 
     void Awake()
     {
@@ -16,20 +16,18 @@ public class EnemyActivation : MonoBehaviour
 
     void Update()
     {
-        if (player == null || parryController == null)
+        if (player == null || parryController == null || combatStarted)
             return;
 
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance <= activationRange && !isActive)
+        if (distance <= activationRange)
         {
-            isActive = true;
-            parryController.Activate(player); // ✅ PASS PLAYER
-        }
-        else if (distance > activationRange && isActive)
-        {
-            isActive = false;
-            parryController.Deactivate();
+            combatStarted = true;
+
+            Debug.Log("[COMBAT] EnemyActivation → Player entered combat range");
+
+            CombatManager.Instance.StartCombat(parryController);
         }
     }
 

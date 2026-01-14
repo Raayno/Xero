@@ -72,14 +72,13 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void HandleDeath()
-    {
-        Debug.Log("Player died → teleport");
+{
+    Debug.Log("[PLAYER HEALTH] Player died");
 
-        if (resetPoint != null)
-            transform.position = resetPoint.position;
+    CombatManager.Instance.EndCombat(true);
 
-        currentHealth = maxHealth;
+    currentHealth = maxHealth;
+    healthUI?.UpdateHealthUI();
+}
 
-        healthUI?.UpdateHealthUI();
-    }
 }

@@ -14,6 +14,10 @@ public class ParryStep
 
 public class EnemyParryController : MonoBehaviour
 {
+    // 🔔 TURN EVENTS
+    public System.Action OnEnemyTurnStart;
+    public System.Action OnEnemyTurnEnd;
+
     [Header("Parry Pattern (Step Based)")]
     public List<ParryStep> steps = new List<ParryStep>();
 
@@ -25,7 +29,6 @@ public class EnemyParryController : MonoBehaviour
 
     int currentStepIndex;
     bool parrySolvedThisStep;
-    bool allParriesSuccessful;
     bool isActive;
 
     // ================= REFERENCES =================
@@ -48,6 +51,8 @@ public class EnemyParryController : MonoBehaviour
         if (isActive) return;
         isActive = true;
 
+        OnEnemyTurnStart?.Invoke(); // 🔔 ENEMY TURN START
+
         playerHealth = player.GetComponent<PlayerHealth>();
         playerController = player.GetComponent<PlayerController>();
 
@@ -67,8 +72,6 @@ public class EnemyParryController : MonoBehaviour
         attackActive = false;
 
         visuals?.SetIdle();
-
-        // 🔑 ensure zoom is reset
         cameraFollow?.ZoomOut();
 
         if (playerController != null && playerController.currentEnemy == this)
@@ -79,21 +82,19 @@ public class EnemyParryController : MonoBehaviour
     IEnumerator ParrySequence()
     {
         currentStepIndex = 0;
-        allParriesSuccessful = true;
 
         while (currentStepIndex < steps.Count)
         {
             ParryStep step = steps[currentStepIndex];
             parrySolvedThisStep = false;
 
-            // 🟡 WIND-UP → ZOOM IN
+            // 🟡 WIND-UP
             attackActive = false;
             visuals?.SetWindup();
             cameraFollow?.ZoomIn();
-
             yield return new WaitForSeconds(step.windupTime);
 
-            // 🟣 PARRY WINDOW (stay zoomed)
+            // 🟣 PARRY WINDOW
             attackActive = true;
             visuals?.SetParryWindow();
 
@@ -108,14 +109,11 @@ public class EnemyParryController : MonoBehaviour
             }
 
             attackActive = false;
-
-            // 🔍 ZOOM OUT when window ends
             cameraFollow?.ZoomOut();
 
             // ================= RESOLVE =================
             if (!parrySolvedThisStep)
             {
-                allParriesSuccessful = false;
                 playerHealth?.TakeDamage(enemyDamage);
                 visuals?.SetIdle();
                 yield return new WaitForSeconds(0.1f);
@@ -129,16 +127,10 @@ public class EnemyParryController : MonoBehaviour
             currentStepIndex++;
         }
 
-        // ================= FINAL =================
-        if (allParriesSuccessful)
-        {
-            DestroyEnemy();
-        }
-        else
-        {
-            visuals?.SetIdle();
-        }
+        // ================= TURN END =================
+        visuals?.SetIdle();
 
+        OnEnemyTurnEnd?.Invoke(); // 🔔 ENEMY TURN END
         Deactivate();
     }
 
@@ -149,33 +141,5 @@ public class EnemyParryController : MonoBehaviour
             return;
 
         parrySolvedThisStep = true;
-    }
-
-    // ================= DESTROY =================
-    void DestroyEnemy()
-    {
-        StopAllCoroutines();
-        attackActive = false;
-
-        cameraFollow?.ZoomOut();
-
-        if (playerController != null && playerController.currentEnemy == this)
-            playerController.currentEnemy = null;
-
-        StartCoroutine(DestroyAfterDelay());
-    }
-
-    IEnumerator DestroyAfterDelay()
-    {
-        yield return new WaitForSeconds(0.25f);
-        Destroy(gameObject);
-    }
-
-    void OnDestroy()
-    {
-        cameraFollow?.ZoomOut();
-
-        if (playerController != null && playerController.currentEnemy == this)
-            playerController.currentEnemy = null;
     }
 }
