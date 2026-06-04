@@ -27,12 +27,18 @@ namespace StarterAssets
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
+        [Header("Audio")]
         public AudioSource AudioFootsteps;
         public AudioSource LandingAudio;
         public AudioSource AudioFoley;
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
-        [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
+
+        [Range(0, 1)]
+        public float FootstepAudioVolume = 0.5f;
+
+        [Tooltip("X = minimum pitch randomization, Y = maximum pitch randomization.")]
+        [SerializeField] private Vector2 footstepPitchRandomRange = new Vector2(0.95f, 1.05f);
 
         [Space(10)]
         [Tooltip("The height the player can jump")]
@@ -66,7 +72,7 @@ namespace StarterAssets
         public GameObject CinemachineCameraTarget;
 
         [Tooltip("How far in degrees can you move the camera up")]
-        public float TopClamp = 70.0f;
+        public float TopClamp = 70.0f; 
 
         [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -30.0f;
@@ -86,6 +92,7 @@ namespace StarterAssets
         [Header("Attack Debug")]
         [SerializeField] private bool debugAttack = true;
 
+        private bool isFalling = false;
         private bool isAttacking = false;
         private bool isComboWindowOpen = false;
         private bool isNextAttackQueued = false;
@@ -256,6 +263,12 @@ namespace StarterAssets
 
         private void Move()
         {
+            if (isFalling)
+            {
+                MoveVerticalOnlyWhileAttacking();
+                return;
+            }
+
             if (isAttacking)
             {
                 MoveVerticalOnlyWhileAttacking();
@@ -399,6 +412,7 @@ namespace StarterAssets
                 {
                     if (_hasAnimator)
                     {
+                        isFalling = true;
                         _animator.SetBool(_animIDFreeFall, true);
                     }
                 }
@@ -571,16 +585,46 @@ namespace StarterAssets
             );
         }
 
+        public void FallComplete()
+        {
+            isFalling = false;
+        }
+
         private void OnFootstep(AnimationEvent animationEvent)
         {
-            if (animationEvent.animatorClipInfo.weight > 0.5f)
-            {
-                if (AudioFootsteps != null)
-                    AudioFootsteps.Play();
+            if (animationEvent.animatorClipInfo.weight <= 0.5f)
+                return;
 
-                if (AudioFoley != null)
-                    AudioFoley.Play();
+            PlayRandomFootstepSound();
+
+            if (AudioFoley != null)
+                AudioFoley.Play();
+        }
+
+        private void PlayRandomFootstepSound()
+        {
+            if (AudioFootsteps == null)
+                return;
+
+            float minimumPitch = Mathf.Min(footstepPitchRandomRange.x, footstepPitchRandomRange.y);
+            float maximumPitch = Mathf.Max(footstepPitchRandomRange.x, footstepPitchRandomRange.y);
+
+            AudioFootsteps.pitch = UnityEngine.Random.Range(minimumPitch, maximumPitch);
+
+            if (FootstepAudioClips != null && FootstepAudioClips.Length > 0)
+            {
+                int randomFootstepIndex = UnityEngine.Random.Range(0, FootstepAudioClips.Length);
+                AudioClip randomFootstepClip = FootstepAudioClips[randomFootstepIndex];
+
+                if (randomFootstepClip != null)
+                {
+                    AudioFootsteps.PlayOneShot(randomFootstepClip, FootstepAudioVolume);
+                }
+
+                return;
             }
+
+            AudioFootsteps.Play();
         }
 
         private void OnLand(AnimationEvent animationEvent)
