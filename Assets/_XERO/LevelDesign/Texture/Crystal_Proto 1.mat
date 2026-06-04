@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6949907830733762593
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Crystal_Proto 1
+  m_Shader: {fileID: 4800000, guid: 3ac22b44724c41d47a708470cf6cd76e, type: 3}
+  m_Parent: {fileID: 2100000, guid: 38c93a92c08fe694cbcd9fc495712c7a, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _PLAYERINDEPENDENT
+  m_InvalidKeywords:
+  - _ANIMATIONENABLED_ON
+  - _CEILING_ON
+  - _ENABLEDEFAULTEFFECTRADIUS_ON
+  - _FLOOR_ON
+  - _ISZONINGREVEALABLE_ON
+  - _SYNCZONESWITHFLOORY_ON
+  - _TEXTUREDEMISSIONEDGE_ON
+  - _ZONING_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Opaque
+  disabledShaderPasses: []
+  m_LockedProperties: _FloorY _Metallic _MetallicGlossMap
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AnimationEnabled: 1
+    - _AnimationSpeed: 0.49
+    - _Ceiling: 1
+    - _CeilingBlendMode: 1
+    - _CeilingMode: 0
+    - _CeilingPlayerYOffset: -0.6
+    - _CeilingYGradientLength: 6.7
+    - _ConeStrength: 1
+    - _DissolveEmission: 1
+    - _DissolveFallOff: 0
+    - _DissolveMaskEnabled: 0
+    - _EnableDefaultEffectRadius: 1
+    - _Floor: 1
+    - _FloorMode: 0
+    - _FloorYTextureGradientLength: 0
+    - _InteractionMode: 1
+    - _IntrinsicDissolveStrength: 0.181
+    - _IsReplacementShader: 0
+    - _Obstruction: 0
+    - _PlayerPosYOffset: 2.67
+    - _PreviewMode: 0
+    - _TexturedEmissionEdge: 1
+    - _TexturedEmissionEdgeStrength: 0
+    - _Zoning: 0
+    - _ZoningMode: 1
+    - _hasClippedShadows: 0
+    - _isReferenceMaterial: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
