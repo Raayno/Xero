@@ -21,18 +21,19 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Crystal_Proto
-  m_Shader: {fileID: 4800000, guid: 3ac22b44724c41d47a708470cf6cd76e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 2100000, guid: b9ffec062e13a584a9bd289376643255, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
-  - _DISSOLVEMASK
-  - _PLAYERINDEPENDENT
-  - _REPLACEMENT
+  - _EMISSION
   m_InvalidKeywords:
+  - _DISSOLVEMASK
   - _FLOOR_ON
   - _ISREFERENCEMATERIAL_ON
   - _ISREPLACEMENTSHADER_ON
   - _ISZONINGREVEALABLE_ON
+  - _PLAYERINDEPENDENT
+  - _REPLACEMENT
   - _SYNCZONESWITHFLOORY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,7 +41,8 @@ Material:
   m_CustomRenderQueue: 2000
   stringTagMap:
     RenderType: Opaque
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: _FloorY _Metallic _MetallicGlossMap
   m_SavedProperties:
     serializedVersion: 3
@@ -56,6 +58,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _AlphaToMask: 0
     - _AnimationEnabled: 0
     - _AnimationSpeed: 0.49
     - _Ceiling: 0

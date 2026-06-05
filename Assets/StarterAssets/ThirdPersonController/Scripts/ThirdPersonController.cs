@@ -123,6 +123,7 @@ namespace StarterAssets
         private int _animIDGrounded;
         private int _animIDJump;
         private int _animIDFreeFall;
+        private int _animIsJumpEnd;
         private int _animIDMotionSpeed;
 
 #if ENABLE_INPUT_SYSTEM
@@ -224,6 +225,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIsJumpEnd = Animator.StringToHash("IsJumpEnd");
         }
 
         private void GroundedCheck()
@@ -422,6 +424,7 @@ namespace StarterAssets
                     if (_hasAnimator)
                     {
                         isFalling = true;
+                        _animator.SetBool(_animIsJumpEnd, false);
                         _animator.SetBool(_animIDFreeFall, true);
                     }
                 }
@@ -668,6 +671,7 @@ namespace StarterAssets
         public void FallComplete()
         {
             isFalling = false;
+            _animator.SetBool(_animIsJumpEnd, true);
         }
 
         private void OnFootstep(AnimationEvent animationEvent)
