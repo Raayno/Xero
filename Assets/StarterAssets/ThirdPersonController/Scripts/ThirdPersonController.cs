@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoreMountains.Feedbacks;
+using System;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
@@ -98,6 +99,10 @@ namespace StarterAssets
 
         [Header("Attack Debug")]
         [SerializeField] private bool debugAttack = true;
+
+        [Header("Feedbacks")]
+        [SerializeField] private MMF_Player jumpLandFeedback;
+        [SerializeField] private MMF_Player attackFeedback;
 
         private bool isFalling = false;
         private bool isAttacking = false;
@@ -509,6 +514,7 @@ namespace StarterAssets
         public void Attacking()
         {
             isAttacking = true;
+            attackFeedback?.PlayFeedbacks();
         }
 
         public void AttackFinish()
@@ -668,6 +674,11 @@ namespace StarterAssets
             );
         }
 
+        public void PlayLandEmpact()
+        {
+            jumpLandFeedback?.PlayFeedbacks();
+        }
+
         public void FallComplete()
         {
             isFalling = false;
@@ -680,9 +691,6 @@ namespace StarterAssets
                 return;
 
             PlayRandomFootstepSound();
-
-            if (AudioFoley != null)
-                AudioFoley.Play();
         }
 
         private void PlayRandomFootstepSound()
