@@ -72,7 +72,7 @@ namespace StarterAssets
         public GameObject CinemachineCameraTarget;
 
         [Tooltip("How far in degrees can you move the camera up")]
-        public float TopClamp = 70.0f; 
+        public float TopClamp = 70.0f;
 
         [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -30.0f;
@@ -89,6 +89,13 @@ namespace StarterAssets
         [SerializeField] private float attackCrossFadeDuration = 0.05f;
         [SerializeField] private float idleCrossFadeDuration = 0.1f;
 
+        [Tooltip("If player is not moving when AttackFinish event is called, attack waits until this normalized time before returning to idle.")]
+        [Range(0.75f, 1f)]
+        [SerializeField] private float attackFullFinishNormalizedTime = 0.98f;
+
+        [Tooltip("How much movement input is required to early return to idle/walk/run after AttackFinish event.")]
+        [SerializeField] private float attackMoveInputThreshold = 0.1f;
+
         [Header("Attack Debug")]
         [SerializeField] private bool debugAttack = true;
 
@@ -96,6 +103,7 @@ namespace StarterAssets
         private bool isAttacking = false;
         private bool isComboWindowOpen = false;
         private bool isNextAttackQueued = false;
+        private bool isWaitingForAttackAnimationToEnd = false;
         private int attackAnimationIndex = 0;
 
         private float _cinemachineTargetYaw;
@@ -200,6 +208,7 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
+            UpdateAttackAnimationEndWait();
             Move();
         }
 
@@ -437,6 +446,9 @@ namespace StarterAssets
             if (_input.jump)
                 return;
 
+            if (isWaitingForAttackAnimationToEnd)
+                return;
+
             if (!isAttacking)
             {
                 attackAnimationIndex = 0;
@@ -468,6 +480,7 @@ namespace StarterAssets
             isAttacking = true;
             isComboWindowOpen = false;
             isNextAttackQueued = false;
+            isWaitingForAttackAnimationToEnd = false;
 
             _input.jump = false;
             _speed = 0f;
@@ -509,7 +522,70 @@ namespace StarterAssets
                 return;
             }
 
-            ResetAttack();
+            if (IsMovementInputPressed())
+            {
+                if (debugAttack)
+                {
+                    Debug.Log("<color=cyan>[Attack]</color> Movement input detected. Returning to idle/walk/run blend immediately.");
+                }
+
+                ResetAttack();
+                return;
+            }
+
+            isWaitingForAttackAnimationToEnd = true;
+            isComboWindowOpen = false;
+
+            if (debugAttack)
+            {
+                Debug.Log("<color=yellow>[Attack]</color> No movement input. Waiting for full attack animation to finish.");
+            }
+        }
+
+        private void UpdateAttackAnimationEndWait()
+        {
+            if (!isWaitingForAttackAnimationToEnd)
+                return;
+
+            if (!_hasAnimator)
+            {
+                ResetAttack();
+                return;
+            }
+
+            if (attackAnimations == null || attackAnimations.Length == 0)
+            {
+                ResetAttack();
+                return;
+            }
+
+            string currentAttackStateName = attackAnimations[attackAnimationIndex];
+
+            AnimatorStateInfo currentState = _animator.GetCurrentAnimatorStateInfo(0);
+
+            if (!currentState.IsName(currentAttackStateName))
+                return;
+
+            if (_animator.IsInTransition(0))
+                return;
+
+            if (currentState.normalizedTime >= attackFullFinishNormalizedTime)
+            {
+                if (debugAttack)
+                {
+                    Debug.Log("<color=green>[Attack]</color> Full attack animation completed. Returning to idle.");
+                }
+
+                ResetAttack();
+            }
+        }
+
+        private bool IsMovementInputPressed()
+        {
+            if (_input == null)
+                return false;
+
+            return _input.move.sqrMagnitude >= attackMoveInputThreshold * attackMoveInputThreshold;
         }
 
         private void ResetAttack()
@@ -522,6 +598,7 @@ namespace StarterAssets
             isAttacking = false;
             isComboWindowOpen = false;
             isNextAttackQueued = false;
+            isWaitingForAttackAnimationToEnd = false;
             attackAnimationIndex = 0;
 
             _animator.speed = 1f;
@@ -537,6 +614,9 @@ namespace StarterAssets
         public void SetComboWindowOpen()
         {
             if (!isAttacking)
+                return;
+
+            if (isWaitingForAttackAnimationToEnd)
                 return;
 
             isComboWindowOpen = true;
@@ -571,7 +651,7 @@ namespace StarterAssets
         private void OnDrawGizmosSelected()
         {
             Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-            Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+            Color transparentRed = new Color(1.0f, 0.0f, 0.35f);
 
             Gizmos.color = Grounded ? transparentGreen : transparentRed;
 
