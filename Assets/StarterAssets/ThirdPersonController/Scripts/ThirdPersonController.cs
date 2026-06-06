@@ -1,15 +1,17 @@
-﻿using MoreMountains.Feedbacks;
-using System;
-using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+﻿using UnityEngine;
+
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
-using Vastav.Utils.Input;
 #endif
 
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM 
+    [RequireComponent(typeof(StarterAssetsInputs))]
+    [RequireComponent(typeof(PlayerAnimationManager))]
+    [RequireComponent(typeof(PlayerEffectManager))]
+    [RequireComponent(typeof(PlayerCombatActivationManager))]
+#if ENABLE_INPUT_SYSTEM
     [RequireComponent(typeof(PlayerInput))]
 #endif
     public class ThirdPersonController : MonoBehaviour
@@ -27,19 +29,6 @@ namespace StarterAssets
 
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
-
-        [Header("Audio")]
-        public AudioSource AudioFootsteps;
-        public AudioSource LandingAudio;
-        public AudioSource AudioFoley;
-        public AudioClip LandingAudioClip;
-        public AudioClip[] FootstepAudioClips;
-
-        [Range(0, 1)]
-        public float FootstepAudioVolume = 0.5f;
-
-        [Tooltip("X = minimum pitch randomization, Y = maximum pitch randomization.")]
-        [SerializeField] private Vector2 footstepPitchRandomRange = new Vector2(0.95f, 1.05f);
 
         [Space(10)]
         [Tooltip("The height the player can jump")]
@@ -84,32 +73,15 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
-        [Header("Attack")]
-        [SerializeField] private string[] attackAnimations = { "Attack1", "Attack2", "Attack3" };
-        [SerializeField] private string idleBlendTreeStateName = "Idle Walk Run Blend";
-        [SerializeField] private float attackCrossFadeDuration = 0.05f;
-        [SerializeField] private float idleCrossFadeDuration = 0.1f;
-
-        [Tooltip("If player is not moving when AttackFinish event is called, attack waits until this normalized time before returning to idle.")]
-        [Range(0.75f, 1f)]
-        [SerializeField] private float attackFullFinishNormalizedTime = 0.98f;
-
-        [Tooltip("How much movement input is required to early return to idle/walk/run after AttackFinish event.")]
-        [SerializeField] private float attackMoveInputThreshold = 0.1f;
-
-        [Header("Attack Debug")]
-        [SerializeField] private bool debugAttack = true;
-
-        [Header("Feedbacks")]
-        [SerializeField] private MMF_Player jumpLandFeedback;
-        [SerializeField] private MMF_Player attackFeedback;
+        [Header("Landing Impact Runtime")]
+        [SerializeField] private bool debugLandingImpact = false;
 
         private bool isFalling = false;
-        private bool isAttacking = false;
-        private bool isComboWindowOpen = false;
-        private bool isNextAttackQueued = false;
-        private bool isWaitingForAttackAnimationToEnd = false;
-        private int attackAnimationIndex = 0;
+
+        private bool _wasGroundedLastFrame = true;
+        private bool _isTrackingFallDistance = false;
+        private float _fallStartHeight;
+        private float _lastFallDistance;
 
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -124,25 +96,25 @@ namespace StarterAssets
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
 
-        private int _animIDSpeed;
-        private int _animIDGrounded;
-        private int _animIDJump;
-        private int _animIDFreeFall;
-        private int _animIsJumpEnd;
-        private int _animIDMotionSpeed;
-
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
 #endif
 
-        private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
+        private PlayerAnimationManager _animationManager;
+        private PlayerCombatActivationManager _combatActivationManager;
         private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
 
-        private bool _hasAnimator;
+        public bool IsFalling => isFalling;
+        public float VerticalVelocity => _verticalVelocity;
+        public float LastFallDistance => _lastFallDistance;
+
+        public StarterAssetsInputs Input => _input;
+        public PlayerAnimationManager AnimationManager => _animationManager;
+        public PlayerCombatActivationManager CombatActivationManager => _combatActivationManager;
 
         private bool IsCurrentDeviceMouse
         {
@@ -168,69 +140,37 @@ namespace StarterAssets
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
-            _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
+            _animationManager = GetComponent<PlayerAnimationManager>();
+            _combatActivationManager = GetComponent<PlayerCombatActivationManager>();
 
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
 #else
             Debug.LogError("Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
-            AssignAnimationIDs();
+            _animationManager.Initialize();
+            _combatActivationManager.Initialize(this, _animationManager);
 
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
-        }
 
-        private void OnEnable()
-        {
-#if ENABLE_INPUT_SYSTEM
-            InputSystem_PlayerActionsSO.OnAttackEvent += InputSystem_PlayerActionsSO_OnAttackEvent;
-#endif
-        }
-
-#if ENABLE_INPUT_SYSTEM
-        private void InputSystem_PlayerActionsSO_OnAttackEvent(InputAction.CallbackContext obj)
-        {
-            if (!obj.performed)
-                return;
-
-            Attack();
-        }
-#endif
-
-        private void OnDisable()
-        {
-#if ENABLE_INPUT_SYSTEM
-            InputSystem_PlayerActionsSO.OnAttackEvent -= InputSystem_PlayerActionsSO_OnAttackEvent;
-#endif
+            _wasGroundedLastFrame = Grounded;
         }
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
-
             JumpAndGravity();
             GroundedCheck();
-            UpdateAttackAnimationEndWait();
+            _combatActivationManager.UpdateAttackAnimationEndWait();
             Move();
         }
 
         private void LateUpdate()
         {
             CameraRotation();
-        }
-
-        private void AssignAnimationIDs()
-        {
-            _animIDSpeed = Animator.StringToHash("Speed");
-            _animIDGrounded = Animator.StringToHash("Grounded");
-            _animIDJump = Animator.StringToHash("Jump");
-            _animIDFreeFall = Animator.StringToHash("FreeFall");
-            _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
-            _animIsJumpEnd = Animator.StringToHash("IsJumpEnd");
         }
 
         private void GroundedCheck()
@@ -248,15 +188,52 @@ namespace StarterAssets
                 QueryTriggerInteraction.Ignore
             );
 
-            if (_hasAnimator)
+            if (Grounded && !_wasGroundedLastFrame)
             {
-                _animator.SetBool(_animIDGrounded, Grounded);
+                CompleteFallDistanceTracking();
+            }
+
+            _wasGroundedLastFrame = Grounded;
+
+            _animationManager.SetGrounded(Grounded);
+        }
+
+        private void StartFallDistanceTracking()
+        {
+            if (_isTrackingFallDistance)
+                return;
+
+            _isTrackingFallDistance = true;
+            _fallStartHeight = transform.position.y;
+            _lastFallDistance = 0f;
+
+            if (debugLandingImpact)
+            {
+                Debug.Log($"<color=yellow>[Landing Impact]</color> Fall tracking started at height: {_fallStartHeight}");
+            }
+        }
+
+        private void CompleteFallDistanceTracking()
+        {
+            if (!_isTrackingFallDistance)
+                return;
+
+            _isTrackingFallDistance = false;
+
+            _lastFallDistance = Mathf.Max(
+                0f,
+                _fallStartHeight - transform.position.y
+            );
+
+            if (debugLandingImpact)
+            {
+                Debug.Log($"<color=green>[Landing Impact]</color> Fall distance: {_lastFallDistance}");
             }
         }
 
         private void CameraRotation()
         {
-            if (isAttacking)
+            if (_combatActivationManager.IsAttacking)
                 return;
 
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
@@ -285,7 +262,7 @@ namespace StarterAssets
                 return;
             }
 
-            if (isAttacking)
+            if (_combatActivationManager.IsAttacking)
             {
                 MoveVerticalOnlyWhileAttacking();
                 return;
@@ -362,11 +339,7 @@ namespace StarterAssets
                 new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime
             );
 
-            if (_hasAnimator)
-            {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-            }
+            _animationManager.SetMovementBlend(_animationBlend, inputMagnitude);
         }
 
         private void MoveVerticalOnlyWhileAttacking()
@@ -390,25 +363,19 @@ namespace StarterAssets
             {
                 _fallTimeoutDelta = FallTimeout;
 
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
-                }
+                _animationManager.SetJump(false);
+                _animationManager.SetFreeFall(false);
 
                 if (_verticalVelocity < 0.0f)
                 {
                     _verticalVelocity = -2f;
                 }
 
-                if (!isAttacking && _input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (!_combatActivationManager.IsAttacking && _input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDJump, true);
-                    }
+                    _animationManager.SetJump(true);
                 }
 
                 if (_jumpTimeoutDelta >= 0.0f)
@@ -426,12 +393,14 @@ namespace StarterAssets
                 }
                 else
                 {
-                    if (_hasAnimator)
+                    if (!isFalling)
                     {
-                        isFalling = true;
-                        _animator.SetBool(_animIsJumpEnd, false);
-                        _animator.SetBool(_animIDFreeFall, true);
+                        StartFallDistanceTracking();
                     }
+
+                    isFalling = true;
+                    _animationManager.SetJumpEnd(false);
+                    _animationManager.SetFreeFall(true);
                 }
 
                 _input.jump = false;
@@ -443,207 +412,10 @@ namespace StarterAssets
             }
         }
 
-        private void Attack()
+        public void FallComplete()
         {
-            if (!_hasAnimator)
-                return;
-
-            if (attackAnimations == null || attackAnimations.Length == 0)
-                return;
-
-            if (_input.jump)
-                return;
-
-            if (isWaitingForAttackAnimationToEnd)
-                return;
-
-            if (!isAttacking)
-            {
-                attackAnimationIndex = 0;
-                PlayCurrentAttackAnimation();
-                return;
-            }
-
-            if (!isComboWindowOpen)
-                return;
-
-            if (isNextAttackQueued)
-                return;
-
-            int nextAttackIndex = attackAnimationIndex + 1;
-
-            if (nextAttackIndex >= attackAnimations.Length)
-                return;
-
-            isNextAttackQueued = true;
-
-            if (debugAttack)
-            {
-                Debug.Log($"<color=yellow>[Attack]</color> Queued next attack: {attackAnimations[nextAttackIndex]}");
-            }
-        }
-
-        private void PlayCurrentAttackAnimation()
-        {
-            isAttacking = true;
-            isComboWindowOpen = false;
-            isNextAttackQueued = false;
-            isWaitingForAttackAnimationToEnd = false;
-
-            _input.jump = false;
-            _speed = 0f;
-            _animationBlend = 0f;
-
-            string attackStateName = attackAnimations[attackAnimationIndex];
-
-            if (debugAttack)
-            {
-                Debug.Log($"<color=orange>[Attack]</color> Playing: {attackStateName}");
-            }
-
-            _animator.speed = 1f;
-
-            _animator.CrossFadeInFixedTime(
-                attackStateName,
-                attackCrossFadeDuration,
-                0,
-                0f
-            );
-        }
-
-        public void Attacking()
-        {
-            isAttacking = true;
-            attackFeedback?.PlayFeedbacks();
-        }
-
-        public void AttackFinish()
-        {
-            if (debugAttack)
-            {
-                Debug.Log($"<color=green>[Attack]</color> AttackFinish called on index: {attackAnimationIndex}");
-            }
-
-            if (isNextAttackQueued)
-            {
-                attackAnimationIndex++;
-                PlayCurrentAttackAnimation();
-                return;
-            }
-
-            if (IsMovementInputPressed())
-            {
-                if (debugAttack)
-                {
-                    Debug.Log("<color=cyan>[Attack]</color> Movement input detected. Returning to idle/walk/run blend immediately.");
-                }
-
-                ResetAttack();
-                return;
-            }
-
-            isWaitingForAttackAnimationToEnd = true;
-            isComboWindowOpen = false;
-
-            if (debugAttack)
-            {
-                Debug.Log("<color=yellow>[Attack]</color> No movement input. Waiting for full attack animation to finish.");
-            }
-        }
-
-        private void UpdateAttackAnimationEndWait()
-        {
-            if (!isWaitingForAttackAnimationToEnd)
-                return;
-
-            if (!_hasAnimator)
-            {
-                ResetAttack();
-                return;
-            }
-
-            if (attackAnimations == null || attackAnimations.Length == 0)
-            {
-                ResetAttack();
-                return;
-            }
-
-            string currentAttackStateName = attackAnimations[attackAnimationIndex];
-
-            AnimatorStateInfo currentState = _animator.GetCurrentAnimatorStateInfo(0);
-
-            if (!currentState.IsName(currentAttackStateName))
-                return;
-
-            if (_animator.IsInTransition(0))
-                return;
-
-            if (currentState.normalizedTime >= attackFullFinishNormalizedTime)
-            {
-                if (debugAttack)
-                {
-                    Debug.Log("<color=green>[Attack]</color> Full attack animation completed. Returning to idle.");
-                }
-
-                ResetAttack();
-            }
-        }
-
-        private bool IsMovementInputPressed()
-        {
-            if (_input == null)
-                return false;
-
-            return _input.move.sqrMagnitude >= attackMoveInputThreshold * attackMoveInputThreshold;
-        }
-
-        private void ResetAttack()
-        {
-            if (debugAttack)
-            {
-                Debug.Log("<color=cyan>[Attack]</color> Combo finished.");
-            }
-
-            isAttacking = false;
-            isComboWindowOpen = false;
-            isNextAttackQueued = false;
-            isWaitingForAttackAnimationToEnd = false;
-            attackAnimationIndex = 0;
-
-            _animator.speed = 1f;
-
-            _animator.CrossFadeInFixedTime(
-                idleBlendTreeStateName,
-                idleCrossFadeDuration,
-                0,
-                0f
-            );
-        }
-
-        public void SetComboWindowOpen()
-        {
-            if (!isAttacking)
-                return;
-
-            if (isWaitingForAttackAnimationToEnd)
-                return;
-
-            isComboWindowOpen = true;
-
-            if (debugAttack)
-            {
-                Debug.Log($"<color=lime>[Attack]</color> Combo window OPEN for: {attackAnimations[attackAnimationIndex]}");
-            }
-        }
-
-        public void SetComboWindowClose()
-        {
-            isComboWindowOpen = false;
-
-            if (debugAttack)
-            {
-                Debug.Log($"<color=red>[Attack]</color> Combo window CLOSE for: {attackAnimations[attackAnimationIndex]}");
-            }
+            isFalling = false;
+            _animationManager.SetJumpEnd(true);
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -660,7 +432,7 @@ namespace StarterAssets
         private void OnDrawGizmosSelected()
         {
             Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-            Color transparentRed = new Color(1.0f, 0.0f, 0.35f);
+            Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
             Gizmos.color = Grounded ? transparentGreen : transparentRed;
 
@@ -672,60 +444,6 @@ namespace StarterAssets
                 ),
                 GroundedRadius
             );
-        }
-
-        public void PlayLandEmpact()
-        {
-            jumpLandFeedback?.PlayFeedbacks();
-        }
-
-        public void FallComplete()
-        {
-            isFalling = false;
-            _animator.SetBool(_animIsJumpEnd, true);
-        }
-
-        private void OnFootstep(AnimationEvent animationEvent)
-        {
-            if (animationEvent.animatorClipInfo.weight <= 0.5f)
-                return;
-
-            PlayRandomFootstepSound();
-        }
-
-        private void PlayRandomFootstepSound()
-        {
-            if (AudioFootsteps == null)
-                return;
-
-            float minimumPitch = Mathf.Min(footstepPitchRandomRange.x, footstepPitchRandomRange.y);
-            float maximumPitch = Mathf.Max(footstepPitchRandomRange.x, footstepPitchRandomRange.y);
-
-            AudioFootsteps.pitch = UnityEngine.Random.Range(minimumPitch, maximumPitch);
-
-            if (FootstepAudioClips != null && FootstepAudioClips.Length > 0)
-            {
-                int randomFootstepIndex = UnityEngine.Random.Range(0, FootstepAudioClips.Length);
-                AudioClip randomFootstepClip = FootstepAudioClips[randomFootstepIndex];
-
-                if (randomFootstepClip != null)
-                {
-                    AudioFootsteps.PlayOneShot(randomFootstepClip, FootstepAudioVolume);
-                }
-
-                return;
-            }
-
-            AudioFootsteps.Play();
-        }
-
-        private void OnLand(AnimationEvent animationEvent)
-        {
-            if (animationEvent.animatorClipInfo.weight > 0.5f)
-            {
-                if (LandingAudio != null)
-                    LandingAudio.Play();
-            }
         }
     }
 }

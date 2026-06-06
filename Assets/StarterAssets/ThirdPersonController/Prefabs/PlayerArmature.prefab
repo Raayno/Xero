@@ -1047,6 +1047,9 @@ GameObject:
   - component: {fileID: 135756642000475821}
   - component: {fileID: 4416926081852918493}
   - component: {fileID: 4356229632574847717}
+  - component: {fileID: 508719972369782262}
+  - component: {fileID: 1500392356515560378}
+  - component: {fileID: 7212136756419035134}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -1136,23 +1139,6 @@ MonoBehaviour:
   SprintSpeed: 5.335
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
-  AudioFootsteps: {fileID: 4356229632574847717}
-  LandingAudio: {fileID: 4356229632574847717}
-  AudioFoley: {fileID: 4356229632574847717}
-  LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
-  FootstepAudioClips:
-  - {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
-  - {fileID: 8300000, guid: 85016e0f2b01da248b9663dd49a161b0, type: 3}
-  - {fileID: 8300000, guid: 186de84b3207156479abe98f4958fed0, type: 3}
-  - {fileID: 8300000, guid: 1a91fcd19acf1e54bba0945d9f390849, type: 3}
-  - {fileID: 8300000, guid: 14e8a8d2158bec840b56c54f5266e692, type: 3}
-  - {fileID: 8300000, guid: 29841e7d5bbfb5b419c9ad16ca8bc4c1, type: 3}
-  - {fileID: 8300000, guid: dd1af302b8902684d9381de1f2d3a5af, type: 3}
-  - {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
-  - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
-  - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
-  FootstepAudioVolume: 0.3
-  footstepPitchRandomRange: {x: 0.95, y: 1.05}
   JumpHeight: 1.2
   Gravity: -15
   JumpTimeout: 0.3
@@ -1168,16 +1154,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
-  attackAnimations:
-  - Attack1
-  idleBlendTreeStateName: Idle Walk Run Blend
-  attackCrossFadeDuration: 0.05
-  idleCrossFadeDuration: 0.1
-  attackFullFinishNormalizedTime: 0.98
-  attackMoveInputThreshold: 0.1
-  debugAttack: 1
-  jumpLandFeedback: {fileID: 395623812780260730}
-  attackFeedback: {fileID: 5624079041933876860}
+  debugLandingImpact: 0
 --- !u!114 &5885216827943657505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,6 +1386,64 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &508719972369782262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468de92667b47c24989cada71653a36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarterAssets.PlayerAnimationManager
+--- !u!114 &1500392356515560378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b935367496e3e45b8eae3f0f6ced72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarterAssets.PlayerEffectManager
+  AudioFootsteps: {fileID: 0}
+  LandingAudio: {fileID: 0}
+  AudioFoley: {fileID: 0}
+  LandingAudioClip: {fileID: 0}
+  FootstepAudioClips: []
+  FootstepAudioVolume: 0.5
+  footstepPitchRandomRange: {x: 0.95, y: 1.05}
+  fallDistanceImpactRange: {x: 1, y: 10}
+  feedbackImpactRange: {x: 1, y: 3}
+  debugLandingImpact: 0
+  jumpLandFeedback: {fileID: 0}
+  attackFeedback: {fileID: 0}
+--- !u!114 &7212136756419035134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072dda3f36fdd0d4ab1c9996c6ac3a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarterAssets.PlayerCombatActivationManager
+  attackAnimations:
+  - Attack1
+  - Attack2
+  - Attack3
+  idleBlendTreeStateName: Idle Walk Run Blend
+  attackCrossFadeDuration: 0.05
+  idleCrossFadeDuration: 0.1
+  attackFullFinishNormalizedTime: 0.98
+  attackMoveInputThreshold: 0.1
+  debugAttack: 1
 --- !u!1 &4422161351362067886
 GameObject:
   m_ObjectHideFlags: 0
