@@ -30,6 +30,7 @@ namespace StarterAssets
         [Header("Feedbacks")]
         [SerializeField] private MMF_Player jumpLandFeedback;
         [SerializeField] private MMF_Player attackFeedback;
+        [SerializeField] private MMF_Player attackHitFeedback;
 
         private ThirdPersonController _thirdPersonController;
 
@@ -123,6 +124,11 @@ namespace StarterAssets
                 if (LandingAudio != null)
                     LandingAudio.Play();
             }
+        }
+
+        public void PlayAttackHitFeedback()
+        {
+            attackHitFeedback?.PlayFeedbacks();
         }
     }
 }

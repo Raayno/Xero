@@ -1422,6 +1422,7 @@ MonoBehaviour:
   debugLandingImpact: 0
   jumpLandFeedback: {fileID: 0}
   attackFeedback: {fileID: 0}
+  attackHitFeedback: {fileID: 0}
 --- !u!114 &7212136756419035134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,7 +1444,17 @@ MonoBehaviour:
   idleCrossFadeDuration: 0.1
   attackFullFinishNormalizedTime: 0.98
   attackMoveInputThreshold: 0.1
+  attackableLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  boxCastOriginOffset: {x: 0, y: 1, z: 0.5}
+  boxCastSize: {x: 1.2, y: 1.2, z: 1.2}
+  boxCastDistance: 1.25
+  queryTriggerInteraction: 1
+  hitOnlyOneTarget: 0
   debugAttack: 1
+  debugAttackCast: 1
+  drawAttackCastGizmos: 1
 --- !u!1 &4422161351362067886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,7 +2542,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f3f292a7a84ed4543aba9146b2384bb0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

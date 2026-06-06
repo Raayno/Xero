@@ -12,8 +12,18 @@ namespace Vastav.Utils.Input
         private void Awake()
         {
             inputActions = new InputSystem_Actions();
+        }
+
+        private void OnEnable()
+        {
             EnableUIActions();
             EnablePlayerActions();
+        }
+
+        private void OnDisable()
+        {
+            DisableUIActions();
+            DisablePlayerActions();
         }
 
         public void EnablePlayerActions()

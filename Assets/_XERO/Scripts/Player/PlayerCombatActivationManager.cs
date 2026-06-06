@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 #if ENABLE_INPUT_SYSTEM
@@ -10,7 +11,7 @@ namespace StarterAssets
     public class PlayerCombatActivationManager : MonoBehaviour
     {
         [Header("Attack")]
-        [SerializeField] private string[] attackAnimations = { "Attack1", "Attack2", "Attack3" };
+        [SerializeField] private string[] attackAnimations = { "Attack1" };
         [SerializeField] private string idleBlendTreeStateName = "Idle Walk Run Blend";
         [SerializeField] private float attackCrossFadeDuration = 0.05f;
         [SerializeField] private float idleCrossFadeDuration = 0.1f;
@@ -22,8 +23,27 @@ namespace StarterAssets
         [Tooltip("How much movement input is required to early return to idle/walk/run after AttackFinish event.")]
         [SerializeField] private float attackMoveInputThreshold = 0.1f;
 
+        [Header("Attack Hit Detection")]
+        [SerializeField] private LayerMask attackableLayers;
+
+        [Tooltip("Local offset from player position where the box cast starts.")]
+        [SerializeField] private Vector3 boxCastOriginOffset = new Vector3(0f, 1f, 0.5f);
+
+        [Tooltip("Size of the attack box.")]
+        [SerializeField] private Vector3 boxCastSize = new Vector3(1.2f, 1.2f, 1.2f);
+
+        [Tooltip("How far the box cast checks in front of the player.")]
+        [SerializeField] private float boxCastDistance = 1.25f;
+
+        [SerializeField] private QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
+
+        [Header("Attack Hit Rules")]
+        [SerializeField] private bool hitOnlyOneTarget = false;
+
         [Header("Attack Debug")]
         [SerializeField] private bool debugAttack = true;
+        [SerializeField] private bool debugAttackCast = true;
+        [SerializeField] private bool drawAttackCastGizmos = true;
 
         public bool IsAttacking { get; private set; }
 
@@ -36,6 +56,8 @@ namespace StarterAssets
         private PlayerAnimationManager _animationManager;
         private PlayerEffectManager _effectManager;
         private StarterAssetsInputs _input;
+
+        private readonly HashSet<IAttackable> _alreadyHitAttackables = new HashSet<IAttackable>();
 
         public void Initialize(
             ThirdPersonController thirdPersonController,
@@ -138,6 +160,11 @@ namespace StarterAssets
         {
             IsAttacking = true;
             _effectManager?.PlayAttackFeedback();
+        }
+
+        public void AttackingHit()
+        {
+            _effectManager?.PlayAttackHitFeedback();
         }
 
         public void AttackFinish()
@@ -263,6 +290,102 @@ namespace StarterAssets
             {
                 Debug.Log($"<color=red>[Attack]</color> Combo window CLOSE for: {attackAnimations[attackAnimationIndex]}");
             }
+        }
+
+        /// <summary>
+        /// Call this from the attack animation event on the exact hit frame.
+        /// </summary>
+        public void TryAttackHit()
+        {
+            if (!IsAttacking)
+                return;
+
+            _alreadyHitAttackables.Clear();
+
+            Vector3 castOrigin = GetBoxCastOrigin();
+            Vector3 castDirection = transform.forward;
+            Vector3 halfExtents = boxCastSize * 0.5f;
+            Quaternion castRotation = transform.rotation;
+
+            RaycastHit[] hits = Physics.BoxCastAll(
+                castOrigin,
+                halfExtents,
+                castDirection,
+                castRotation,
+                boxCastDistance,
+                attackableLayers,
+                queryTriggerInteraction
+            );
+
+            if (debugAttackCast)
+            {
+                Debug.Log($"<color=orange>[Attack Hit]</color> Hit count: {hits.Length}");
+            }
+
+            bool hasHit = false;
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                Collider hitCollider = hits[i].collider;
+
+                if (hitCollider == null)
+                    continue;
+
+                IAttackable attackable = hitCollider.GetComponentInParent<IAttackable>();
+
+                if (attackable == null)
+                    continue;
+
+                if (!hasHit)
+                {
+                    AttackingHit();
+                    hasHit = true;
+                }
+
+                if (_alreadyHitAttackables.Contains(attackable))
+                    continue;
+
+                _alreadyHitAttackables.Add(attackable);
+                attackable.OnAttack();
+
+                if (debugAttackCast)
+                {
+                    Debug.Log($"<color=red>[Attack Hit]</color> Attacked: {hitCollider.name}");
+                }
+
+                if (hitOnlyOneTarget)
+                    break;
+            }
+        }
+
+        private Vector3 GetBoxCastOrigin()
+        {
+            return transform.position +
+                   transform.right * boxCastOriginOffset.x +
+                   transform.up * boxCastOriginOffset.y +
+                   transform.forward * boxCastOriginOffset.z;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (!drawAttackCastGizmos)
+                return;
+
+            Vector3 castOrigin = GetBoxCastOrigin();
+            Vector3 castEnd = castOrigin + transform.forward * boxCastDistance;
+
+            Gizmos.color = Color.yellow;
+            Gizmos.matrix = Matrix4x4.TRS(castOrigin, transform.rotation, Vector3.one);
+            Gizmos.DrawWireCube(Vector3.zero, boxCastSize);
+
+            Gizmos.color = Color.red;
+            Gizmos.matrix = Matrix4x4.TRS(castEnd, transform.rotation, Vector3.one);
+            Gizmos.DrawWireCube(Vector3.zero, boxCastSize);
+
+            Gizmos.matrix = Matrix4x4.identity;
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(castOrigin, castEnd);
         }
     }
 }
