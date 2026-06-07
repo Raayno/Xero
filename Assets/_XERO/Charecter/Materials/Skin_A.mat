@@ -21,7 +21,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -184,19 +184,19 @@ Material:
     - _NormalsUVType: 0
     - _Obstruction: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 1
+    - _OutlineWidth: 1.17
     - _Parallax: 0.005
     - _PlayerPosYOffset: 1
     - _PreviewIndicatorLineThickness: 0.04
     - _PreviewMode: 0
     - _QueueControl: -1
     - _QueueOffset: 0
-    - _RampSmoothing: 0.21
-    - _RampSmoothingOtherLights: 0.5
+    - _RampSmoothing: 0.096
+    - _RampSmoothingOtherLights: 0.038
     - _RampTextureOffset: 0.5
     - _RampTextureSize: 1
-    - _RampThreshold: 0.506
-    - _RampThresholdOtherLights: 0.5
+    - _RampThreshold: 0.353
+    - _RampThresholdOtherLights: 0.217
     - _RaycastMode: 0
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
@@ -216,7 +216,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularSmoothness: 0.2
+    - _SpecularSmoothness: 0.3
     - _SpecularToonBands: 3
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
@@ -240,8 +240,8 @@ Material:
     - __BeginGroup_ShadowHSV: 0
     - __EndGroup: 0
     - __dummy__: 0
-    - _albedo_hue: 66
-    - _albedo_sat: 0
+    - _albedo_hue: 17
+    - _albedo_sat: 0.21
     - _albedo_val: 0
     - _hasClippedShadows: 0
     - _id: 0
@@ -250,7 +250,7 @@ Material:
     - _tDirection: 0
     - _tValue: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 0.27843142, g: 0.587121, b: 0.7647059, a: 1}
     - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _DiffuseTint: {r: 0, g: 0, b: 0, a: 1}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
@@ -261,7 +261,7 @@ Material:
     - _SColor: {r: 0, g: 0, b: 0, a: 1}
     - _SketchColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _SpecularColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
     - _VColorBlendOffset: {r: 0, g: 0, b: 0, a: 0}
     - _VColorBlendSmooth: {r: 0.25, g: 0.25, b: 0.25, a: 0.25}
   m_BuildTextureStacks: []
