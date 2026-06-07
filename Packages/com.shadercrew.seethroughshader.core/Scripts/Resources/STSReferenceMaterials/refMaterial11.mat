@@ -2,20 +2,30 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: refMaterial11
   m_Shader: {fileID: 4800000, guid: f7d9c873efc7406488319c0cc4e9c626, type: 3}
-  m_ShaderKeywords: _ANIMATIONENABLED_ON _FLOOR_ON _REPLACEMENT _TEXTUREDEMISSIONEDGE_ON
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _REPLACEMENT
+  m_InvalidKeywords:
+  - _ANIMATIONENABLED_ON
+  - _FLOOR_ON
+  - _ISREFERENCEMATERIAL_ON
+  - _ISREPLACEMENTSHADER_ON
+  - _TEXTUREDEMISSIONEDGE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -67,7 +77,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
+    - _AffectedAreaFloor: 0
+    - _AffectedAreaPlayerBasedObstruction: 0
     - _AlphaClip: 0
     - _AngleStrength: 1
     - _AnimationEnabled: 1
@@ -79,7 +92,7 @@ Material:
     - _CeilingPlayerYOffset: 1
     - _CeilingY: 1
     - _CeilingYGradientLength: 0.1
-    - _CircleObstructionDestroyRadius: 4.37
+    - _CircleObstructionDestroyRadius: 1.8
     - _CircleStrength: 1
     - _ConeObstructionDestroyRadius: 12.52
     - _ConeStrength: 1
@@ -95,11 +108,12 @@ Material:
     - _DissolveEmission: 1
     - _DissolveEmissionBooster: 85.13
     - _DissolveFallOff: 0.455
-    - _DissolveMaskEnabled: 0
+    - _DissolveMaskEnabled: 1
+    - _EnableDefaultEffectRadius: 0
     - _Floor: 1
-    - _FloorMode: 0
+    - _FloorMode: 1
     - _FloorY: -2.78
-    - _FloorYTextureGradientLength: 0.86
+    - _FloorYTextureGradientLength: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _InteractionMode: 0
@@ -132,7 +146,7 @@ Material:
     - _SyncZonesWithFloorY: 0
     - _TexturedEmissionEdge: 1
     - _TexturedEmissionEdgeStrength: 0.698
-    - _TransitionDuration: 0.3
+    - _TransitionDuration: 2
     - _TriggerMode: 0
     - _UVSec: 0
     - _UVs: 3.89
@@ -149,3 +163,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 0, g: 0.7566807, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

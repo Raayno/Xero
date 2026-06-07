@@ -2,22 +2,35 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: refMaterialVegetationExample01
   m_Shader: {fileID: 4800000, guid: f7d9c873efc7406488319c0cc4e9c626, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _ANIMATIONENABLED_ON _CEILINGBLENDMODE_SUBTRACTIVE
-    _CEILINGMODE_MANUAL _FLOORMODE_MANUAL _FLOOR_MANUAL _ISREFERENCEMATERIAL_ON _OBSTRUCTION_CYLINDERONLY
-    _SYNCCULLMODE_ON _TEXTUREDEMISSIONEDGE_ON _ZONINGMODE_ADDITATIVE
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHATEST_ON
+  - _ANIMATIONENABLED_ON
+  - _CEILINGBLENDMODE_SUBTRACTIVE
+  - _CEILINGMODE_MANUAL
+  - _FLOORMODE_MANUAL
+  - _FLOOR_MANUAL
+  - _ISREFERENCEMATERIAL_ON
+  - _OBSTRUCTION_CYLINDERONLY
+  - _SYNCCULLMODE_ON
+  - _TEXTUREDEMISSIONEDGE_ON
+  - _ZONINGMODE_ADDITATIVE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -85,8 +98,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
+    - _AffectedAreaFloor: 0
+    - _AffectedAreaPlayerBasedObstruction: 0
     - _AlphaClip: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
@@ -104,7 +120,7 @@ Material:
     - _CeilingPlayerYOffset: 1
     - _CeilingY: 1
     - _CeilingYGradientLength: 0
-    - _CircleObstructionDestroyRadius: 100
+    - _CircleObstructionDestroyRadius: 1.8
     - _CircleStrength: 0
     - _ConeObstructionDestroyRadius: 4.1
     - _ConeStrength: 1
@@ -122,16 +138,17 @@ Material:
     - _DissolveEmission: 1
     - _DissolveEmissionBooster: 644.6
     - _DissolveFallOff: 0.348
-    - _DissolveMaskEnabled: 0
+    - _DissolveMaskEnabled: 1
     - _DissolveStrength: 0.099
     - _DstBlend: 0
     - _Emission: 0
     - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableDefaultEffectRadius: 0
     - _EnableFogOnTransparent: 1
-    - _Floor: 0
-    - _FloorMode: 0
+    - _Floor: 1
+    - _FloorMode: 1
     - _FloorY: -0.3
-    - _FloorYTextureGradientLength: 0.12
+    - _FloorYTextureGradientLength: 1
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
@@ -147,7 +164,7 @@ Material:
     - _Metallic: 1
     - _Mode: 0
     - _NextFloorY: 0
-    - _Obstruction: 4
+    - _Obstruction: 6
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PlayerPosYOffset: 1
@@ -220,3 +237,5 @@ Material:
     - _Color: {r: 0.6774292, g: 0.7735849, b: 0.49991098, a: 1}
     - _DissolveColor: {r: 0.59398735, g: 0.6886792, b: 0.14618193, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
