@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5023430824295273071
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: VolumeMeshBlending
+  m_EditorClassIdentifier: Assembly-CSharp:Kimede:VolumeMeshBlending
+  active: 1
+  enabled:
+    m_OverrideState: 1
+    m_Value: 1
+  processingIterations:
+    m_OverrideState: 1
+    m_Value: 3
+  blendingRadius:
+    m_OverrideState: 1
+    m_Value: 0.1
+  scalingFactor:
+    m_OverrideState: 1
+    m_Value: 50
+  distanceFade:
+    m_OverrideState: 1
+    m_Value: 2
+  minimumRange:
+    m_OverrideState: 1
+    m_Value: 0.5
+  maximumRange:
+    m_OverrideState: 1
+    m_Value: 100
+  rangeFalloff:
+    m_OverrideState: 1
+    m_Value: 2
+  surfaceThreshold:
+    m_OverrideState: 1
+    m_Value: 0.5
+  ColorIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+  OpacityLevel:
+    m_OverrideState: 1
+    m_Value: 1
+  EntityTolerance:
+    m_OverrideState: 1
+    m_Value: 0.2
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Global Demo
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 1277472311010279588}
+--- !u!114 &1277472311010279588
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f6b36520e62e54798b497b3077424a, type: 3}
+  m_Name: VolumeMeshBlending
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    m_OverrideState: 1
+    m_Value: 1
+  selectedLayers:
+    m_OverrideState: 1
+    m_Value:
+      serializedVersion: 2
+      m_Bits: 4294967295
+  processingSteps:
+    m_OverrideState: 1
+    m_Value: 5
+  Quality:
+    m_OverrideState: 1
+    m_Value: 2
+  useMultiSampling:
+    m_OverrideState: 1
+    m_Value: 1
+  blendingRadius:
+    m_OverrideState: 1
+    m_Value: 0.067
+  scalingFactor:
+    m_OverrideState: 1
+    m_Value: 1
+  distanceFade:
+    m_OverrideState: 1
+    m_Value: 5
+  minimumRange:
+    m_OverrideState: 1
+    m_Value: 0
+  maximumRange:
+    m_OverrideState: 1
+    m_Value: 100
+  surfaceThreshold:
+    m_OverrideState: 1
+    m_Value: 0
+  ColorIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+  OpacityLevel:
+    m_OverrideState: 1
+    m_Value: 1
+  enableTerrainInstancing:
+    m_OverrideState: 1
+    m_Value: 0
+  enableFrustumCulling:
+    m_OverrideState: 1
+    m_Value: 1
+  enablePerObjectProperties:
+    m_OverrideState: 1
+    m_Value: 0
+  enableDistanceQualityOptimization:
+    m_OverrideState: 1
+    m_Value: 1
+  closeDistanceThreshold:
+    m_OverrideState: 1
+    m_Value: 1
+  minBlendRadius:
+    m_OverrideState: 1
+    m_Value: 0.01
+  mediumQualityIterations:
+    m_OverrideState: 1
+    m_Value: 3
+  mediumQualityDistance:
+    m_OverrideState: 1
+    m_Value: 10
+  lowQualityDistance:
+    m_OverrideState: 1
+    m_Value: 50
+  lowQualityIterations:
+    m_OverrideState: 1
+    m_Value: 2
+  earlyExitsIterations:
+    m_OverrideState: 1
+    m_Value: 5

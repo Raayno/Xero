@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 64
+    m_Value: 110
   baseHeight:
     m_OverrideState: 1
     m_Value: 0
@@ -29,29 +29,29 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   density:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 0.535
   attenuationDistance:
     m_OverrideState: 0
     m_Value: 128
   enableAPVContribution:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   APVContributionWeight:
     m_OverrideState: 0
     m_Value: 1
   enableMainLightContribution:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   anisotropy:
-    m_OverrideState: 0
-    m_Value: 0.4
+    m_OverrideState: 1
+    m_Value: -0.02
   scattering:
-    m_OverrideState: 0
-    m_Value: 0.15
+    m_OverrideState: 1
+    m_Value: 0.071
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.5, g: 0.42715767, b: 0.375, a: 1}
   enableAdditionalLightsContribution:
     m_OverrideState: 1
     m_Value: 0
@@ -88,10 +88,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.337
+    m_Value: 0.17
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.294
+    m_Value: 0.211
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -107,10 +107,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ChromaticAberration
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0.168
+--- !u!114 &-2343255498719074996
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f6b36520e62e54798b497b3077424a, type: 3}
+  m_Name: VolumeMeshBlending
+  m_EditorClassIdentifier: Assembly-CSharp::Kimede.VolumeMeshBlending
+  active: 1
+  enabled:
+    m_OverrideState: 1
+    m_Value: 1
+  selectedLayers:
+    m_OverrideState: 1
+    m_Value:
+      serializedVersion: 2
+      m_Bits: 129
+  processingSteps:
+    m_OverrideState: 1
+    m_Value: 5
+  Quality:
+    m_OverrideState: 0
+    m_Value: 1
+  useMultiSampling:
+    m_OverrideState: 0
+    m_Value: 1
+  blendingRadius:
+    m_OverrideState: 1
+    m_Value: 0.58
+  scalingFactor:
+    m_OverrideState: 0
+    m_Value: 1
+  distanceFade:
+    m_OverrideState: 0
+    m_Value: 5
+  minimumRange:
+    m_OverrideState: 0
+    m_Value: 0
+  maximumRange:
+    m_OverrideState: 0
+    m_Value: 100
+  surfaceThreshold:
+    m_OverrideState: 0
+    m_Value: 0
+  ColorIntensity:
+    m_OverrideState: 0
+    m_Value: 1
+  OpacityLevel:
+    m_OverrideState: 0
+    m_Value: 1
+  enableTerrainInstancing:
+    m_OverrideState: 0
+    m_Value: 0
+  enableFrustumCulling:
+    m_OverrideState: 0
+    m_Value: 0
+  enablePerObjectProperties:
+    m_OverrideState: 0
+    m_Value: 0
+  enableDistanceQualityOptimization:
+    m_OverrideState: 0
+    m_Value: 0
+  closeDistanceThreshold:
+    m_OverrideState: 0
+    m_Value: 0.3
+  minBlendRadius:
+    m_OverrideState: 0
+    m_Value: 0.01
+  mediumQualityIterations:
+    m_OverrideState: 0
+    m_Value: 3
+  mediumQualityDistance:
+    m_OverrideState: 0
+    m_Value: 10
+  lowQualityDistance:
+    m_OverrideState: 0
+    m_Value: 50
+  lowQualityIterations:
+    m_OverrideState: 0
+    m_Value: 2
+  earlyExitsIterations:
+    m_OverrideState: 0
+    m_Value: 5
 --- !u!114 &-1278738149811529715
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -129,7 +216,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 24.8
+    m_Value: 14
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -138,7 +225,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 11.9
+    m_Value: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +244,7 @@ MonoBehaviour:
   - {fileID: -2965399582907258992}
   - {fileID: -1278738149811529715}
   - {fileID: -7793792504641182783}
+  - {fileID: -2343255498719074996}
 --- !u!114 &6837879198422310358
 MonoBehaviour:
   m_ObjectHideFlags: 3
