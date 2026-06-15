@@ -16,7 +16,6 @@ namespace CodeMonkey.HealthSystemCM {
                 Destroy(gameObject);
             }
         }
-
     }
 
 }
