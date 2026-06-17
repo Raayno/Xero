@@ -1,0 +1,22 @@
+{
+    "name": "GrassFlow",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "WindowsStandalone64"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "1.0",
+            "define": "GRASSFLOW_URPP"
+        }
+    ],
+    "noEngineReferences": false
+}

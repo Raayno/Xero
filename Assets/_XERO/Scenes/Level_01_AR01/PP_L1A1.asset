@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a074ec59f6e910b4e8c49f57e56cf95a, type: 3}
   m_Name: VolumetricFogVolumeComponent
   m_EditorClassIdentifier: com.cqf.urpvolumetricfog.runtime::VolumetricFogVolumeComponent
-  active: 1
+  active: 0
   distance:
     m_OverrideState: 1
-    m_Value: 110
+    m_Value: 139
   baseHeight:
     m_OverrideState: 1
     m_Value: 0
@@ -32,8 +32,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0.535
   attenuationDistance:
-    m_OverrideState: 0
-    m_Value: 128
+    m_OverrideState: 1
+    m_Value: 26.72
   enableAPVContribution:
     m_OverrideState: 0
     m_Value: 0
@@ -45,15 +45,15 @@ MonoBehaviour:
     m_Value: 1
   anisotropy:
     m_OverrideState: 1
-    m_Value: -0.02
+    m_Value: -0.07
   scattering:
     m_OverrideState: 1
-    m_Value: 0.071
+    m_Value: 0.157
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.5, g: 0.42715767, b: 0.375, a: 1}
+    m_Value: {r: 0.08957814, g: 0.26760745, b: 0.31132078, a: 1}
   enableAdditionalLightsContribution:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   maxSteps:
     m_OverrideState: 0
@@ -88,10 +88,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.17
+    m_Value: 0.351
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.211
+    m_Value: 0.112
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 10
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -225,7 +225,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 15
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,9 +266,9 @@ MonoBehaviour:
     m_Value: 0.7
   intensity:
     m_OverrideState: 1
-    m_Value: 1.78
+    m_Value: 0.78
   scatter:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.7
   clamp:
     m_OverrideState: 0
