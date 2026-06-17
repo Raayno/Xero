@@ -9,9 +9,6 @@ public abstract class CombatTarget : MonoBehaviour
     [Header("Attack Sequence")]
     [SerializeField] private PlayableDirector attackSequenceDirector;
 
-    [SerializeField] private PlayerCombatTargetData combatTargetData;
-
-    public PlayerCombatTargetData GetData() => combatTargetData;
 
     public string CombatantName
     {

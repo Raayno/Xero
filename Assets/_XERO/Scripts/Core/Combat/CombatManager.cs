@@ -34,7 +34,7 @@ public class CombatManager : MonoBehaviour
 
     private void OnDisable()
     {
-        CombatOptionsUIButton.OnOptionSelected += CombatOptionsUIButton_OnOptionSelected;
+        CombatOptionsUIButton.OnOptionSelected -= CombatOptionsUIButton_OnOptionSelected;
     }
 
     private void Start()
@@ -46,14 +46,17 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Combat Started!");
         CombatTarget combatTarget = combatTimelineController.GetCurrentTarget();
-        PlayerCombatTargetData combatTargetData = combatTarget.GetData();
 
         if (combatTarget is PlayerCombatTarget)
         {
-            combatOptionsUIManager.ShowUI(combatTarget);
+            PlayerCombatTarget playerCombatTarget = combatTarget as PlayerCombatTarget;
+            PlayerCombatTargetData playerCombatTargetData = playerCombatTarget.GetData();
+            combatOptionsUIManager.ShowUI(playerCombatTarget);
         }
         else
         {
+            EnemyCombatTarget enemyCombatTarget = combatTarget as EnemyCombatTarget;
+            EnemyCombatTargetData combatTargetData = enemyCombatTarget.GetData();
             AttackDataSO attackDataSO = combatTargetData.attacks[Random.Range(0, combatTargetData.attacks.Count)];
             PlayAttack(attackDataSO);
         }
