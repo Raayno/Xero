@@ -3,11 +3,12 @@ using UnityEngine.Timeline;
 
 public abstract class AttackDataSO : ScriptableObject
 {
-    [Space]
-    public DamageDataSO damageAmount;
+    [Header("Damage")]
+    [SerializeField] private DamageDataSO damageData;
 
-    [Space]
-    public TimelineAsset timelineAsset;
+    [Header("Timeline")]
+    [SerializeField] private TimelineAsset timelineAsset;
+
+    public DamageDataSO DamageData => damageData;
+    public TimelineAsset TimelineAsset => timelineAsset;
 }
-
-

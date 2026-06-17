@@ -43,8 +43,8 @@ public class CombatOptionsUIButton : MonoBehaviour
     public void ShowUI(PlayerAttackDataSO attackDataSO)
     {
         this.attackDataSO = attackDataSO;
-        nameTXT.text = attackDataSO.attackName;
-        descriptionTXT.text = attackDataSO.attackDescription;
+        nameTXT.text = attackDataSO.AttackName;
+        descriptionTXT.text = attackDataSO.AttackDescription;
         inputIMG.gameObject.SetActive(false);
     }
 }

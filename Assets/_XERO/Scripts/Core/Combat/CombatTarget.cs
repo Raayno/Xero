@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Playables;
+
 public abstract class CombatTarget : MonoBehaviour
 {
     [Header("Combat Target")]
@@ -8,7 +9,6 @@ public abstract class CombatTarget : MonoBehaviour
 
     [Header("Attack Sequence")]
     [SerializeField] private PlayableDirector attackSequenceDirector;
-
 
     public string CombatantName
     {
@@ -25,11 +25,9 @@ public abstract class CombatTarget : MonoBehaviour
 
     public bool IsDefeated { get; private set; }
 
-    public PlayableDirector AttackSequenceDirector =>
-        attackSequenceDirector;
+    public PlayableDirector AttackSequenceDirector => attackSequenceDirector;
 
     public event Action<CombatTarget> Defeated;
-
     public event Action<CombatTarget> AttackSequenceFinished;
 
     public virtual void PlayAttackSequence(AttackDataSO attackDataSO)
@@ -42,6 +40,22 @@ public abstract class CombatTarget : MonoBehaviour
             return;
         }
 
+        if (attackDataSO == null)
+        {
+            Debug.LogError(
+                $"[CombatTarget] {CombatantName} received null attack data.");
+
+            return;
+        }
+
+        if (attackDataSO.TimelineAsset == null)
+        {
+            Debug.LogError(
+                $"[CombatTarget] Attack '{attackDataSO.name}' has no timeline assigned.");
+
+            return;
+        }
+
         if (attackSequenceDirector == null)
         {
             Debug.LogError(
@@ -49,7 +63,8 @@ public abstract class CombatTarget : MonoBehaviour
 
             return;
         }
-        attackSequenceDirector.playableAsset = attackDataSO.timelineAsset;
+
+        attackSequenceDirector.playableAsset = attackDataSO.TimelineAsset;
         attackSequenceDirector.Stop();
         attackSequenceDirector.time = 0d;
         attackSequenceDirector.Evaluate();

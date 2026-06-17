@@ -7,8 +7,6 @@ public class CombatOptionsUIManager : MonoBehaviour
     [SerializeField] private Transform combatOptionsContainer;
     [SerializeField] private List<CombatOptionsUIButton> combatOptionsUIList = new List<CombatOptionsUIButton>();
 
-    [SerializeField] private SerializedDictionary<InputType, Sprite> inputSprites;
-
     private void Awake()
     {
         HideUI();
