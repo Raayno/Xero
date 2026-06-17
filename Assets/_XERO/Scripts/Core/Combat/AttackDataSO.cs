@@ -9,6 +9,10 @@ public abstract class AttackDataSO : ScriptableObject
     [Header("Timeline")]
     [SerializeField] private TimelineAsset timelineAsset;
 
+    [Header("Targeting")]
+    [SerializeField] private CombatActionTargetType targetType = CombatActionTargetType.SingleEnemy;
+
     public DamageDataSO DamageData => damageData;
     public TimelineAsset TimelineAsset => timelineAsset;
+    public CombatActionTargetType TargetType => targetType;
 }

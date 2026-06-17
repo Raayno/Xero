@@ -150,6 +150,11 @@ Transform:
   m_Children:
   - {fileID: 175917254}
   - {fileID: 689562239}
+  - {fileID: 1509386289}
+  - {fileID: 924577344}
+  - {fileID: 727471414}
+  - {fileID: 96157556}
+  - {fileID: 75476724}
   - {fileID: 1053415553}
   - {fileID: 1049872958}
   - {fileID: 6904520305937347878}
@@ -262,6 +267,95 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6939365688439893354, guid: d3f449292e4f7224c85dc72c13df54db, type: 3}
   m_PrefabInstance: {fileID: 55792881}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &75476723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75476724}
+  - component: {fileID: 75476725}
+  m_Layer: 0
+  m_Name: CombatActionResolver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &75476724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75476723}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6606, y: 0, z: -4.72461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 54456243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &75476725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75476723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb170a89bc718d448e35eac0a47b7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatActionResolver
+--- !u!1 &96157555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 96157556}
+  - component: {fileID: 96157557}
+  m_Layer: 0
+  m_Name: EnemyTargetSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &96157556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96157555}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6606, y: 0, z: -4.72461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 54456243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &96157557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96157555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36cb06e66e6ea944a0fb05194d90444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTargetSelector
+  combatTargetProvider: {fileID: 1509386290}
 --- !u!1001 &111534126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -364,7 +458,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatManager
   combatTimelineController: {fileID: 689562240}
+  combatActionResolver: {fileID: 75476725}
   combatOptionsUIManager: {fileID: 1067083975}
+  combatTargetSelectionManager: {fileID: 924577345}
+  combatTargetProvider: {fileID: 1509386290}
+  enemyActionSelector: {fileID: 727471415}
+  enemyTargetSelector: {fileID: 96157557}
 --- !u!1 &185330562
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +1001,50 @@ MonoBehaviour:
   timelineData:
     maxTimeline: 10
     turnProbability: 1
+--- !u!1 &727471413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 727471414}
+  - component: {fileID: 727471415}
+  m_Layer: 0
+  m_Name: EnemyActionSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &727471414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727471413}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6606, y: 0, z: -4.72461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 54456243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727471415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727471413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d55b9062f9158b4ca8e31ede90fc0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyActionSelector
 --- !u!1 &840920106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1159,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 560e5c46f47dfe64f9e3a8c34f5d0e75, type: 3}
+--- !u!1 &924577343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924577344}
+  - component: {fileID: 924577345}
+  m_Layer: 0
+  m_Name: CombatTargetSelectionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &924577344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924577343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 54456243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924577345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924577343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7aae2bc2514ae640a0b1cb83d44c30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatTargetSelectionManager
+  selectionCamera: {fileID: 969630885498976825}
+  selectableLayerMask:
+    serializedVersion: 2
+    m_Bits: 320
+  maxRayDistance: 500
+  combatTargetProvider: {fileID: 1509386290}
 --- !u!114 &977623206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,16 +1493,6 @@ MonoBehaviour:
   - {fileID: 674673641}
   - {fileID: 1772517173}
   - {fileID: 1923413161}
-  inputSprites:
-    _serializedList:
-    - Key: 0
-      Value: {fileID: 21300006, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
-    - Key: 1
-      Value: {fileID: 21300002, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
-    - Key: 2
-      Value: {fileID: 21300012, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
-    - Key: 3
-      Value: {fileID: 21300008, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
 --- !u!1 &1253948696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1544,51 @@ PlayableDirector:
     value: {fileID: 7927449809845920963}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &1509386288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1509386289}
+  - component: {fileID: 1509386290}
+  m_Layer: 0
+  m_Name: CombatTargetProvider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1509386289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509386288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 54456243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1509386290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509386288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794074044e2b5e244bd4a2719a00cacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatTargetProvider
+  combatTimelineController: {fileID: 689562240}
 --- !u!1 &1647179402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2342,7 @@ GameObject:
   - component: {fileID: 1190079269451330440}
   - component: {fileID: 5937755286481203894}
   - component: {fileID: 2602764807138742021}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12946,7 +13174,7 @@ GameObject:
   - component: {fileID: 4544109193822482447}
   - component: {fileID: 648648442635659929}
   - component: {fileID: 480248113196556543}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15186,7 +15414,7 @@ GameObject:
   - component: {fileID: 5787943493850742475}
   - component: {fileID: 5784138285709200303}
   - component: {fileID: 7895333524473161709}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HitParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31227,7 +31455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3720976206961004200}
   - component: {fileID: 5592816049031958648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SquashAndStretch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41682,7 +41910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7301749977695032771}
   - component: {fileID: 3314351052119128036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DamageFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41713,7 +41941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026975679279683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41745,7 +41973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026975741672762}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41778,7 +42006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026975785948959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: toe.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41819,7 +42047,7 @@ GameObject:
   - component: {fileID: 8376026975977854702}
   - component: {fileID: 8376026975977854696}
   - component: {fileID: 8376026975977854703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Axe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41958,7 +42186,7 @@ GameObject:
   - component: {fileID: 8376026976038103895}
   - component: {fileID: 8376026976038103889}
   - component: {fileID: 8376026976038103888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HelmetRim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41999,7 +42227,7 @@ GameObject:
   - component: {fileID: 8376026976107594086}
   - component: {fileID: 8376026976107594080}
   - component: {fileID: 8376026976107594087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Horn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42079,7 +42307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976142680993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42113,7 +42341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976151871521}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hand.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42246,7 +42474,7 @@ GameObject:
   - component: {fileID: 8376026976205070796}
   - component: {fileID: 8376026976205070797}
   - component: {fileID: 435104757753425721}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42262,7 +42490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976208968030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hand.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42294,7 +42522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976252025970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: foot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42347,7 +42575,7 @@ GameObject:
   - component: {fileID: 1297876394228773792}
   - component: {fileID: 3718716449373047045}
   - component: {fileID: 977623206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BobEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42363,7 +42591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976303463017}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pelvis.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42410,7 +42638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976325468552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shoulder.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42426,7 +42654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976349672286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: forearm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42474,7 +42702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976420303796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ModelContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42490,7 +42718,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976574196459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: upper_arm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42522,7 +42750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976591348249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42555,7 +42783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976664217538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shin.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42587,7 +42815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976820847477}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: upper_arm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42619,7 +42847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976955335841}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42653,7 +42881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976961224033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shin.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42685,7 +42913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976978478306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42717,7 +42945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026976990582169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shoulder.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42749,7 +42977,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026977081202898}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: thigh.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42840,7 +43068,7 @@ GameObject:
   - component: {fileID: 8376026977100866003}
   - component: {fileID: 8376026977100865997}
   - component: {fileID: 8376026977100865996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Axe2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42871,7 +43099,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026977132647646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: toe.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42902,7 +43130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026977220740325}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: foot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42950,7 +43178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026977237744436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42966,7 +43194,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026977315530805}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pelvis.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42997,7 +43225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026977492232551}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: forearm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43031,7 +43259,7 @@ GameObject:
   - component: {fileID: 8376026977500548867}
   - component: {fileID: 8376026977500548925}
   - component: {fileID: 8376026977500548924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HornRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43119,7 +43347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8376026977518330927}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: thigh.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43228,7 +43456,7 @@ GameObject:
   - component: {fileID: 8376026977623276160}
   - component: {fileID: 8376026977623276162}
   - component: {fileID: 8376026977623276161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HelmetBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43269,7 +43497,7 @@ GameObject:
   - component: {fileID: 8376026977748346388}
   - component: {fileID: 8376026977748346395}
   - component: {fileID: 8376026977748346396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barbarian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
