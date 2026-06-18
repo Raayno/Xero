@@ -21,13 +21,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Crystal_Proto
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: b9ffec062e13a584a9bd289376643255, type: 2}
+  m_Shader: {fileID: -6465566751694194690, guid: f11e55fe6abc0384092747ce41d9786e, type: 3}
+  m_Parent: {fileID: 2100000, guid: 8efcca5aa0f9e3743a9947404ab887ea, type: 2}
   m_ModifiedSerializedProperties: 16
-  m_ValidKeywords:
-  - _EMISSION
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _DISSOLVEMASK
+  - _EMISSION
   - _FLOOR_ON
   - _ISREFERENCEMATERIAL_ON
   - _ISREPLACEMENTSHADER_ON
@@ -39,14 +39,17 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: _FloorY _Metallic _MetallicGlossMap
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Albedo2:
+        m_Texture: {fileID: 2800000, guid: 8c5021caff8b9d2489b0f201e03ab317, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DissolveMask:
         m_Texture: {fileID: 2800000, guid: 9e920ea0072795c4dbe9dc91bc76f813, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -78,6 +81,7 @@ Material:
     - _PlayerPosYOffset: 2.11
     - _PreviewIndicatorLineThickness: 0.178
     - _PreviewMode: 0
+    - _QueueControl: 0
     - _Smoothness: 0
     - _SyncZonesFloorYOffset: 3.22
     - _SyncZonesWithFloorY: 1
@@ -88,8 +92,8 @@ Material:
     - _ZoningEdgeGradientLength: 5.49
     - _hasClippedShadows: 0
     m_Colors:
-    - _BaseColor: {r: 0.8862745, g: 0.5519981, b: 0.38823533, a: 1}
-    - _Color: {r: 0.8862745, g: 0.5519981, b: 0.3882353, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 1, g: 0.00000015894572, b: 0, a: 1}
     - _EmissionColor: {r: 0.125, g: 0, b: 0.07093251, a: 1}
   m_BuildTextureStacks: []
