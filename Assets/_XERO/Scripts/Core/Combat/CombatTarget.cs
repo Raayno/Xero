@@ -10,6 +10,17 @@ public abstract class CombatTarget : MonoBehaviour
     [Header("Attack Sequence")]
     [SerializeField] private PlayableDirector attackSequenceDirector;
 
+    [Header("Timeline Move Points")]
+    [SerializeField] private Transform timelineMovePoint;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private Transform hitPoint;
+    [SerializeField] private Transform customPointA;
+    [SerializeField] private Transform customPointB;
+
+    private Vector3 actionStartPosition;
+    private Quaternion actionStartRotation;
+    private bool hasActionStartTransform;
+
     public string CombatantName
     {
         get
@@ -27,8 +38,72 @@ public abstract class CombatTarget : MonoBehaviour
 
     public PlayableDirector AttackSequenceDirector => attackSequenceDirector;
 
+    public CombatActionContext CurrentActionContext { get; private set; }
+
+    public Vector3 ActionStartPosition => actionStartPosition;
+    public Quaternion ActionStartRotation => actionStartRotation;
+    public bool HasActionStartTransform => hasActionStartTransform;
+
     public event Action<CombatTarget> Defeated;
     public event Action<CombatTarget> AttackSequenceFinished;
+
+    public virtual void SetCurrentActionContext(CombatActionContext actionContext)
+    {
+        CurrentActionContext = actionContext;
+        CaptureActionStartTransform();
+    }
+
+    public virtual void ClearCurrentActionContext()
+    {
+        CurrentActionContext = null;
+        hasActionStartTransform = false;
+    }
+
+    public virtual void CaptureActionStartTransform()
+    {
+        actionStartPosition = transform.position;
+        actionStartRotation = transform.rotation;
+        hasActionStartTransform = true;
+    }
+
+    public virtual Transform GetMovePointTransform(CombatMovePointType movePointType)
+    {
+        switch (movePointType)
+        {
+            case CombatMovePointType.Root:
+                return transform;
+
+            case CombatMovePointType.TimelineMovePoint:
+                return timelineMovePoint != null ? timelineMovePoint : transform;
+
+            case CombatMovePointType.AttackPoint:
+                return attackPoint != null ? attackPoint : transform;
+
+            case CombatMovePointType.HitPoint:
+                return hitPoint != null ? hitPoint : transform;
+
+            case CombatMovePointType.CustomPointA:
+                return customPointA != null ? customPointA : transform;
+
+            case CombatMovePointType.CustomPointB:
+                return customPointB != null ? customPointB : transform;
+
+            default:
+                return transform;
+        }
+    }
+
+    public virtual Vector3 GetMovePointPosition(CombatMovePointType movePointType)
+    {
+        Transform movePoint = GetMovePointTransform(movePointType);
+
+        if (movePoint == null)
+        {
+            return transform.position;
+        }
+
+        return movePoint.position;
+    }
 
     public virtual void PlayAttackSequence(AttackDataSO attackDataSO)
     {

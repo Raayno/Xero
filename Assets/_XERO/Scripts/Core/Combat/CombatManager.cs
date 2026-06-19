@@ -23,32 +23,28 @@ public class CombatManager : MonoBehaviour
     {
         CombatOptionsUIButton.OnOptionSelected += CombatOptionsUIButton_OnOptionSelected;
 
-        if (combatTargetSelectionManager != null)
+        if (combatTargetSelectionManager)
         {
             combatTargetSelectionManager.TargetSelected += CombatTargetSelectionManager_TargetSelected;
             combatTargetSelectionManager.TargetSelectionCancelled += CombatTargetSelectionManager_TargetSelectionCancelled;
         }
 
-        if (combatActionResolver != null)
-        {
+        if (combatActionResolver)
             combatActionResolver.ActionFinished += CombatActionResolver_ActionFinished;
-        }
     }
 
     private void OnDisable()
     {
         CombatOptionsUIButton.OnOptionSelected -= CombatOptionsUIButton_OnOptionSelected;
 
-        if (combatTargetSelectionManager != null)
+        if (combatTargetSelectionManager)
         {
             combatTargetSelectionManager.TargetSelected -= CombatTargetSelectionManager_TargetSelected;
             combatTargetSelectionManager.TargetSelectionCancelled -= CombatTargetSelectionManager_TargetSelectionCancelled;
         }
 
-        if (combatActionResolver != null)
-        {
+        if (combatActionResolver)
             combatActionResolver.ActionFinished -= CombatActionResolver_ActionFinished;
-        }
     }
 
     private void Start()
