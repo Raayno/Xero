@@ -1,5 +1,92 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8388732242152398185
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f6b36520e62e54798b497b3077424a, type: 3}
+  m_Name: VolumeMeshBlending
+  m_EditorClassIdentifier: Assembly-CSharp::Kimede.VolumeMeshBlending
+  active: 1
+  enabled:
+    m_OverrideState: 1
+    m_Value: 1
+  selectedLayers:
+    m_OverrideState: 1
+    m_Value:
+      serializedVersion: 2
+      m_Bits: 128
+  processingSteps:
+    m_OverrideState: 1
+    m_Value: 7
+  Quality:
+    m_OverrideState: 1
+    m_Value: 1
+  useMultiSampling:
+    m_OverrideState: 1
+    m_Value: 1
+  blendingRadius:
+    m_OverrideState: 1
+    m_Value: 1.397
+  scalingFactor:
+    m_OverrideState: 0
+    m_Value: 1
+  distanceFade:
+    m_OverrideState: 0
+    m_Value: 5
+  minimumRange:
+    m_OverrideState: 0
+    m_Value: 0
+  maximumRange:
+    m_OverrideState: 0
+    m_Value: 100
+  surfaceThreshold:
+    m_OverrideState: 0
+    m_Value: 0
+  ColorIntensity:
+    m_OverrideState: 0
+    m_Value: 1
+  OpacityLevel:
+    m_OverrideState: 0
+    m_Value: 1
+  enableTerrainInstancing:
+    m_OverrideState: 0
+    m_Value: 0
+  enableFrustumCulling:
+    m_OverrideState: 1
+    m_Value: 1
+  enablePerObjectProperties:
+    m_OverrideState: 0
+    m_Value: 0
+  enableDistanceQualityOptimization:
+    m_OverrideState: 1
+    m_Value: 1
+  closeDistanceThreshold:
+    m_OverrideState: 0
+    m_Value: 0.3
+  minBlendRadius:
+    m_OverrideState: 0
+    m_Value: 0.01
+  mediumQualityIterations:
+    m_OverrideState: 0
+    m_Value: 3
+  mediumQualityDistance:
+    m_OverrideState: 0
+    m_Value: 10
+  lowQualityDistance:
+    m_OverrideState: 0
+    m_Value: 50
+  lowQualityIterations:
+    m_OverrideState: 0
+    m_Value: 2
+  earlyExitsIterations:
+    m_OverrideState: 0
+    m_Value: 5
 --- !u!114 &-8244330509706887011
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -182,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a074ec59f6e910b4e8c49f57e56cf95a, type: 3}
   m_Name: VolumetricFogVolumeComponent
   m_EditorClassIdentifier: com.cqf.urpvolumetricfog.runtime::VolumetricFogVolumeComponent
-  active: 0
+  active: 1
   distance:
     m_OverrideState: 1
     m_Value: 118
@@ -257,6 +344,7 @@ MonoBehaviour:
   - {fileID: -3357603926938260329}
   - {fileID: -3978283882297234320}
   - {fileID: 3559340375565150522}
+  - {fileID: -8388732242152398185}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
