@@ -832,13 +832,24 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: GRASSFLOW_SRP
-    Nintendo Switch: GRASSFLOW_SRP
-    PS4: GRASSFLOW_SRP
-    Standalone: MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;GRASSFLOW_SRP
-    WebGL: GRASSFLOW_SRP
-    XboxOne: GRASSFLOW_SRP
-    iPhone: GRASSFLOW_SRP
+    Android: GRASSFLOW_SRP;DOTWEEN
+    EmbeddedLinux: DOTWEEN
+    GameCoreScarlett: DOTWEEN
+    GameCoreXboxOne: DOTWEEN
+    Kepler: DOTWEEN
+    LinuxHeadlessSimulation: DOTWEEN
+    Nintendo Switch: GRASSFLOW_SRP;DOTWEEN
+    Nintendo Switch 2: DOTWEEN
+    PS4: GRASSFLOW_SRP;DOTWEEN
+    PS5: DOTWEEN
+    QNX: DOTWEEN
+    Standalone: MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;GRASSFLOW_SRP;DOTWEEN
+    VisionOS: DOTWEEN
+    WebGL: GRASSFLOW_SRP;DOTWEEN
+    Windows Store Apps: DOTWEEN
+    XboxOne: GRASSFLOW_SRP;DOTWEEN
+    iPhone: GRASSFLOW_SRP;DOTWEEN
+    tvOS: DOTWEEN
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
