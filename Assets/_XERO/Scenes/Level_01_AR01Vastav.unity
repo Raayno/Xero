@@ -1559,6 +1559,7 @@ PlayableDirector:
     value: {fileID: 7927449809845920965}
   m_ExposedReferences:
     m_References:
+    - 400a534fe295efc45937bd71b46573f2: {fileID: 1049872958}
     - 45b390d8af35e574da0455e0c64d75d8: {fileID: 8376026976256546664}
     - 31da06d59ef6f86479e13bfe6798116d: {fileID: 8376026976256546664}
 --- !u!1 &1509386288
@@ -38132,12 +38133,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'index_03_l'\n\tTransform 'lowerarm_l'\n\tTransform
-    'root'\n\tTransform 'pinky_03_l'\n\tTransform 'neck_01'\n\tTransform 'pinky_03_r'\n\tTransform
-    'clavicle_l'\n\tTransform 'ring_02_l'\n\tTransform 'ball_l'\n\tTransform 'hand_l'\n\tand
-    more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
