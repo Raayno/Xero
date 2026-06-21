@@ -8,27 +8,37 @@ public class CombatTargetMoveMixer : PlayableBehaviour
         FrameData info,
         object playerData)
     {
-        CombatTarget actor = playerData as CombatTarget;
-
-        if (actor == null)
+        if (playerData is not CombatTarget actor)
         {
             return;
         }
 
         int inputCount = playable.GetInputCount();
 
-        CombatTargetMoveBehaviour strongestBehaviour = null;
-        Playable strongestInput = Playable.Null;
-        float strongestWeight = 0f;
+        CombatTargetMoveBehaviour selectedBehaviour = null;
+        Playable selectedInput = Playable.Null;
+        float highestWeight = 0f;
 
         for (int i = 0; i < inputCount; i++)
         {
             float inputWeight = playable.GetInputWeight(i);
 
+            Playable input = playable.GetInput(i);
+
+            if (!input.IsValid())
+            {
+                continue;
+            }
+
             ScriptPlayable<CombatTargetMoveBehaviour> inputPlayable =
-                (ScriptPlayable<CombatTargetMoveBehaviour>)playable.GetInput(i);
+                (ScriptPlayable<CombatTargetMoveBehaviour>)input;
 
             CombatTargetMoveBehaviour behaviour = inputPlayable.GetBehaviour();
+
+            if (behaviour == null)
+            {
+                continue;
+            }
 
             if (inputWeight <= 0.001f)
             {
@@ -36,31 +46,31 @@ public class CombatTargetMoveMixer : PlayableBehaviour
                 continue;
             }
 
-            if (inputWeight > strongestWeight)
+            if (inputWeight > highestWeight)
             {
-                strongestWeight = inputWeight;
-                strongestBehaviour = behaviour;
-                strongestInput = inputPlayable;
+                highestWeight = inputWeight;
+                selectedBehaviour = behaviour;
+                selectedInput = input;
             }
         }
 
-        if (strongestBehaviour == null)
+        if (selectedBehaviour == null)
         {
             return;
         }
 
-        double duration = strongestInput.GetDuration();
+        double duration = selectedInput.GetDuration();
 
         if (duration <= 0d)
         {
             return;
         }
 
-        double currentTime = strongestInput.GetTime();
+        double currentTime = selectedInput.GetTime();
         float normalizedTime = Mathf.Clamp01((float)(currentTime / duration));
 
         IExposedPropertyTable resolver = playable.GetGraph().GetResolver();
 
-        strongestBehaviour.Apply(actor, resolver, normalizedTime);
+        selectedBehaviour.Apply(actor, resolver, normalizedTime);
     }
 }

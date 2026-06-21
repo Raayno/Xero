@@ -5,7 +5,7 @@ using UnityEngine.Timeline;
 [System.Serializable]
 public class CombatTargetMoveClip : PlayableAsset, ITimelineClipAsset
 {
-    [SerializeField] private CombatTargetMoveBehaviour template = new CombatTargetMoveBehaviour();
+    public CombatTargetMoveBehaviour template = new CombatTargetMoveBehaviour();
 
     public ClipCaps clipCaps => ClipCaps.Blending | ClipCaps.ClipIn | ClipCaps.SpeedMultiplier;
 

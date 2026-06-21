@@ -1,4 +1,3 @@
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -6,49 +5,32 @@ using UnityEngine.Playables;
 public class CombatTargetMoveBehaviour : PlayableBehaviour
 {
     [Header("Testing / Timeline Preview")]
+    [Tooltip("When enabled, this clip ignores runtime combat context and moves toward the assigned Test Transform Target.")]
     [SerializeField] private bool useTestTransformTarget;
 
-    [AllowNesting]
-    [ShowIf(nameof(useTestTransformTarget))]
     [SerializeField] private ExposedReference<Transform> testTransformTarget;
 
-    [Header("Destination")]
-    [AllowNesting]
-    [HideIf(nameof(useTestTransformTarget))]
+    [Header("Runtime Destination")]
     [SerializeField]
     private CombatTargetMoveDestinationSource destinationSource =
         CombatTargetMoveDestinationSource.CurrentActionFirstReceiver;
 
-    [AllowNesting]
-    [ShowIf(nameof(UsesCombatTargetDestination))]
     [SerializeField] private CombatMovePointType destinationMovePoint = CombatMovePointType.Root;
 
-    [AllowNesting]
-    [ShowIf(nameof(UsesExposedCombatTarget))]
     [SerializeField] private ExposedReference<CombatTarget> exposedCombatTarget;
 
-    [AllowNesting]
-    [ShowIf(nameof(UsesWorldPosition))]
     [SerializeField] private Vector3 worldPosition;
 
-    [AllowNesting]
-    [ShowIf(nameof(UsesActorLocalOffset))]
     [SerializeField] private Vector3 actorLocalOffset;
 
     [Header("Stopping / Offset")]
     [Tooltip("Stops this many units before the final destination, based on the direction from start position to destination.")]
-    [AllowNesting]
-    [ShowIf(nameof(UsesArrivalDistance))]
     [SerializeField] private float arrivalDistance;
 
-    [AllowNesting]
-    [ShowIf(nameof(UsesOffset))]
     [SerializeField]
     private CombatTargetMoveOffsetSpace offsetSpace =
         CombatTargetMoveOffsetSpace.DestinationLocal;
 
-    [AllowNesting]
-    [ShowIf(nameof(UsesOffset))]
     [SerializeField] private Vector3 offset;
 
     [Header("Movement Curve")]
@@ -59,8 +41,6 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
     [Header("Rotation")]
     [SerializeField] private bool faceMoveDirection = true;
 
-    [AllowNesting]
-    [ShowIf(nameof(IsReturningToActionStart))]
     [SerializeField] private bool restoreActionStartRotation = true;
 
     [SerializeField] private bool keepOriginalY = true;
@@ -268,6 +248,11 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         CombatTarget actor,
         CombatTarget destinationTarget)
     {
+        if (destinationTarget == null)
+        {
+            return startPosition;
+        }
+
         Transform destinationTransform =
             destinationTarget.GetMovePointTransform(destinationMovePoint);
 
@@ -282,7 +267,12 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
 
     private Vector3 ApplyArrivalDistance(Vector3 destination)
     {
-        if (!UsesArrivalDistance())
+        if (IsReturningToActionStart())
+        {
+            return destination;
+        }
+
+        if (destinationSource == CombatTargetMoveDestinationSource.ActorLocalOffset && !useTestTransformTarget)
         {
             return destination;
         }
@@ -307,7 +297,6 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         }
 
         float safeArrivalDistance = Mathf.Min(arrivalDistance, distance);
-
         Vector3 direction = startToDestination.normalized;
 
         return destination - direction * safeArrivalDistance;
@@ -318,6 +307,16 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         CombatTarget destinationTarget,
         Transform destinationTransform)
     {
+        if (IsReturningToActionStart())
+        {
+            return Vector3.zero;
+        }
+
+        if (destinationSource == CombatTargetMoveDestinationSource.ActorLocalOffset && !useTestTransformTarget)
+        {
+            return Vector3.zero;
+        }
+
         switch (offsetSpace)
         {
             case CombatTargetMoveOffsetSpace.World:
@@ -325,12 +324,9 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
 
             case CombatTargetMoveOffsetSpace.DestinationLocal:
                 {
-                    if (destinationTransform == null)
+                    if (destinationTransform == null && destinationTarget != null)
                     {
-                        if (destinationTarget != null)
-                        {
-                            destinationTransform = destinationTarget.transform;
-                        }
+                        destinationTransform = destinationTarget.transform;
                     }
 
                     if (destinationTransform == null)
@@ -395,7 +391,12 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         Vector3 destination,
         float curveTime)
     {
-        if (IsReturningToActionStart() && restoreActionStartRotation)
+        if (actor == null)
+        {
+            return;
+        }
+
+        if (IsReturningToActionStart() && restoreActionStartRotation && actor.HasActionStartTransform)
         {
             actor.transform.rotation = Quaternion.Slerp(
                 startRotation,
@@ -444,78 +445,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         }
 
         warnedMissingDestination = true;
-
         Debug.LogWarning(message);
-    }
-
-    private bool UsesCombatTargetDestination()
-    {
-        if (useTestTransformTarget)
-        {
-            return false;
-        }
-
-        return destinationSource == CombatTargetMoveDestinationSource.CurrentActionFirstReceiver ||
-               destinationSource == CombatTargetMoveDestinationSource.CurrentActionAttacker ||
-               destinationSource == CombatTargetMoveDestinationSource.ExposedCombatTarget;
-    }
-
-    private bool UsesExposedCombatTarget()
-    {
-        if (useTestTransformTarget)
-        {
-            return false;
-        }
-
-        return destinationSource == CombatTargetMoveDestinationSource.ExposedCombatTarget;
-    }
-
-    private bool UsesWorldPosition()
-    {
-        if (useTestTransformTarget)
-        {
-            return false;
-        }
-
-        return destinationSource == CombatTargetMoveDestinationSource.WorldPosition;
-    }
-
-    private bool UsesActorLocalOffset()
-    {
-        if (useTestTransformTarget)
-        {
-            return false;
-        }
-
-        return destinationSource == CombatTargetMoveDestinationSource.ActorLocalOffset;
-    }
-
-    private bool UsesOffset()
-    {
-        if (IsReturningToActionStart())
-        {
-            return false;
-        }
-
-        if (destinationSource == CombatTargetMoveDestinationSource.ActorLocalOffset && !useTestTransformTarget)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private bool UsesArrivalDistance()
-    {
-        if (IsReturningToActionStart())
-        {
-            return false;
-        }
-
-        return destinationSource == CombatTargetMoveDestinationSource.CurrentActionFirstReceiver ||
-               destinationSource == CombatTargetMoveDestinationSource.CurrentActionAttacker ||
-               destinationSource == CombatTargetMoveDestinationSource.ExposedCombatTarget ||
-               useTestTransformTarget;
     }
 
     private bool IsReturningToActionStart()

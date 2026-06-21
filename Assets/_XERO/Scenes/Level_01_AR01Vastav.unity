@@ -1557,9 +1557,11 @@ PlayableDirector:
     value: {fileID: 7927449809845920965}
   - key: {fileID: -1690996213410268217, guid: 7e18df29cc15e794ebd37c20876e9e70, type: 2}
     value: {fileID: 7927449809845920965}
+  - key: {fileID: 9105894467536447122, guid: 7e18df29cc15e794ebd37c20876e9e70, type: 2}
+    value: {fileID: 7927449809845920964}
   m_ExposedReferences:
     m_References:
-    - 400a534fe295efc45937bd71b46573f2: {fileID: 1049872958}
+    - 30c59c33e69e4ed459d8994cdc9318c4: {fileID: 0}
     - 45b390d8af35e574da0455e0c64d75d8: {fileID: 8376026976256546664}
     - 31da06d59ef6f86479e13bfe6798116d: {fileID: 8376026976256546664}
 --- !u!1 &1509386288
@@ -38133,7 +38135,12 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'index_03_l'\n\tTransform 'lowerarm_l'\n\tTransform
+    'root'\n\tTransform 'pinky_03_l'\n\tTransform 'neck_01'\n\tTransform 'pinky_03_r'\n\tTransform
+    'clavicle_l'\n\tTransform 'ring_02_l'\n\tTransform 'ball_l'\n\tTransform 'hand_l'\n\tand
+    more ..."
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
