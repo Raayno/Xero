@@ -8,19 +8,17 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Grass_Atlas_A
-  m_Shader: {fileID: 4800000, guid: c98a17f15943d1d40bb3934d7eb1b2e5, type: 3}
+  m_Shader: {fileID: 4800000, guid: eda2062582e1e7c489ce8cf0b2fb9509, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - ALPHALOCK_ON
   - BILLBOARD
   - GRASS_FORCES
   - MAP_PARAM
   - MESH_UVS
-  - _RECEIVE_SHADOWS_OFF
-  m_InvalidKeywords:
-  - ALPHALOCK_ON
   - _ALPHATEST_ON
-  - _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -33,7 +31,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 2b1d6cb5524e28b4db7238bab8c05efa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 27edc344a94527c46a6e2936acba685b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BlendTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BlendTex2:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -61,7 +67,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2b1d6cb5524e28b4db7238bab8c05efa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 27edc344a94527c46a6e2936acba685b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -137,7 +143,7 @@ Material:
     - MESH_UVS: 1
     - No_Transparency: 1
     - Pipe_Type: 1
-    - Render_Path: 0
+    - Render_Path: 1
     - Render_Type: 0
     - VERSION: 23
     - _ALPHA_TO_MASK: 0
@@ -175,8 +181,17 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
+    - _RampSmoothing: 0.5
+    - _RampSmoothingOtherLights: 0.5
+    - _RampThreshold: 0.01
+    - _RampThresholdOtherLights: 0.5
     - _ReceiveShadows: 0
+    - _ReceiveShadowsOff: 1
     - _SEMI_TRANSPARENT: 0
+    - _SampleGI: 0
+    - _Shadow_HSV_H: 0
+    - _Shadow_HSV_S: 0
+    - _Shadow_HSV_V: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -186,6 +201,9 @@ Material:
     - _WorkflowMode: 0
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
+    - __BeginGroup_ShadowHSV: 0
+    - __EndGroup: 0
+    - __dummy__: 0
     - _ppLights: 0
     - alphaClip: 0.25
     - alphaLock: 1
@@ -218,11 +236,15 @@ Material:
     - widthLODscale: 0.04
     - windMult: 1
     m_Colors:
-    - _BaseColor: {r: 0.7924528, g: 0.60929155, b: 0.60929155, a: 1}
-    - _Color: {r: 1, g: 0.0141509175, b: 0.0141509175, a: 1}
+    - _BaseColor: {r: 0.31706908, g: 0.3962264, b: 0.1439124, a: 1}
+    - _Color: {r: 0.31706905, g: 0.39622638, b: 0.14391237, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
     - _LOD: {r: 20, g: 1.1, b: 0.2, a: 0}
+    - _SColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _VColorBlendOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _VColorBlendSmooth: {r: 0.25, g: 0.25, b: 0.25, a: 0.25}
     - _noiseScale: {r: 1, g: 1, b: 0.7, a: 1}
     - _noiseScale2: {r: 2, g: 2, b: 1, a: 1}
     - _noiseSpeed: {r: 1.5, g: 1, b: 0.35, a: 1}

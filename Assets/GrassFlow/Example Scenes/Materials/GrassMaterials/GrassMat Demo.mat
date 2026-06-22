@@ -12,14 +12,12 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - BAKED_DATA
   - GF_PPLIGHTS
   - GF_USE_DITHER
   - MAP_COLOR
   - MESH_NORMALS
   - MESH_UVS
   - SEMI_TRANSPARENT
-  - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
   - ALPHALOCK_ON
   - _MAINTEX
@@ -54,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6b613942a9ed4fe468d8705e9b5aff58, type: 3}
+        m_Texture: {fileID: 2800000, guid: c27a811b68a71fe4bb6f86a87e99caad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0.45, y: 0}
     - _MetallicGlossMap:
@@ -154,7 +152,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ReceiveShadows: 0
+    - _ReceiveShadows: 1
     - _Rendermode: 0
     - _SEMI_TRANSPARENT: 1
     - _SmoothnessTextureChannel: 0
@@ -211,7 +209,7 @@ Material:
     - widthLODscale: 0.02
     - windMult: 0
     m_Colors:
-    - _Color: {r: 2.9976861, g: 2.9976861, b: 2.9976861, a: 1}
+    - _Color: {r: 4.0021462, g: 2.1332192, b: 2.1332192, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LOD: {r: 30, g: 1.6, b: 0, a: 0}
     - _noiseScale: {r: 1, g: 1, b: 0.7, a: 0}
