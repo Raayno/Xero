@@ -29,11 +29,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo1:
-        m_Texture: {fileID: 2800000, guid: 65de7e12e53a6504aa91a0abbf4d05de, type: 3}
+        m_Texture: {fileID: 2800000, guid: fe775320ffd174c4f9cb19e75d54fe8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo2:
-        m_Texture: {fileID: 2800000, guid: 8c5021caff8b9d2489b0f201e03ab317, type: 3}
+        m_Texture: {fileID: 2800000, guid: ecf4bb2ee2fc58b47b0f01a42aa313ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo3:
@@ -105,7 +105,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap1:
-        m_Texture: {fileID: 2800000, guid: 0c74ee91288e67c4f96d816e4318401a, type: 3}
+        m_Texture: {fileID: 2800000, guid: b55f66eefb0307d43bc99d80810644c0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap2:
@@ -181,7 +181,7 @@ Material:
     - _Height1Shift: -0.31
     - _Height2Shift: 0
     - _Metallic: 0
-    - _NormalMap1Strength: 0
+    - _NormalMap1Strength: 2
     - _NormalMap2Strength: 0
     - _NormalMap3Strength: 1
     - _OcclusionStrength: 1
@@ -190,8 +190,8 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0
-    - _Smoothness1: 0.216
-    - _Smoothness2: 0.06
+    - _Smoothness1: 0.117
+    - _Smoothness2: 0
     - _Smoothness3: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
