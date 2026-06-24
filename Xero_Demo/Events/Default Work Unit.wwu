@@ -29,24 +29,111 @@
 					</ChildrenList>
 				</Event>
 				<Folder Name="Player_Events" ID="{B156CDEA-53AE-4EBC-93D9-C45ABCDEBCC8}" ShortID="34693025">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="4"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
-						<Event Name="Play_Plyr_Footsteps" ID="{01B304B5-9AD3-4DCA-BF82-94FCD6F74701}">
+						<Folder Name="Player_Combat_Events" ID="{A494C7A3-44E1-476B-A1BD-79D75C14A93E}" ShortID="671581913">
 							<ChildrenList>
-								<Action Name="" ID="{C6FA8748-3B61-4996-BA62-C47165C94489}" ShortID="20751256">
+								<Event Name="Play_EnterCombatModeAttack" ID="{C6AAE213-3FA6-41EA-8F6F-14927F2E25A2}">
+									<ChildrenList>
+										<Action Name="" ID="{43397E0C-EEF3-4F47-B942-5181A2A42578}" ShortID="825581025">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SwordImpact" ID="{06A22340-F247-4609-B9EA-FECD3A356930}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Attack_Swing" ID="{C704E55A-00C0-4D55-9B79-D9FE1D3C45B0}">
+									<ChildrenList>
+										<Action Name="" ID="{B05C695E-9E23-4948-BE28-1A28B3EB2ACB}" ShortID="660296119">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SwordSound2" ID="{6BC38105-911D-4EFA-A182-35AB5370E4D1}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Locomotion_Events" ID="{CAC522C8-3B1D-47AE-A276-336BA79D2DEE}" ShortID="772819344">
+							<ChildrenList>
+								<Event Name="Play_Plyr_Footsteps" ID="{01B304B5-9AD3-4DCA-BF82-94FCD6F74701}">
+									<ChildrenList>
+										<Action Name="" ID="{C6FA8748-3B61-4996-BA62-C47165C94489}" ShortID="20751256">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Player_Footsteps" ID="{5F71537A-BFDA-4346-8297-10D767598D46}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Plyr_Land" ID="{BCC49BA6-6C46-4259-B055-66710109009B}">
+									<ChildrenList>
+										<Action Name="" ID="{892D06D0-48BA-4241-9125-7BD4E3566111}" ShortID="688423521">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Player_Land_Surface" ID="{A7FBE474-FEC3-42BE-8BF9-77FDE8C9BA86}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Music_Events" ID="{04B54EB1-B032-43B4-AD43-289E54488237}" ShortID="634229819">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="26"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="Play_Music_FreeRoam" ID="{780A5EEA-4104-417D-A0A6-9D3959EC1595}">
+							<ChildrenList>
+								<Action Name="" ID="{DFA8133B-535D-4DA8-A3F8-2B8A0AC896F2}" ShortID="22060924">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player_Footsteps" ID="{5F71537A-BFDA-4346-8297-10D767598D46}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+											<ObjectRef Name="GameMusic_Playlist" ID="{C3C7F3CB-3A02-4FB3-B489-EB100C1D5BF0}" WorkUnitID="{48ADBC09-3190-4BC3-B659-D455BF746616}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{5992FA1E-231B-4F25-A2EE-7989CFA03598}" ShortID="400534378">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="5"/>
+										<Property Name="FadeTime" Type="Real64" Value="5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BattleMusic_Playlist" ID="{C69CE2B7-AF9D-4118-AA8C-532BEAEE7564}" WorkUnitID="{48ADBC09-3190-4BC3-B659-D455BF746616}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Play_Plyr_Land" ID="{BCC49BA6-6C46-4259-B055-66710109009B}">
+						<Event Name="Play_Music_Combat" ID="{B8068D6B-BD8D-46BB-B133-F8FEF407B278}">
 							<ChildrenList>
-								<Action Name="" ID="{892D06D0-48BA-4241-9125-7BD4E3566111}" ShortID="688423521">
+								<Action Name="" ID="{9C2EDF9D-3241-4F82-A3CF-D51CEC22EAC7}" ShortID="838158690">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player_Land_Surface" ID="{A7FBE474-FEC3-42BE-8BF9-77FDE8C9BA86}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+											<ObjectRef Name="BattleMusic_Playlist" ID="{C69CE2B7-AF9D-4118-AA8C-532BEAEE7564}" WorkUnitID="{48ADBC09-3190-4BC3-B659-D455BF746616}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{D0BEB3C4-8CFA-45F1-846A-443CCB8B6BF9}" ShortID="665981354">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="4"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GameMusic_Playlist" ID="{C3C7F3CB-3A02-4FB3-B489-EB100C1D5BF0}" WorkUnitID="{48ADBC09-3190-4BC3-B659-D455BF746616}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

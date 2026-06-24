@@ -10,26 +10,50 @@
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="Play_Attack_Swing" ID="{C704E55A-00C0-4D55-9B79-D9FE1D3C45B0}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Attack_Swing" ID="{C704E55A-00C0-4D55-9B79-D9FE1D3C45B0}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Stop_Testevent_ambience_01" ID="{4CF909F6-B23C-4BCC-9963-4E3FC2977CA7}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
 							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_EnterCombatModeAttack" ID="{C6AAE213-3FA6-41EA-8F6F-14927F2E25A2}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_EnterCombatModeAttack" ID="{C6AAE213-3FA6-41EA-8F6F-14927F2E25A2}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="1" Y="2"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="Play_Plyr_Land" ID="{BCC49BA6-6C46-4259-B055-66710109009B}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
 							<Position X="2" Y="0"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="Play_Music_FreeRoam" ID="{780A5EEA-4104-417D-A0A6-9D3959EC1595}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="2" Y="2"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Play_Plyr_Footsteps" ID="{01B304B5-9AD3-4DCA-BF82-94FCD6F74701}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
 							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Music_Combat" ID="{B8068D6B-BD8D-46BB-B133-F8FEF407B278}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="3" Y="2"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="Player_Fall_Velocity" ID="{A9A396C7-F4EA-4432-9B08-3CFD8B01D3C6}"/>
-							<Value>38</Value>
+							<Value>100</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Player_Speed" ID="{F3DA95EE-8103-44E4-AB55-EF5080FB1E1D}"/>
-							<Value>81.843</Value>
+							<Value>0</Value>
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true"/>

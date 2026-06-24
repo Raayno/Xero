@@ -1606,6 +1606,11 @@
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="4"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -1617,6 +1622,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Fx_Grass_Jump_Land" ID="{F2701A01-2760-4138-A18B-EED01505F7AE}" ShortID="54060627">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
@@ -1638,9 +1650,10 @@
 													<ChildrenList>
 														<AudioFileSource Name="Fx_Grass_Jump_Land_01" ID="{1E4FD15B-280A-4AEB-8EF1-525A906AA781}">
 															<PropertyList>
-																<Property Name="LoopBegin" Type="Real64" Value="0.0211197394789579"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0581083959899749"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.338085213032581"/>
 																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																<Property Name="TrimBegin" Type="Real64" Value="0.0211197394789579"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.144379973397087"/>
 															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>Fx_Grass_Jump_Land_01.wav</AudioFile>
@@ -1666,8 +1679,9 @@
 														<AudioFileSource Name="Fx_Grass_Jump_Land_03" ID="{074D4885-4B22-47B3-9379-F5C569F2E4C3}">
 															<PropertyList>
 																<Property Name="FadeInDuration" Type="Real64" Value="0.0480249248496994"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0827871240601504"/>
 																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																<Property Name="TrimBegin" Type="Real64" Value="0.0259594188376753"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.175300897534417"/>
 															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>Fx_Grass_Jump_Land_03.wav</AudioFile>
@@ -1693,8 +1707,9 @@
 														<AudioFileSource Name="Fx_Grass_Jump_Land_04" ID="{1B0A1FAA-97A2-444F-9E74-2E92F5CABE42}">
 															<PropertyList>
 																<Property Name="FadeInDuration" Type="Real64" Value="0.0469410487641951"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.228151785714286"/>
 																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																<Property Name="TrimBegin" Type="Real64" Value="0.0544089428857716"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.183828376887442"/>
 															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>Fx_Grass_Jump_Land_04.wav</AudioFile>
@@ -1720,8 +1735,9 @@
 														<AudioFileSource Name="Fx_Grass_Jump_Land_05" ID="{937ED7B2-AB1E-4285-B949-1E9BF2A9DBE8}">
 															<PropertyList>
 																<Property Name="FadeInDuration" Type="Real64" Value="0.0289669338677355"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.232455409356725"/>
 																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																<Property Name="TrimBegin" Type="Real64" Value="0.0374156229124916"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.191379595343569"/>
 															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>Fx_Grass_Jump_Land_05.wav</AudioFile>
@@ -1747,8 +1763,9 @@
 														<AudioFileSource Name="Fx_Grass_Jump_Land_06" ID="{030EB2FE-5387-4E5E-9218-33F5DE86EAB9}">
 															<PropertyList>
 																<Property Name="FadeInDuration" Type="Real64" Value="0.0281279225116901"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.270866959064327"/>
 																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																<Property Name="TrimBegin" Type="Real64" Value="0.0604750334001336"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.220532781938145"/>
 															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>Fx_Grass_Jump_Land_06.wav</AudioFile>
@@ -1773,160 +1790,6 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<RandomSequenceContainer Name="Fx_Grass_Jump_Land" ID="{2093AD5A-B516-4252-8824-C5E0AB6DD6FA}" ShortID="1061583668">
-													<PropertyList>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>7</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<Sound Name="Fx_Grass_Jump_Land_01" ID="{53DDF0A5-F046-47EE-BBF3-11C4035D23FE}" ShortID="514050844">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="Fx_Grass_Jump_Land_01" ID="{5A77ABB2-8BD6-49CA-8BE7-540A6609EF0F}">
-																	<PropertyList>
-																		<Property Name="FadeInDuration" Type="Real64" Value="0.0323836005344021"/>
-																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																		<Property Name="TrimBegin" Type="Real64" Value="0.023935704742819"/>
-																	</PropertyList>
-																	<Language>SFX</Language>
-																	<AudioFile>Fx_Grass_Jump_Land_01.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="593511698"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="Fx_Grass_Jump_Land_01" ID="{5A77ABB2-8BD6-49CA-8BE7-540A6609EF0F}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="Fx_Grass_Jump_Land_03" ID="{CC30585A-DC8C-4ADE-8F04-D5E389E63B59}" ShortID="880576303">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="Fx_Grass_Jump_Land_03" ID="{84744F77-D5FA-4539-8622-56F113799321}">
-																	<PropertyList>
-																		<Property Name="FadeInDuration" Type="Real64" Value="0.0467269539078156"/>
-																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																		<Property Name="TrimBegin" Type="Real64" Value="0.022065506012024"/>
-																	</PropertyList>
-																	<Language>SFX</Language>
-																	<AudioFile>Fx_Grass_Jump_Land_03.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="297057807"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="Fx_Grass_Jump_Land_03" ID="{84744F77-D5FA-4539-8622-56F113799321}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="Fx_Grass_Jump_Land_04" ID="{5EB207AE-665E-4871-A7BA-91C30418B436}" ShortID="491393095">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="Fx_Grass_Jump_Land_04" ID="{515F5E22-CB8A-4267-8D11-A2A218F4970D}">
-																	<PropertyList>
-																		<Property Name="FadeInDuration" Type="Real64" Value="0.0682778891115565"/>
-																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																		<Property Name="TrimBegin" Type="Real64" Value="0.0533421008684036"/>
-																	</PropertyList>
-																	<Language>SFX</Language>
-																	<AudioFile>Fx_Grass_Jump_Land_04.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="335786058"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="Fx_Grass_Jump_Land_04" ID="{515F5E22-CB8A-4267-8D11-A2A218F4970D}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="Fx_Grass_Jump_Land_05" ID="{C4216790-91B5-489B-BFC2-6B453B980708}" ShortID="716642564">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="Fx_Grass_Jump_Land_05" ID="{B5D77247-735D-4133-B4EA-C77B07DCC460}">
-																	<PropertyList>
-																		<Property Name="FadeInDuration" Type="Real64" Value="0.0337947561790247"/>
-																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																		<Property Name="TrimBegin" Type="Real64" Value="0.0446573563794255"/>
-																	</PropertyList>
-																	<Language>SFX</Language>
-																	<AudioFile>Fx_Grass_Jump_Land_05.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="800601403"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="Fx_Grass_Jump_Land_05" ID="{B5D77247-735D-4133-B4EA-C77B07DCC460}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="Fx_Grass_Jump_Land_06" ID="{31E23F09-0D28-4B97-B086-22DE469B1681}" ShortID="28555893">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="Fx_Grass_Jump_Land_06" ID="{95C97481-FBC5-45F8-9484-8220A05CCE2B}">
-																	<PropertyList>
-																		<Property Name="FadeInDuration" Type="Real64" Value="0.0407854876419506"/>
-																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																		<Property Name="TrimBegin" Type="Real64" Value="0.0407854876419505"/>
-																	</PropertyList>
-																	<Language>SFX</Language>
-																	<AudioFile>Fx_Grass_Jump_Land_06.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="262035268"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="Fx_Grass_Jump_Land_06" ID="{95C97481-FBC5-45F8-9484-8220A05CCE2B}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-													</ChildrenList>
-												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Fx_Grass_Jump_Land_Medium" ID="{0844FBF4-FAA3-4BFF-8D9D-5C8A199E326A}" ShortID="438653472">
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
@@ -2076,6 +1939,200 @@
 														</Sound>
 													</ChildrenList>
 												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Fx_Grass_Jump_Land" ID="{3B9A310E-7FBF-4C50-9AA1-A44C2E1653B7}" ShortID="895489216">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Fx_Grass_Jump_Land_01" ID="{1265CB9F-E16B-4EE1-A9A2-B26B78A6F833}" ShortID="83751739">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_01" ID="{21FB927F-E1BB-4E86-8D8C-4BA5E86C14EA}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0581083959899749"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.338085213032581"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.144379973397087"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="398293339"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_01" ID="{21FB927F-E1BB-4E86-8D8C-4BA5E86C14EA}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Fx_Grass_Jump_Land_03" ID="{B1EB6B9F-57C8-4714-B3CB-76229F87CCB8}" ShortID="959497565">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_03" ID="{D246A7CD-0A55-4C0D-9A41-EF4FB4E04B29}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0480249248496994"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.0827871240601504"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.175300897534417"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="180262110"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_03" ID="{D246A7CD-0A55-4C0D-9A41-EF4FB4E04B29}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Fx_Grass_Jump_Land_04" ID="{65219A71-57BF-45E0-AE90-1EC6F8941016}" ShortID="947791305">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_04" ID="{FD80BBC4-9975-482B-AEDE-492727FC3CE0}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0469410487641951"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.228151785714286"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.183828376887442"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="562598194"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_04" ID="{FD80BBC4-9975-482B-AEDE-492727FC3CE0}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Fx_Grass_Jump_Land_05" ID="{AC57DF69-38ED-4A81-A137-0C23CFFC367A}" ShortID="898037093">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_05" ID="{1C855E88-E094-4C7F-B3FC-8B9C3CA7B6AF}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0289669338677355"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.232455409356725"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.191379595343569"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_05.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="578345513"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_05" ID="{1C855E88-E094-4C7F-B3FC-8B9C3CA7B6AF}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Fx_Grass_Jump_Land_06" ID="{B54CF7E6-26EF-41EA-9085-988475F4D677}" ShortID="486856835">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_06" ID="{3E971031-7673-43FD-B631-9F4B1DD9564B}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0281279225116901"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.270866959064327"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.220532781938145"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_06.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="637981773"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_06" ID="{3E971031-7673-43FD-B631-9F4B1DD9564B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
 										</BlendContainer>
 										<BlendContainer Name="Land Hard" ID="{C6C40129-51A8-4000-8466-7F6916F14F0F}" ShortID="751367682">
@@ -2096,13 +2153,6 @@
 											</ReferenceList>
 											<ChildrenList>
 												<RandomSequenceContainer Name="Fx_Grass_Jump_Land_High" ID="{2A8DFBA3-AB02-447B-A9E5-8A69FAA8305E}" ShortID="772432845">
-													<PropertyList>
-														<Property Name="InitialDelay" Type="Real64">
-															<ValueList>
-																<Value>0.115</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
@@ -2248,11 +2298,6 @@
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Fx_Grass_Jump_Land_Medium" ID="{5F96C1F1-8464-4F27-BBB3-568D19588A57}" ShortID="260256382">
 													<PropertyList>
-														<Property Name="InitialDelay" Type="Real64">
-															<ValueList>
-																<Value>0.15</Value>
-															</ValueList>
-														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
 																<Value>-2</Value>
@@ -2301,10 +2346,15 @@
 															</ReferenceList>
 															<ChildrenList>
 																<AudioFileSource Name="Fx_Grass_Jump_Land_Medium_02" ID="{2DCE53D6-AC68-4913-A544-97F53AF3C164}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0739766081871345"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.262134502923976"/>
+																	</PropertyList>
 																	<Language>SFX</Language>
 																	<AudioFile>Fx_Grass_Jump_Land_Medium_02.wav</AudioFile>
 																	<MediaIDList>
-																		<MediaID ID="1061472799"/>
+																		<MediaID ID="824455123"/>
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
@@ -2346,9 +2396,8 @@
 															<ChildrenList>
 																<AudioFileSource Name="Fx_Grass_Jump_Land_Medium_05" ID="{CC655F50-F2CD-4485-9C19-7F563A3DEB01}">
 																	<PropertyList>
-																		<Property Name="LoopBegin" Type="Real64" Value="0.1800499749499"/>
 																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																		<Property Name="TrimBegin" Type="Real64" Value="0.1800499749499"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.192795745626592"/>
 																	</PropertyList>
 																	<Language>SFX</Language>
 																	<AudioFile>Fx_Grass_Jump_Land_Medium_05.wav</AudioFile>
@@ -2372,100 +2421,20 @@
 															</ReferenceList>
 															<ChildrenList>
 																<AudioFileSource Name="Fx_Grass_Jump_Land_Medium_06" ID="{35FFB219-7032-4792-BFDC-23A38F270F19}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.019546992481203"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.0999068504594821"/>
+																	</PropertyList>
 																	<Language>SFX</Language>
 																	<AudioFile>Fx_Grass_Jump_Land_Medium_06.wav</AudioFile>
 																	<MediaIDList>
-																		<MediaID ID="520883589"/>
+																		<MediaID ID="889079753"/>
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
 																<ActiveSource Name="Fx_Grass_Jump_Land_Medium_06" ID="{35FFB219-7032-4792-BFDC-23A38F270F19}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-													</ChildrenList>
-												</RandomSequenceContainer>
-												<RandomSequenceContainer Name="Fx_Grass_Jump_Land" ID="{C2F25102-3271-4005-ACBB-5C21E8156048}" ShortID="834208782">
-													<PropertyList>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>12</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<Sound Name="Fx_Grass_Jump_Land_03" ID="{48A335E2-3757-441C-83BB-C9BDDAB6D819}" ShortID="583941880">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="Fx_Grass_Jump_Land_03" ID="{22478796-587E-4DDD-AF3C-656FB185CF29}">
-																	<Language>SFX</Language>
-																	<AudioFile>Fx_Grass_Jump_Land_03.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="933026946"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="Fx_Grass_Jump_Land_03" ID="{22478796-587E-4DDD-AF3C-656FB185CF29}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="Fx_Grass_Jump_Land_04" ID="{C356ACC9-974B-44FA-B235-EAB45E96805A}" ShortID="598405801">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="Fx_Grass_Jump_Land_04" ID="{9A0F705D-0B08-4462-BB63-411E6CA168A8}">
-																	<Language>SFX</Language>
-																	<AudioFile>Fx_Grass_Jump_Land_04.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="506710275"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="Fx_Grass_Jump_Land_04" ID="{9A0F705D-0B08-4462-BB63-411E6CA168A8}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="Fx_Grass_Jump_Land_05" ID="{5A0A0DF6-9311-4C7F-B804-AC0D76A6ACFC}" ShortID="92563155">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="Fx_Grass_Jump_Land_05" ID="{B95D14B8-F961-4062-AE57-FA5944E1E234}">
-																	<Language>SFX</Language>
-																	<AudioFile>Fx_Grass_Jump_Land_05.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="692712520"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="Fx_Grass_Jump_Land_05" ID="{B95D14B8-F961-4062-AE57-FA5944E1E234}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
@@ -2628,6 +2597,200 @@
 															</Reference>
 														</ObjectList>
 													</ObjectLists>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Fx_Grass_Jump_Land" ID="{AA31D997-4EC0-4587-B3DF-B8B723600C2E}" ShortID="224257581">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>12</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Fx_Grass_Jump_Land_01" ID="{82328BC5-C4C2-45D0-8606-263B8169CBD7}" ShortID="927029382">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_01" ID="{4D26DC14-1FB1-4C0F-9595-1879F46C3673}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0581083959899749"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.338085213032581"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.144379973397087"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="398293339"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_01" ID="{4D26DC14-1FB1-4C0F-9595-1879F46C3673}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Fx_Grass_Jump_Land_03" ID="{411C4D46-286F-467F-9FBA-67FDF9649FA1}" ShortID="748632328">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_03" ID="{1931F815-C6A6-425D-B1BA-AA64926166F0}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0480249248496994"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.0827871240601504"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.175300897534417"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="180262110"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_03" ID="{1931F815-C6A6-425D-B1BA-AA64926166F0}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Fx_Grass_Jump_Land_04" ID="{71AEF3C2-36E0-4BC7-ADAF-5C1CA624E2E4}" ShortID="720904944">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_04" ID="{90F4CCA9-88B4-4237-89B9-E76228EF20A2}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0469410487641951"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.228151785714286"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.183828376887442"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="562598194"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_04" ID="{90F4CCA9-88B4-4237-89B9-E76228EF20A2}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Fx_Grass_Jump_Land_05" ID="{2C00F431-C7E9-4A75-AE11-2217DA0A4B94}" ShortID="785451883">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_05" ID="{4B4BDEC8-125B-4FB3-BCD1-E8E5D327C587}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0289669338677355"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.232455409356725"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.191379595343569"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_05.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="578345513"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_05" ID="{4B4BDEC8-125B-4FB3-BCD1-E8E5D327C587}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Fx_Grass_Jump_Land_06" ID="{803A6167-DE47-4428-8D06-51C3DB9FC403}" ShortID="626242556">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Fx_Grass_Jump_Land_06" ID="{146838C3-6CAC-440F-B4E2-019303D2628D}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0281279225116901"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.270866959064327"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.220532781938145"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Fx_Grass_Jump_Land_06.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="637981773"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Fx_Grass_Jump_Land_06" ID="{146838C3-6CAC-440F-B4E2-019303D2628D}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
 												</RandomSequenceContainer>
 											</ChildrenList>
 										</BlendContainer>
@@ -7076,6 +7239,90 @@
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Folder Name="Assets" ID="{F8BDA0D0-C8C3-44CF-9571-96BF146EE151}" ShortID="937435082">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="11"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Sound Name="SwordImpact" ID="{06A22340-F247-4609-B9EA-FECD3A356930}" ShortID="473578512">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{A274C417-06F4-4B31-A7E6-C7FE6A54C62E}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SwordImpact" ID="{796F5BE8-7045-471E-82ED-D87DD24B80A6}">
+											<Language>SFX</Language>
+											<AudioFile>SwordImpact.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="205504547"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SwordImpact" ID="{796F5BE8-7045-471E-82ED-D87DD24B80A6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SwordSound2" ID="{6BC38105-911D-4EFA-A182-35AB5370E4D1}" ShortID="53999455">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{D8C11CFD-7809-4A7D-BF3A-CE1F74498279}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SwordSound2" ID="{CD9DBA97-217C-46E7-B3C5-616960A5869D}">
+											<Language>SFX</Language>
+											<AudioFile>SwordSound2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1060097617"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SwordSound2" ID="{CD9DBA97-217C-46E7-B3C5-616960A5869D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
 				</ActorMixer>
 				<ActorMixer Name="Player_Vox" ID="{A25BCDAB-F0E1-4A35-884F-99136D9B3C6D}" ShortID="717758926">
 					<ReferenceList>
