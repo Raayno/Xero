@@ -28,28 +28,32 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Plyr_Land" ID="{BCC49BA6-6C46-4259-B055-66710109009B}">
+				<Folder Name="Player_Events" ID="{B156CDEA-53AE-4EBC-93D9-C45ABCDEBCC8}" ShortID="34693025">
 					<ChildrenList>
-						<Action Name="" ID="{892D06D0-48BA-4241-9125-7BD4E3566111}" ShortID="688423521">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Player_Land_Surface" ID="{A7FBE474-FEC3-42BE-8BF9-77FDE8C9BA86}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Play_Plyr_Footsteps" ID="{01B304B5-9AD3-4DCA-BF82-94FCD6F74701}">
+							<ChildrenList>
+								<Action Name="" ID="{C6FA8748-3B61-4996-BA62-C47165C94489}" ShortID="20751256">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Footsteps" ID="{5F71537A-BFDA-4346-8297-10D767598D46}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Plyr_Land" ID="{BCC49BA6-6C46-4259-B055-66710109009B}">
+							<ChildrenList>
+								<Action Name="" ID="{892D06D0-48BA-4241-9125-7BD4E3566111}" ShortID="688423521">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Land_Surface" ID="{A7FBE474-FEC3-42BE-8BF9-77FDE8C9BA86}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
-				<Event Name="Play_Plyr_Footsteps" ID="{01B304B5-9AD3-4DCA-BF82-94FCD6F74701}">
-					<ChildrenList>
-						<Action Name="" ID="{C6FA8748-3B61-4996-BA62-C47165C94489}" ShortID="20751256">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Player_Footsteps" ID="{5F71537A-BFDA-4346-8297-10D767598D46}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
