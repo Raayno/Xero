@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Testevent_ambience" ID="{9B97F2B9-9579-4AA5-BB2C-BC4C51A481A8}">
+					<ChildrenList>
+						<Action Name="" ID="{3771EEEF-337A-4A2D-AB69-1C93C7359886}" ShortID="769821562">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ambience test" ID="{EBA66115-B98D-46FA-91C1-EA87BEE3DB1D}" WorkUnitID="{06D00689-E00C-422F-8281-5DBA95959645}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Testevent_ambience_01" ID="{4CF909F6-B23C-4BCC-9963-4E3FC2977CA7}">
+					<ChildrenList>
+						<Action Name="" ID="{1ECEC59F-7CC2-4D43-9C09-C882EA97AC95}" ShortID="21246644">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ambience test" ID="{EBA66115-B98D-46FA-91C1-EA87BEE3DB1D}" WorkUnitID="{06D00689-E00C-422F-8281-5DBA95959645}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Plyr_Land" ID="{BCC49BA6-6C46-4259-B055-66710109009B}">
+					<ChildrenList>
+						<Action Name="" ID="{892D06D0-48BA-4241-9125-7BD4E3566111}" ShortID="688423521">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Land_Surface" ID="{A7FBE474-FEC3-42BE-8BF9-77FDE8C9BA86}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Plyr_Footsteps" ID="{01B304B5-9AD3-4DCA-BF82-94FCD6F74701}">
+					<ChildrenList>
+						<Action Name="" ID="{C6FA8748-3B61-4996-BA62-C47165C94489}" ShortID="20751256">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Footsteps" ID="{5F71537A-BFDA-4346-8297-10D767598D46}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{06D00689-E00C-422F-8281-5DBA95959645}" SchemaVersion="119">
+	<AudioObjects>
+		<WorkUnit Name="Soundly" ID="{06D00689-E00C-422F-8281-5DBA95959645}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Ambience test" ID="{EBA66115-B98D-46FA-91C1-EA87BEE3DB1D}" ShortID="220419966">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Soundly:ActiveChannels" Type="string" Value="[]"/>
+						<Property Name="Soundly:FileID" Type="string" Value="SND144920"/>
+						<Property Name="Soundly:FileName" Type="string" Value="https://signing-274265463422.us-central1.run.app/?Type=GetFile&amp;SessionID=1781794155HJeQFXI8aAvhbfajYS-new&amp;File=soundlyeu/1426367345Ff4sxqvM_wkFwG/SND144920/AAwnv3L-1dLVzflt58XGFz9FgR1nrI_pPICDa3IMLrt0IPNaMhGCoX5ZjQB3A6cRjpd9zs3HJs6yECM.06s12XUZ9PdUVoz7"/>
+						<Property Name="Soundly:HandleStartTime" Type="string" Value="0"/>
+						<Property Name="Soundly:HandleStopTime" Type="string" Value="57.29680078125"/>
+						<Property Name="Soundly:LibraryID" Type="string" Value="1426367345Ff4sxqvM_wkFwG"/>
+						<Property Name="Soundly:LibraryLocation" Type="string" Value="Cloud"/>
+						<Property Name="Soundly:PlaybackSpeed" Type="string" Value="1.0"/>
+						<Property Name="Soundly:ProcessList" Type="string" Value="[]"/>
+						<Property Name="Soundly:RenderedFileBitRate" Type="string" Value="3"/>
+						<Property Name="Soundly:RenderedFilePath" Type="string" Value="C:\Users\DANIEL\AppData\Roaming\Soundly\Soundly Audio\Ambience, Birdsong, Forest, Crickets, Calm, Night SND144920 1.wav"/>
+						<Property Name="Soundly:RenderedFileSampleRate" Type="string" Value="96000"/>
+						<Property Name="Soundly:SelectionStartTime" Type="string" Value="0"/>
+						<Property Name="Soundly:SelectionStopTime" Type="string" Value="0.1015625"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-2</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Ambience, Birdsong, Forest, Crickets, Calm, Night SND144920 1" ID="{6E760EBF-B026-4576-A634-CDBDB309EEFB}">
+							<PropertyList>
+								<Property Name="Soundly:FileIDForAudioSource" Type="string" Value="SND144920"/>
+								<Property Name="TrimEnd" Type="Real64" Value="27.29680078125"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Soundly Audio\Ambience, Birdsong, Forest, Crickets, Calm, Night SND144920 1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="5552739"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Ambience, Birdsong, Forest, Crickets, Calm, Night SND144920 1" ID="{6E760EBF-B026-4576-A634-CDBDB309EEFB}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

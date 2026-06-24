@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{7046D6CE-CEE7-4D40-98D4-3F77F37258C5}" SchemaVersion="119">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{7046D6CE-CEE7-4D40-98D4-3F77F37258C5}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Test1" ID="{20F0A05E-A573-4C4E-925E-B94FF7E70A62}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Play_Testevent_ambience" ID="{9B97F2B9-9579-4AA5-BB2C-BC4C51A481A8}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Stop_Testevent_ambience_01" ID="{4CF909F6-B23C-4BCC-9963-4E3FC2977CA7}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Plyr_Land" ID="{BCC49BA6-6C46-4259-B055-66710109009B}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Plyr_Footsteps" ID="{01B304B5-9AD3-4DCA-BF82-94FCD6F74701}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="Player_Fall_Velocity" ID="{A9A396C7-F4EA-4432-9B08-3CFD8B01D3C6}"/>
+							<Value>38</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Player_Speed" ID="{F3DA95EE-8103-44E4-AB55-EF5080FB1E1D}"/>
+							<Value>81.843</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Grass" ID="{213EF9B6-58A3-4C67-8F15-C01C0FE96F3F}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>
