@@ -54,6 +54,7 @@ namespace StarterAssets
             }
 
             jumpLandFeedback?.PlayFeedbacks(transform.position, landingImpact);
+            AkSoundEngine.PostEvent("Play_Plyr_Land", gameObject);
         }
 
         private float CalculateLandingImpact()
@@ -93,28 +94,29 @@ namespace StarterAssets
 
         private void PlayRandomFootstepSound()
         {
-            if (AudioFootsteps == null)
-                return;
+            AkSoundEngine.PostEvent("Play_Plyr_Footsteps", gameObject);
+            //if (AudioFootsteps == null)
+            //    return;
 
-            float minimumPitch = Mathf.Min(footstepPitchRandomRange.x, footstepPitchRandomRange.y);
-            float maximumPitch = Mathf.Max(footstepPitchRandomRange.x, footstepPitchRandomRange.y);
+            //float minimumPitch = Mathf.Min(footstepPitchRandomRange.x, footstepPitchRandomRange.y);
+            //float maximumPitch = Mathf.Max(footstepPitchRandomRange.x, footstepPitchRandomRange.y);
 
-            AudioFootsteps.pitch = Random.Range(minimumPitch, maximumPitch);
+            //AudioFootsteps.pitch = Random.Range(minimumPitch, maximumPitch);
 
-            if (FootstepAudioClips != null && FootstepAudioClips.Length > 0)
-            {
-                int randomFootstepIndex = Random.Range(0, FootstepAudioClips.Length);
-                AudioClip randomFootstepClip = FootstepAudioClips[randomFootstepIndex];
+            //if (FootstepAudioClips != null && FootstepAudioClips.Length > 0)
+            //{
+            //    int randomFootstepIndex = Random.Range(0, FootstepAudioClips.Length);
+            //    AudioClip randomFootstepClip = FootstepAudioClips[randomFootstepIndex];
 
-                if (randomFootstepClip != null)
-                {
-                    AudioFootsteps.PlayOneShot(randomFootstepClip, FootstepAudioVolume);
-                }
+            //    if (randomFootstepClip != null)
+            //    {
+            //        AudioFootsteps.PlayOneShot(randomFootstepClip, FootstepAudioVolume);
+            //    }
 
-                return;
-            }
+            //    return;
+            //}
 
-            AudioFootsteps.Play();
+            //AudioFootsteps.Play();
         }
 
         public void OnLand(AnimationEvent animationEvent)
