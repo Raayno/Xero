@@ -457,9 +457,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f93fe7c4aaa11d46a19ebbf0cfb9471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  enemyParticipants: []
-  playerParticipants: []
+  enemyParticipants:
+  - {fileID: 977623206}
+  playerParticipants:
+  - {fileID: 7927449809845920964}
   turnSelector: {fileID: 175917256}
+  enableDebug: 1
 --- !u!114 &175917256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,7 +1686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794074044e2b5e244bd4a2719a00cacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatTargetProvider
-  controller: {fileID: 0}
+  controller: {fileID: 175917255}
 --- !u!1 &1559610327
 GameObject:
   m_ObjectHideFlags: 0
@@ -45671,3 +45674,5 @@ SceneRoots:
   - {fileID: 1824689389}
   - {fileID: 664627191}
   - {fileID: 1662475291}
+  - {fileID: 2126827674}
+  - {fileID: 682863624}

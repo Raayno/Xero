@@ -91,7 +91,7 @@ public class AlternatingTurnSelectorTests
     private static Component CreateParticipant(string name, Type participantType, IList participants, bool isPlayerTeam)
     {
         var gameObject = new GameObject(name);
-        var participant = (Component)gameObject.AddComponent(participantType);
+        var participant = gameObject.AddComponent(participantType);
         participantType.GetField("IsPlayerTeam", BindingFlags.Instance | BindingFlags.Public).SetValue(participant, isPlayerTeam);
         participants.Add(participant);
         return participant;
@@ -113,7 +113,7 @@ public class AlternatingTurnSelectorTests
     {
         var timeline = (IEnumerable)selectorType
             .BaseType
-            .GetField("turnTimeline", BindingFlags.Instance | BindingFlags.NonPublic)
+            .GetProperty("TurnTimeline", BindingFlags.Instance | BindingFlags.Public)
             .GetValue(selector);
 
         return timeline.Cast<Component>().Select(participant => participant.gameObject.name);
