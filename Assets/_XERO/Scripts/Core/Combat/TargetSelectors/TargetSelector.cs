@@ -42,13 +42,13 @@ public abstract class TargetSelector: MonoBehaviour
         return SelectTargets(self);
     }
 
-    protected virtual List<Participant> SelectTargets(Participant self) => SelectTargets();
-
     public virtual IEnumerator SelectTargetsAsync(Participant self, Action<List<Participant>> onCompleted)
     {
         onCompleted?.Invoke(SelectTargets(self));
         yield break;
     }
+
+    protected virtual List<Participant> SelectTargets(Participant self) => SelectTargets();
 
     protected virtual List<Participant> SelectTargets()
     {

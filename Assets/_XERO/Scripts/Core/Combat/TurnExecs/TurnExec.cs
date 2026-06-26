@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public abstract class TurnExec: MonoBehaviour
 {
     [SerializeField] private AttackSelector attackSelector;
+    [SerializeField] private List<AttackDataSO> availableAttacks;
 
     public IEnumerator ExecuteTurn(Participant executor)
     {
@@ -15,7 +16,10 @@ public abstract class TurnExec: MonoBehaviour
             yield break;
         }
 
-        var attack = attackSelector.SelectAttack();
+        // Select an attack
+        AttackDataSO attack = null;
+        yield return attackSelector.SelectAttackAsync(availableAttacks, selectedAttack => attack = selectedAttack);
+
         if (attack == null)
         {
             Debug.LogError("[TurnExec] AttackSelector returned a null attack.");
@@ -28,6 +32,7 @@ public abstract class TurnExec: MonoBehaviour
             yield break;
         }
 
+        // Select targets
         List<Participant> targets = null;
         yield return attack.TargetSelector.SelectTargetsAsync(executor, selectedTargets => targets = selectedTargets);
 
