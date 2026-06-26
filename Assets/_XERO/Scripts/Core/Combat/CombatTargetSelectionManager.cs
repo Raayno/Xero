@@ -11,12 +11,12 @@ public class CombatTargetSelectionManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private CombatTargetProvider combatTargetProvider;
 
-    private CombatTarget currentAttacker;
+    private Participant currentAttacker;
     private AttackDataSO currentAttackData;
 
     public bool IsSelectingTarget { get; private set; }
 
-    public event Action<CombatTarget> TargetSelected;
+    public event Action<Participant> TargetSelected;
     public event Action TargetSelectionCancelled;
 
     private void Awake()
@@ -46,7 +46,7 @@ public class CombatTargetSelectionManager : MonoBehaviour
         }
     }
 
-    public void BeginSelection(CombatTarget attacker, AttackDataSO attackData)
+    public void BeginSelection(Participant attacker, AttackDataSO attackData)
     {
         if (attacker == null)
         {
@@ -111,7 +111,7 @@ public class CombatTargetSelectionManager : MonoBehaviour
             return;
         }
 
-        CombatTarget selectedTarget = hit.collider.GetComponentInParent<CombatTarget>();
+        Participant selectedTarget = hit.collider.GetComponentInParent<Participant>();
 
         if (selectedTarget == null)
         {
@@ -121,7 +121,7 @@ public class CombatTargetSelectionManager : MonoBehaviour
         TrySelectTarget(selectedTarget);
     }
 
-    private void TrySelectTarget(CombatTarget selectedTarget)
+    private void TrySelectTarget(Participant selectedTarget)
     {
         if (currentAttackData == null)
         {

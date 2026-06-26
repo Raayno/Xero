@@ -5,11 +5,11 @@ public class EnemyTargetSelector : MonoBehaviour
 {
     [SerializeField] private CombatTargetProvider combatTargetProvider;
 
-    public List<CombatTarget> SelectTargets(
-        EnemyCombatTarget enemyCombatTarget,
+    public List<Participant> SelectTargets(
+        EnemyParticipant enemyCombatTarget,
         AttackDataSO attackData)
     {
-        List<CombatTarget> selectedTargets = new List<CombatTarget>();
+        List<Participant> selectedTargets = new List<Participant>();
 
         if (enemyCombatTarget == null)
         {
@@ -33,7 +33,7 @@ public class EnemyTargetSelector : MonoBehaviour
         {
             case CombatActionTargetType.SingleEnemy:
                 {
-                    List<CombatTarget> validTargets =
+                    List<Participant> validTargets =
                         combatTargetProvider.GetAliveEnemiesOfAttacker(enemyCombatTarget);
 
                     AddRandomTarget(selectedTargets, validTargets);
@@ -42,7 +42,7 @@ public class EnemyTargetSelector : MonoBehaviour
 
             case CombatActionTargetType.SingleAlly:
                 {
-                    List<CombatTarget> validTargets =
+                    List<Participant> validTargets =
                         combatTargetProvider.GetAliveAlliesOfAttacker(enemyCombatTarget);
 
                     AddRandomTarget(selectedTargets, validTargets);
@@ -76,8 +76,8 @@ public class EnemyTargetSelector : MonoBehaviour
     }
 
     private void AddRandomTarget(
-        List<CombatTarget> selectedTargets,
-        List<CombatTarget> validTargets)
+        List<Participant> selectedTargets,
+        List<Participant> validTargets)
     {
         if (selectedTargets == null)
         {
@@ -89,7 +89,7 @@ public class EnemyTargetSelector : MonoBehaviour
             return;
         }
 
-        CombatTarget randomTarget = validTargets[Random.Range(0, validTargets.Count)];
+        Participant randomTarget = validTargets[Random.Range(0, validTargets.Count)];
 
         if (randomTarget == null)
         {

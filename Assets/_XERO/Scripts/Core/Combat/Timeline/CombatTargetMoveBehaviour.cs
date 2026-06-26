@@ -17,7 +17,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
 
     [SerializeField] private CombatMovePointType destinationMovePoint = CombatMovePointType.Root;
 
-    [SerializeField] private ExposedReference<CombatTarget> exposedCombatTarget;
+    [SerializeField] private ExposedReference<Participant> exposedCombatTarget;
 
     [SerializeField] private Vector3 worldPosition;
 
@@ -51,7 +51,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
     private Quaternion startRotation;
 
     public void Apply(
-        CombatTarget actor,
+        Participant actor,
         IExposedPropertyTable resolver,
         float normalizedTime)
     {
@@ -100,7 +100,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         startRotation = Quaternion.identity;
     }
 
-    private void CaptureStart(CombatTarget actor)
+    private void CaptureStart(Participant actor)
     {
         hasCapturedStart = true;
         warnedMissingDestination = false;
@@ -109,7 +109,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
     }
 
     private bool TryGetDestination(
-        CombatTarget actor,
+        Participant actor,
         IExposedPropertyTable resolver,
         out Vector3 destination)
     {
@@ -128,7 +128,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
     }
 
     private bool TryGetTestTransformDestination(
-        CombatTarget actor,
+        Participant actor,
         IExposedPropertyTable resolver,
         out Vector3 destination)
     {
@@ -151,7 +151,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
     }
 
     private bool TryGetRuntimeDestination(
-        CombatTarget actor,
+        Participant actor,
         IExposedPropertyTable resolver,
         out Vector3 destination)
     {
@@ -161,7 +161,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         {
             case CombatTargetMoveDestinationSource.CurrentActionFirstReceiver:
                 {
-                    CombatTarget receiver = GetFirstReceiver(actor);
+                    Participant receiver = GetFirstReceiver(actor);
 
                     if (receiver == null)
                     {
@@ -177,7 +177,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
 
             case CombatTargetMoveDestinationSource.CurrentActionAttacker:
                 {
-                    CombatTarget attacker = GetAttacker(actor);
+                    Participant attacker = GetAttacker(actor);
 
                     if (attacker == null)
                     {
@@ -207,7 +207,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
 
             case CombatTargetMoveDestinationSource.ExposedCombatTarget:
                 {
-                    CombatTarget exposedTarget = exposedCombatTarget.Resolve(resolver);
+                    Participant exposedTarget = exposedCombatTarget.Resolve(resolver);
 
                     if (exposedTarget == null)
                     {
@@ -245,8 +245,8 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
     }
 
     private Vector3 GetCombatTargetDestination(
-        CombatTarget actor,
-        CombatTarget destinationTarget)
+        Participant actor,
+        Participant destinationTarget)
     {
         if (destinationTarget == null)
         {
@@ -303,8 +303,8 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
     }
 
     private Vector3 GetOffset(
-        CombatTarget actor,
-        CombatTarget destinationTarget,
+        Participant actor,
+        Participant destinationTarget,
         Transform destinationTransform)
     {
         if (IsReturningToActionStart())
@@ -352,7 +352,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         }
     }
 
-    private CombatTarget GetFirstReceiver(CombatTarget actor)
+    private Participant GetFirstReceiver(Participant actor)
     {
         if (actor == null)
         {
@@ -369,7 +369,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         return context.GetFirstReceiver();
     }
 
-    private CombatTarget GetAttacker(CombatTarget actor)
+    private Participant GetAttacker(Participant actor)
     {
         if (actor == null)
         {
@@ -387,7 +387,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
     }
 
     private void ApplyRotation(
-        CombatTarget actor,
+        Participant actor,
         Vector3 destination,
         float curveTime)
     {

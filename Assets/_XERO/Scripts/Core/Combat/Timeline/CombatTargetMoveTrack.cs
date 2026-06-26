@@ -5,7 +5,7 @@ using UnityEngine.Timeline;
 [System.Serializable]
 [TrackColor(0.2f, 0.7f, 1f)]
 [TrackClipType(typeof(CombatTargetMoveClip))]
-[TrackBindingType(typeof(CombatTarget))]
+[TrackBindingType(typeof(Participant))]
 public class CombatTargetMoveTrack : TrackAsset
 {
     public override Playable CreateTrackMixer(

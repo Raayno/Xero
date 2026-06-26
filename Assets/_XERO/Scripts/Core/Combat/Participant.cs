@@ -2,10 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public abstract class CombatTarget : MonoBehaviour
+public abstract class Participant : MonoBehaviour
 {
-    [Header("Combat Target")]
+    [Header("Combat Participant")]
     [SerializeField] private string combatantName;
+    public bool IsPlayerTeam = false;
 
     [Header("Attack Sequence")]
     [SerializeField] private PlayableDirector attackSequenceDirector;
@@ -44,8 +45,8 @@ public abstract class CombatTarget : MonoBehaviour
     public Quaternion ActionStartRotation => actionStartRotation;
     public bool HasActionStartTransform => hasActionStartTransform;
 
-    public event Action<CombatTarget> Defeated;
-    public event Action<CombatTarget> AttackSequenceFinished;
+    public event Action<Participant> Defeated;
+    public event Action<Participant> AttackSequenceFinished;
 
     public virtual void SetCurrentActionContext(CombatActionContext actionContext)
     {

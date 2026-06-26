@@ -149,7 +149,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 175917254}
-  - {fileID: 689562239}
   - {fileID: 1509386289}
   - {fileID: 924577344}
   - {fileID: 727471414}
@@ -423,8 +422,9 @@ GameObject:
   m_Component:
   - component: {fileID: 175917254}
   - component: {fileID: 175917255}
+  - component: {fileID: 175917256}
   m_Layer: 0
-  m_Name: CombatManager
+  m_Name: Combat Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -456,14 +456,23 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f93fe7c4aaa11d46a19ebbf0cfb9471, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CombatManager
-  combatTimelineController: {fileID: 689562240}
-  combatActionResolver: {fileID: 75476725}
-  combatOptionsUIManager: {fileID: 1067083975}
-  combatTargetSelectionManager: {fileID: 924577345}
-  combatTargetProvider: {fileID: 1509386290}
-  enemyActionSelector: {fileID: 727471415}
-  enemyTargetSelector: {fileID: 96157557}
+  m_EditorClassIdentifier: Assembly-CSharp::CombatController
+  enemyParticipants: []
+  playerParticipants: []
+  turnSelector: {fileID: 175917256}
+--- !u!114 &175917256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175917253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535c2f7c2423bed49af0bd38bdf2bf2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlternatingTurnSelector
+  foresightLength: 10
 --- !u!1 &185330562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,58 +1017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695490254d60f324caefe5baa7c5a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatOptionsUIButton
---- !u!1 &689562238
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 689562239}
-  - component: {fileID: 689562240}
-  m_Layer: 0
-  m_Name: CombatTurnController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &689562239
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689562238}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 54456243}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &689562240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689562238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61666a15ffd4fcc4393b14c16928a7bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CombatTurnController
-  enemyTargets:
-  - {fileID: 977623206}
-  playerTargets:
-  - {fileID: 7927449809845920964}
-  timeline: []
-  timelineData:
-    maxTimeline: 10
-    turnProbability: 1
 --- !u!1 &727471413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCombatTarget
   combatantName: BobEnemy
+  IsPlayerTeam: 0
   attackSequenceDirector: {fileID: 840920108}
   timelineMovePoint: {fileID: 0}
   attackPoint: {fileID: 0}
@@ -1725,7 +1683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794074044e2b5e244bd4a2719a00cacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatTargetProvider
-  combatTimelineController: {fileID: 689562240}
+  controller: {fileID: 0}
 --- !u!1 &1559610327
 GameObject:
   m_ObjectHideFlags: 0
@@ -38534,6 +38492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombatTarget
   combatantName: XeroPlayer
+  IsPlayerTeam: 0
   attackSequenceDirector: {fileID: 1253948698}
   timelineMovePoint: {fileID: 0}
   attackPoint: {fileID: 0}

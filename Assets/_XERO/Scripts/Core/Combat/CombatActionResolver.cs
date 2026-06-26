@@ -52,7 +52,7 @@ public class CombatActionResolver : MonoBehaviour
         ClearCurrentActionContext();
     }
 
-    private void CombatTarget_AttackSequenceFinished(CombatTarget combatTarget)
+    private void CombatTarget_AttackSequenceFinished(Participant combatTarget)
     {
         CombatActionContext finishedContext = currentActionContext;
 
@@ -78,7 +78,7 @@ public class CombatActionResolver : MonoBehaviour
             actionContext.Attacker.SetCurrentActionContext(actionContext);
         }
 
-        foreach (CombatTarget receiver in actionContext.Receivers)
+        foreach (Participant receiver in actionContext.Receivers)
         {
             if (receiver == null)
             {
@@ -102,7 +102,7 @@ public class CombatActionResolver : MonoBehaviour
             currentActionContext.Attacker.ClearCurrentActionContext();
         }
 
-        foreach (CombatTarget receiver in currentActionContext.Receivers)
+        foreach (Participant receiver in currentActionContext.Receivers)
         {
             if (receiver == null)
             {

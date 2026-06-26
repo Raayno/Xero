@@ -1,10 +1,67 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
-public class CombatManager : MonoBehaviour
+public class CombatController : MonoBehaviour
 {
-    [Header("Core Combat References")]
-    [SerializeField] private CombatTimelineController combatTimelineController;
+    #region Participants
+    [Header("Participants")]
+    [SerializeField] private List<EnemyParticipant> enemyParticipants = new();
+    [SerializeField] private List<PlayerParticipant> playerParticipants = new();
+
+    
+    public List<EnemyParticipant> GetEnemies() => new(enemyParticipants);
+    public List<PlayerParticipant> GetPlayers() => new(playerParticipants);
+    #endregion
+
+    [Header("Turn Management")]
+    [SerializeField] private TurnSelector turnSelector;
+
+    [Header("Debug")]
+    [SerializeField] private bool enableDebug = false;
+    
+    private void Start()
+    {
+        StartCoroutine(Combat());
+    }
+
+    private IEnumerator Combat()
+    {
+        VerifyParticipants();
+        turnSelector.NextTurn(playerParticipants, enemyParticipants);
+        turnSelector.GetCurrentParticipant();
+        if (enableDebug)
+        {
+            Debug.Log($"<color=#55AAFF>[Combat]</color> Current turn: {turnSelector.GetCurrentParticipant().CombatantName}");
+            string timeline = "Timeline: ";
+            foreach (var participant in turnSelector.TurnTimeline)
+            {
+                timeline += participant.CombatantName + " -> ";
+            }
+            Debug.Log($"<color=#55AAFF>[Combat]</color> {timeline}");
+        }
+        
+        yield return null;
+    }
+
+    bool VerifyParticipants()
+    {
+        if (playerParticipants == null || playerParticipants.Count == 0)
+        {
+            Debug.LogError("[CombatController] Player participants are not assigned or empty.");
+            return false;
+        }
+
+        if (enemyParticipants == null || enemyParticipants.Count == 0)
+        {
+            Debug.LogError("[CombatController] Enemy participants are not assigned or empty.");
+            return false;
+        }
+
+        return true;
+    }
+
+    /*#region Unverified
     [SerializeField] private CombatActionResolver combatActionResolver;
 
     [Header("Player Turn")]
@@ -16,7 +73,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private EnemyActionSelector enemyActionSelector;
     [SerializeField] private EnemyTargetSelector enemyTargetSelector;
 
-    private CombatTarget currentCombatTarget;
+    private Participant currentCombatTarget;
     private AttackDataSO pendingPlayerAttack;
 
     private void OnEnable()
@@ -47,21 +104,12 @@ public class CombatManager : MonoBehaviour
             combatActionResolver.ActionFinished -= CombatActionResolver_ActionFinished;
     }
 
-    private void Start()
-    {
-        StartCombat();
-    }
 
     private void StartCombat()
     {
         ClearPendingPlayerAttack();
 
-        if (!CanStartCombat())
-        {
-            return;
-        }
-
-        currentCombatTarget = combatTimelineController.GetCurrentTarget();
+        currentCombatTarget = combatTimelineController.GetCurrentParticipant();
 
         if (currentCombatTarget == null)
         {
@@ -71,13 +119,13 @@ public class CombatManager : MonoBehaviour
 
         Debug.Log($"<color=#55AAFF>[Combat]</color> Current turn: {currentCombatTarget.CombatantName}");
 
-        if (currentCombatTarget is PlayerCombatTarget playerCombatTarget)
+        if (currentCombatTarget is PlayerParticipant playerCombatTarget)
         {
             StartPlayerTurn(playerCombatTarget);
             return;
         }
 
-        if (currentCombatTarget is EnemyCombatTarget enemyCombatTarget)
+        if (currentCombatTarget is EnemyParticipant enemyCombatTarget)
         {
             StartEnemyTurn(enemyCombatTarget);
             return;
@@ -87,59 +135,12 @@ public class CombatManager : MonoBehaviour
             $"[CombatManager] Unsupported combat target type: {currentCombatTarget.GetType().Name}");
     }
 
-    private bool CanStartCombat()
-    {
-        if (combatTimelineController == null)
-        {
-            Debug.LogError("[CombatManager] CombatTimelineController is not assigned.");
-            return false;
-        }
-
-        if (combatActionResolver == null)
-        {
-            Debug.LogError("[CombatManager] CombatActionResolver is not assigned.");
-            return false;
-        }
-
-        if (combatOptionsUIManager == null)
-        {
-            Debug.LogError("[CombatManager] CombatOptionsUIManager is not assigned.");
-            return false;
-        }
-
-        if (combatTargetSelectionManager == null)
-        {
-            Debug.LogError("[CombatManager] CombatTargetSelectionManager is not assigned.");
-            return false;
-        }
-
-        if (combatTargetProvider == null)
-        {
-            Debug.LogError("[CombatManager] CombatTargetProvider is not assigned.");
-            return false;
-        }
-
-        if (enemyActionSelector == null)
-        {
-            Debug.LogError("[CombatManager] EnemyActionSelector is not assigned.");
-            return false;
-        }
-
-        if (enemyTargetSelector == null)
-        {
-            Debug.LogError("[CombatManager] EnemyTargetSelector is not assigned.");
-            return false;
-        }
-
-        return true;
-    }
-
-    private void StartPlayerTurn(PlayerCombatTarget playerCombatTarget)
+    private void StartPlayerTurn(PlayerParticipant playerCombatTarget)
     {
         combatOptionsUIManager.ShowUI(playerCombatTarget);
     }
 
-    private void StartEnemyTurn(EnemyCombatTarget enemyCombatTarget)
+    private void StartEnemyTurn(EnemyParticipant enemyCombatTarget)
     {
         AttackDataSO selectedAttack = enemyActionSelector.SelectAttack(enemyCombatTarget);
 
@@ -149,7 +150,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
-        List<CombatTarget> selectedTargets =
+        List<Participant> selectedTargets =
             enemyTargetSelector.SelectTargets(enemyCombatTarget, selectedAttack);
 
         CombatActionContext actionContext = new CombatActionContext(
@@ -174,7 +175,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
-        if (currentCombatTarget is not PlayerCombatTarget)
+        if (currentCombatTarget is not PlayerParticipant)
         {
             Debug.LogWarning("[CombatManager] Ignoring player option because current target is not a player.");
             return;
@@ -190,7 +191,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
-        List<CombatTarget> selectedTargets =
+        List<Participant> selectedTargets =
             combatTargetProvider.GetAutoTargets(currentCombatTarget, selectedAttack);
 
         CombatActionContext actionContext = new CombatActionContext(
@@ -201,7 +202,7 @@ public class CombatManager : MonoBehaviour
         PlayActionContext(actionContext);
     }
 
-    private void CombatTargetSelectionManager_TargetSelected(CombatTarget selectedTarget)
+    private void CombatTargetSelectionManager_TargetSelected(Participant selectedTarget)
     {
         if (pendingPlayerAttack == null)
         {
@@ -216,7 +217,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
-        List<CombatTarget> selectedTargets = new List<CombatTarget>
+        List<Participant> selectedTargets = new List<Participant>
         {
             selectedTarget
         };
@@ -233,7 +234,7 @@ public class CombatManager : MonoBehaviour
 
     private void CombatTargetSelectionManager_TargetSelectionCancelled()
     {
-        if (currentCombatTarget is PlayerCombatTarget playerCombatTarget)
+        if (currentCombatTarget is PlayerParticipant playerCombatTarget)
         {
             combatOptionsUIManager.ShowUI(playerCombatTarget);
         }
@@ -295,4 +296,6 @@ public class CombatManager : MonoBehaviour
     {
         pendingPlayerAttack = null;
     }
+    #endregion
+    */
 }

@@ -12,7 +12,7 @@ public class CombatOptionsUIManager : MonoBehaviour
         HideUI();
     }
 
-    public void ShowUI(PlayerCombatTarget combatTarget)
+    public void ShowUI(PlayerParticipant combatTarget)
     {
         combatOptionsContainer.gameObject.SetActive(true);
         ShowOptionsUI(combatTarget.GetData());

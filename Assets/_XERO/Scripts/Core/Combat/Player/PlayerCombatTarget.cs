@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerCombatTarget : CombatTarget
+public class PlayerParticipant : Participant
 {
 
     [SerializeField] private PlayerCombatTargetData combatTargetData;

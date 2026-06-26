@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyActionSelector : MonoBehaviour
 {
-    public AttackDataSO SelectAttack(EnemyCombatTarget enemyCombatTarget)
+    public AttackDataSO SelectAttack(EnemyParticipant enemyCombatTarget)
     {
         if (enemyCombatTarget == null)
         {

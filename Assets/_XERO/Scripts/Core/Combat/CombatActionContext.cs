@@ -2,22 +2,22 @@ using System.Collections.Generic;
 
 public class CombatActionContext
 {
-    public CombatTarget Attacker { get; }
+    public Participant Attacker { get; }
     public AttackDataSO AttackData { get; }
-    public IReadOnlyList<CombatTarget> Receivers => receivers;
+    public IReadOnlyList<Participant> Receivers => receivers;
 
-    private readonly List<CombatTarget> receivers;
+    private readonly List<Participant> receivers;
 
     public CombatActionContext(
-        CombatTarget attacker,
+        Participant attacker,
         AttackDataSO attackData,
-        List<CombatTarget> receivers)
+        List<Participant> receivers)
     {
         Attacker = attacker;
         AttackData = attackData;
         this.receivers = receivers != null
-            ? new List<CombatTarget>(receivers)
-            : new List<CombatTarget>();
+            ? new List<Participant>(receivers)
+            : new List<Participant>();
     }
 
     public bool IsValid()
@@ -44,7 +44,7 @@ public class CombatActionContext
 
         for (int i = 0; i < receivers.Count; i++)
         {
-            CombatTarget receiver = receivers[i];
+            Participant receiver = receivers[i];
 
             if (receiver == null)
             {
@@ -60,7 +60,7 @@ public class CombatActionContext
         return true;
     }
 
-    public CombatTarget GetFirstReceiver()
+    public Participant GetFirstReceiver()
     {
         if (receivers == null || receivers.Count == 0)
         {

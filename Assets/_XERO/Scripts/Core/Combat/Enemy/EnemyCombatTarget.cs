@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class EnemyCombatTarget : CombatTarget
+public class EnemyParticipant : Participant
 {
     [SerializeField] private EnemyCombatTargetData enemyCombatTargetData;
 

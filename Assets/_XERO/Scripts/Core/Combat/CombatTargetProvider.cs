@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class CombatTargetProvider : MonoBehaviour
 {
-    [SerializeField] private CombatTimelineController combatTimelineController;
+    [SerializeField] private CombatController controller;
 
-    public List<CombatTarget> GetAutoTargets(
-        CombatTarget attacker,
+    public List<Participant> GetAutoTargets(
+        Participant attacker,
         AttackDataSO attackData)
     {
-        List<CombatTarget> targets = new List<CombatTarget>();
+        List<Participant> targets = new();
 
         if (attacker == null)
         {
@@ -23,7 +23,7 @@ public class CombatTargetProvider : MonoBehaviour
             return targets;
         }
 
-        if (combatTimelineController == null)
+        if (controller == null)
         {
             Debug.LogError("[CombatTargetProvider] CombatTimelineController is not assigned.");
             return targets;
@@ -60,11 +60,11 @@ public class CombatTargetProvider : MonoBehaviour
         return targets;
     }
 
-    public List<CombatTarget> GetAliveEnemiesOfAttacker(CombatTarget attacker)
+    public List<Participant> GetAliveEnemiesOfAttacker(Participant attacker)
     {
-        List<CombatTarget> targets = new List<CombatTarget>();
+        List<Participant> targets = new List<Participant>();
 
-        if (attacker == null || combatTimelineController == null)
+        if (attacker == null || controller == null)
         {
             return targets;
         }
@@ -74,11 +74,11 @@ public class CombatTargetProvider : MonoBehaviour
         return targets;
     }
 
-    public List<CombatTarget> GetAliveAlliesOfAttacker(CombatTarget attacker)
+    public List<Participant> GetAliveAlliesOfAttacker(Participant attacker)
     {
-        List<CombatTarget> targets = new List<CombatTarget>();
+        List<Participant> targets = new List<Participant>();
 
-        if (attacker == null || combatTimelineController == null)
+        if (attacker == null || controller == null)
         {
             return targets;
         }
@@ -89,8 +89,8 @@ public class CombatTargetProvider : MonoBehaviour
     }
 
     public bool IsValidManualTarget(
-        CombatTarget attacker,
-        CombatTarget receiver,
+        Participant attacker,
+        Participant receiver,
         CombatActionTargetType targetType)
     {
         if (attacker == null || receiver == null)
@@ -119,11 +119,11 @@ public class CombatTargetProvider : MonoBehaviour
         }
     }
 
-    private void AddAllEnemiesOfAttacker(List<CombatTarget> targets, CombatTarget attacker)
+    private void AddAllEnemiesOfAttacker(List<Participant> targets, Participant attacker)
     {
-        if (attacker is PlayerCombatTarget)
+        if (attacker is PlayerParticipant)
         {
-            foreach (EnemyCombatTarget enemy in combatTimelineController.GetEnemies())
+            foreach (EnemyParticipant enemy in controller.GetEnemies())
             {
                 AddTargetIfValid(targets, enemy);
             }
@@ -131,20 +131,20 @@ public class CombatTargetProvider : MonoBehaviour
             return;
         }
 
-        if (attacker is EnemyCombatTarget)
+        if (attacker is EnemyParticipant)
         {
-            foreach (PlayerCombatTarget player in combatTimelineController.GetPlayers())
+            foreach (PlayerParticipant player in controller.GetPlayers())
             {
                 AddTargetIfValid(targets, player);
             }
         }
     }
 
-    private void AddAllAlliesOfAttacker(List<CombatTarget> targets, CombatTarget attacker)
+    private void AddAllAlliesOfAttacker(List<Participant> targets, Participant attacker)
     {
-        if (attacker is PlayerCombatTarget)
+        if (attacker is PlayerParticipant)
         {
-            foreach (PlayerCombatTarget player in combatTimelineController.GetPlayers())
+            foreach (PlayerParticipant player in controller.GetPlayers())
             {
                 AddTargetIfValid(targets, player);
             }
@@ -152,23 +152,23 @@ public class CombatTargetProvider : MonoBehaviour
             return;
         }
 
-        if (attacker is EnemyCombatTarget)
+        if (attacker is EnemyParticipant)
         {
-            foreach (EnemyCombatTarget enemy in combatTimelineController.GetEnemies())
+            foreach (EnemyParticipant enemy in controller.GetEnemies())
             {
                 AddTargetIfValid(targets, enemy);
             }
         }
     }
 
-    private bool IsEnemyOfAttacker(CombatTarget attacker, CombatTarget receiver)
+    private bool IsEnemyOfAttacker(Participant attacker, Participant receiver)
     {
-        if (attacker is PlayerCombatTarget && receiver is EnemyCombatTarget)
+        if (attacker is PlayerParticipant && receiver is EnemyParticipant)
         {
             return true;
         }
 
-        if (attacker is EnemyCombatTarget && receiver is PlayerCombatTarget)
+        if (attacker is EnemyParticipant && receiver is PlayerParticipant)
         {
             return true;
         }
@@ -176,14 +176,14 @@ public class CombatTargetProvider : MonoBehaviour
         return false;
     }
 
-    private bool IsAllyOfAttacker(CombatTarget attacker, CombatTarget receiver)
+    private bool IsAllyOfAttacker(Participant attacker, Participant receiver)
     {
-        if (attacker is PlayerCombatTarget && receiver is PlayerCombatTarget)
+        if (attacker is PlayerParticipant && receiver is PlayerParticipant)
         {
             return true;
         }
 
-        if (attacker is EnemyCombatTarget && receiver is EnemyCombatTarget)
+        if (attacker is EnemyParticipant && receiver is EnemyParticipant)
         {
             return true;
         }
@@ -191,7 +191,7 @@ public class CombatTargetProvider : MonoBehaviour
         return false;
     }
 
-    private void AddTargetIfValid(List<CombatTarget> targets, CombatTarget target)
+    private void AddTargetIfValid(List<Participant> targets, Participant target)
     {
         if (target == null)
         {

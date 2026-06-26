@@ -8,7 +8,7 @@ public class CombatTargetMoveMixer : PlayableBehaviour
         FrameData info,
         object playerData)
     {
-        if (playerData is not CombatTarget actor)
+        if (playerData is not Participant actor)
         {
             return;
         }
