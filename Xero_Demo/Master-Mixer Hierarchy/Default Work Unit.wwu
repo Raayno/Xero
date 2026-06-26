@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}" SchemaVersion="119">
+	<Busses>
+		<WorkUnit Name="Default Work Unit" ID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}" PersistMode="Standalone">
+			<ChildrenList>
+				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{AC517565-AC9E-48E8-823A-72A89700FD47}" WorkUnitID="{DFE38E59-2724-449A-83AF-20CD85D5BC77}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="Player" ID="{B6E43D5C-7CB8-4738-86E2-17AFC4EC929D}">
+							<ChildrenList>
+								<Bus Name="Vox" ID="{6E512464-806F-461F-8FE9-B7DA6116DB69}"/>
+								<Bus Name="Locomotion" ID="{09A3CBC4-C5A5-4DE7-97AD-9154CD5B5543}"/>
+								<Bus Name="Combat" ID="{F4E1CF4F-2CF3-4347-BEFF-B2BD8884BF63}"/>
+							</ChildrenList>
+						</Bus>
+						<Bus Name="Ambience" ID="{FCEC52F5-826F-4455-85FF-00FA2983A46B}"/>
+						<Bus Name="Enemies" ID="{8EBDAED2-04A2-4C01-861D-3E603652A50D}"/>
+						<Bus Name="UI" ID="{47298CB2-C6C4-4F6E-BB65-B9D1E68656E2}"/>
+						<Bus Name="Music" ID="{21621189-B109-46A1-B05E-BDF86FF88A2E}"/>
+					</ChildrenList>
+				</Bus>
+			</ChildrenList>
+		</WorkUnit>
+	</Busses>
+</WwiseDocument>
