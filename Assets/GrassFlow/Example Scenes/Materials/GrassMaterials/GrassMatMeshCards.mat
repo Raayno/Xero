@@ -12,7 +12,6 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - BAKED_DATA
   - GF_NORMAL_MAP
   - GF_PPLIGHTS
   - GF_SELF_SHADOW
@@ -26,7 +25,6 @@ Material:
   - MESH_NORMALS
   - MESH_UVS
   - SEMI_TRANSPARENT
-  - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
   - ALPHALOCK_ON
   m_LightmapFlags: 4
@@ -144,7 +142,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ReceiveShadows: 0
+    - _ReceiveShadows: 1
     - _Rendermode: 0
     - _SEMI_TRANSPARENT: 1
     - _SmoothnessTextureChannel: 0
