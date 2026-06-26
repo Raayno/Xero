@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -10,9 +11,8 @@ public abstract class AttackDataSO : ScriptableObject
     [SerializeField] private TimelineAsset timelineAsset;
 
     [Header("Targeting")]
-    [SerializeField] private CombatActionTargetType targetType = CombatActionTargetType.SingleEnemy;
+    [Required] public TargetSelector TargetSelector;
 
     public DamageDataSO DamageData => damageData;
     public TimelineAsset TimelineAsset => timelineAsset;
-    public CombatActionTargetType TargetType => targetType;
 }

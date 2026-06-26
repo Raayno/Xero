@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 [Serializable]
-public class EnemyCombatTargetData : CombatTargetData
+public class EnemyParticipantData : CombatTargetData
 {
     public List<EnemyAttackDataSO> attacks;
 }

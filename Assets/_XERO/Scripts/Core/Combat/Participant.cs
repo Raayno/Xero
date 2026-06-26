@@ -1,4 +1,5 @@
 using System;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -6,7 +7,8 @@ public abstract class Participant : MonoBehaviour
 {
     [Header("Combat Participant")]
     [SerializeField] private string combatantName;
-    public bool IsPlayerTeam = false;
+    [Required] public Damageable damageableComponent;
+    [Required] public TurnExec turnExec;
 
     [Header("Attack Sequence")]
     [SerializeField] private PlayableDirector attackSequenceDirector;
@@ -35,7 +37,7 @@ public abstract class Participant : MonoBehaviour
         }
     }
 
-    public bool IsDefeated { get; private set; }
+    public bool IsDefeated => damageableComponent.IsDefeated;
 
     public PlayableDirector AttackSequenceDirector => attackSequenceDirector;
 
@@ -45,7 +47,6 @@ public abstract class Participant : MonoBehaviour
     public Quaternion ActionStartRotation => actionStartRotation;
     public bool HasActionStartTransform => hasActionStartTransform;
 
-    public event Action<Participant> Defeated;
     public event Action<Participant> AttackSequenceFinished;
 
     public virtual void SetCurrentActionContext(CombatActionContext actionContext)
@@ -158,23 +159,6 @@ public abstract class Participant : MonoBehaviour
             $"{CombatantName} finished its attack sequence.");
 
         AttackSequenceFinished?.Invoke(this);
-    }
-
-    public virtual void MarkAsDefeated()
-    {
-        if (IsDefeated)
-        {
-            return;
-        }
-
-        IsDefeated = true;
-
-        Defeated?.Invoke(this);
-    }
-
-    public virtual void ResetCombatTarget()
-    {
-        IsDefeated = false;
     }
 
     public virtual void StopAttackSequence()

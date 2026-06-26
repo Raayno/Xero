@@ -39,6 +39,6 @@ public abstract class TurnSelector : MonoBehaviour
             return null;
         }
 
-        return TurnTimeline[turnCount];
+        return TurnTimeline[0];
     }
 }

@@ -1,12 +1,11 @@
-using System;
 using UnityEngine;
 
 public class EnemyParticipant : Participant
 {
-    [SerializeField] private EnemyCombatTargetData enemyCombatTargetData;
+    [SerializeField] private EnemyParticipantData enemyCombatTargetData;
 
     // Add enemy-specific combat logic here later.
-    public EnemyCombatTargetData GetData()
+    public EnemyParticipantData GetData()
     {
         return enemyCombatTargetData;
     }

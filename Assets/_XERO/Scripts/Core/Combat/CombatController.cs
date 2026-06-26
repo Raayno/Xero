@@ -10,8 +10,8 @@ public class CombatController : MonoBehaviour
     [SerializeField] private List<PlayerParticipant> playerParticipants = new();
 
     
-    public List<EnemyParticipant> GetEnemies() => new(enemyParticipants);
-    public List<PlayerParticipant> GetPlayers() => new(playerParticipants);
+    public List<Participant> GetEnemies() => new(enemyParticipants);
+    public List<Participant> GetPlayers() => new(playerParticipants);
     #endregion
 
     [Header("Turn Management")]
@@ -29,7 +29,7 @@ public class CombatController : MonoBehaviour
     {
         VerifyParticipants();
         turnSelector.NextTurn(playerParticipants, enemyParticipants);
-        turnSelector.GetCurrentParticipant();
+        var currentParticipant = turnSelector.GetCurrentParticipant();
         if (enableDebug)
         {
             Debug.Log($"<color=#55AAFF>[Combat]</color> Current turn: {turnSelector.GetCurrentParticipant().CombatantName}");
@@ -41,6 +41,8 @@ public class CombatController : MonoBehaviour
             Debug.Log($"<color=#55AAFF>[Combat]</color> {timeline}");
         }
         
+        currentParticipant.turnExec.ExecuteTurn(currentParticipant);
+
         yield return null;
     }
 

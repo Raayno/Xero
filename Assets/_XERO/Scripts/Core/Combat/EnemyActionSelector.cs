@@ -10,7 +10,7 @@ public class EnemyActionSelector : MonoBehaviour
             return null;
         }
 
-        EnemyCombatTargetData enemyData = enemyCombatTarget.GetData();
+        EnemyParticipantData enemyData = enemyCombatTarget.GetData();
 
         if (enemyData == null)
         {

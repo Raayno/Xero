@@ -9,7 +9,7 @@ public class EnemyTargetSelector : MonoBehaviour
         EnemyParticipant enemyCombatTarget,
         AttackDataSO attackData)
     {
-        List<Participant> selectedTargets = new List<Participant>();
+        List<Participant> selectedTargets = new();
 
         if (enemyCombatTarget == null)
         {
