@@ -1,166 +1,158 @@
-using System;
-using UnityEngine;
+// using System;
+// using UnityEngine;
 
-public class CombatTargetSelectionManager : MonoBehaviour
-{
-    [Header("Selection")]
-    [SerializeField] private Camera selectionCamera;
-    [SerializeField] private LayerMask selectableLayerMask = ~0;
-    [SerializeField] private float maxRayDistance = 500f;
+// public class CombatTargetSelectionManager : MonoBehaviour
+// {
+//     [Header("Selection")]
+//     [SerializeField] private Camera selectionCamera;
+//     [SerializeField] private LayerMask selectableLayerMask = ~0;
+//     [SerializeField] private float maxRayDistance = 500f;
 
-    [Header("References")]
-    [SerializeField] private CombatTargetProvider combatTargetProvider;
+//     [Header("References")]
+//     [SerializeField] private TargetSelector combatTargetProvider;
 
-    private Participant currentAttacker;
-    private AttackDataSO currentAttackData;
+//     private Participant currentAttacker;
+//     private AttackDataSO currentAttackData;
 
-    public bool IsSelectingTarget { get; private set; }
+//     public bool IsSelectingTarget { get; private set; }
 
-    public event Action<Participant> TargetSelected;
-    public event Action TargetSelectionCancelled;
+//     public event Action<Participant> TargetSelected;
+//     public event Action TargetSelectionCancelled;
 
-    private void Awake()
-    {
-        if (selectionCamera == null)
-        {
-            selectionCamera = Camera.main;
-        }
-    }
+//     private void Awake()
+//     {
+//         if (selectionCamera == null)
+//         {
+//             selectionCamera = Camera.main;
+//         }
+//     }
 
-    private void Update()
-    {
-        if (!IsSelectingTarget)
-        {
-            return;
-        }
+//     private void Update()
+//     {
+//         if (!IsSelectingTarget)
+//         {
+//             return;
+//         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            TrySelectTargetFromMouse();
-            return;
-        }
+//         if (Input.GetMouseButtonDown(0))
+//         {
+//             TrySelectTargetFromMouse();
+//             return;
+//         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            CancelSelection();
-        }
-    }
+//         if (Input.GetKeyDown(KeyCode.Escape))
+//         {
+//             CancelSelection();
+//         }
+//     }
 
-    public void BeginSelection(Participant attacker, AttackDataSO attackData)
-    {
-        if (attacker == null)
-        {
-            Debug.LogError("[CombatTargetSelectionManager] Cannot begin selection because attacker is null.");
-            return;
-        }
+//     public void BeginSelection(Participant attacker, AttackDataSO attackData)
+//     {
+//         if (attacker == null)
+//         {
+//             Debug.LogError("[CombatTargetSelectionManager] Cannot begin selection because attacker is null.");
+//             return;
+//         }
 
-        if (attackData == null)
-        {
-            Debug.LogError("[CombatTargetSelectionManager] Cannot begin selection because attack data is null.");
-            return;
-        }
+//         if (attackData == null)
+//         {
+//             Debug.LogError("[CombatTargetSelectionManager] Cannot begin selection because attack data is null.");
+//             return;
+//         }
 
-        if (combatTargetProvider == null)
-        {
-            Debug.LogError("[CombatTargetSelectionManager] CombatTargetProvider is not assigned.");
-            return;
-        }
+//         if (combatTargetProvider == null)
+//         {
+//             Debug.LogError("[CombatTargetSelectionManager] CombatTargetProvider is not assigned.");
+//             return;
+//         }
 
-        if (!RequiresManualSelection(attackData.TargetType))
-        {
-            Debug.LogWarning(
-                $"[CombatTargetSelectionManager] {attackData.TargetType} does not require manual selection.");
+//         currentAttacker = attacker;
+//         currentAttackData = attackData;
+//         IsSelectingTarget = true;
 
-            return;
-        }
+//         Debug.Log(
+//             $"<color=#FFDD55>[Target Selection]</color> Select target for {attackData.name}.");
+//     }
 
-        currentAttacker = attacker;
-        currentAttackData = attackData;
-        IsSelectingTarget = true;
+//     public void CancelSelection()
+//     {
+//         if (!IsSelectingTarget)
+//         {
+//             return;
+//         }
 
-        Debug.Log(
-            $"<color=#FFDD55>[Target Selection]</color> Select target for {attackData.name}.");
-    }
+//         ClearSelection();
 
-    public void CancelSelection()
-    {
-        if (!IsSelectingTarget)
-        {
-            return;
-        }
+//         Debug.Log("<color=#FFAA55>[Target Selection]</color> Selection cancelled.");
 
-        ClearSelection();
+//         TargetSelectionCancelled?.Invoke();
+//     }
 
-        Debug.Log("<color=#FFAA55>[Target Selection]</color> Selection cancelled.");
+//     private void TrySelectTargetFromMouse()
+//     {
+//         if (selectionCamera == null)
+//         {
+//             Debug.LogError("[CombatTargetSelectionManager] No selection camera assigned.");
+//             return;
+//         }
 
-        TargetSelectionCancelled?.Invoke();
-    }
+//         Ray ray = selectionCamera.ScreenPointToRay(Input.mousePosition);
 
-    private void TrySelectTargetFromMouse()
-    {
-        if (selectionCamera == null)
-        {
-            Debug.LogError("[CombatTargetSelectionManager] No selection camera assigned.");
-            return;
-        }
+//         if (!Physics.Raycast(ray, out RaycastHit hit, maxRayDistance, selectableLayerMask))
+//         {
+//             return;
+//         }
 
-        Ray ray = selectionCamera.ScreenPointToRay(Input.mousePosition);
+//         Participant selectedTarget = hit.collider.GetComponentInParent<Participant>();
 
-        if (!Physics.Raycast(ray, out RaycastHit hit, maxRayDistance, selectableLayerMask))
-        {
-            return;
-        }
+//         if (selectedTarget == null)
+//         {
+//             return;
+//         }
 
-        Participant selectedTarget = hit.collider.GetComponentInParent<Participant>();
+//         TrySelectTarget(selectedTarget);
+//     }
 
-        if (selectedTarget == null)
-        {
-            return;
-        }
+//     private void TrySelectTarget(Participant selectedTarget)
+//     {
+//         if (currentAttackData == null)
+//         {
+//             Debug.LogError("[CombatTargetSelectionManager] Current attack data is null.");
+//             ClearSelection();
+//             return;
+//         }
 
-        TrySelectTarget(selectedTarget);
-    }
+//         bool isValidTarget = combatTargetProvider.IsValidManualTarget(
+//             currentAttacker,
+//             selectedTarget,
+//             currentAttackData.TargetType);
 
-    private void TrySelectTarget(Participant selectedTarget)
-    {
-        if (currentAttackData == null)
-        {
-            Debug.LogError("[CombatTargetSelectionManager] Current attack data is null.");
-            ClearSelection();
-            return;
-        }
+//         if (!isValidTarget)
+//         {
+//             Debug.LogWarning(
+//                 $"[CombatTargetSelectionManager] {selectedTarget.CombatantName} is not a valid target for {currentAttackData.TargetType}.");
 
-        bool isValidTarget = combatTargetProvider.IsValidManualTarget(
-            currentAttacker,
-            selectedTarget,
-            currentAttackData.TargetType);
+//             return;
+//         }
 
-        if (!isValidTarget)
-        {
-            Debug.LogWarning(
-                $"[CombatTargetSelectionManager] {selectedTarget.CombatantName} is not a valid target for {currentAttackData.TargetType}.");
+//         ClearSelection();
 
-            return;
-        }
+//         Debug.Log(
+//             $"<color=#55FF88>[Target Selection]</color> Selected target: {selectedTarget.CombatantName}");
 
-        ClearSelection();
+//         TargetSelected?.Invoke(selectedTarget);
+//     }
 
-        Debug.Log(
-            $"<color=#55FF88>[Target Selection]</color> Selected target: {selectedTarget.CombatantName}");
+//     private bool RequiresManualSelection(CombatActionTargetType targetType)
+//     {
+//         return targetType == CombatActionTargetType.SingleEnemy ||
+//                targetType == CombatActionTargetType.SingleAlly;
+//     }
 
-        TargetSelected?.Invoke(selectedTarget);
-    }
-
-    private bool RequiresManualSelection(CombatActionTargetType targetType)
-    {
-        return targetType == CombatActionTargetType.SingleEnemy ||
-               targetType == CombatActionTargetType.SingleAlly;
-    }
-
-    private void ClearSelection()
-    {
-        currentAttacker = null;
-        currentAttackData = null;
-        IsSelectingTarget = false;
-    }
-}
+//     private void ClearSelection()
+//     {
+//         currentAttacker = null;
+//         currentAttackData = null;
+//         IsSelectingTarget = false;
+//     }
+// }

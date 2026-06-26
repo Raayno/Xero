@@ -27,9 +27,19 @@ public class CombatController : MonoBehaviour
 
     private IEnumerator Combat()
     {
-        VerifyParticipants();
+        if (!VerifyParticipants())
+        {
+            yield break;
+        }
+
         turnSelector.NextTurn(playerParticipants, enemyParticipants);
         var currentParticipant = turnSelector.GetCurrentParticipant();
+        if (currentParticipant == null)
+        {
+            Debug.LogError("[CombatController] Current participant is null.");
+            yield break;
+        }
+
         if (enableDebug)
         {
             Debug.Log($"<color=#55AAFF>[Combat]</color> Current turn: {turnSelector.GetCurrentParticipant().CombatantName}");
@@ -40,10 +50,14 @@ public class CombatController : MonoBehaviour
             }
             Debug.Log($"<color=#55AAFF>[Combat]</color> {timeline}");
         }
-        
-        currentParticipant.turnExec.ExecuteTurn(currentParticipant);
 
-        yield return null;
+        if (currentParticipant.turnExec == null)
+        {
+            Debug.LogError($"[CombatController] {currentParticipant.CombatantName} has no turn executor assigned.");
+            yield break;
+        }
+
+        yield return currentParticipant.turnExec.ExecuteTurn(currentParticipant);
     }
 
     bool VerifyParticipants()

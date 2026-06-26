@@ -1,10 +1,25 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
+using System;
+using NaughtyAttributes;
 using UnityEngine;
 
 public abstract class TargetSelector: MonoBehaviour
 {
-    [SerializeField] protected CombatController combatController;
+    [Required][SerializeField] protected CombatController combatController;
+
+    protected virtual void Reset()
+    {
+        if (combatController == null)
+        {
+            combatController = GetComponentInParent<CombatController>();
+        }
+        if (combatController == null)
+        {
+            combatController = FindFirstObjectByType<CombatController>();
+        }
+    }
 
     /// <summary>
     /// Selects targets based on the provided selectors. If no selectors are provided, it will use the default SelectTargets() method. If a self participant is provided, it will use the SelectTargets(Participant self) method.
@@ -28,6 +43,12 @@ public abstract class TargetSelector: MonoBehaviour
     }
 
     protected virtual List<Participant> SelectTargets(Participant self) => SelectTargets();
+
+    public virtual IEnumerator SelectTargetsAsync(Participant self, Action<List<Participant>> onCompleted)
+    {
+        onCompleted?.Invoke(SelectTargets(self));
+        yield break;
+    }
 
     protected virtual List<Participant> SelectTargets()
     {
