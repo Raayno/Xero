@@ -397,6 +397,7 @@ Transform:
   - {fileID: 602142830}
   - {fileID: 1844887517}
   - {fileID: 250859023}
+  - {fileID: 789420148}
   m_Father: {fileID: 54456243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &175917255
@@ -1204,6 +1205,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695490254d60f324caefe5baa7c5a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatOptionsUIButton
+--- !u!1 &789420145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789420148}
+  - component: {fileID: 789420146}
+  - component: {fileID: 789420147}
+  m_Layer: 0
+  m_Name: Turn Execs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &789420146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789420145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4e380688f62344894d4e772d39f922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTurnExec
+  targetSelectors: {fileID: 602142829}
+  attackSelector: {fileID: 250859025}
+  availableAttacks:
+  - {fileID: 11400000, guid: 78d96034a0764a34fa5251319982acf3, type: 2}
+  - {fileID: 11400000, guid: 78d96034a0764a34fa5251319982acf3, type: 2}
+  - {fileID: 11400000, guid: 78d96034a0764a34fa5251319982acf3, type: 2}
+--- !u!114 &789420147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789420145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70b6dec368a71746b0aab8652ff3a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTurnExec
+  targetSelectors: {fileID: 602142829}
+  attackSelector: {fileID: 250859025}
+  availableAttacks:
+  - {fileID: 11400000, guid: a306c4e7f8006b845aa7674bc92b71dd, type: 2}
+--- !u!4 &789420148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789420145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 175917254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &840920106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,7 +1458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCombatTarget
   combatantName: BobEnemy
-  turnExec: {fileID: 0}
+  turnExec: {fileID: 789420146}
   attackSequenceDirector: {fileID: 840920108}
   timelineMovePoint: {fileID: 0}
   attackPoint: {fileID: 0}
