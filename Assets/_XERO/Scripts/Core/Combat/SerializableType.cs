@@ -1,11 +1,12 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 [Serializable]
 public class SerializableType : ISerializationCallbackReceiver
 {
-    [Tooltip("Name of the type. Should match file name. (for getting the type ', Assembly-CSharp' is added automatically to make it a fully qualified name)")]
-    [SerializeField] private string name;
+    [Tooltip("Name of the type.\nShould match the class/file (without extension) name.\n\n', Assembly-CSharp' is added to the end of the name automatically.")]
+    [Suffix(", Assembly-CSharp")][SerializeField] private string name;
 
     // To jest właściwość runtime'owa (nie serializuje się bezpośrednio)
     public Type Type { get; set; }
