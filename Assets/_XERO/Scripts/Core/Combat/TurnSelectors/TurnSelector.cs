@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public abstract class TurnSelector : ScriptableObject
 {
@@ -29,13 +30,28 @@ public abstract class TurnSelector : ScriptableObject
         ++turnCount;
     }
 
-    protected abstract void PlanTurnTimeline(List<PlayerParticipant> playerParticipants, List<EnemyParticipant> enemyParticipants);
+    protected virtual void PlanTurnTimeline(List<PlayerParticipant> playerParticipants, List<EnemyParticipant> enemyParticipants)
+    {
+        if (TurnTimeline.Count == 0 || TurnTimeline == null || TurnTimeline.All(p => p == null))
+            InitializeTimeline(playerParticipants, enemyParticipants);
+        else
+            UpdateTimeline(playerParticipants, enemyParticipants);
+    }
+
+    protected abstract void InitializeTimeline(List<PlayerParticipant> players, List<EnemyParticipant> enemies);
+    protected abstract void UpdateTimeline(List<PlayerParticipant> playerParticipants, List<EnemyParticipant> enemyParticipants);
 
     public Participant GetCurrentParticipant()
     {
         if (TurnTimeline == null || TurnTimeline.Count == 0)
         {
             Debug.LogWarning("[CombatTimelineController] Timeline is empty. No current target available.");
+            return null;
+        }
+
+        if (TurnTimeline[0] == null)
+        {
+            Debug.LogWarning("[CombatTimelineController] Current participant is null. This may indicate an issue with the timeline or a missed participant destruction.");
             return null;
         }
 

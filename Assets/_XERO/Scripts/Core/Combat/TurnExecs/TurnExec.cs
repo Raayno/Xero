@@ -24,6 +24,7 @@ public abstract class TurnExec: MonoBehaviour
             Debug.LogError("[TurnExec] AttackSelector returned a null attack.");
             yield break;
         }
+        Debug.Log($"[TurnExec] {executor.name} selected attack: {attack.name}");
 
         if (attack.TargetSelector == null)
         {
@@ -39,6 +40,8 @@ public abstract class TurnExec: MonoBehaviour
         {
             yield break;
         }
+
+        Debug.Log($"[TurnExec] {executor.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
 
         yield return ExecuteTurn(executor, attack, targets);
     }
