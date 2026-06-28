@@ -67,7 +67,7 @@ public class ParticipantPointInput : MonoBehaviour
 
         StopSelection();
 
-        Debug.Log("<color=#FFAA55>[Target Selection]</color> Selection cancelled.");
+        Debug.Log("<color=#FFAA55>[ParticipantPointInput]</color> Selection cancelled.");
 
         OnSelectionCancelled?.Invoke();
     }
@@ -76,7 +76,7 @@ public class ParticipantPointInput : MonoBehaviour
     {
         if (selectionCamera == null)
         {
-            Debug.LogError("[CombatTargetSelectionManager] No selection camera assigned.");
+            Debug.LogError("[ParticipantPointInput] No selection camera assigned.");
             return;
         }
 
@@ -101,8 +101,9 @@ public class ParticipantPointInput : MonoBehaviour
     {
         StopSelection();
 
-        Debug.Log($"<color=#55FF88>[Target Selection]</color> Selected target: {selectedTarget.CombatantName}");
+        Debug.Log($"<color=#55FF88>[ParticipantPointInput]</color> Selected target: {selectedTarget.CombatantName}");
 
+        PointedParticipant = selectedTarget;
         OnParticipantSelected?.Invoke(selectedTarget);
     }
 

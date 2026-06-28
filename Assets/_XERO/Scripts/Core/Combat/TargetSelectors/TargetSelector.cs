@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using System.Collections;
-using System.Linq;
 using System;
-using NaughtyAttributes;
 using UnityEngine;
 
 [EnsureAssetInstance]
 public abstract class TargetSelector: ScriptableObject
 {
-    protected CombatController combatController;
+    protected static CombatController combatController;
 
     /// <summary>
     /// Selects targets based on the provided selectors. If no selectors are provided, it will use the default SelectTargets() method. If a self participant is provided, it will use the SelectTargets(Participant self) method.

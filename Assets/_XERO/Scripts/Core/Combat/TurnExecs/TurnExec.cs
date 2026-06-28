@@ -12,7 +12,7 @@ public abstract class TurnExec: ScriptableObject
     {
         if (attackSelector == null)
         {
-            Debug.LogError("[TurnExec] AttackSelector is not assigned.");
+            Debug.LogError("<color=purple>[TurnExec]</color> AttackSelector is not assigned.");
             yield break;
         }
 
@@ -22,14 +22,14 @@ public abstract class TurnExec: ScriptableObject
 
         if (attack == null)
         {
-            Debug.LogError("[TurnExec] AttackSelector returned a null attack.");
+            Debug.LogError("<color=purple>[TurnExec]</color> AttackSelector returned a null attack.");
             yield break;
         }
-        Debug.Log($"[TurnExec] {executor.name} selected attack: {attack.name}");
+        Debug.Log($"<color=purple>[TurnExec]</color> {executor.name} selected attack: {attack.name}");
 
         if (attack.TargetSelector == null)
         {
-            Debug.LogError($"[TurnExec] Attack '{attack.name}' has no target selector assigned.");
+            Debug.LogError($"<color=purple>[TurnExec]</color> Attack '{attack.name}' has no target selector assigned.");
             yield break;
         }
 
@@ -42,7 +42,7 @@ public abstract class TurnExec: ScriptableObject
             yield break;
         }
 
-        Debug.Log($"[TurnExec] {executor.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
+        Debug.Log($"<color=purple>[TurnExec]</color> {executor.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
 
         yield return ExecuteTurn(executor, attack, targets);
     }

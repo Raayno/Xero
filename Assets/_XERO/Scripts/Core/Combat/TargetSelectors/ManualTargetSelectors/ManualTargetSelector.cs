@@ -12,6 +12,7 @@ public class ManualTargetSelector : TargetSelector
     protected LayerMask selectionPoolMask;
     protected int selectionPoolLayer = -1;
     protected bool selectionWasCanceled;
+    protected Participant selectedParticipant;
     [SerializeField] protected bool enableDebug = false;
     static private readonly List<Participant> currentSelectionPool = new();
 
@@ -29,32 +30,22 @@ public class ManualTargetSelector : TargetSelector
     {
         yield return GetPointInput(onCompleted);
 
-        selectionWasCanceled = false;
-        pointInput.OnSelectionCancelled += SelectionCanceled;
-
         if (!UpdateSelectionPoolMask())
         {
-            pointInput.OnSelectionCancelled -= SelectionCanceled;
+            HandlePointInputEventsSubscription(false);
             onCompleted?.Invoke(new());
             yield break;
         }
 
+        selectedParticipant = null;
+        selectionWasCanceled = false;
+        HandlePointInputEventsSubscription(true);
         pointInput.StartSelection();
+        
+        Debug.Log("<color=yellow>[ManualTargetSelector]</color> Awaiting player input for target selection...");
+        yield return new WaitUntil(() => selectionWasCanceled || selectedParticipant != null);
 
-        float startTime = Time.time;
-        bool alreadyWarned = false;
-        while (pointInput.PointedParticipant == null && !selectionWasCanceled)
-        {
-            if (enableDebug && !alreadyWarned && Time.time - startTime > 5f)
-            {
-                Debug.LogWarning("Waiting for player to select a target for more than 5 seconds. Make sure the player can select a target and that the selection pool is not empty.");
-                alreadyWarned = true;
-            }
-
-            yield return null;
-        }
-
-        pointInput.OnSelectionCancelled -= SelectionCanceled;
+        HandlePointInputEventsSubscription(false);
 
         if (selectionWasCanceled || pointInput.PointedParticipant == null)
         {
@@ -62,7 +53,29 @@ public class ManualTargetSelector : TargetSelector
             yield break;
         }
 
+        Debug.Log($"<color=yellow>[ManualTargetSelector]</color> Player selected target: {pointInput.PointedParticipant.CombatantName}");
+
         onCompleted?.Invoke(new() { pointInput.PointedParticipant });
+    }
+
+    protected virtual void HandlePointInputEventsSubscription(bool subscribe)
+    {
+        if (pointInput == null)
+        {
+            Debug.LogError("[ManualTargetSelector] PointInput is not assigned.");
+            return;
+        }
+
+        if (subscribe)
+        {
+            pointInput.OnParticipantSelected += ParticipantSelected;
+            pointInput.OnSelectionCancelled += SelectionCanceled;
+        }
+        else
+        {
+            pointInput.OnParticipantSelected -= ParticipantSelected;
+            pointInput.OnSelectionCancelled -= SelectionCanceled;
+        }
     }
 
     private IEnumerator GetPointInput(Action<List<Participant>> onCompleted)
@@ -84,13 +97,20 @@ public class ManualTargetSelector : TargetSelector
         }
     }
 
-    protected void OnDisable()
+    protected void ParticipantSelected(Participant selected)
     {
-        if (pointInput !=  null) pointInput.OnSelectionCancelled -= SelectionCanceled;
+        if (selected == null)
+        {
+            Debug.LogError("<color=yellow>[ManualTargetSelector]</color> ParticipantSelected was called with a null participant.");
+            return;
+        }
+        
+        selectedParticipant = selected;
     }
 
     protected void SelectionCanceled()
     {
+        Debug.Log("<color=yellow>[ManualTargetSelector]</color> Target selection was canceled by the player.");
         selectionWasCanceled = true;
     }
 
