@@ -4,37 +4,6 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
-    #region Singleton
-    private static CombatController _instance;
-    public static CombatController Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindFirstObjectByType<CombatController>();
-                if (_instance == null)
-                {
-                    Debug.LogWarning("[CombatController] No instance found in the scene, but it was requested. Creating a new instance.");
-                    GameObject go = new("CombatController");
-                    _instance = go.AddComponent<CombatController>();
-                }
-            }
-            return _instance;
-        }
-    }
-    void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        else if (_instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-    #endregion
 
     #region Participants
     [Header("Participants")]
@@ -109,6 +78,38 @@ public class CombatController : MonoBehaviour
 
         return true;
     }
+    
+    #region Singleton
+    private static CombatController _instance;
+    public static CombatController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindFirstObjectByType<CombatController>();
+                if (_instance == null)
+                {
+                    Debug.LogWarning("[CombatController] No instance found in the scene, but it was requested. Creating a new instance.");
+                    GameObject go = new("CombatController");
+                    _instance = go.AddComponent<CombatController>();
+                }
+            }
+            return _instance;
+        }
+    }
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
 
     /*#region Unverified
     [SerializeField] private CombatActionResolver combatActionResolver;
