@@ -161,7 +161,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         {
             case CombatTargetMoveDestinationSource.CurrentActionFirstReceiver:
                 {
-                    Participant receiver = GetFirstReceiver(actor);
+                    Participant receiver = GetFirstTarget(actor);
 
                     if (receiver == null)
                     {
@@ -352,7 +352,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
         }
     }
 
-    private Participant GetFirstReceiver(Participant actor)
+    private Participant GetFirstTarget(Participant actor)
     {
         if (actor == null)
         {
@@ -366,7 +366,7 @@ public class CombatTargetMoveBehaviour : PlayableBehaviour
             return null;
         }
 
-        return context.GetFirstReceiver();
+        return context.GetFirstTarget();
     }
 
     private Participant GetAttacker(Participant actor)

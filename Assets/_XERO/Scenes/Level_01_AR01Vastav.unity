@@ -413,6 +413,7 @@ MonoBehaviour:
   playerParticipants:
   - {fileID: 7927449809845920964}
   turnSelector: {fileID: 11400000, guid: a8b541c4226ad37458fb56587361f577, type: 2}
+  CombatOptionsUIManager: {fileID: 1067083975}
   enableDebug: 1
 --- !u!1 &185330562
 GameObject:
@@ -1144,6 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCombatTarget
   combatantName: BobEnemy
+  damageable: {fileID: 8376026976256546672}
   turnExec: {fileID: 11400000, guid: 064db77deb62fc5469cd0559fa056aca, type: 2}
   attackSequenceDirector: {fileID: 840920108}
   timelineMovePoint: {fileID: 840920107}
@@ -1151,9 +1153,6 @@ MonoBehaviour:
   hitPoint: {fileID: 1049872958}
   customPointA: {fileID: 0}
   customPointB: {fileID: 0}
-  enemyCombatTargetData:
-    attacks:
-    - {fileID: 11400000, guid: 78d96034a0764a34fa5251319982acf3, type: 2}
 --- !u!1 &1049872953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1265,6 @@ Transform:
   m_Children:
   - {fileID: 840920107}
   - {fileID: 8376026976256546664}
-  - {fileID: 1733890051}
   m_Father: {fileID: 54456243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1053415552
@@ -1660,37 +1658,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1733890050
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1733890051}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1733890051
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733890050}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1049872958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1772517171
 PrefabInstance:
@@ -2752,7 +2719,7 @@ MonoBehaviour:
         ForceLifetime: 0
         Lifetime: 0.5
         PositionMode: 0
-        TargetTransform: {fileID: 1733890051}
+        TargetTransform: {fileID: 0}
         Direction: {x: 0, y: 0, z: 0}
         AttachmentTransform: {fileID: 0}
     - rid: 8769864613393596717
@@ -16731,6 +16698,7 @@ GameObject:
   - component: {fileID: 7927449809845920963}
   - component: {fileID: 7927449809845920964}
   - component: {fileID: 7927449809845920965}
+  - component: {fileID: 7927449809845920966}
   m_Layer: 6
   m_Name: XeroPlayer
   m_TagString: Player
@@ -38343,6 +38311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombatTarget
   combatantName: XeroPlayer
+  damageable: {fileID: 7927449809845920966}
   turnExec: {fileID: 11400000, guid: eee3765d420f07b48a4980ee2c473f6a, type: 2}
   attackSequenceDirector: {fileID: 1253948698}
   timelineMovePoint: {fileID: 1253948697}
@@ -38350,9 +38319,6 @@ MonoBehaviour:
   hitPoint: {fileID: 1053415553}
   customPointA: {fileID: 1253948697}
   customPointB: {fileID: 1253948697}
-  combatTargetData:
-    attacks:
-    - {fileID: 11400000, guid: a306c4e7f8006b845aa7674bc92b71dd, type: 2}
 --- !u!114 &7927449809845920965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38383,6 +38349,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7927449809845920966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722235957707482115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f187db6d3eccba14a84fa4178500fb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  participant: {fileID: 7927449809845920964}
+  maxHP: 1000
+  currentHP: 1000
 --- !u!198 &7954422988778397919
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -43987,6 +43968,7 @@ GameObject:
   - component: {fileID: 1297876394228773792}
   - component: {fileID: 3718716449373047045}
   - component: {fileID: 977623206}
+  - component: {fileID: 8376026976256546672}
   m_Layer: 8
   m_Name: BobEnemy
   m_TagString: Untagged
@@ -43994,6 +43976,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8376026976256546672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376026976256546671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f187db6d3eccba14a84fa4178500fb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  participant: {fileID: 977623206}
+  maxHP: 1000
+  currentHP: 1000
 --- !u!1 &8376026976303463016
 GameObject:
   m_ObjectHideFlags: 0

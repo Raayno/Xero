@@ -1,21 +1,20 @@
-using AYellowpaper.SerializedCollections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatOptionsUIManager : MonoBehaviour
+public class ManualAttackSelectorUI : MonoBehaviour
 {
     [SerializeField] private Transform combatOptionsContainer;
-    [SerializeField] private List<CombatOptionsUIButton> combatOptionsUIList = new List<CombatOptionsUIButton>();
+    [SerializeField] private List<ManualAttackSelectorUIButton> combatOptionsUIList = new();
 
     private void Awake()
     {
         HideUI();
     }
 
-    public void ShowUI(PlayerParticipant combatTarget)
+    public void ShowUI(List<PlayerAttackDataSO> attacks)
     {
         combatOptionsContainer.gameObject.SetActive(true);
-        ShowOptionsUI(combatTarget.GetData());
+        ShowOptionsUI(attacks);
     }
 
     public void HideUI()
@@ -24,16 +23,16 @@ public class CombatOptionsUIManager : MonoBehaviour
         HideOptionsUI();
     }
 
-    private void ShowOptionsUI(PlayerCombatTargetData combatTargetData)
+    private void ShowOptionsUI(List<PlayerAttackDataSO> attacks)
     {
         HideOptionsUI();
-        for (int i = 0; i < combatTargetData.attacks.Count; i++)
+        for (int i = 0; i < attacks.Count; i++)
         {
-            CombatOptionsUIButton combatOptionsUIButton = combatOptionsUIList[i];
+            ManualAttackSelectorUIButton combatOptionsUIButton = combatOptionsUIList[i];
 
             combatOptionsUIButton.gameObject.SetActive(true);
 
-            PlayerAttackDataSO attackDataSO = combatTargetData.attacks[i];
+            PlayerAttackDataSO attackDataSO = attacks[i];
             combatOptionsUIButton.ShowUI(attackDataSO);
         }
     }

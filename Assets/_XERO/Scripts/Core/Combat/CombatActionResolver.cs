@@ -9,18 +9,6 @@ public class CombatActionResolver : MonoBehaviour
 
     public void PlayAction(CombatActionContext actionContext)
     {
-        if (actionContext == null)
-        {
-            Debug.LogError("[CombatActionResolver] Cannot play action because context is null.");
-            return;
-        }
-
-        if (!actionContext.IsValid())
-        {
-            Debug.LogError("[CombatActionResolver] Cannot play action because context is invalid.");
-            return;
-        }
-
         ClearCurrentActionContext();
 
         currentActionContext = actionContext;
@@ -78,7 +66,7 @@ public class CombatActionResolver : MonoBehaviour
             actionContext.Attacker.SetCurrentActionContext(actionContext);
         }
 
-        foreach (Participant receiver in actionContext.Receivers)
+        foreach (Participant receiver in actionContext.Targets)
         {
             if (receiver == null)
             {
@@ -102,7 +90,7 @@ public class CombatActionResolver : MonoBehaviour
             currentActionContext.Attacker.ClearCurrentActionContext();
         }
 
-        foreach (Participant receiver in currentActionContext.Receivers)
+        foreach (Participant receiver in currentActionContext.Targets)
         {
             if (receiver == null)
             {

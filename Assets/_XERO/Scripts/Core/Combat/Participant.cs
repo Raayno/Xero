@@ -7,7 +7,7 @@ public abstract class Participant : MonoBehaviour
 {
     [Header("Combat Participant")]
     [SerializeField] private string combatantName;
-    [Required] public Damageable damageableComponent;
+    [Required] public CombatDamageable damageable;
     [Required] public TurnExec turnExec;
 
     [Header("Attack Sequence")]
@@ -37,7 +37,7 @@ public abstract class Participant : MonoBehaviour
         }
     }
 
-    public bool IsDefeated => damageableComponent.IsDefeated;
+    public bool IsDefeated => damageable.IsDefeated;
 
     public PlayableDirector AttackSequenceDirector => attackSequenceDirector;
 

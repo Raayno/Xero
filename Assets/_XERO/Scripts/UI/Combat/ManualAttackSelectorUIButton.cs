@@ -1,10 +1,10 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CombatOptionsUIButton : MonoBehaviour
+[RequireComponent(typeof(Button))]
+public class ManualAttackSelectorUIButton : MonoBehaviour
 {
     public static event Action<AttackDataSO> OnOptionSelected;
 
@@ -15,27 +15,23 @@ public class CombatOptionsUIButton : MonoBehaviour
     [SerializeField] private Button button;
 
     private AttackDataSO attackDataSO;
-    private void OnValidate()
-    {
-        if(!button)
-            button = GetComponent<Button>();
-    }
 
-    private void Awake()
+    private void Reset()
     {
+        if(button == null) button = GetComponent<Button>();
     }
 
     private void OnEnable()
     {
-        button.onClick.AddListener(OnButtonCliek);
+        button.onClick.AddListener(OnButtonClick);
     }
 
     private void OnDisable()
     {
-        button.onClick.RemoveListener(OnButtonCliek);
+        button.onClick.RemoveListener(OnButtonClick);
     }
 
-    private void OnButtonCliek()
+    private void OnButtonClick()
     {
         OnOptionSelected?.Invoke(attackDataSO);
     }

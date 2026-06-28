@@ -18,6 +18,9 @@ public class CombatController : MonoBehaviour
     [Header("Turn Management")]
     [SerializeField] private TurnSelector turnSelector;
 
+    [Header("UI Management")]
+    public ManualAttackSelectorUI CombatOptionsUIManager;
+
     [Header("Debug")]
     [SerializeField] private bool enableDebug = false;
     

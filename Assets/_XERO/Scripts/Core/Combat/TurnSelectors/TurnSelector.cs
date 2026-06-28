@@ -26,9 +26,12 @@ public abstract class TurnSelector : ScriptableObject
             return;
         }
         
-        PlanTurnTimeline(playerParticipants, enemyParticipants);
+        PlanTurnTimeline(ValidatedParticipantList(playerParticipants), ValidatedParticipantList(enemyParticipants));
         ++turnCount;
     }
+
+    private List<PlayerParticipant> ValidatedParticipantList(List<PlayerParticipant> participants) => participants.Where(p => p != null && !p.damageable.IsDefeated).ToList();
+    private List<EnemyParticipant> ValidatedParticipantList(List<EnemyParticipant> participants) => participants.Where(p => p != null && !p.damageable.IsDefeated).ToList();
 
     protected virtual void PlanTurnTimeline(List<PlayerParticipant> playerParticipants, List<EnemyParticipant> enemyParticipants)
     {
