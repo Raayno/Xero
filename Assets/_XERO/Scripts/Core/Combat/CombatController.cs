@@ -60,6 +60,8 @@ public class CombatController : MonoBehaviour
 
         yield return currentParticipant.turnExec.ExecuteTurn(currentParticipant);
         Debug.Log($"<color=#55AAFF>[Combat]</color> {currentParticipant.CombatantName} completed their turn.");
+    
+        yield return Combat();
     }
 
     bool VerifyParticipants()
