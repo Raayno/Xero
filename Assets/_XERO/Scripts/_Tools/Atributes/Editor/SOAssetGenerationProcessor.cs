@@ -30,7 +30,8 @@ public static class SOAssetGenerationProcessor
             
             // Check if the class inherits from ScriptableObject and has the attribute
             if (typeof(ScriptableObject).IsAssignableFrom(type) && 
-                type.GetCustomAttribute<EnsureAssetInstanceAttribute>() != null)
+                type.GetCustomAttribute<EnsureAssetInstanceAttribute>() != null &&
+                type.GetCustomAttribute<IgnoreAssetInstanceEnsurement>() == null)
             {
                 if (enableDebug) if(type.Name == nameof(SelfTargetSelector)) Debug.Log($"[AssetGenerator] Found ScriptableObject type with EnsureAssetInstanceAttribute: {type.FullName}. Processing...");
                 ProcessSOType(type);

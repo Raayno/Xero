@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ManualTargetSelector : TargetSelector
+[IgnoreAssetInstanceEnsurement]
+[CreateAssetMenu(fileName = "ManualTargetSelector", menuName = "Combat/TargetSelectors/ManualTargetSelector")]
+public class ManualTargetSelector : TargetSelector
 {
-    [SerializeField] protected ParticipantPointInput pointInput;
+    [SerializeField] protected TargetSelector selectionPoolSelector;
+    protected ParticipantPointInput pointInput;
     protected LayerMask selectionPoolMask;
     protected int selectionPoolLayer = -1;
     protected bool selectionWasCanceled;
-    [SerializeField] protected bool enableDebug = true;
+    [SerializeField] protected bool enableDebug = false;
     static private readonly List<Participant> currentSelectionPool = new();
 
     protected override List<Participant> SelectTargets()
@@ -24,10 +27,7 @@ public abstract class ManualTargetSelector : TargetSelector
 
     protected override IEnumerator SelectTargetsAsync(Participant self, Action<List<Participant>> onCompleted)
     {
-        if (pointInput == null)
-        {
-            pointInput = combatController.GetComponentInChildren<ParticipantPointInput>();
-        }
+        yield return GetPointInput(onCompleted);
 
         selectionWasCanceled = false;
         pointInput.OnSelectionCancelled += SelectionCanceled;
@@ -65,9 +65,28 @@ public abstract class ManualTargetSelector : TargetSelector
         onCompleted?.Invoke(new() { pointInput.PointedParticipant });
     }
 
+    private IEnumerator GetPointInput(Action<List<Participant>> onCompleted)
+    {
+        if (pointInput == null)
+        {
+            pointInput = combatController.GetComponentInChildren<ParticipantPointInput>();
+            if (pointInput == null)
+            {
+                pointInput = FindFirstObjectByType<ParticipantPointInput>();
+                if (pointInput == null)
+                {
+                    Debug.LogError("[ManualTargetSelector] No ParticipantPointInput found in the scene. Please ensure one exists.");
+                    onCompleted?.Invoke(new());
+                    yield break;
+                }
+                else Debug.LogWarning("[ManualTargetSelector] No ParticipantPointInput found in CombatController's children. Using the first one found in the scene, however it is recommended to fix the hierarchy structure in the scene.");
+            }
+        }
+    }
+
     protected void OnDisable()
     {
-        pointInput.OnSelectionCancelled -= SelectionCanceled;
+        if (pointInput !=  null) pointInput.OnSelectionCancelled -= SelectionCanceled;
     }
 
     protected void SelectionCanceled()
@@ -142,5 +161,5 @@ public abstract class ManualTargetSelector : TargetSelector
         return layerIndex;
     }
 
-    protected abstract TargetSelector GetSelectionPoolSelector();
+    protected virtual TargetSelector GetSelectionPoolSelector() => selectionPoolSelector;
 }
