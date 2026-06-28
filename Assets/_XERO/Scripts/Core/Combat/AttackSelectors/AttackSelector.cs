@@ -3,7 +3,8 @@ using System.Collections;
 using System;
 using UnityEngine;
 
-public abstract class AttackSelector: MonoBehaviour
+[EnsureAssetInstance]
+public abstract class AttackSelector: ScriptableObject
 {
     public virtual IEnumerator SelectAttackAsync(List<AttackDataSO> attacks, Action<AttackDataSO> onCompleted)
     {

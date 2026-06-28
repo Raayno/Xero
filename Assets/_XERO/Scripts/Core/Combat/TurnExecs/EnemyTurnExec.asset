@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4e380688f62344894d4e772d39f922, type: 3}
+  m_Name: EnemyTurnExec
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTurnExec
+  attackSelector: {fileID: 11400000, guid: a7d2d331b479bc8409871ebc42cf3780, type: 2}
+  availableAttacks:
+  - {fileID: 11400000, guid: 78d96034a0764a34fa5251319982acf3, type: 2}

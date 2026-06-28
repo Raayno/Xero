@@ -2,7 +2,8 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-public abstract class TurnExec: MonoBehaviour
+[EnsureAssetInstance]
+public abstract class TurnExec: ScriptableObject
 {
     [SerializeField] private AttackSelector attackSelector;
     [SerializeField] private List<AttackDataSO> availableAttacks;
