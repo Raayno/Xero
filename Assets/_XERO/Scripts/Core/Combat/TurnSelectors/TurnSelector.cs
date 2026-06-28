@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TurnSelector : MonoBehaviour
+public abstract class TurnSelector : ScriptableObject
 {
     public List<Participant> TurnTimeline { get; protected set; } = new();
 

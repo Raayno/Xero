@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackDataSO
   damageData: {fileID: 11400000, guid: 2a42918ede5e13d45bab4908dfb46e4d, type: 2}
   timelineAsset: {fileID: 11400000, guid: 83f2211658a1f384a8d1b2e0227331b4, type: 2}
-  targetType: 0
+  TargetSelectorType:
+    name: RandomPlayerTargetSelector, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null

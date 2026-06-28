@@ -1,13 +1,14 @@
-[UnityEngine.RequireComponent(typeof(AllEnemiesTargetSelector))]
+using UnityEditor;
+using UnityEngine;
+
 public class ManualEnemyTargetSelector : ManualTargetSelector
 {
-    private TargetSelector enemyTargetSelector;
+    [SerializeField] private AllEnemiesTargetSelector selectionPoolSelector;
 
-    protected override TargetSelector GetSelectionPoolSelector() => enemyTargetSelector;
+    protected override TargetSelector GetSelectionPoolSelector() => selectionPoolSelector;
 
-    protected override void Reset()
+    protected void Reset()
     {
-        base.Reset();        
-        enemyTargetSelector = enemyTargetSelector != null ? enemyTargetSelector : GetComponent<AllEnemiesTargetSelector>();
+        selectionPoolSelector = selectionPoolSelector != null ? selectionPoolSelector : AssetDatabase.LoadAssetByGUID<AllEnemiesTargetSelector>(AssetDatabase.FindAssetGUIDs($"t:AllEnemiesTargetSelector .asset")[0]);
     }
 }

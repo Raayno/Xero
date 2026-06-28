@@ -373,7 +373,6 @@ GameObject:
   m_Component:
   - component: {fileID: 175917254}
   - component: {fileID: 175917255}
-  - component: {fileID: 175917256}
   m_Layer: 0
   m_Name: Combat Controller
   m_TagString: Untagged
@@ -394,7 +393,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 602142830}
   - {fileID: 1844887517}
   - {fileID: 250859023}
   - {fileID: 789420148}
@@ -416,21 +414,8 @@ MonoBehaviour:
   - {fileID: 977623206}
   playerParticipants:
   - {fileID: 7927449809845920964}
-  turnSelector: {fileID: 175917256}
+  turnSelector: {fileID: 0}
   enableDebug: 1
---- !u!114 &175917256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175917253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535c2f7c2423bed49af0bd38bdf2bf2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AlternatingTurnSelector
-  foresightLength: 10
 --- !u!1 &185330562
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,179 +942,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6939365688439893354, guid: d3f449292e4f7224c85dc72c13df54db, type: 3}
   m_PrefabInstance: {fileID: 343882814}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &602142829
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 602142830}
-  - component: {fileID: 602142839}
-  - component: {fileID: 602142838}
-  - component: {fileID: 602142837}
-  - component: {fileID: 602142836}
-  - component: {fileID: 602142835}
-  - component: {fileID: 602142834}
-  - component: {fileID: 602142833}
-  - component: {fileID: 602142832}
-  - component: {fileID: 602142831}
-  - component: {fileID: 602142840}
-  m_Layer: 0
-  m_Name: Target Selectors
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &602142830
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 175917254}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &602142831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc69db8ff4fb0464588e515c3d6e83ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SelfTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0df20f9ac470f43a981a1987d50ca9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513a02269709aa54ebfc961c14c5f374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomPlayerTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4382410afe570ff40860085e4e3ce939, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomEnemyTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ad0f51d71085249bd30d2d02ca872c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomAllyTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ae72768ed27d2441bd00fd629ee6cd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AllTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f29e2bf1a828dc946bece4c764777361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AllPlayersTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5746174ee798dfa43b8b29fad71945db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AlliesTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d43cebeb69ee9048b586e99c86b5e3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AllEnemiesTargetSelector
-  combatController: {fileID: 175917255}
---- !u!114 &602142840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602142829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae3a7922cfe06464e9e479195524ad2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ManualEnemyTargetSelector
-  combatController: {fileID: 175917255}
-  pointInput: {fileID: 1844887518}
-  enableDebug: 1
 --- !u!1 &664627189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4e380688f62344894d4e772d39f922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTurnExec
-  targetSelectors: {fileID: 602142829}
   attackSelector: {fileID: 250859025}
   availableAttacks:
   - {fileID: 11400000, guid: 78d96034a0764a34fa5251319982acf3, type: 2}
@@ -1253,7 +1064,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70b6dec368a71746b0aab8652ff3a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTurnExec
-  targetSelectors: {fileID: 602142829}
   attackSelector: {fileID: 250859025}
   availableAttacks:
   - {fileID: 11400000, guid: a306c4e7f8006b845aa7674bc92b71dd, type: 2}

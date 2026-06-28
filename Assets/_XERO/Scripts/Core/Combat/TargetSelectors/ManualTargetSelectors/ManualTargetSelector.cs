@@ -22,8 +22,13 @@ public abstract class ManualTargetSelector : TargetSelector
         return SelectTargets();
     }
 
-    public override IEnumerator SelectTargetsAsync(Participant self, Action<List<Participant>> onCompleted)
+    protected override IEnumerator SelectTargetsAsync(Participant self, Action<List<Participant>> onCompleted)
     {
+        if (pointInput == null)
+        {
+            pointInput = combatController.GetComponentInChildren<ParticipantPointInput>();
+        }
+
         selectionWasCanceled = false;
         pointInput.OnSelectionCancelled += SelectionCanceled;
 
@@ -138,10 +143,4 @@ public abstract class ManualTargetSelector : TargetSelector
     }
 
     protected abstract TargetSelector GetSelectionPoolSelector();
-
-    protected override void Reset()
-    {
-        base.Reset();
-        pointInput = pointInput != null ? pointInput : FindFirstObjectByType<ParticipantPointInput>();
-    }
 }

@@ -1,4 +1,3 @@
-using System;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -12,7 +11,7 @@ public abstract class AttackDataSO : ScriptableObject
     [Required][SerializeField] private TimelineAsset timelineAsset;
 
     [Header("Targeting")]
-    public SerializableType TargetSelectorType;
+    [Required] public TargetSelector TargetSelector;
 
     public DamageDataSO DamageData => damageData;
     public TimelineAsset TimelineAsset => timelineAsset;
