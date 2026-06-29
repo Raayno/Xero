@@ -52,17 +52,17 @@ public static class SOAssetGenerationProcessor
         }
 
         string scriptPath = AssetDatabase.GUIDToAssetPath(guids[0]);
-        string folderPath = Path.GetDirectoryName(scriptPath);
+        string[] folderPath = {Path.GetDirectoryName(scriptPath)};
 
         // Define the desired asset path (custom/named exactly after the class)
         string nameToUse = (attribute.Name ?? soType.Name) + ".asset";
-        string assetPath = Path.Combine(folderPath, $"{nameToUse}").Replace("\\", "/");
+        string assetPath = Path.Combine(folderPath[0], $"{nameToUse}").Replace("\\", "/");
 
-        // Create it only if it doesn't exist
-        if (File.Exists(Path.GetFullPath(assetPath))) return;
+        // Create it only if there are no existing assets of that type within that folder
+        if (AssetDatabase.FindAssets($"t:{soType}", folderPath).Length >0) return;
 
         // Warn if an asset with the same name already exists somewhere else in the project
-        SearchForExistingAsset(soType, nameToUse);
+        SearchForExistingAsset(soType);
 
         ScriptableObject newAsset = ScriptableObject.CreateInstance(soType);
 
@@ -73,18 +73,15 @@ public static class SOAssetGenerationProcessor
         Debug.Log($"[AssetGenerator] Generated missing instance for <b>{soType.Name}</b> at: {assetPath}");
     }
 
-    private static void SearchForExistingAsset(Type soType, string assetName)
+    private static void SearchForExistingAsset(Type soType)
     {
-        string[] existingAssets = AssetDatabase.FindAssets($"t:{soType.Name} {assetName}");
+        string[] existingAssets = AssetDatabase.FindAssets($"t:{soType.Name}");
 
         if (existingAssets.Length == 0) return;
         foreach (string guid in existingAssets)
         {
             string existingAssetPath = AssetDatabase.GUIDToAssetPath(guid);
-            if (Path.GetFileName(existingAssetPath) == assetName)
-            {
-                Debug.LogWarning($"[AssetGenerator] An instance of <b>{soType.Name}</b> already exists at: {existingAssetPath}");
-            }
+            Debug.LogWarning($"[AssetGenerator] An instance of <b>{soType.Name}</b> already exists at: {existingAssetPath}. Move it to the same folder (/it's subfolder) as the script to avoid this warning");
         }
     }
 }
