@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerAttackDataSO", menuName = "Combat/PlayerAttackDataSO")]
+[CreateAssetMenu(fileName = "PlayerAttackDataSO", menuName = "Combat/AttackDataSO/PlayerAttackDataSO")]
 public class PlayerAttackDataSO : AttackDataSO
 {
     [Header("Player Attack Info")]

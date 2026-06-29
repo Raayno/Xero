@@ -2,7 +2,8 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-public abstract class AttackDataSO : ScriptableObject
+[CreateAssetMenu(fileName = "AttackDataSO", menuName = "Combat/AttackDataSO/AttackDataSO")]
+public class AttackDataSO : ScriptableObject
 {
     [Header("Damage")]
     [SerializeField] private DamageDataSO damageData;
