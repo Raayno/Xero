@@ -21,6 +21,9 @@ public class CombatController : MonoBehaviour
     [Header("UI Management")]
     public ManualAttackSelectorUI CombatOptionsUIManager;
 
+    [Header("Attack Management")]
+    public TimelineSignalBridge timelineSignalBridge;
+
     [Header("Debug")]
     [SerializeField] private bool enableDebug = false;
     

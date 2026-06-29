@@ -6,10 +6,10 @@ using UnityEngine.Timeline;
 public class AttackDataSO : ScriptableObject
 {
     [Header("Damage")]
-    [SerializeField] private DamageDataSO damageData;
+    public DamageDataSO damageData;
 
     [Header("Timeline")]
-    [Required][SerializeField] private TimelineAsset timelineAsset;
+    public TimelineAsset timelineAsset;
 
     [Header("Targeting")]
     [Required] public TargetSelector TargetSelector;

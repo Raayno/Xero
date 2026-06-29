@@ -2,18 +2,19 @@ using System;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Playables;
+[RequireComponent(typeof(CombatDamageable))]
 
+[RequireComponent(typeof(PlayableDirector))]
 public abstract class Participant : MonoBehaviour
 {
     [Header("Combat Participant")]
     [SerializeField] private string combatantName;
-    [Required] public CombatDamageable damageable;
+    public CombatDamageable damageable;
     [Required] public TurnExec turnExec;
+    [SerializeField] private ParticipantMovable participantMovable;
 
     [Header("Attack Sequence")]
-    [SerializeField] private PlayableDirector attackSequenceDirector;
-
-    [Header("Timeline Move Points")]
+    public PlayableDirector attackSequenceDirector;
     [SerializeField] private Transform timelineMovePoint;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private Transform hitPoint;
@@ -23,6 +24,13 @@ public abstract class Participant : MonoBehaviour
     private Vector3 actionStartPosition;
     private Quaternion actionStartRotation;
     private bool hasActionStartTransform;
+
+    protected virtual void Reset()
+    {
+        damageable = damageable != null ? damageable : GetComponent<CombatDamageable>();
+        participantMovable = participantMovable != null ? participantMovable : GetComponentInChildren<ParticipantMovable>();
+        attackSequenceDirector = attackSequenceDirector != null ? attackSequenceDirector : GetComponent<PlayableDirector>();
+    }
 
     public string CombatantName
     {

@@ -11,6 +11,7 @@ public class ManualAttackSelector : AttackSelector
 
     public override IEnumerator SelectAttackAsync(List<AttackDataSO> attacks, Action<AttackDataSO> onCompleted)
     {
+        selectedAttack = null;
         UI = UI != null ? UI : CombatController.Instance.CombatOptionsUIManager;
 
         var playerAttacks = attacks.OfType<PlayerAttackDataSO>().ToList();
@@ -33,6 +34,7 @@ public class ManualAttackSelector : AttackSelector
         }
 
         yield return new WaitUntil(() => selectedAttack != null);
+        SubscribeToUIEvents(false);
 
         onCompleted?.Invoke(selectedAttack);
     }
@@ -57,7 +59,6 @@ public class ManualAttackSelector : AttackSelector
             return;
         }
         UI.HideUI();
-        SubscribeToUIEvents(false);
         selectedAttack = selected;
     }
 }

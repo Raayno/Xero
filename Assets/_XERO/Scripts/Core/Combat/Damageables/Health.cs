@@ -16,19 +16,15 @@ public class Health : CombatDamageable
         currentHP = maxHP;
     }
 
-    public override void TakeDamage(int damageAmount)
+    public override void TakeDamage(DamageDataSO dmg)
     {
-        currentHP -= damageAmount;
+        Debug.Log($"<color=red>[Health]</color> {gameObject.name} took {dmg.DamageAmount} damage.");
+        currentHP -= Mathf.Clamp(Mathf.RoundToInt(dmg.DamageAmount), 0, maxHP);
         if (currentHP <= 0)
         {
             currentHP = 0;
             Kill();
         }
-    }
-
-    public override void Heal(int healAmount)
-    {
-        currentHP = Mathf.Clamp(healAmount, 0, maxHP);
     }
 
     protected override void TakeDeathDamage()
