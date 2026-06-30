@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -9,6 +10,7 @@ public class EnemyTurnExec : TurnExec
     protected DamageDataSO damageData;
     protected bool isParryWindowOpen = false;
     protected static ParryInput parryInput;
+    private HashSet<int> parriedTargetIds = new();
 
     protected override void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets)
     {
@@ -19,6 +21,8 @@ public class EnemyTurnExec : TurnExec
         GetParryInput();
         // Enable parry input
         parryInput.IsEnabled = true;
+        // Subscribe to parry signal
+        parryInput.OnParry += OnParry;
 
         Debug.Log($"Executing enemy turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
@@ -28,6 +32,7 @@ public class EnemyTurnExec : TurnExec
         if (signal.name == "ParryAttackWindowOpenClose") OnParryWindowOpenClose();
     }
 
+    private Coroutine parryScanCoroutine;
     protected void OnParryWindowOpenClose()
     {
         // Open if closed, close if open
@@ -37,14 +42,34 @@ public class EnemyTurnExec : TurnExec
 
         if (isParryWindowOpen)
         {
-            // Subscribe to parry signal
-            parryInput.OnParry += OnParry;
+            if (parryScanCoroutine != null) parryInput.StopCoroutine(parryScanCoroutine);
+            parriedTargetIds.Clear(); // Clear the list of parried targets at the start of a new parry window
+            parryScanCoroutine = parryInput.StartCoroutine(ParryScanCoroutine());
         }
         else
         {
+            if (parryScanCoroutine != null)
+            {
+                parryInput.StopCoroutine(parryScanCoroutine);
+                parryScanCoroutine = null;
+            }
             HitTargets(); // Execute hit targets when parry window closes
-            // Unsubscribe from parry signal
-            parryInput.OnParry -= OnParry;
+        }
+    }
+
+    private IEnumerator ParryScanCoroutine()
+    {
+        while (isParryWindowOpen)
+        {
+            for (int i = targets.Count - 1; i >= 0; i--)
+            {
+                if (targets[i] is PlayerParticipant player && player.IsTrueParry)
+                {
+                    Debug.Log($"<color=purple>[EnemyTurnExec]</color> <b>{targets[i].name} successfully parried the attack!</b> Damage is not applied.");
+                    parriedTargetIds.Add(i); // Mark this target as parried
+                }
+            }
+            yield return null; // Wait for the next frame
         }
     }
 
@@ -59,19 +84,23 @@ public class EnemyTurnExec : TurnExec
         }
     }
 
+
     protected virtual void HitTargets()
     {
-        foreach (var target in targets)
+        for (int i = 0; i < targets.Count; i++)
         {
-            if (target.damageable == null)
-            {
-                Debug.LogWarning($"<color=purple>[EnemyTurnExec]</color> Target {target.name} does not have a CombatDamageable component. Skipping damage application.");
-                continue;
-            }
+            if (parriedTargetIds.Contains(i)) continue; // Skip already parried targets
+
+            Participant target = targets[i];
             if (target is PlayerParticipant player && player.IsTrueParry)
             {
                 Debug.Log($"<color=purple>[EnemyTurnExec]</color> <b>{target.name} successfully parried the attack!</b> Damage is not applied.");
                 continue; // Skip damage application for successful parry
+            }
+            if (target.damageable == null)
+            {
+                Debug.LogWarning($"<color=purple>[EnemyTurnExec]</color> Target {target.name} does not have a CombatDamageable component. Skipping damage application.");
+                continue;
             }
             target.damageable.TakeDamage(damageData);
         }
@@ -79,6 +108,8 @@ public class EnemyTurnExec : TurnExec
 
     protected override void OnAttackSequenceFinished(PlayableDirector director)
     {
+        // Unsubscribe from parry signal
+        parryInput.OnParry -= OnParry;
         parryInput.IsEnabled = false;
     }
 

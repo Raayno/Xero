@@ -1111,6 +1111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 388612729069523394, guid: 560e5c46f47dfe64f9e3a8c34f5d0e75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6984467701310490060, guid: 560e5c46f47dfe64f9e3a8c34f5d0e75, type: 3}
       propertyPath: startMusicID
       value: Bettle
@@ -1617,6 +1621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParryInput
   IsEnabled: 0
+  enableDebug: 0
 --- !u!1 &1598635250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,12 +1674,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'index_03_l'\n\tTransform 'lowerarm_l'\n\tTransform
-    'root'\n\tTransform 'pinky_03_l'\n\tTransform 'neck_01'\n\tTransform 'pinky_03_r'\n\tTransform
-    'clavicle_l'\n\tTransform 'ring_02_l'\n\tTransform 'ball_l'\n\tTransform 'hand_l'\n\tand
-    more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -38543,6 +38543,7 @@ MonoBehaviour:
   participantMovable: {fileID: 1399096374}
   playableDirector: {fileID: 7927449809845920967}
   parryTimelineAsset: {fileID: 11400000, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
+  parrySignalAsset: {fileID: 11400000, guid: bf960d18d99ff524ba37535ecc3a4461, type: 2}
 --- !u!114 &7927449809845920965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44271,7 +44272,7 @@ PlayableDirector:
   - key: {fileID: -2909121600791168203, guid: 83f2211658a1f384a8d1b2e0227331b4, type: 2}
     value: {fileID: 8376026977748346388}
   - key: {fileID: -4676061801704578485, guid: 83f2211658a1f384a8d1b2e0227331b4, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1873840765}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &8376026976303463016
