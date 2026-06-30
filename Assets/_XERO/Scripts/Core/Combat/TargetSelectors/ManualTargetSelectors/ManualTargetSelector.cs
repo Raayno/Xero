@@ -82,17 +82,21 @@ public class ManualTargetSelector : TargetSelector
     {
         if (pointInput == null)
         {
-            pointInput = combatController.GetComponentInChildren<ParticipantPointInput>();
+            pointInput = combatController.ParticipantPointInput;
             if (pointInput == null)
             {
-                pointInput = FindFirstObjectByType<ParticipantPointInput>();
+                pointInput = combatController.GetComponentInChildren<ParticipantPointInput>();
                 if (pointInput == null)
                 {
-                    Debug.LogError("[ManualTargetSelector] No ParticipantPointInput found in the scene. Please ensure one exists.");
-                    onCompleted?.Invoke(new());
-                    yield break;
+                    pointInput = FindFirstObjectByType<ParticipantPointInput>();
+                    if (pointInput == null)
+                    {
+                        Debug.LogError("[ManualTargetSelector] No ParticipantPointInput found in the scene. Please ensure one exists.");
+                        onCompleted?.Invoke(new());
+                        yield break;
+                    }
+                    else Debug.LogWarning("[ManualTargetSelector] No ParticipantPointInput found in CombatController's children. Using the first one found in the scene, however it is recommended to fix the hierarchy structure in the scene.");
                 }
-                else Debug.LogWarning("[ManualTargetSelector] No ParticipantPointInput found in CombatController's children. Using the first one found in the scene, however it is recommended to fix the hierarchy structure in the scene.");
             }
         }
     }
