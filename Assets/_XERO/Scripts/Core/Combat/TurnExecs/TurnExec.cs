@@ -1,12 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 [EnsureAssetInstance]
 public abstract class TurnExec: ScriptableObject
 {
+    protected static TimelineSignalBridge signalBridge;
     [SerializeField] private AttackSelector attackSelector;
     [SerializeField] private List<AttackDataSO> availableAttacks;
+    [Tooltip("Signals that this TurnExec will listen for during the attack sequence.")]
+    [SerializeField] private List<SignalAsset> signalsToListenFor;
+    [SerializeField] protected bool enableDebug = false;
 
     public IEnumerator ExecuteTurn(Participant executor)
     {
@@ -44,8 +50,80 @@ public abstract class TurnExec: ScriptableObject
 
         Debug.Log($"<color=purple>[TurnExec]</color> {executor.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
 
-        yield return ExecuteTurn(executor, attack, targets);
+        PlayableDirector director = executor.playableDirector;
+        director.playableAsset = attack.TimelineAsset;
+
+        PrepareForExecution(executor, attack, targets);
+        
+        SubscribeToAttackSequenceEventsBase(director, true);
+        director.Play();
+
+        // Wait for the attack sequence to complete
+        yield return WaitForAttackSequenceCompletion();
+
+        SubscribeToAttackSequenceEventsBase(director, false);
     }
 
-    protected abstract IEnumerator ExecuteTurn(Participant executor, AttackDataSO attack, List<Participant> targets);
+    protected virtual void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets)
+    {
+        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> No specific preparation for execution in this TurnExec");
+    }
+
+    private void SubscribeToAttackSequenceEventsBase(PlayableDirector director, bool isSubscribe)
+    {
+        if (!TimelineSignalBridge.GetSignalBridge(signalBridge, out signalBridge)) throw new System.Exception("<color=purple>[TurnExec]</color> TimelineSignalBridge not found in CombatController's children.");
+
+        TimelineSignalBridge.SubscribeToNotifications(isSubscribe, HandleSignalReceivedBase);
+
+        if (isSubscribe)
+        {
+            director.stopped += OnAttackSequenceFinishedBase;
+        }
+        else
+        {
+            director.stopped -= OnAttackSequenceFinishedBase;
+        }
+        SubscribeToAttackSequenceEvents(director, isSubscribe);
+    }
+
+    protected virtual void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe)
+    {
+        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> No specific subscription to attack sequence events in this TurnExec");
+    }
+
+    private void HandleSignalReceivedBase(SignalAsset signal)
+    {
+        if (!signalsToListenFor.Contains(signal))
+        {
+            if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Received signal '{signal.name}' which is not in the list of signals to listen for.");
+            return;
+        }
+        HandleSignalReceived(signal);
+    }
+
+    protected virtual void HandleSignalReceived(SignalAsset signal)
+    {
+        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Received signal: {signal.name}");
+    }
+    
+    private IEnumerator WaitForAttackSequenceCompletion()
+    {
+        isSequenceCompleted = false;
+        while (!isSequenceCompleted)
+        {
+            yield return null;
+        }
+    }
+    
+    bool isSequenceCompleted = false;
+    private void OnAttackSequenceFinishedBase(PlayableDirector director)
+    {
+        isSequenceCompleted = true;
+        OnAttackSequenceFinished(director);
+    }
+
+    protected virtual void OnAttackSequenceFinished(PlayableDirector director)
+    {
+        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Attack sequence finished for {director.name}.");
+    }
 }
