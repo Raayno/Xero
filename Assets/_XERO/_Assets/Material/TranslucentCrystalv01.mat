@@ -31,7 +31,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoMask:
-        m_Texture: {fileID: 2800000, guid: a6fe0b6b38093a145a1e535f347ffaaa, type: 3}
+        m_Texture: {fileID: 2800000, guid: eabf1b0c69ed5d6409ea25bba228f425, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 149859e847f92db4fbf8632f0b986071, type: 3}
+        m_Texture: {fileID: 2800000, guid: eabf1b0c69ed5d6409ea25bba228f425, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -71,7 +71,7 @@ Material:
         m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 3fe9c43571ea35d45aef6ecdbec01312, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1889f2479c26159448b3bb0eb2253b8d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -87,11 +87,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RampMask:
-        m_Texture: {fileID: 2800000, guid: 2efaa2ddf7595af4987d403f6a48a8bd, type: 3}
+        m_Texture: {fileID: 2800000, guid: eabf1b0c69ed5d6409ea25bba228f425, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyMask:
-        m_Texture: {fileID: 2800000, guid: a6fe0b6b38093a145a1e535f347ffaaa, type: 3}
+        m_Texture: {fileID: 2800000, guid: eabf1b0c69ed5d6409ea25bba228f425, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -105,27 +105,27 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionPower: 10
+    - _EmissionPower: 0.81
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 1
+    - _Metallic: 0.924
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RampEnabled: 0
     - _RampInverted: 0
-    - _Smoothness: 0.686
+    - _Smoothness: 0.884
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TransAmbient: 1
-    - _TransDirect: 0.866
-    - _TransNormal: 0.669
+    - _TransAmbient: 0.424
+    - _TransDirect: 1
+    - _TransNormal: 0.651
     - _TransNormalDistortion: 0.1
     - _TransScattering: 20
     - _TransShadow: 1
-    - _TransStrength: 4.9
+    - _TransStrength: 6.7
     - _Translucency: 0
     - _TranslucencyMaskPower: 1
     - _UVSec: 0
@@ -134,8 +134,8 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorTint: {r: 1, g: 0.24264705, b: 0.6970591, a: 1}
-    - _ColorTint1: {r: 1, g: 0, b: 0.42372894, a: 1}
-    - _ColorTint2: {r: 0.95461285, g: 1, b: 0, a: 1}
-    - _EmissionColor: {r: 0, g: 0.7868185, b: 1, a: 1}
+    - _ColorTint1: {r: 0, g: 0.82547003, b: 0.94509804, a: 1}
+    - _ColorTint2: {r: 0.94509804, g: 0.6902112, b: 0.36862743, a: 1}
+    - _EmissionColor: {r: 0.09547619, g: 0, b: 0.3301887, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
