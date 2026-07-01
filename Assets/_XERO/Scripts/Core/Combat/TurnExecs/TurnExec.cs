@@ -54,14 +54,19 @@ public abstract class TurnExec: ScriptableObject
         director.playableAsset = attack.TimelineAsset;
 
         PrepareForExecution(executor, attack, targets);
+
+        yield return executor.ParticipantMovable.MoveToTargetAsync(targets);
         
         SubscribeToAttackSequenceEventsBase(director, true);
+        director.playableAsset = attack.TimelineAsset;
         director.Play();
 
         // Wait for the attack sequence to complete
         yield return WaitForAttackSequenceCompletion();
 
         SubscribeToAttackSequenceEventsBase(director, false);
+
+        yield return executor.ParticipantMovable.ReturnToOriginalPositionAsync();
     }
 
     protected virtual void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets)

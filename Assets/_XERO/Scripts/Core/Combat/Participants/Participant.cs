@@ -22,15 +22,15 @@ public abstract class Participant : MonoBehaviour
 
     public CombatDamageable damageable;
     public TurnExec turnExec;
-    [SerializeField] private ParticipantMovable participantMovable;
 
     [Header("Attack Sequence")]
+    public ParticipantMovable ParticipantMovable;
     public PlayableDirector playableDirector;
 
     protected virtual void Reset()
     {
         damageable = damageable != null ? damageable : GetComponent<CombatDamageable>();
-        participantMovable = participantMovable != null ? participantMovable : GetComponentInChildren<ParticipantMovable>();
+        ParticipantMovable = ParticipantMovable != null ? ParticipantMovable : GetComponentInChildren<ParticipantMovable>();
         playableDirector = playableDirector != null ? playableDirector : GetComponent<PlayableDirector>();
         
         if (string.IsNullOrWhiteSpace(combatantName))

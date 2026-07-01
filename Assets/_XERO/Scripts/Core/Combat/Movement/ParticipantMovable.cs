@@ -1,81 +1,127 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Timeline;
+
 
 public class ParticipantMovable : MonoBehaviour
 {
-    protected Transform attackTransform;
-    protected float duration;
+    private static readonly Quaternion positiveInfinityQuaternion = new(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+    [Header("Movement animation")]
+    [SerializeField] private TimelineAsset moveToTargetTimelineAsset;
+    [SerializeField] private AnimationCurve  moveToTargetTraversalSpeedCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+    [SerializeField] private TimelineAsset returnTimelineAsset;
+    [SerializeField] private AnimationCurve  returnTraversalSpeedCurve;
+    
+    [Header("References")]
+    [SerializeField] private Participant participant;
+    [SerializeField] private HitTransform hitTransform;
+    [SerializeField] private AttackTransform attackTransform;
+    private Vector3 originalPosition = Vector3.positiveInfinity;
+    private Quaternion originalRotation = positiveInfinityQuaternion;
 
-    public void StartAttackMovement(TransformData targetHitTransform, float moveToTargetDuration)
+    public IEnumerator MoveToTargetAsync(System.Collections.Generic.List<Participant> targets)
     {
-        if (TryGetComponent<AttackTransform>(out var attackTransformComponent))
+        if (moveToTargetTimelineAsset == null)
         {
-            attackTransform = attackTransformComponent.transform;
+            Debug.LogError("<color=purple>[ParticipantMovable]</color> MoveToTargetTimelineAsset is not assigned.");
+            yield break;
         }
-        else
+        if (targets == null || targets.Count == 0 || targets.Count > 1 || targets[0] == null)
         {
-            Debug.LogWarning($"No AttackTransform component found on {gameObject.name}. Using the current transform instead.");
-            attackTransform = null;
+            yield break;
         }
 
-        duration = moveToTargetDuration;
+        // For simplicity, we will just use the first target's HitTransform for movement
+        HitTransform targetHitTransform = targets[0].GetComponentInChildren<HitTransform>();
+        if (targetHitTransform == null)
+        {
+            Debug.LogError($"<color=purple>[ParticipantMovable]</color> Target '{targets[0].name}' does not have a HitTransform.");
+            yield break;
+        }
+
+        yield return AttackMovementAsync(targetHitTransform);
+    }
+
+    public IEnumerator ReturnToOriginalPositionAsync()
+    {
+        if (moveToTargetTimelineAsset == null)
+        {
+            Debug.LogError("<color=purple>[ParticipantMovable]</color> MoveToTargetTimelineAsset is not assigned.");
+            yield break;
+        }
+        if (originalPosition == null || originalPosition == Vector3.positiveInfinity)
+        {
+            Debug.LogError("<color=purple>[ParticipantMovable]</color> Original position is not set. Cannot return to original position.");
+            yield break;
+        }
+        if (originalRotation == null || originalRotation == positiveInfinityQuaternion)
+        {
+            Debug.LogError("<color=purple>[ParticipantMovable]</color> Original rotation is not set. Cannot return to original rotation.");
+            yield break;
+        }
+        yield return ReturnMovementAsync();
+    }
+
+    private IEnumerator AttackMovementAsync(HitTransform targetHitTransform)
+    {
+        // Calculate the route vector and target position based on the attack and hit transforms
+        Vector3 routeVector = targetHitTransform.Position - attackTransform.Position;
+        Vector3 targetPosition = transform.position + routeVector;
+
+        // Store the original position and rotation of the participant
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
+
+        // Calculate the rotation needed to face the target position
+        Quaternion routeRotation = Quaternion.LookRotation(routeVector, Vector3.up);
+        yield return Rotate(transform, routeRotation);
+
+        yield return Move(targetPosition, moveToTargetTimelineAsset, moveToTargetTraversalSpeedCurve);
+
+        yield return Rotate(transform, originalRotation);
+    }
+
+    private IEnumerator ReturnMovementAsync()
+    {
+        if (returnTimelineAsset == null) returnTimelineAsset = moveToTargetTimelineAsset;
+        if (returnTraversalSpeedCurve.keys.Length < 2) returnTraversalSpeedCurve = moveToTargetTraversalSpeedCurve;
+
+        Quaternion routeRotation = Quaternion.LookRotation(originalPosition - transform.position, Vector3.up);
+        yield return Rotate(transform, routeRotation);
         
-        StartCoroutine(StartAttackMovement(targetHitTransform));
+        yield return Move(originalPosition, returnTimelineAsset, returnTraversalSpeedCurve);
+
+        yield return Rotate(transform, originalRotation);
     }
 
-    public void ReturnToOriginalPosition(float returnDuration)
+    private IEnumerator Move(Vector3 targetPosition, TimelineAsset timelineAsset, AnimationCurve traversalSpeedCurve)
     {
-        duration = returnDuration;
-        Continue();
+        participant.playableDirector.playableAsset = timelineAsset;
+        participant.playableDirector.Play();
+        yield return transform.DOMove(targetPosition, (float)timelineAsset.duration).SetEase(traversalSpeedCurve).WaitForCompletion();
+        participant.playableDirector.Stop();
     }
 
-    private IEnumerator StartAttackMovement(TransformData targetHitTransform)
+    private IEnumerator Rotate(Transform targetTransform, Quaternion rotation)
     {
-        yield return MoveToTarget(targetHitTransform);
-        yield return WaitForContinue();
+        targetTransform.rotation = rotation;
+        yield break;
     }
 
-    protected virtual IEnumerator MoveToTarget(TransformData targetHitTransform)
+    private void Reset()
     {
-        // Get the relative position and rotation of the target transform with respect to the attack transform
-        targetHitTransform.Rotation = Quaternion.Inverse(targetHitTransform.Rotation);
-        if (attackTransform != null)
+        if (participant == null)
         {
-            targetHitTransform.Position += attackTransform.position - transform.position;
-            targetHitTransform.Scale = new(targetHitTransform.Scale.x/attackTransform.localScale.x, targetHitTransform.Scale.y/attackTransform.localScale.y, targetHitTransform.Scale.z/attackTransform.localScale.z);
+            participant = transform.parent.GetComponent<Participant>();
         }
-
-        // Move to target
-        Sequence moveSequence = DOTween.Sequence(false);
-        moveSequence.Append(transform.DOMove(targetHitTransform.Position, duration));
-        moveSequence.Join(transform.DORotateQuaternion(targetHitTransform.Rotation, duration));
-        moveSequence.Join(transform.DOScale(targetHitTransform.Scale, duration));
-        
-        moveSequence.SetAutoKill(false);
-        moveSequence.Play();
-
-        yield return moveSequence.WaitForCompletion();
-
-        // Wait for continue signal
-        yield return WaitForContinue();
-
-        // Return to original position
-        moveSequence.PlayBackwards();
-
-        yield return moveSequence.WaitForRewind();
-        moveSequence.Kill();
-    }
-
-    private bool isContinue = false;
-    private IEnumerator WaitForContinue()
-    {
-        yield return new WaitUntil(() => isContinue);
-        isContinue = false;
-    }
-
-    private void Continue()
-    {
-        isContinue = true;
+        if (hitTransform == null)
+        {
+            hitTransform = participant.GetComponentInChildren<HitTransform>();
+        }
+        if (attackTransform == null)
+        {
+            attackTransform = GetComponentInChildren<AttackTransform>();
+        }
     }
 }

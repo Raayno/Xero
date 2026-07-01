@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   debugMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  color: {r: 0.65, g: 0.2, b: 0.2, a: 1}
 --- !u!1001 &111534126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -372,6 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 167630803}
+  - component: {fileID: 167630804}
   m_Layer: 8
   m_Name: Hit Transform
   m_TagString: Untagged
@@ -395,6 +397,20 @@ Transform:
   - {fileID: 7301749977695032771}
   m_Father: {fileID: 8376026976256546664}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167630804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167630802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e994af8518bc764892016f5f92ef803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitTransform
+  debugMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  color: {r: 0.1, g: 0.3, b: 0.8, a: 1}
 --- !u!1 &175917253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1042,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b115c113a9fd94095c48bcf3e3c2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParticipantMovable
+  moveToTargetTimelineAsset: {fileID: 0}
+  moveToTargetTraversalSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  returnTimelineAsset: {fileID: 0}
+  returnTraversalSpeedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  participant: {fileID: 977623206}
+  hitTransform: {fileID: 167630804}
+  attackTransform: {fileID: 84915609}
 --- !u!224 &674673638 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6939365688439893354, guid: d3f449292e4f7224c85dc72c13df54db, type: 3}
@@ -1179,7 +1230,7 @@ MonoBehaviour:
   combatantName: BobEnemy
   damageable: {fileID: 8376026976256546672}
   turnExec: {fileID: 11400000, guid: 064db77deb62fc5469cd0559fa056aca, type: 2}
-  participantMovable: {fileID: 0}
+  ParticipantMovable: {fileID: 667159636}
   playableDirector: {fileID: 8376026976256546673}
 --- !u!1 &1049872953
 GameObject:
@@ -1457,6 +1508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1275420552}
+  - component: {fileID: 1275420553}
   m_Layer: 6
   m_Name: Hit Transform
   m_TagString: Untagged
@@ -1479,6 +1531,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4099359011779346105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1275420553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275420551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e994af8518bc764892016f5f92ef803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitTransform
+  debugMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  color: {r: 0.1, g: 0.3, b: 0.8, a: 1}
 --- !u!1 &1399096372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,6 +1591,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b115c113a9fd94095c48bcf3e3c2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParticipantMovable
+  moveToTargetTimelineAsset: {fileID: 11400000, guid: d111dfd2f6e2db0408975c59324a8fbd, type: 2}
+  moveToTargetTraversalSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  returnTimelineAsset: {fileID: 0}
+  returnTraversalSpeedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  participant: {fileID: 7927449809845920964}
+  hitTransform: {fileID: 1275420553}
+  attackTransform: {fileID: 1971828660}
 --- !u!1 &1559610327
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,6 +3620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackTransform
   debugMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  color: {r: 0.65, g: 0.2, b: 0.2, a: 1}
 --- !u!108 &2057649511 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 7532149130050435710, guid: 4bbcd7ea73137e9499986d7895b5ed02, type: 3}
@@ -38541,7 +38643,7 @@ MonoBehaviour:
   combatantName: XeroPlayer
   damageable: {fileID: 7927449809845920966}
   turnExec: {fileID: 11400000, guid: eee3765d420f07b48a4980ee2c473f6a, type: 2}
-  participantMovable: {fileID: 1399096374}
+  ParticipantMovable: {fileID: 1399096374}
   playableDirector: {fileID: 7927449809845920967}
   parryTimelineAsset: {fileID: 11400000, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
   parrySignalAsset: {fileID: 11400000, guid: bf960d18d99ff524ba37535ecc3a4461, type: 2}
@@ -38599,7 +38701,7 @@ PlayableDirector:
   m_GameObject: {fileID: 3722235957707482115}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 7e18df29cc15e794ebd37c20876e9e70, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: d111dfd2f6e2db0408975c59324a8fbd, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -38623,6 +38725,8 @@ PlayableDirector:
     value: {fileID: 1873840765}
   - key: {fileID: 1508769718520354896, guid: 7e18df29cc15e794ebd37c20876e9e70, type: 2}
     value: {fileID: 1873840765}
+  - key: {fileID: -1602546600627933780, guid: d111dfd2f6e2db0408975c59324a8fbd, type: 2}
+    value: {fileID: 1598635252}
   m_ExposedReferences:
     m_References:
     - 30c59c33e69e4ed459d8994cdc9318c4: {fileID: 0}
