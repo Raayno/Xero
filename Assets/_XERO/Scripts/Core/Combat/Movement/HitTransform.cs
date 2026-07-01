@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEditor;
 
-public class AttackTransform : MonoBehaviour
+public class HitTransform : MonoBehaviour
 {
-    [Header("Doesn't take Hit Transform into account!!!")]
     [SerializeField] private Mesh debugMesh;
-    [SerializeField] private Color color = new(0.65f, 0.20f, 0.20f);
+    [SerializeField] private Color color = new(0.1f, 0.3f, 0.8f);
     
     private void OnDrawGizmos()
     {
