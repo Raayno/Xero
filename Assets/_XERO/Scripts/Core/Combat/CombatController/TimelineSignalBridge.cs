@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using System;
+using System.Collections.Generic;
 
 public class TimelineSignalBridge : MonoBehaviour, INotificationReceiver
 {
-    public System.Action<SignalAsset> OnSignalReceived;
+    [SerializeField] private bool enableDebug = false;
+    public Action<SignalAsset> OnSignalReceived;
 
     public void OnNotify(Playable origin, INotification notification, object context)
     {
         if (notification is SignalEmitter emitter && emitter.asset != null)
         {
-            Debug.Log($"<color=#FF69B4>[TimelineSignalBridge]</color> Signal received: {emitter.asset.name}");
+            if (enableDebug) Debug.Log($"<color=#FF69B4>[TimelineSignalBridge]</color> Signal received: {emitter.asset.name}");
             OnSignalReceived?.Invoke(emitter.asset);
         }
     }
@@ -32,8 +35,8 @@ public class TimelineSignalBridge : MonoBehaviour, INotificationReceiver
         if (foundSignalBridge != null) return true;
         return GetSignalBridge(out foundSignalBridge);
     }
-
-    public static void SubscribeToNotifications(bool isSubscribe, System.Action<SignalAsset> callback)
+    
+    public static void SubscribeToNotifications(bool isSubscribe, Action<SignalAsset> callback)
     {
         if (!GetSignalBridge(out TimelineSignalBridge signalBridge)) return;
 
@@ -45,5 +48,53 @@ public class TimelineSignalBridge : MonoBehaviour, INotificationReceiver
         {
             signalBridge.OnSignalReceived -= callback;
         }
+        
+        if (signalBridge.enableDebug) Debug.Log($"<color=#FF69B4>[TimelineSignalBridge]</color> {(isSubscribe ? "Subscribed to" : "Unsubscribed from")} notifications with callback: {callback.Method.Name}");
+    }
+
+    private struct SubscriptionKey : IEquatable<SubscriptionKey>
+    { 
+        public SignalAsset signalAsset; 
+        public Action callback; 
+
+        public readonly bool Equals(SubscriptionKey other) => signalAsset == other.signalAsset && callback == other.callback;
+        public override readonly bool Equals(object obj) => obj is SubscriptionKey other && Equals(other);
+        public override readonly int GetHashCode() => HashCode.Combine(signalAsset, callback);
+    }
+    private struct SubscriptionValue { public Action<SignalAsset> signalHandler; }
+    private static readonly Dictionary<SubscriptionKey, SubscriptionValue> signalHandlers = new();
+    public static void SubscribeToNotifications(bool isSubscribe, SignalAsset signalAssetToSubscribeTo, Action callback)
+    {
+        if (callback == null || signalAssetToSubscribeTo == null) return;
+        if (!GetSignalBridge(out TimelineSignalBridge signalBridge)) return;
+
+        SubscriptionKey key = new() { signalAsset = signalAssetToSubscribeTo, callback = callback };
+        if (isSubscribe)
+        {
+            if (signalHandlers.ContainsKey(key))
+            {
+                Debug.LogWarning("<color=#FF69B4>[TimelineSignalBridge]</color> Already subscribed to this signal with the provided callback.");
+                return;
+            }
+            void signalHandler(SignalAsset signal) => CompareAndNotify(signal, key);
+            signalHandlers[key] = new SubscriptionValue { signalHandler = signalHandler };
+            signalBridge.OnSignalReceived += signalHandler;
+        }
+        else
+        {
+            if (!signalHandlers.TryGetValue(key, out var v)) return;
+            signalBridge.OnSignalReceived -= v.signalHandler;
+            signalHandlers.Remove(key);
+        }
+
+        if (signalBridge.enableDebug) Debug.Log($"<color=#FF69B4>[TimelineSignalBridge]</color> {(isSubscribe ? "Subscribed to" : "Unsubscribed from")} notifications for signal: {signalAssetToSubscribeTo.name} with callback: {callback.Method.Name}");
+    }
+
+    private static void CompareAndNotify(SignalAsset signalAsset, SubscriptionKey context)
+    {
+        if (signalAsset == null) return;
+        if (context.signalAsset != signalAsset) return;
+
+        context.callback?.Invoke();
     }
 }

@@ -73,8 +73,6 @@ public abstract class TurnExec: ScriptableObject
     {
         if (!TimelineSignalBridge.GetSignalBridge(signalBridge, out signalBridge)) throw new System.Exception("<color=purple>[TurnExec]</color> TimelineSignalBridge not found in CombatController's children.");
 
-        TimelineSignalBridge.SubscribeToNotifications(isSubscribe, HandleSignalReceivedBase);
-
         if (isSubscribe)
         {
             director.stopped += OnAttackSequenceFinishedBase;
@@ -89,21 +87,6 @@ public abstract class TurnExec: ScriptableObject
     protected virtual void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe)
     {
         if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> No specific subscription to attack sequence events in this TurnExec");
-    }
-
-    private void HandleSignalReceivedBase(SignalAsset signal)
-    {
-        if (!signalsToListenFor.Contains(signal))
-        {
-            if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Received signal '{signal.name}' which is not in the list of signals to listen for.");
-            return;
-        }
-        HandleSignalReceived(signal);
-    }
-
-    protected virtual void HandleSignalReceived(SignalAsset signal)
-    {
-        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Received signal: {signal.name}");
     }
     
     private IEnumerator WaitForAttackSequenceCompletion()

@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 public class EnemyTurnExec : TurnExec
 {
+    [SerializeField] protected UnityEngine.Timeline.SignalAsset parryAttackWindowOpenCloseSignal;
     protected List<Participant> targets;
     protected DamageDataSO damageData;
     protected bool isParryWindowOpen = false;
     protected static ParryInput parryInput;
-    private HashSet<int> parriedTargetIds = new();
+    private readonly HashSet<int> parriedTargetIds = new();
 
     protected override void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets)
     {
@@ -24,12 +24,12 @@ public class EnemyTurnExec : TurnExec
         // Subscribe to parry signal
         parryInput.OnParry += OnParry;
 
-        Debug.Log($"Executing enemy turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
+        Debug.Log($"<color=purple>[EnemyTurnExec]</color> Executing enemy turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
 
-    protected override void HandleSignalReceived(SignalAsset signal)
+    protected override void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe)
     {
-        if (signal.name == "ParryAttackWindowOpenClose") OnParryWindowOpenClose();
+        TimelineSignalBridge.SubscribeToNotifications(isSubscribe, parryAttackWindowOpenCloseSignal, OnParryWindowOpenClose);
     }
 
     private Coroutine parryScanCoroutine;
@@ -43,7 +43,6 @@ public class EnemyTurnExec : TurnExec
         if (isParryWindowOpen)
         {
             if (parryScanCoroutine != null) parryInput.StopCoroutine(parryScanCoroutine);
-            parriedTargetIds.Clear(); // Clear the list of parried targets at the start of a new parry window
             parryScanCoroutine = parryInput.StartCoroutine(ParryScanCoroutine());
         }
         else
@@ -59,10 +58,13 @@ public class EnemyTurnExec : TurnExec
 
     private IEnumerator ParryScanCoroutine()
     {
+        parriedTargetIds.Clear();
+        
         while (isParryWindowOpen)
         {
             for (int i = targets.Count - 1; i >= 0; i--)
             {
+                if (parriedTargetIds.Contains(i)) continue; // Skip already parried targets TODO: Can be optimised if HashSet were sorted
                 if (targets[i] is PlayerParticipant player && player.IsTrueParry)
                 {
                     Debug.Log($"<color=purple>[EnemyTurnExec]</color> <b>{targets[i].name} successfully parried the attack!</b> Damage is not applied.");
@@ -87,6 +89,7 @@ public class EnemyTurnExec : TurnExec
 
     protected virtual void HitTargets()
     {
+        if (enableDebug) Debug.Log($"<color=purple>[EnemyTurnExec]</color> HitTargets called");
         for (int i = 0; i < targets.Count; i++)
         {
             if (parriedTargetIds.Contains(i)) continue; // Skip already parried targets

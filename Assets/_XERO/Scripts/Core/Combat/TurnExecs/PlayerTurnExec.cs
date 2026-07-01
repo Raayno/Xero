@@ -4,6 +4,7 @@ using UnityEngine.Timeline;
 
 public class PlayerTurnExec : TurnExec
 {
+    [SerializeField] protected SignalAsset hitTargetsSignal;
     protected List<Damageable> targetDamageables;
     protected DamageDataSO damageData;
 
@@ -22,9 +23,9 @@ public class PlayerTurnExec : TurnExec
         Debug.Log($"<color=purple>[PlayerTurnExec]</color>. Executing player turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
 
-    protected override void HandleSignalReceived(SignalAsset signal)
+    protected override void SubscribeToAttackSequenceEvents(UnityEngine.Playables.PlayableDirector director, bool isSubscribe)
     {
-        if (signal.name == "HitTargets") OnHitTargets();
+        TimelineSignalBridge.SubscribeToNotifications(isSubscribe, hitTargetsSignal, OnHitTargets);
     }
 
     protected void OnHitTargets()
