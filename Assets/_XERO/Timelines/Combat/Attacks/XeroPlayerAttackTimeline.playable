@@ -226,35 +226,6 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 24192305690647a47aed5cc9cecdc3d1, type: 2}
---- !u!114 &-1690996213410268217
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
-  m_Name: Hits
-  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalTrack
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips: []
-  m_Markers:
-    m_Objects:
-    - {fileID: 234739352964100971}
-    - {fileID: -6923434626468394755}
-    - {fileID: -6428970619965435492}
-    - {fileID: 6454469894862576130}
-    - {fileID: 1358766945806216094}
-    - {fileID: 7951336480634615934}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +241,6 @@ MonoBehaviour:
   m_Version: 0
   m_Tracks:
   - {fileID: -4377515206427247529}
-  - {fileID: -1690996213410268217}
   - {fileID: 1508769718520354896}
   m_FixedDuration: 0
   m_EditorSettings:

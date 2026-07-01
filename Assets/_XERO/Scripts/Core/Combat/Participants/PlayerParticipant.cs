@@ -25,7 +25,7 @@ public class PlayerParticipant : Participant
         }
 
         isTrueParry = false;
-        TimelineSignalBridge.SubscribeToNotifications(true, parrySignalAsset, OnParrySignal);
+        TimelineSignalBridge.SubscribeToSignal(true, parrySignalAsset, OnParrySignal);
 
         playableDirector.playableAsset = parryTimelineAsset;
         playableDirector.Play();
@@ -34,12 +34,12 @@ public class PlayerParticipant : Participant
         yield return new WaitForSeconds((float)playableDirector.duration);
         canParry = true;
 
-        TimelineSignalBridge.SubscribeToNotifications(false, parrySignalAsset, OnParrySignal);
+        TimelineSignalBridge.SubscribeToSignal(false, parrySignalAsset, OnParrySignal);
     }
 
     private void OnParrySignal()
     {
         isTrueParry = !isTrueParry;
-        Debug.Log($"<color=green>[PlayerParticipant]</color> True Parry window of {combatantName} is now {(isTrueParry ? "open" : "closed")}.");
+        if (enableDebug) Debug.Log($"<color=green>[PlayerParticipant]</color> True Parry window of {combatantName} is now {(isTrueParry ? "open" : "closed")}.");
     }
 }

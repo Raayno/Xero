@@ -36,7 +36,7 @@ public class TimelineSignalBridge : MonoBehaviour, INotificationReceiver
         return GetSignalBridge(out foundSignalBridge);
     }
     
-    public static void SubscribeToNotifications(bool isSubscribe, Action<SignalAsset> callback)
+    public static void SubscribeToSignal(bool isSubscribe, Action<SignalAsset> callback)
     {
         if (!GetSignalBridge(out TimelineSignalBridge signalBridge)) return;
 
@@ -63,7 +63,7 @@ public class TimelineSignalBridge : MonoBehaviour, INotificationReceiver
     }
     private struct SubscriptionValue { public Action<SignalAsset> signalHandler; }
     private static readonly Dictionary<SubscriptionKey, SubscriptionValue> signalHandlers = new();
-    public static void SubscribeToNotifications(bool isSubscribe, SignalAsset signalAssetToSubscribeTo, Action callback)
+    public static void SubscribeToSignal(bool isSubscribe, SignalAsset signalAssetToSubscribeTo, Action callback)
     {
         if (callback == null || signalAssetToSubscribeTo == null) return;
         if (!GetSignalBridge(out TimelineSignalBridge signalBridge)) return;

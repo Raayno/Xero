@@ -27,7 +27,14 @@ public abstract class Participant : MonoBehaviour
     public ParticipantMovable ParticipantMovable;
     public PlayableDirector playableDirector;
 
+    [SerializeField] protected bool enableDebug = false;
+
     protected virtual void Reset()
+    {
+        Awake();
+    }
+
+    protected virtual void Awake()
     {
         damageable = damageable != null ? damageable : GetComponent<CombatDamageable>();
         ParticipantMovable = ParticipantMovable != null ? ParticipantMovable : GetComponentInChildren<ParticipantMovable>();

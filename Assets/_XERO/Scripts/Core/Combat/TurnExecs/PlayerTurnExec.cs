@@ -25,7 +25,7 @@ public class PlayerTurnExec : TurnExec
 
     protected override void SubscribeToAttackSequenceEvents(UnityEngine.Playables.PlayableDirector director, bool isSubscribe)
     {
-        TimelineSignalBridge.SubscribeToNotifications(isSubscribe, hitTargetsSignal, OnHitTargets);
+        TimelineSignalBridge.SubscribeToSignal(isSubscribe, hitTargetsSignal, OnHitTargets);
     }
 
     protected void OnHitTargets()

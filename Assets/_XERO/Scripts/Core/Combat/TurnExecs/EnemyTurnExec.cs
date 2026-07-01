@@ -29,7 +29,7 @@ public class EnemyTurnExec : TurnExec
 
     protected override void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe)
     {
-        TimelineSignalBridge.SubscribeToNotifications(isSubscribe, parryAttackWindowOpenCloseSignal, OnParryWindowOpenClose);
+        TimelineSignalBridge.SubscribeToSignal(isSubscribe, parryAttackWindowOpenCloseSignal, OnParryWindowOpenClose);
     }
 
     private Coroutine parryScanCoroutine;
