@@ -8,4 +8,10 @@ public class DamageDataSO : ScriptableObject
 
     public float DamageAmount => damageAmount;
     public float StunAmount => stunAmount;
+
+    public DamageDataSO(float damageAmount = 0, float stunAmount = 0)
+    {
+        this.damageAmount = damageAmount;
+        this.stunAmount = stunAmount;
+    }
 }
