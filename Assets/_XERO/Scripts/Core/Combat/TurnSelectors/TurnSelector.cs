@@ -60,4 +60,10 @@ public abstract class TurnSelector : ScriptableObject
 
         return TurnTimeline[0];
     }
+
+    public void ResetTimeline()
+    {
+        TurnTimeline.Clear();
+        turnCount = -1;
+    }
 }

@@ -97,4 +97,17 @@ public class TimelineSignalBridge : MonoBehaviour, INotificationReceiver
 
         context.callback?.Invoke();
     }
+
+    public static void UnsubscribeAll()
+    {
+        if (!GetSignalBridge(out TimelineSignalBridge signalBridge)) return;
+
+        foreach (var kvp in signalHandlers)
+        {
+            signalBridge.OnSignalReceived -= kvp.Value.signalHandler;
+        }
+        signalHandlers.Clear();
+
+        if (signalBridge.enableDebug) Debug.Log("<color=#FF69B4>[TimelineSignalBridge]</color> Unsubscribed from all notifications.");
+    }
 }

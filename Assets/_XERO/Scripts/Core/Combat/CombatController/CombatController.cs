@@ -3,6 +3,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using Unity.VisualScripting;
 
 public class CombatController : MonoBehaviour
 {
@@ -32,29 +33,94 @@ public class CombatController : MonoBehaviour
     [SerializeField] private ParryInput parryInput;
     public ParryInput ParryInput => parryInput;
 
+    [Header("Combat Initialization")]
+    [SerializeField] private CombatInitializationData combatInitializationData;
+    [Button("Add Current Positioning of Participants")] private void AddCurrentPositioningOfParticipants() => combatInitializationData?.AddCurrentPositioningOfParticipants(GetPlayers(), GetEnemies());
+    
     [Header("Debug")]
     [SerializeField] private bool enableDebug = false;
-    [SerializeField] private CombatInitializationData combatInitializationData;
-    [Button("Reset Combat")] private void ResetCombat()
-    {
-        CleanseCombat();
-        InitializeCombat(playerParticipants, enemyParticipants);
-    }
+
+    private CancellationTokenSource cancellationTokenSource;
     
     private void Start()
     {
-        RunCombatLoopAsync(this.GetCancellationTokenOnDestroy()).Forget();
+        InitializeCombat();
     }
 
     #region Initialization
-    public void InitializeCombat(List<PlayerParticipant> players, List<EnemyParticipant> enemies)
+    [Button("Reset Combat")]
+    private void InitializeCombat() => InitializeCombat(combatInitializationData);
+    public void InitializeCombat(CombatInitializationData data)
     {
-        
+        CleanseCombat();
+
+        GetChild(transform, "Players", out Transform playersTransform);
+        GetChild(transform, "Enemies", out Transform enemiesTransform);
+
+        InstantiateParticipants(data.PlayerParticipants, true);
+        InstantiateParticipants(data.EnemyParticipants, false);
+
+        cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
+        RunCombatLoopAsync(cancellationTokenSource.Token).Forget();
+
+        void InstantiateParticipants(Participant[] prefabs, bool isPlayer)
+        {
+            for (int i = 0; i < prefabs.Length; i++)
+            {
+                Pose t = data.GetPose(isPlayer, i, data.PlayerParticipants.Length, data.EnemyParticipants.Length);
+                var instance = Instantiate(prefabs[i], t.position, t.rotation, isPlayer ? playersTransform : enemiesTransform);
+
+                if (isPlayer) playerParticipants.Add((PlayerParticipant)instance);
+                else enemyParticipants.Add((EnemyParticipant)instance);
+            }
+        }
+
+        static void GetChild(Transform parent, string name, out Transform child)
+        {
+            child = parent.Find(name);
+            if (child == null)
+            {
+                Debug.LogWarning($"[CombatController] Child '{name}' not found under '{parent.name}'. Creating a new GameObject.");
+                child = new GameObject(name).transform;
+                child.SetParent(parent);
+            }
+        }
     }
 
+    [Button("Cleanse Combat")]
     private void CleanseCombat()
     {
-        
+        // Cancel any ongoing combat loop
+        if (cancellationTokenSource != null)
+        {
+            cancellationTokenSource.Cancel();
+            cancellationTokenSource.Dispose();
+            cancellationTokenSource = null;
+        }
+
+        // Reset the turn selector
+        if (turnSelector != null) turnSelector.ResetTimeline();
+
+        // Clear all subscriptions to timeline signals
+        TimelineSignalBridge.UnsubscribeAll();
+
+        // Destroy all existing participants
+        foreach (var player in playerParticipants)
+        {
+            if (player != null)
+            {
+                Destroy(player.gameObject);
+            }
+        }
+        playerParticipants.Clear();
+        foreach (var enemy in enemyParticipants)
+        {
+            if (enemy != null)
+            {
+                Destroy(enemy.gameObject);
+            }
+        }
+        enemyParticipants.Clear();
     }
     #endregion
 
@@ -148,6 +214,11 @@ public class CombatController : MonoBehaviour
     }
     #endregion
 
+    void OnDestroy()
+    {
+        CleanseCombat();
+    }
+    
     void Reset()
     {
         timelineSignalBridge = GetComponentInChildren<TimelineSignalBridge>();
