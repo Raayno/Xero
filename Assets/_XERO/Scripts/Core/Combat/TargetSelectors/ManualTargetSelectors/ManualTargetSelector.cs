@@ -192,5 +192,9 @@ public class ManualTargetSelector : TargetSelector
         return layerIndex;
     }
 
-    protected virtual TargetSelector GetSelectionPoolSelector() => selectionPoolSelector;
+    protected virtual TargetSelector GetSelectionPoolSelector()
+    {
+        if (selectionPoolSelector is ManualTargetSelector) throw new System.InvalidOperationException("[ManualTargetSelector] Selection pool selector cannot be another ManualTargetSelector to avoid infinite recursion.");
+        return selectionPoolSelector;
+    }
 }
