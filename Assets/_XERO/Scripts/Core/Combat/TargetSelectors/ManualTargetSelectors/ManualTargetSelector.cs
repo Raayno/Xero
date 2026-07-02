@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
@@ -61,7 +60,7 @@ public class ManualTargetSelector : TargetSelector
         {
             HandlePointInputEventsSubscription(false);
             ClearCurrentSelectionPoolMask();
-            pointInput?.StopSelection();
+            if (pointInput != null) pointInput.StopSelection();
         }
     }
 

@@ -72,7 +72,7 @@ public abstract class TurnExec: ScriptableObject
         {
             SubscribeToAttackSequenceEventsBase(director, false, cancellationToken);
 
-            if (shouldReturnToOriginalPosition && executor?.ParticipantMovable != null)
+            if (shouldReturnToOriginalPosition && executor.ParticipantMovable != null)
             {
                 await executor.ParticipantMovable.ReturnToOriginalPositionAsync(CancellationToken.None);
             }
@@ -80,6 +80,11 @@ public abstract class TurnExec: ScriptableObject
     }
 
     protected virtual void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets, CancellationToken cancellationToken)
+    {
+        PrepareForExecution(executor, attack, targets);
+    }
+
+    protected virtual void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets)
     {
         if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> No specific preparation for execution in this TurnExec");
     }
@@ -96,10 +101,10 @@ public abstract class TurnExec: ScriptableObject
         {
             director.stopped -= OnAttackSequenceFinishedBase;
         }
-        SubscribeToAttackSequenceEvents(director, isSubscribe, cancellationToken);
+        SubscribeToAttackSequenceEvents(director, isSubscribe);
     }
 
-    protected virtual void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe, CancellationToken cancellationToken)
+    protected virtual void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe)
     {
         if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> No specific subscription to attack sequence events in this TurnExec");
     }

@@ -40,7 +40,7 @@ public class ManualAttackSelector : AttackSelector
         finally
         {
             SubscribeToUIEvents(false);
-            UI?.HideUI();
+            if (UI != null) UI.HideUI();
         }
     }
 

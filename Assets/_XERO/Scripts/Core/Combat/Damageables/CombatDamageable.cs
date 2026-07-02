@@ -15,9 +15,7 @@ public abstract class CombatDamageable : Damageable
         }
     }
 
-#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
-    public virtual void Kill()
-#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
+    public override void Kill()
     {
         if (!IsDefeated) 
         {

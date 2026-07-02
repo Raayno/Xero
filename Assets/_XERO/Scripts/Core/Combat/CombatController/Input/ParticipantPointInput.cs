@@ -30,18 +30,9 @@ public class ParticipantPointInput : MonoBehaviour
         }
     }
 
-    private Coroutine selectionCoroutine = null;
     private void Update()
     {
-        if (!isDetectInput)
-        {
-            if (selectionCoroutine != null)
-            {
-                StopCoroutine(selectionCoroutine);
-                selectionCoroutine = null;
-            }
-            return;
-        }
+        if (!isDetectInput) return;
         
         if (Input.GetMouseButtonDown(0))
         {
