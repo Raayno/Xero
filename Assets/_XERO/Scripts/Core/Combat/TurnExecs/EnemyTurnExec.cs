@@ -1,7 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class EnemyTurnExec : TurnExec
 {
@@ -11,9 +12,11 @@ public class EnemyTurnExec : TurnExec
     protected bool isParryWindowOpen = false;
     protected static ParryInput parryInput;
     private readonly HashSet<int> parriedTargetIds = new();
+    private CancellationToken executionCancellationToken;
 
-    protected override void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets)
+    protected override void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets, CancellationToken cancellationToken)
     {
+        executionCancellationToken = cancellationToken;
         this.targets = targets;
         isParryWindowOpen = false; // Reset parry window state at the start of the turn
         damageData = attack.DamageData;
@@ -27,12 +30,11 @@ public class EnemyTurnExec : TurnExec
         Debug.Log($"<color=purple>[EnemyTurnExec]</color> Executing enemy turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
 
-    protected override void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe)
+    protected override void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe, CancellationToken cancellationToken)
     {
         TimelineSignalBridge.SubscribeToSignal(isSubscribe, parryAttackWindowOpenCloseSignal, OnParryWindowOpenClose);
     }
 
-    private Coroutine parryScanCoroutine;
     protected void OnParryWindowOpenClose()
     {
         // Open if closed, close if open
@@ -42,25 +44,19 @@ public class EnemyTurnExec : TurnExec
 
         if (isParryWindowOpen)
         {
-            if (parryScanCoroutine != null) parryInput.StopCoroutine(parryScanCoroutine);
-            parryScanCoroutine = parryInput.StartCoroutine(ParryScanCoroutine());
+            ParryScanTaskAsync(executionCancellationToken).Forget();
         }
         else
         {
-            if (parryScanCoroutine != null)
-            {
-                parryInput.StopCoroutine(parryScanCoroutine);
-                parryScanCoroutine = null;
-            }
             HitTargets(); // Execute hit targets when parry window closes
         }
     }
 
-    private IEnumerator ParryScanCoroutine()
+    private async UniTask ParryScanTaskAsync(CancellationToken cancellationToken)
     {
         parriedTargetIds.Clear();
         
-        while (isParryWindowOpen)
+        while (isParryWindowOpen && !cancellationToken.IsCancellationRequested)
         {
             for (int i = targets.Count - 1; i >= 0; i--)
             {
@@ -71,7 +67,7 @@ public class EnemyTurnExec : TurnExec
                     parriedTargetIds.Add(i); // Mark this target as parried
                 }
             }
-            yield return null; // Wait for the next frame
+            await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
         }
     }
 
@@ -109,11 +105,12 @@ public class EnemyTurnExec : TurnExec
         }
     }
 
-    protected override void OnAttackSequenceFinished(PlayableDirector director)
+    protected override void CleanupAfterExecution(Participant executor, CancellationToken cancellationToken)
     {
         // Unsubscribe from parry signal
         parryInput.OnParry -= OnParry;
         parryInput.IsEnabled = false;
+        isParryWindowOpen = false;
     }
 
     protected void GetParryInput()

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Timeline;
-using System.Collections;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class PlayerParticipant : Participant
 {
@@ -13,28 +14,35 @@ public class PlayerParticipant : Participant
 
     public void OnParry()
     {
-        if (canParry) StartCoroutine(ExecuteParrySequence());
+        if (canParry) ExecuteParrySequenceAsync(this.GetCancellationTokenOnDestroy()).Forget();
     }
 
-    private IEnumerator ExecuteParrySequence()
+    private async UniTask ExecuteParrySequenceAsync(CancellationToken cancellationToken)
     {
         if (playableDirector == null)
         {
             Debug.LogError("[PlayerParticipant] Parry Director is not assigned.");
-            yield break;
+            return;
         }
 
         isTrueParry = false;
-        TimelineSignalBridge.SubscribeToSignal(true, parrySignalAsset, OnParrySignal);
-
-        playableDirector.playableAsset = parryTimelineAsset;
-        playableDirector.Play();
-
         canParry = false;
-        yield return new WaitForSeconds((float)playableDirector.duration);
-        canParry = true;
 
-        TimelineSignalBridge.SubscribeToSignal(false, parrySignalAsset, OnParrySignal);
+        try
+        {
+            TimelineSignalBridge.SubscribeToSignal(true, parrySignalAsset, OnParrySignal);
+
+            playableDirector.playableAsset = parryTimelineAsset;
+            playableDirector.Play();
+
+            await UniTask.Delay(System.TimeSpan.FromSeconds(playableDirector.duration), cancellationToken: cancellationToken);
+        }
+        finally
+        {
+            canParry = true;
+            TimelineSignalBridge.SubscribeToSignal(false, parrySignalAsset, OnParrySignal);
+            isTrueParry = false;
+        }
     }
 
     private void OnParrySignal()

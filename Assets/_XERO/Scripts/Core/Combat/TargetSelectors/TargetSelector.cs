@@ -1,7 +1,8 @@
 using System.Collections.Generic;
-using System.Collections;
 using System;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 [EnsureAssetInstance]
 public abstract class TargetSelector: ScriptableObject
@@ -19,16 +20,15 @@ public abstract class TargetSelector: ScriptableObject
         return SelectTargets(self);
     }
 
-    public IEnumerator SelectTargetsAsync(Participant self, Action<List<Participant>> onCompleted, bool doNotAssignThisValueIsForDifferentiation = false)
+    public UniTask<List<Participant>> SelectTargetsAsync(Participant self, CancellationToken cancellationToken = default, bool doNotAssignThisValueIsForDifferentiation = false)
     {
         combatController = CombatController.Instance;
-        yield return SelectTargetsAsync(self, onCompleted);
+        return SelectTargetsAsync(self, cancellationToken);
     }
 
-    protected virtual IEnumerator SelectTargetsAsync(Participant self, Action<List<Participant>> onCompleted)
+    protected virtual UniTask<List<Participant>> SelectTargetsAsync(Participant self, CancellationToken cancellationToken)
     {
-        onCompleted?.Invoke(SelectTargets(self));
-        yield break;
+        return UniTask.FromResult(SelectTargets(self));
     }
 
     protected virtual List<Participant> SelectTargets(Participant self) => SelectTargets();

@@ -112,7 +112,7 @@ public class ParticipantPointInput : MonoBehaviour
         isDetectInput = true;
     }
 
-    private void StopSelection()
+    public void StopSelection()
     {
         isDetectInput = false;
     }

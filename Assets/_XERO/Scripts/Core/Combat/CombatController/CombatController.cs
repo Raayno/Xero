@@ -1,6 +1,8 @@
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
+using NaughtyAttributes;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class CombatController : MonoBehaviour
 {
@@ -32,48 +34,68 @@ public class CombatController : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool enableDebug = false;
+    [SerializeField] private CombatInitializationData combatInitializationData;
+    [Button("Reset Combat")] private void ResetCombat()
+    {
+        CleanseCombat();
+        InitializeCombat(playerParticipants, enemyParticipants);
+    }
     
     private void Start()
     {
-        StartCoroutine(Combat());
+        RunCombatLoopAsync(this.GetCancellationTokenOnDestroy()).Forget();
     }
 
-    private IEnumerator Combat()
+    #region Initialization
+    public void InitializeCombat(List<PlayerParticipant> players, List<EnemyParticipant> enemies)
     {
-        if (!VerifyParticipants())
-        {
-            yield break;
-        }
+        
+    }
 
-        turnSelector.NextTurn(playerParticipants, enemyParticipants);
-        var currentParticipant = turnSelector.GetCurrentParticipant();
-        if (currentParticipant == null)
-        {
-            Debug.LogError("[CombatController] Current participant is null.");
-            yield break;
-        }
+    private void CleanseCombat()
+    {
+        
+    }
+    #endregion
 
-        if (enableDebug)
+    #region Combat Loop
+    private async UniTask RunCombatLoopAsync(CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
         {
-            Debug.Log($"<color=#55AAFF>[Combat]</color> Current turn: {turnSelector.GetCurrentParticipant().CombatantName}");
-            string timeline = "Timeline: ";
-            foreach (var participant in turnSelector.TurnTimeline)
+            if (!VerifyParticipants())
             {
-                timeline += participant.CombatantName + " -> ";
+                break;
             }
-            Debug.Log($"<color=#55AAFF>[Combat]</color> {timeline}");
-        }
 
-        if (currentParticipant.turnExec == null)
-        {
-            Debug.LogError($"[CombatController] {currentParticipant.CombatantName} has no turn executor assigned.");
-            yield break;
-        }
+            turnSelector.NextTurn(playerParticipants, enemyParticipants);
+            var currentParticipant = turnSelector.GetCurrentParticipant();
+            if (currentParticipant == null)
+            {
+                Debug.LogError("[CombatController] Current participant is null.");
+                break;
+            }
 
-        yield return currentParticipant.turnExec.ExecuteTurn(currentParticipant);
-        Debug.Log($"<color=#55AAFF>[Combat]</color> {currentParticipant.CombatantName} completed their turn.");
-    
-        yield return Combat();
+            if (enableDebug)
+            {
+                Debug.Log($"<color=#55AAFF>[Combat]</color> Current turn: {turnSelector.GetCurrentParticipant().CombatantName}");
+                string timeline = "Timeline: ";
+                foreach (var participant in turnSelector.TurnTimeline)
+                {
+                    timeline += participant.CombatantName + " -> ";
+                }
+                Debug.Log($"<color=#55AAFF>[Combat]</color> {timeline}");
+            }
+
+            if (currentParticipant.turnExec == null)
+            {
+                Debug.LogError($"[CombatController] {currentParticipant.CombatantName} has no turn executor assigned.");
+                break;
+            }
+
+            await currentParticipant.turnExec.ExecuteTurn(currentParticipant, cancellationToken);
+            Debug.Log($"<color=#55AAFF>[Combat]</color> {currentParticipant.CombatantName} completed their turn.");
+        }
     }
 
     bool VerifyParticipants()
@@ -92,6 +114,7 @@ public class CombatController : MonoBehaviour
 
         return true;
     }
+    #endregion
     
     #region Singleton
     private static CombatController _instance;

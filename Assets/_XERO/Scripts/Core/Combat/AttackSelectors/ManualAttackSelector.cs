@@ -1,15 +1,15 @@
 using System.Collections.Generic;
-using System;
-using System.Collections;
 using System.Linq;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class ManualAttackSelector : AttackSelector
 {
     protected static ManualAttackSelectorUI UI;
     protected AttackDataSO selectedAttack;
 
-    public override IEnumerator SelectAttackAsync(List<AttackDataSO> attacks, Action<AttackDataSO> onCompleted)
+    public override async UniTask<AttackDataSO> SelectAttackAsync(List<AttackDataSO> attacks, CancellationToken cancellationToken = default)
     {
         selectedAttack = null;
         UI = UI != null ? UI : CombatController.Instance.CombatOptionsUIManager;
@@ -29,14 +29,19 @@ public class ManualAttackSelector : AttackSelector
         else
         {
             Debug.LogError("No player attacks available to show in the UI.");
-            onCompleted(null);
-            yield break;
+            return null;
         }
 
-        yield return new WaitUntil(() => selectedAttack != null);
-        SubscribeToUIEvents(false);
-
-        onCompleted?.Invoke(selectedAttack);
+        try
+        {
+            await UniTask.WaitUntil(() => selectedAttack != null, cancellationToken: cancellationToken);
+            return selectedAttack;
+        }
+        finally
+        {
+            SubscribeToUIEvents(false);
+            UI?.HideUI();
+        }
     }
 
     protected void SubscribeToUIEvents(bool subscribe)

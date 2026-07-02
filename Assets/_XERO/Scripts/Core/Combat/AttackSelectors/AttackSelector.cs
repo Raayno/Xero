@@ -1,22 +1,21 @@
 using System.Collections.Generic;
-using System.Collections;
 using System;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 [EnsureAssetInstance]
 public abstract class AttackSelector: ScriptableObject
 {
-    public virtual IEnumerator SelectAttackAsync(List<AttackDataSO> attacks, Action<AttackDataSO> onCompleted)
+    public virtual UniTask<AttackDataSO> SelectAttackAsync(List<AttackDataSO> attacks, CancellationToken cancellationToken = default)
     {
         if (attacks == null || attacks.Count == 0)
         {
             Debug.LogError("[AttackSelector] No attacks provided for selection.");
-            onCompleted?.Invoke(null);
-            yield break;
+            return UniTask.FromResult<AttackDataSO>(null);
         }
         
-        onCompleted?.Invoke(SelectAttack(attacks));
-        yield break;
+        return UniTask.FromResult(SelectAttack(attacks));
     }
 
     protected virtual AttackDataSO SelectAttack(List<AttackDataSO> attacks)

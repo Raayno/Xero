@@ -1,7 +1,9 @@
-using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Timeline;
+using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
+using System.Threading;
 
 
 public class ParticipantMovable : MonoBehaviour
@@ -20,16 +22,18 @@ public class ParticipantMovable : MonoBehaviour
     private Vector3 originalPosition = Vector3.positiveInfinity;
     private Quaternion originalRotation = positiveInfinityQuaternion;
 
-    public IEnumerator MoveToTargetAsync(System.Collections.Generic.List<Participant> targets)
+    public bool HasOriginalPosition => originalPosition != Vector3.positiveInfinity && originalRotation != positiveInfinityQuaternion;
+
+    public async UniTask MoveToTargetAsync(List<Participant> targets, CancellationToken cancellationToken = default)
     {
         if (moveToTargetTimelineAsset == null)
         {
             Debug.LogError("<color=purple>[ParticipantMovable]</color> MoveToTargetTimelineAsset is not assigned.");
-            yield break;
+            return;
         }
         if (targets == null || targets.Count == 0 || targets.Count > 1 || targets[0] == null)
         {
-            yield break;
+            return;
         }
 
         // For simplicity, we will just use the first target's HitTransform for movement
@@ -37,33 +41,33 @@ public class ParticipantMovable : MonoBehaviour
         if (targetHitTransform == null)
         {
             Debug.LogError($"<color=purple>[ParticipantMovable]</color> Target '{targets[0].name}' does not have a HitTransform.");
-            yield break;
+            return;
         }
 
-        yield return AttackMovementAsync(targetHitTransform);
+        await AttackMovementAsync(targetHitTransform, cancellationToken);
     }
 
-    public IEnumerator ReturnToOriginalPositionAsync()
+    public async UniTask ReturnToOriginalPositionAsync(CancellationToken cancellationToken = default)
     {
         if (moveToTargetTimelineAsset == null)
         {
             Debug.LogError("<color=purple>[ParticipantMovable]</color> MoveToTargetTimelineAsset is not assigned.");
-            yield break;
+            return;
         }
-        if (originalPosition == null || originalPosition == Vector3.positiveInfinity)
+        if (originalPosition == Vector3.positiveInfinity)
         {
             Debug.LogError("<color=purple>[ParticipantMovable]</color> Original position is not set. Cannot return to original position.");
-            yield break;
+            return;
         }
-        if (originalRotation == null || originalRotation == positiveInfinityQuaternion)
+        if (originalRotation == positiveInfinityQuaternion)
         {
             Debug.LogError("<color=purple>[ParticipantMovable]</color> Original rotation is not set. Cannot return to original rotation.");
-            yield break;
+            return;
         }
-        yield return ReturnMovementAsync();
+        await ReturnMovementAsync(cancellationToken);
     }
 
-    private IEnumerator AttackMovementAsync(HitTransform targetHitTransform)
+    private async UniTask AttackMovementAsync(HitTransform targetHitTransform, CancellationToken cancellationToken)
     {
         // Calculate the route vector and target position based on the attack and hit transforms
         Vector3 routeVector = targetHitTransform.Position - attackTransform.Position;
@@ -75,38 +79,43 @@ public class ParticipantMovable : MonoBehaviour
 
         // Calculate the rotation needed to face the target position
         Quaternion routeRotation = Quaternion.LookRotation(routeVector, Vector3.up);
-        yield return Rotate(transform, routeRotation);
+        await Rotate(transform, routeRotation);
 
-        yield return Move(targetPosition, moveToTargetTimelineAsset, moveToTargetTraversalSpeedCurve);
+        await Move(targetPosition, moveToTargetTimelineAsset, moveToTargetTraversalSpeedCurve, cancellationToken);
 
-        yield return Rotate(transform, originalRotation);
+        await Rotate(transform, originalRotation);
     }
 
-    private IEnumerator ReturnMovementAsync()
+    private async UniTask ReturnMovementAsync(CancellationToken cancellationToken)
     {
         if (returnTimelineAsset == null) returnTimelineAsset = moveToTargetTimelineAsset;
         if (returnTraversalSpeedCurve.keys.Length < 2) returnTraversalSpeedCurve = moveToTargetTraversalSpeedCurve;
 
         Quaternion routeRotation = Quaternion.LookRotation(originalPosition - transform.position, Vector3.up);
-        yield return Rotate(transform, routeRotation);
+        await Rotate(transform, routeRotation);
         
-        yield return Move(originalPosition, returnTimelineAsset, returnTraversalSpeedCurve);
+        await Move(originalPosition, returnTimelineAsset, returnTraversalSpeedCurve, cancellationToken);
 
-        yield return Rotate(transform, originalRotation);
+        await Rotate(transform, originalRotation);
     }
 
-    private IEnumerator Move(Vector3 targetPosition, TimelineAsset timelineAsset, AnimationCurve traversalSpeedCurve)
+    private async UniTask Move(Vector3 targetPosition, TimelineAsset timelineAsset, AnimationCurve traversalSpeedCurve, CancellationToken cancellationToken)
     {
         participant.playableDirector.playableAsset = timelineAsset;
         participant.playableDirector.Play();
-        yield return transform.DOMove(targetPosition, (float)timelineAsset.duration).SetEase(traversalSpeedCurve).WaitForCompletion();
-        participant.playableDirector.Stop();
+        Tween tween = transform.DOMove(targetPosition, (float)timelineAsset.duration).SetEase(traversalSpeedCurve);
+        using var cancellationRegistration = cancellationToken.Register(() => tween.Kill());
+        await UniTask.WaitUntil(() => !tween.active || tween.IsComplete(), cancellationToken: cancellationToken);
+        if (participant.playableDirector != null)
+        {
+            participant.playableDirector.Stop();
+        }
     }
 
-    private IEnumerator Rotate(Transform targetTransform, Quaternion rotation)
+    private UniTask Rotate(Transform targetTransform, Quaternion rotation)
     {
         targetTransform.rotation = rotation;
-        yield break;
+        return UniTask.CompletedTask;
     }
 
     private void Reset()

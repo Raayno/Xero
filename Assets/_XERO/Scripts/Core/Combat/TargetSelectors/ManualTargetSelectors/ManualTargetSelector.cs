@@ -1,7 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 [IgnoreAssetInstanceEnsurement]
 [CreateAssetMenu(fileName = "ManualTargetSelector", menuName = "Combat/TargetSelectors/ManualTargetSelector")]
@@ -26,36 +27,42 @@ public class ManualTargetSelector : TargetSelector
         return SelectTargets();
     }
 
-    protected override IEnumerator SelectTargetsAsync(Participant self, Action<List<Participant>> onCompleted)
+    protected override async UniTask<List<Participant>> SelectTargetsAsync(Participant self, CancellationToken cancellationToken)
     {
-        yield return GetPointInput(onCompleted);
+        if (!EnsurePointInput())
+        {
+            return new();
+        }
 
-        if (!UpdateSelectionPoolMask())
+        try
+        {
+            if (!UpdateSelectionPoolMask())
+            {
+                return new();
+            }
+
+            selectedParticipant = null;
+            selectionWasCanceled = false;
+            HandlePointInputEventsSubscription(true);
+            pointInput.StartSelection();
+            
+            Debug.Log("<color=yellow>[ManualTargetSelector]</color> Awaiting player input for target selection...");
+            await UniTask.WaitUntil(() => selectionWasCanceled || selectedParticipant != null, cancellationToken: cancellationToken);
+
+            if (selectionWasCanceled || pointInput.PointedParticipant == null)
+            {
+                return new();
+            }
+
+            Debug.Log($"<color=yellow>[ManualTargetSelector]</color> Player selected target: {pointInput.PointedParticipant.CombatantName}");
+            return new() { pointInput.PointedParticipant };
+        }
+        finally
         {
             HandlePointInputEventsSubscription(false);
-            onCompleted?.Invoke(new());
-            yield break;
+            ClearCurrentSelectionPoolMask();
+            pointInput?.StopSelection();
         }
-
-        selectedParticipant = null;
-        selectionWasCanceled = false;
-        HandlePointInputEventsSubscription(true);
-        pointInput.StartSelection();
-        
-        Debug.Log("<color=yellow>[ManualTargetSelector]</color> Awaiting player input for target selection...");
-        yield return new WaitUntil(() => selectionWasCanceled || selectedParticipant != null);
-
-        HandlePointInputEventsSubscription(false);
-
-        if (selectionWasCanceled || pointInput.PointedParticipant == null)
-        {
-            onCompleted?.Invoke(new());
-            yield break;
-        }
-
-        Debug.Log($"<color=yellow>[ManualTargetSelector]</color> Player selected target: {pointInput.PointedParticipant.CombatantName}");
-
-        onCompleted?.Invoke(new() { pointInput.PointedParticipant });
     }
 
     protected virtual void HandlePointInputEventsSubscription(bool subscribe)
@@ -78,7 +85,7 @@ public class ManualTargetSelector : TargetSelector
         }
     }
 
-    private IEnumerator GetPointInput(Action<List<Participant>> onCompleted)
+    private bool EnsurePointInput()
     {
         if (pointInput == null)
         {
@@ -92,13 +99,14 @@ public class ManualTargetSelector : TargetSelector
                     if (pointInput == null)
                     {
                         Debug.LogError("[ManualTargetSelector] No ParticipantPointInput found in the scene. Please ensure one exists.");
-                        onCompleted?.Invoke(new());
-                        yield break;
+                        return false;
                     }
                     else Debug.LogWarning("[ManualTargetSelector] No ParticipantPointInput found in CombatController's children. Using the first one found in the scene, however it is recommended to fix the hierarchy structure in the scene.");
                 }
             }
         }
+
+        return true;
     }
 
     protected void ParticipantSelected(Participant selected)
