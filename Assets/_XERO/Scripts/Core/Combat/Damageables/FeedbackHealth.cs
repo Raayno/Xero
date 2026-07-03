@@ -1,8 +1,9 @@
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class FeedbackHealth : Health
 {
-    [SerializeField] protected MoreMountains.Feedbacks.MMFeedbacks damageFeedback;
+    [SerializeField] protected MMFeedbacks damageFeedback;
     [SerializeField] protected float damageCooldown = 0.25f;
 
     protected float lastDamageTakenAt = int.MinValue;

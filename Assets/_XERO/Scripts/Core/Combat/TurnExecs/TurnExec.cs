@@ -15,7 +15,7 @@ public abstract class TurnExec: ScriptableObject
     [SerializeField] private List<SignalAsset> signalsToListenFor;
     [SerializeField] protected bool enableDebug = false;
 
-    public async UniTask ExecuteTurn(Participant executor, CancellationToken cancellationToken)
+    public async UniTask ExecuteTurn(Participant participant, CancellationToken cancellationToken)
     {
         if (attackSelector == null)
         {
@@ -34,7 +34,7 @@ public abstract class TurnExec: ScriptableObject
                 Debug.LogError("<color=purple>[TurnExec]</color> AttackSelector returned a null attack.");
                 return;
             }
-            Debug.Log($"<color=purple>[TurnExec]</color> {executor.name} selected attack: {attack.name}");
+            Debug.Log($"<color=purple>[TurnExec]</color> {participant.name} selected attack: {attack.name}");
 
             if (attack.TargetSelector == null)
             {
@@ -43,22 +43,22 @@ public abstract class TurnExec: ScriptableObject
             }
 
             // Select targets
-            List<Participant> targets = await attack.TargetSelector.SelectTargetsAsync(executor, cancellationToken);
+            List<Participant> targets = await attack.TargetSelector.SelectTargetsAsync(participant, cancellationToken);
 
             if (targets == null || targets.Count == 0)
             {
                 return;
             }
 
-            Debug.Log($"<color=purple>[TurnExec]</color> {executor.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
+            Debug.Log($"<color=purple>[TurnExec]</color> {participant.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
 
-            PrepareForExecution(executor, attack, targets, cancellationToken);
+            PrepareForExecution(participant, attack, targets, cancellationToken);
 
-            await executor.ParticipantMovable.MoveToTargetAsync(targets, cancellationToken);
+            await participant.ParticipantMovable.MoveToTargetAsync(targets, cancellationToken);
             shouldReturnToOriginalPosition = true;
             
             SubscribeToAttackSequenceEventsBase(true);
-            TimelineManager.PlayTimeline(attack.TimelineAsset, executor.Animator, () => OnAttackSequenceFinishedBase());
+            TimelineManager.PlayTimeline(attack.TimelineAsset, participant.Animator, () => OnAttackSequenceFinishedBase());
 
             // Wait for the attack sequence to complete
             await WaitForAttackSequenceCompletionAsync(cancellationToken);
@@ -67,19 +67,19 @@ public abstract class TurnExec: ScriptableObject
         {
             SubscribeToAttackSequenceEventsBase(false);
 
-            if (shouldReturnToOriginalPosition && executor.ParticipantMovable != null)
+            if (shouldReturnToOriginalPosition && participant.ParticipantMovable != null)
             {
-                await executor.ParticipantMovable.ReturnToOriginalPositionAsync(CancellationToken.None);
+                await participant.ParticipantMovable.ReturnToOriginalPositionAsync(CancellationToken.None);
             }
         }
     }
 
-    protected virtual void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets, CancellationToken cancellationToken)
+    protected virtual void PrepareForExecution(Participant participant, AttackDataSO attack, List<Participant> targets, CancellationToken cancellationToken)
     {
-        PrepareForExecution(executor, attack, targets);
+        PrepareForExecution(participant, attack, targets);
     }
 
-    protected virtual void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets)
+    protected virtual void PrepareForExecution(Participant participant, AttackDataSO attack, List<Participant> targets)
     {
         if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> No specific preparation for execution in this TurnExec");
     }

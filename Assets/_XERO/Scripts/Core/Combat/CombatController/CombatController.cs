@@ -3,8 +3,9 @@ using UnityEngine;
 using NaughtyAttributes;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using MoreMountains.Tools;
 
-public class CombatController : MonoBehaviour
+public class CombatController : MMSingleton<CombatController>
 {
 
     #region Participants
@@ -37,7 +38,8 @@ public class CombatController : MonoBehaviour
     [SerializeField] private bool enableDebug = false;
 
     private CancellationTokenSource cancellationTokenSource;
-    
+
+
     private void Start()
     {
         InitializeCombat();
@@ -63,15 +65,15 @@ public class CombatController : MonoBehaviour
         {
             for (int i = 0; i < prefabs.Length; i++)
             {
-                Pose t = data.GetPose(isPlayer, i, data.PlayerParticipants.Length, data.EnemyParticipants.Length);
-                var instance = Instantiate(prefabs[i], t.position, t.rotation, isPlayer ? playersTransform : enemiesTransform);
+                Pose poseData = data.GetPose(isPlayer, i, data.PlayerParticipants.Length, data.EnemyParticipants.Length);
+                var instance = Instantiate(prefabs[i], poseData.position, poseData.rotation, isPlayer ? playersTransform : enemiesTransform);
 
                 if (isPlayer) playerParticipants.Add((PlayerParticipant)instance);
                 else enemyParticipants.Add((EnemyParticipant)instance);
             }
         }
 
-        static void GetChild(Transform parent, string name, out Transform child)
+        void GetChild(Transform parent, string name, out Transform child)
         {
             child = parent.Find(name);
             if (child == null)
@@ -175,38 +177,6 @@ public class CombatController : MonoBehaviour
         }
 
         return true;
-    }
-    #endregion
-    
-    #region Singleton
-    private static CombatController _instance;
-    public static CombatController Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindFirstObjectByType<CombatController>();
-                if (_instance == null)
-                {
-                    Debug.LogWarning("[CombatController] No instance found in the scene, but it was requested. Creating a new instance.");
-                    GameObject go = new("CombatController");
-                    _instance = go.AddComponent<CombatController>();
-                }
-            }
-            return _instance;
-        }
-    }
-    void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        else if (_instance != this)
-        {
-            Destroy(gameObject);
-        }
     }
     #endregion
 

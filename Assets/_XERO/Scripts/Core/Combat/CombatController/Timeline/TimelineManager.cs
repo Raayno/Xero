@@ -1,11 +1,13 @@
+using Cysharp.Threading.Tasks;
+using MoreMountains.Tools;
+using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
-using System;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 
-public class TimelineManager : MonoBehaviour
+public class TimelineManager : MMSingleton<TimelineManager>
 {
     private static TimelineSignalBridge signalBridge;
     [SerializeField] private bool enableDebug = false;
@@ -94,7 +96,7 @@ public class TimelineManager : MonoBehaviour
 
     private static bool GetTimelineManager(out TimelineManager timelineManager)
     {
-        timelineManager = CombatController.Instance.GetComponentInChildren<TimelineManager>();
+        timelineManager = Instance;
         if (timelineManager == null)
         {
             Debug.LogError("<color=white>[CombatTimelineManager]</color> CombatTimelineManager not found in CombatController's children.");
