@@ -23,7 +23,6 @@ public abstract class TurnExec: ScriptableObject
             return;
         }
 
-        PlayableDirector director = executor.playableDirector;
         bool shouldReturnToOriginalPosition = false;
         try
         {
@@ -53,24 +52,20 @@ public abstract class TurnExec: ScriptableObject
 
             Debug.Log($"<color=purple>[TurnExec]</color> {executor.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
 
-            director.playableAsset = attack.TimelineAsset;
-
             PrepareForExecution(executor, attack, targets, cancellationToken);
 
             await executor.ParticipantMovable.MoveToTargetAsync(targets, cancellationToken);
             shouldReturnToOriginalPosition = true;
             
-            SubscribeToAttackSequenceEventsBase(director, true, cancellationToken);
-            director.playableAsset = attack.TimelineAsset;
-            isSequenceCompleted = false;
-            director.Play();
+            SubscribeToAttackSequenceEventsBase(true);
+            TimelineManager.PlayTimeline(attack.TimelineAsset, executor.Animator, () => OnAttackSequenceFinishedBase());
 
             // Wait for the attack sequence to complete
             await WaitForAttackSequenceCompletionAsync(cancellationToken);
         }
         finally
         {
-            SubscribeToAttackSequenceEventsBase(director, false, cancellationToken);
+            SubscribeToAttackSequenceEventsBase(false);
 
             if (shouldReturnToOriginalPosition && executor.ParticipantMovable != null)
             {
@@ -89,22 +84,13 @@ public abstract class TurnExec: ScriptableObject
         if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> No specific preparation for execution in this TurnExec");
     }
 
-    private void SubscribeToAttackSequenceEventsBase(PlayableDirector director, bool isSubscribe, CancellationToken cancellationToken)
+    private void SubscribeToAttackSequenceEventsBase(bool isSubscribe)
     {
-        if (!TimelineSignalBridge.GetSignalBridge(signalBridge, out signalBridge)) throw new System.Exception("<color=purple>[TurnExec]</color> TimelineSignalBridge not found in CombatController's children.");
-
-        if (isSubscribe)
-        {
-            director.stopped += OnAttackSequenceFinishedBase;
-        }
-        else
-        {
-            director.stopped -= OnAttackSequenceFinishedBase;
-        }
-        SubscribeToAttackSequenceEvents(director, isSubscribe);
+        if (!TimelineSignalBridge.GetSignalBridge(signalBridge, out signalBridge)) return;
+        SubscribeToAttackSequenceEvents(isSubscribe);
     }
 
-    protected virtual void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe)
+    protected virtual void SubscribeToAttackSequenceEvents(bool isSubscribe)
     {
         if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> No specific subscription to attack sequence events in this TurnExec");
     }
@@ -116,14 +102,14 @@ public abstract class TurnExec: ScriptableObject
     }
     
     bool isSequenceCompleted = false;
-    private void OnAttackSequenceFinishedBase(PlayableDirector director)
+    private void OnAttackSequenceFinishedBase()
     {
         isSequenceCompleted = true;
-        OnAttackSequenceFinished(director);
+        OnAttackSequenceFinished();
     }
 
-    protected virtual void OnAttackSequenceFinished(PlayableDirector director)
+    protected virtual void OnAttackSequenceFinished()
     {
-        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Attack sequence finished for {director.name}.");
+        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Attack sequence finished.");
     }
 }

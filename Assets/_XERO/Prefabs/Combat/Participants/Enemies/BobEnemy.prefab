@@ -10221,7 +10221,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1213453651123520241}
   - component: {fileID: 3630688496650420954}
-  - component: {fileID: 4386778387045790484}
   - component: {fileID: 5197382888735174463}
   - component: {fileID: 8621812164994689160}
   m_Layer: 8
@@ -10264,31 +10263,8 @@ MonoBehaviour:
   damageable: {fileID: 8621812164994689160}
   turnExec: {fileID: 11400000, guid: 064db77deb62fc5469cd0559fa056aca, type: 2}
   ParticipantMovable: {fileID: 2575162346552777189}
-  playableDirector: {fileID: 4386778387045790484}
+  Animator: {fileID: 1220668770613065898}
   enableDebug: 0
---- !u!320 &4386778387045790484
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2297382956428827036}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: b8305158ced5f5a4ab794d7922429a9a, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -2909121600791168203, guid: 83f2211658a1f384a8d1b2e0227331b4, type: 2}
-    value: {fileID: 1220668770613065898}
-  - key: {fileID: -4676061801704578485, guid: 83f2211658a1f384a8d1b2e0227331b4, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1602546600627933780, guid: b8305158ced5f5a4ab794d7922429a9a, type: 2}
-    value: {fileID: 1220668770613065898}
-  m_ExposedReferences:
-    m_References: []
 --- !u!65 &5197382888735174463
 BoxCollider:
   m_ObjectHideFlags: 0

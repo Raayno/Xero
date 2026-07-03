@@ -30,7 +30,7 @@ public class EnemyTurnExec : TurnExec
         Debug.Log($"<color=purple>[EnemyTurnExec]</color> Executing enemy turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
 
-    protected override void SubscribeToAttackSequenceEvents(PlayableDirector director, bool isSubscribe)
+    protected override void SubscribeToAttackSequenceEvents(bool isSubscribe)
     {
         TimelineSignalBridge.SubscribeToSignal(isSubscribe, parryAttackWindowOpenCloseSignal, OnParryWindowOpenClose);
     }
@@ -105,7 +105,7 @@ public class EnemyTurnExec : TurnExec
         }
     }
 
-    protected override void OnAttackSequenceFinished(PlayableDirector director)
+    protected override void OnAttackSequenceFinished()
     {
         // Unsubscribe from parry signal
         parryInput.OnParry -= OnParry;

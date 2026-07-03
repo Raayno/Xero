@@ -101,15 +101,10 @@ public class ParticipantMovable : MonoBehaviour
 
     private async UniTask Move(Vector3 targetPosition, TimelineAsset timelineAsset, AnimationCurve traversalSpeedCurve, CancellationToken cancellationToken)
     {
-        participant.playableDirector.playableAsset = timelineAsset;
-        participant.playableDirector.Play();
+        TimelineManager.PlayTimeline(timelineAsset, participant.Animator);
         Tween tween = transform.DOMove(targetPosition, (float)timelineAsset.duration).SetEase(traversalSpeedCurve);
         using var cancellationRegistration = cancellationToken.Register(() => tween.Kill());
         await UniTask.WaitUntil(() => !tween.active || tween.IsComplete(), cancellationToken: cancellationToken);
-        if (participant.playableDirector != null)
-        {
-            participant.playableDirector.Stop();
-        }
     }
 
     private UniTask Rotate(Transform targetTransform, Quaternion rotation)

@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.Playables;
 [RequireComponent(typeof(CombatDamageable))]
-
-[RequireComponent(typeof(PlayableDirector))]
 public abstract class Participant : MonoBehaviour
 {
     [Header("Combat Participant")]
@@ -25,7 +23,7 @@ public abstract class Participant : MonoBehaviour
 
     [Header("Attack Sequence")]
     public ParticipantMovable ParticipantMovable;
-    public PlayableDirector playableDirector;
+    public Animator Animator;
 
     [SerializeField] protected bool enableDebug = false;
 
@@ -38,11 +36,12 @@ public abstract class Participant : MonoBehaviour
     {
         damageable = damageable != null ? damageable : GetComponent<CombatDamageable>();
         ParticipantMovable = ParticipantMovable != null ? ParticipantMovable : GetComponentInChildren<ParticipantMovable>();
-        playableDirector = playableDirector != null ? playableDirector : GetComponent<PlayableDirector>();
         
         if (string.IsNullOrWhiteSpace(combatantName))
         {
             combatantName = gameObject.name;
         }
+
+        Animator = Animator != null ? Animator : GetComponentInChildren<Animator>();
     }
 }

@@ -23,7 +23,7 @@ public class PlayerTurnExec : TurnExec
         Debug.Log($"<color=purple>[PlayerTurnExec]</color>. Executing player turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
 
-    protected override void SubscribeToAttackSequenceEvents(UnityEngine.Playables.PlayableDirector director, bool isSubscribe)
+    protected override void SubscribeToAttackSequenceEvents(bool isSubscribe)
     {
         TimelineSignalBridge.SubscribeToSignal(isSubscribe, hitTargetsSignal, OnHitTargets);
     }

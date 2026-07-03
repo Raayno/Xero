@@ -19,12 +19,6 @@ public class PlayerParticipant : Participant
 
     private async UniTask ExecuteParrySequenceAsync(CancellationToken cancellationToken)
     {
-        if (playableDirector == null)
-        {
-            Debug.LogError("[PlayerParticipant] Parry Director is not assigned.");
-            return;
-        }
-
         isTrueParry = false;
         canParry = false;
 
@@ -32,10 +26,9 @@ public class PlayerParticipant : Participant
         {
             TimelineSignalBridge.SubscribeToSignal(true, parrySignalAsset, OnParrySignal);
 
-            playableDirector.playableAsset = parryTimelineAsset;
-            playableDirector.Play();
+            TimelineManager.PlayTimeline(parryTimelineAsset, Animator);
 
-            await UniTask.Delay(System.TimeSpan.FromSeconds(playableDirector.duration), cancellationToken: cancellationToken);
+            await UniTask.Delay(System.TimeSpan.FromSeconds(parryTimelineAsset.duration), cancellationToken: cancellationToken);
         }
         finally
         {

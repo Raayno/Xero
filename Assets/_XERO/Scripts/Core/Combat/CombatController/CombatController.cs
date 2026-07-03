@@ -24,9 +24,6 @@ public class CombatController : MonoBehaviour
     [Header("UI Management")]
     public ManualAttackSelectorUI CombatOptionsUIManager;
 
-    [Header("Attack Management")]
-    public TimelineSignalBridge timelineSignalBridge;
-
     [Header("Input Management")]
     [SerializeField] private ParticipantPointInput participantPointInput;
     public ParticipantPointInput ParticipantPointInput => participantPointInput;
@@ -221,7 +218,6 @@ public class CombatController : MonoBehaviour
     
     void Reset()
     {
-        timelineSignalBridge = GetComponentInChildren<TimelineSignalBridge>();
         participantPointInput = GetComponentInChildren<ParticipantPointInput>();
         parryInput = GetComponentInChildren<ParryInput>();
     }
