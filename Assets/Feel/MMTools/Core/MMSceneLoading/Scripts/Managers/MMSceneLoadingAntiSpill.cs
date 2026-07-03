@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 namespace MoreMountains.Tools
 {
@@ -16,6 +19,7 @@ namespace MoreMountains.Tools
 		protected UnityAction<Scene, Scene> _onActiveSceneChangedCallback;
 		protected string _sceneToLoadName;
 		protected string _antiSpillSceneName;
+		protected AsyncOperationHandle<SceneInstance> _antiSpillHandle;
 		protected List<GameObject> _spillSceneRoots = new List<GameObject>(50);
 		protected static List<string> _scenesInBuild;
 		
@@ -52,18 +56,11 @@ namespace MoreMountains.Tools
 			}
 			else
 			{
-				_scenesInBuild = MMScene.GetScenesInBuild();
-				if (!_scenesInBuild.Contains(antiSpillSceneName))
-				{
-					Debug.LogError("MMSceneLoadingAntiSpill : impossible to load the '"+antiSpillSceneName+"' scene, " +
-					               "there is no such scene in the project's build settings.");
-					return;
-				}
-				
-				SceneManager.LoadScene(antiSpillSceneName, LoadSceneMode.Additive);
-				_antiSpillScene = SceneManager.GetSceneByName(antiSpillSceneName);
+				_antiSpillHandle = Addressables.LoadSceneAsync(antiSpillSceneName, LoadSceneMode.Additive, true);
+				_antiSpillHandle.WaitForCompletion();
+				_antiSpillScene = _antiSpillHandle.Result.Scene;
 				_antiSpillSceneName = _antiSpillScene.name;
-				SceneManager.sceneLoaded += PrepareAntiFillOnSceneLoaded;
+				PrepareAntiFillSetSceneActive();
 			}
 			
 			RenderSettings.skybox = sourceSkybox;
@@ -81,22 +78,6 @@ namespace MoreMountains.Tools
 			LightmapSettings.lightmapsMode = sourceLightmapsMode;
 			LightmapSettings.lightProbes = sourceLightProbes;
 			LightmapSettings.lightmaps = sourceLightmaps;
-		}
-
-		/// <summary>
-		/// When not creating an anti fill scene, acts once the scene has been actually created and is ready to be set active
-		/// This is bypassed when creating the scene
-		/// </summary>
-		/// <param name="newScene"></param>
-		/// <param name="mode"></param>
-		protected virtual void PrepareAntiFillOnSceneLoaded(Scene newScene, LoadSceneMode mode)
-		{
-			if (newScene.name != _antiSpillSceneName)
-			{
-				return;
-			}
-			SceneManager.sceneLoaded -= PrepareAntiFillOnSceneLoaded;
-			PrepareAntiFillSetSceneActive();
 		}
 
 		/// <summary>
@@ -149,7 +130,14 @@ namespace MoreMountains.Tools
 					}
 				}
 
-				SceneManager.UnloadSceneAsync(_antiSpillScene);
+				if (!string.IsNullOrEmpty(_antiSpillSceneName))
+				{
+					Addressables.UnloadSceneAsync(_antiSpillHandle, true);
+				}
+				else
+				{
+					SceneManager.UnloadSceneAsync(_antiSpillScene);
+				}
 			}
 		}
 	}

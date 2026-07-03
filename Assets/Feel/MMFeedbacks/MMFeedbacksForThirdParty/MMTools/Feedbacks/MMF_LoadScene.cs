@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Scripting.APIUpdating;
 
 namespace MoreMountains.Feedbacks
@@ -22,9 +23,9 @@ namespace MoreMountains.Feedbacks
 		/// sets the inspector color for this feedback
 		#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SceneColor; } }
-		public override bool EvaluateRequiresSetup() { return (DestinationSceneName == ""); }
-		public override string RequiredTargetText { get { return DestinationSceneName;  } }
-		public override string RequiresSetupText { get { return "This feedback requires that you specify a DestinationSceneName below. Make sure you also add that destination scene to your Build Settings."; } }
+		public override bool EvaluateRequiresSetup() { return (DestinationSceneAddressibleKey == ""); }
+		public override string RequiredTargetText { get { return DestinationSceneAddressibleKey;  } }
+		public override string RequiresSetupText { get { return "This feedback requires that you specify an Addressables scene key below."; } }
 		#endif
 
 		/// the possible ways to load a new scene :
@@ -35,12 +36,12 @@ namespace MoreMountains.Feedbacks
 		public enum LoadingModes { Direct, MMSceneLoadingManager, MMAdditiveSceneLoadingManager, DirectAdditive }
 
 		[MMFInspectorGroup("Scene Loading", true, 57, true)]
-		/// the name of the loading screen scene to use
-		[Tooltip("the name of the loading screen scene to use - HAS TO BE ADDED TO YOUR BUILD SETTINGS")]
-		public string LoadingSceneName = "MMAdditiveLoadingScreen";
-		/// the name of the destination scene
-		[Tooltip("the name of the destination scene - HAS TO BE ADDED TO YOUR BUILD SETTINGS")]
-		public string DestinationSceneName = "";
+		/// the Addressables key of the loading screen scene to use
+		[Tooltip("the Addressables key of the loading screen scene to use")]
+		public string LoadingSceneAddressibleKey = "MMAdditiveLoadingScreen";
+		/// the Addressables key of the destination scene
+		[Tooltip("the Addressables key of the destination scene")]
+		public string DestinationSceneAddressibleKey = "";
 
 		[Header("Mode")] 
 		/// the loading mode to use
@@ -54,8 +55,8 @@ namespace MoreMountains.Feedbacks
 		/// the priority to use when loading the new scenes
 		[Tooltip("the priority to use when loading the new scenes")]
 		public ThreadPriority Priority = ThreadPriority.High;
-		/// whether or not to perform extra checks to make sure the loading screen and destination scene are in the build settings
-		[Tooltip("whether or not to perform extra checks to make sure the loading screen and destination scene are in the build settings")]
+		/// whether or not to perform extra checks to make sure the Addressables keys are set
+		[Tooltip("whether or not to perform extra checks to make sure the Addressables keys are set")]
 		public bool SecureLoad = true;
 		/// the chosen way to unload scenes (none, only the active scene, all loaded scenes)
 		[Tooltip("the chosen way to unload scenes (none, only the active scene, all loaded scenes)")]
@@ -122,23 +123,23 @@ namespace MoreMountains.Feedbacks
 		/// <param name="feedbacksIntensity"></param>
 		protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
 		{
-			if (!Active || !FeedbackTypeAuthorized || (DestinationSceneName == ""))
+			if (!Active || !FeedbackTypeAuthorized || (DestinationSceneAddressibleKey == ""))
 			{
 				return;
 			}
 			switch (LoadingMode)
 			{
 				case LoadingModes.Direct:
-					SceneManager.LoadScene(DestinationSceneName);
+					Addressables.LoadSceneAsync(DestinationSceneAddressibleKey, LoadSceneMode.Single, true);
 					break;
 				case LoadingModes.DirectAdditive:
-					SceneManager.LoadScene(DestinationSceneName, LoadSceneMode.Additive);
+					Addressables.LoadSceneAsync(DestinationSceneAddressibleKey, LoadSceneMode.Additive, true);
 					break;
 				case LoadingModes.MMSceneLoadingManager:
-					MMSceneLoadingManager.LoadScene(DestinationSceneName, LoadingSceneName);
+					MMSceneLoadingManager.LoadScene(DestinationSceneAddressibleKey, LoadingSceneAddressibleKey);
 					break;
 				case LoadingModes.MMAdditiveSceneLoadingManager:
-					MMAdditiveSceneLoadingManager.LoadScene(DestinationSceneName, LoadingSceneName, 
+					MMAdditiveSceneLoadingManager.LoadScene(DestinationSceneAddressibleKey, LoadingSceneAddressibleKey, 
 						Priority, SecureLoad, InterpolateProgress, 
 						BeforeEntryFadeDelay, EntryFadeDuration,
 						AfterEntryFadeDelay,

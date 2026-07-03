@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 namespace MoreMountains.Tools
 {	
@@ -190,12 +193,12 @@ namespace MoreMountains.Tools
 		protected static string _loadingScreenSceneName;
 		protected static List<string> _scenesInBuild;
 		protected static Scene[] _initialScenes;
+		protected static AsyncOperationHandle<SceneInstance> _loadingScreenHandle;
 		protected float _loadProgress = 0f;
 		protected float _interpolatedLoadProgress;
 		protected static bool _loadingInProgress = false;
 		protected AsyncOperation _unloadOriginAsyncOperation;
-		protected AsyncOperation _loadDestinationAsyncOperation;
-		protected AsyncOperation _unloadLoadingAsyncOperation;
+		protected AsyncOperationHandle<SceneInstance> _loadDestinationAsyncOperation;
 		protected bool _setRealtimeProgressValueIsNull;
 		protected bool _setInterpolatedProgressValueIsNull;
 		protected const float _asyncProgressLimit = 0.9f;
@@ -232,6 +235,7 @@ namespace MoreMountains.Tools
 			_loadingScreenSceneName = "";
 			_scenesInBuild = new List<string>();
 			_initialScenes = null;
+			_loadingScreenHandle = default;
 			_antiSpillSceneName = "";
 		}
 
@@ -292,13 +296,13 @@ namespace MoreMountains.Tools
 				if (!_scenesInBuild.Contains(sceneToLoadName))
 				{
 					Debug.LogError("MMLoadingSceneManagerAdditive : impossible to load the '"+sceneToLoadName+"' scene, " +
-					               "there is no such scene in the project's build settings.");
+					               "there is no such Addressables key registered for it.");
 					return;
 				}
 				if (!_scenesInBuild.Contains(loadingSceneName))
 				{
 					Debug.LogError("MMLoadingSceneManagerAdditive : impossible to load the '"+loadingSceneName+"' scene, " +
-					               "there is no such scene in the project's build settings.");
+					               "there is no such Addressables key registered for it.");
 					return;
 				}
 			}
@@ -324,7 +328,7 @@ namespace MoreMountains.Tools
 			_antiSpillSceneName = antiSpillSceneName;
 			_speedIntervals = speedIntervals;
 
-			SceneManager.LoadScene(_loadingScreenSceneName, LoadSceneMode.Additive);
+			_loadingScreenHandle = Addressables.LoadSceneAsync(_loadingScreenSceneName, LoadSceneMode.Additive, true);
 		}
 		
 		public static void SetHold(HoldModes holdMode, bool state)
@@ -587,14 +591,11 @@ namespace MoreMountains.Tools
 			MMSceneLoadingManager.LoadingSceneEvent.Trigger(_sceneToLoadName, MMSceneLoadingManager.LoadingStatus.LoadDestinationScene);
 			OnLoadDestinationScene?.Invoke();
 
-			_loadDestinationAsyncOperation = SceneManager.LoadSceneAsync(_sceneToLoadName, LoadSceneMode.Additive );
-			_loadDestinationAsyncOperation.completed += OnLoadOperationComplete;
-
-			_loadDestinationAsyncOperation.allowSceneActivation = false;
+			_loadDestinationAsyncOperation = Addressables.LoadSceneAsync(_sceneToLoadName, LoadSceneMode.Additive, false);
             
-			while (_loadDestinationAsyncOperation.progress < _asyncProgressLimit)
+			while (_loadDestinationAsyncOperation.PercentComplete < _asyncProgressLimit)
 			{
-				_loadProgress = _loadDestinationAsyncOperation.progress;
+				_loadProgress = _loadDestinationAsyncOperation.PercentComplete;
 				yield return null;
 			}
             
@@ -646,14 +647,11 @@ namespace MoreMountains.Tools
 		protected virtual IEnumerator DestinationSceneActivation()
 		{
 			yield return MMCoroutine.WaitForFrames(1);
-			_loadDestinationAsyncOperation.allowSceneActivation = true;
-			while (_loadDestinationAsyncOperation.progress < 1.0f)
-			{
-				yield return null;
-			}
+			yield return _loadDestinationAsyncOperation.Result.ActivateAsync();
 			MMLoadingSceneDebug("MMLoadingSceneManagerAdditive : activating destination scene");
 			MMSceneLoadingManager.LoadingSceneEvent.Trigger(_sceneToLoadName, MMSceneLoadingManager.LoadingStatus.DestinationSceneActivation);
 			OnDestinationSceneActivation?.Invoke();
+			SceneManager.SetActiveScene(_loadDestinationAsyncOperation.Result.Scene);
 		}
 
 		protected virtual IEnumerator ProcessDelayAfterSceneActivation()
@@ -718,12 +716,7 @@ namespace MoreMountains.Tools
 			MMSceneLoadingManager.LoadingSceneEvent.Trigger(_sceneToLoadName, MMSceneLoadingManager.LoadingStatus.UnloadSceneLoader);
 			OnUnloadSceneLoader?.Invoke();
 			
-			yield return null; // mandatory yield to avoid an unjustified warning
-			_unloadLoadingAsyncOperation = SceneManager.UnloadSceneAsync(_loadingScreenSceneName);
-			while (_unloadLoadingAsyncOperation.progress < _asyncProgressLimit)
-			{
-				yield return null;
-			}
+			yield return Addressables.UnloadSceneAsync(_loadingScreenHandle, true);
 		}
 
 		/// <summary>

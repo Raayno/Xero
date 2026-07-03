@@ -4,6 +4,9 @@ using UnityEngine.UI;
 #endif
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 namespace MoreMountains.Tools
 {	
@@ -63,7 +66,7 @@ namespace MoreMountains.Tools
 		/// the delay (in seconds) before leaving the scene when complete
 		public float LoadCompleteDelay=0.5f;
 
-		protected AsyncOperation _asyncOperation;
+		protected AsyncOperationHandle<SceneInstance> _asyncOperation;
 		protected static string _sceneToLoad = "";
 		protected float _fadeDuration = 0.5f;
 		protected float _fillTarget=0f;
@@ -85,7 +88,7 @@ namespace MoreMountains.Tools
 			if (LoadingScreenSceneName!=null)
 			{
 				LoadingSceneEvent.Trigger(sceneToLoad, LoadingStatus.LoadStarted);
-				SceneManager.LoadScene(LoadingScreenSceneName);
+				Addressables.LoadSceneAsync(LoadingScreenSceneName, LoadSceneMode.Single, true);
 			}
 		}
 
@@ -97,7 +100,7 @@ namespace MoreMountains.Tools
 		{
 			_sceneToLoad = sceneToLoad;					
 			Application.backgroundLoadingPriority = ThreadPriority.High;
-			SceneManager.LoadScene(loadingSceneName);
+			Addressables.LoadSceneAsync(loadingSceneName, LoadSceneMode.Single, true);
 		}
 
 		/// <summary>
@@ -140,13 +143,12 @@ namespace MoreMountains.Tools
 			yield return MMCoroutine.WaitFor(StartFadeDuration);
             
 			// we start loading the scene
-			_asyncOperation = SceneManager.LoadSceneAsync(_sceneToLoad,LoadSceneMode.Single );
-			_asyncOperation.allowSceneActivation = false;
+			_asyncOperation = Addressables.LoadSceneAsync(_sceneToLoad, LoadSceneMode.Single, false);
 
 			// while the scene loads, we assign its progress to a target that we'll use to fill the progress bar smoothly
-			while (_asyncOperation.progress < 0.9f) 
+			while (_asyncOperation.PercentComplete < 0.9f) 
 			{
-				_fillTarget = _asyncOperation.progress;
+				_fillTarget = _asyncOperation.PercentComplete;
 				yield return null;
 			}
 			// when the load is close to the end (it'll never reach it), we set it to 100%
@@ -169,7 +171,7 @@ namespace MoreMountains.Tools
 			yield return MMCoroutine.WaitFor(ExitFadeDuration);
 
 			// we switch to the new scene
-			_asyncOperation.allowSceneActivation = true;
+			yield return _asyncOperation.Result.ActivateAsync();
 			LoadingSceneEvent.Trigger(_sceneToLoad, LoadingStatus.LoadTransitionComplete);
 		}
 

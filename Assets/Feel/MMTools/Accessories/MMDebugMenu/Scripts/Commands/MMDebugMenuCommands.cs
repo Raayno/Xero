@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 namespace MoreMountains.Tools
 {
@@ -40,7 +41,7 @@ namespace MoreMountains.Tools
 		public static void Restart()
 		{
 			Scene scene = SceneManager.GetActiveScene();
-			SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
+			Addressables.LoadSceneAsync(scene.name, LoadSceneMode.Single, true);
 		}
 
 		/// <summary>
@@ -50,7 +51,7 @@ namespace MoreMountains.Tools
 		public static void Reload()
 		{
 			Scene scene = SceneManager.GetActiveScene();
-			SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
+			Addressables.LoadSceneAsync(scene.name, LoadSceneMode.Single, true);
 		}
 
 		/// <summary>

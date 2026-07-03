@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Shared_Gameplay_Actors
+  m_Name: Zone01_Combat_Arenas
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Shared_Gameplay_Actors
-  m_GUID: 5e462f4adc808ba4680460572193c14d
-  m_SerializeEntries: []
+  m_GroupName: Zone01_Combat_Arenas
+  m_GUID: f4d254e0b54a38547b5cf7defd02ce9a
+  m_SerializeEntries:
+  - m_GUID: e3d4f7323ff95ae48b84a64b61776fc9
+    m_Address: Zone01/Arenas/Combat01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0197e50905519654a9b5160970b76a7e, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: ab50e3fd02599fb4e80dc4edc0f22164, type: 2}
-    - {fileID: 11400000, guid: 0c468b08127258a4a946802d0d5dce55, type: 2}
+    - {fileID: 11400000, guid: e7b30193ee08e154ba33064e53c04c44, type: 2}
+    - {fileID: 11400000, guid: 256ba274d31ca554b9d3ac5bc5fcb776, type: 2}

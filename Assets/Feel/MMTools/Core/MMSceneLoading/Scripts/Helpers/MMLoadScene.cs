@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 namespace MoreMountains.Tools
 {	
@@ -11,8 +12,8 @@ namespace MoreMountains.Tools
 		/// the possible modes to load scenes. Either Unity's native API, or MoreMountains' LoadingSceneManager
 		public enum LoadingSceneModes { UnityNative, MMSceneLoadingManager, MMAdditiveSceneLoadingManager }
 
-		/// the name of the scene that needs to be loaded when LoadScene gets called
-		[Tooltip("the name of the scene that needs to be loaded when LoadScene gets called")]
+		/// the Addressables key of the scene that needs to be loaded when LoadScene gets called
+		[Tooltip("the Addressables key of the scene that needs to be loaded when LoadScene gets called")]
 		public string SceneName;
 		/// defines whether the scene will be loaded using Unity's native API or MoreMountains' way
 		[Tooltip("defines whether the scene will be loaded using Unity's native API or MoreMountains' way")]
@@ -26,7 +27,7 @@ namespace MoreMountains.Tools
 			switch (LoadingSceneMode)
 			{
 				case LoadingSceneModes.UnityNative:
-					SceneManager.LoadScene (SceneName);
+					Addressables.LoadSceneAsync(SceneName, LoadSceneMode.Single, true);
 					break;
 				case LoadingSceneModes.MMSceneLoadingManager:
 					MMSceneLoadingManager.LoadScene (SceneName);

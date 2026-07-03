@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 using UnityEngine.InputSystem;
 #endif
@@ -18,7 +19,7 @@ namespace MoreMountains.Tools
 		[Header("Settings")]
 		/// the selected restart mode, either the currently active scene, or one by name
 		public RestartModes RestartMode = RestartModes.ActiveScene;
-		/// the name of the scene to load if we're in specific scene mode
+		/// the Addressables key of the scene to load if we're in specific scene mode
 		[MMEnumCondition("RestartMode", (int)RestartModes.SpecificScene)]
 		public string SceneName;
 		/// the load mode
@@ -78,7 +79,7 @@ namespace MoreMountains.Tools
 					_newSceneName = SceneName;
 					break;
 			}
-			SceneManager.LoadScene(_newSceneName, LoadMode);
+		Addressables.LoadSceneAsync(_newSceneName, LoadMode, true);
 		}
 	}
 }
