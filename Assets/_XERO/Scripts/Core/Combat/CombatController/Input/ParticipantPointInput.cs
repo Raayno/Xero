@@ -1,7 +1,8 @@
 using UnityEngine;
 using System;
+using MoreMountains.Tools;
 
-public class ParticipantPointInput : MonoBehaviour
+public class ParticipantPointInput : MMSingleton<ParticipantPointInput>
 {
     public Participant PointedParticipant { get; private set; }
 
@@ -22,8 +23,9 @@ public class ParticipantPointInput : MonoBehaviour
         pointableLayerMask = pointableLayerMask != 0 ? pointableLayerMask : LayerMask.GetMask("Pointable Participant Layer");
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (selectionCamera == null)
         {
             selectionCamera = Camera.main;

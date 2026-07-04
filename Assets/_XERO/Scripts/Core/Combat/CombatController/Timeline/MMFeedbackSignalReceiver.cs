@@ -12,8 +12,14 @@ public class MMFeedbackSignalReceiver : MonoBehaviour
     {
         if (feedbacks == null)
         {
-            Debug.LogWarning("<color=black>[MMFeedbackSignalReceiver]</color> MMFeedbacks reference is not assigned. Attempting to get it from the same GameObject.");
-            feedbacks = GetComponent<MMFeedbacks>();
+            if (TryGetComponent(out feedbacks))
+            {
+                if (enableDebug) Debug.Log($"<color=black>[MMFeedbackSignalReceiver]</color> MMFeedbacks reference found on the same GameObject.");
+            }
+            else
+            {
+                Debug.LogError("<color=black>[MMFeedbackSignalReceiver]</color> MMFeedbacks reference is not assigned. Attempting to get it from the same GameObject.");
+            }
         }
 
         if (signalAssets == null || signalAssets.Length == 0)

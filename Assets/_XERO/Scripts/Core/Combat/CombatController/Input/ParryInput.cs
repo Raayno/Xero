@@ -1,13 +1,15 @@
 using UnityEngine;
+using MoreMountains.Tools;
 
-public class ParryInput : MonoBehaviour
+public class ParryInput : MMSingleton<ParryInput>
 {
     public event System.Action OnParry;
     public bool IsEnabled = false;
     [SerializeField] private bool enableDebug = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         IsEnabled = false;
     }
 

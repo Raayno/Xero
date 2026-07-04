@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Playables;
+
 [RequireComponent(typeof(CombatDamageable))]
 public abstract class Participant : MonoBehaviour
 {

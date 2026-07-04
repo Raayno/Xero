@@ -14,7 +14,7 @@ public class EnemyTurnExec : TurnExec
     private readonly HashSet<int> parriedTargetIds = new();
     private CancellationToken executionCancellationToken;
 
-    protected override void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets, CancellationToken cancellationToken)
+    protected override void PrepareForExecution(Participant participant, AttackDataSO attack, List<Participant> targets, CancellationToken cancellationToken)
     {
         executionCancellationToken = cancellationToken;
         this.targets = targets;
@@ -27,7 +27,7 @@ public class EnemyTurnExec : TurnExec
         // Subscribe to parry signal
         parryInput.OnParry += OnParry;
 
-        Debug.Log($"<color=purple>[EnemyTurnExec]</color> Executing enemy turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
+        Debug.Log($"<color=purple>[EnemyTurnExec]</color> Executing enemy turn for {participant.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
 
     protected override void SubscribeToAttackSequenceEvents(bool isSubscribe)

@@ -3,8 +3,9 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using System;
 using System.Collections.Generic;
+using MoreMountains.Tools;
 
-public class TimelineSignalBridge : MonoBehaviour, INotificationReceiver
+public class TimelineSignalBridge : MMSingleton<TimelineSignalBridge>, INotificationReceiver
 {
     [SerializeField] private bool enableDebug = false;
     public Action<SignalAsset> OnSignalReceived;
@@ -20,10 +21,10 @@ public class TimelineSignalBridge : MonoBehaviour, INotificationReceiver
 
     private static bool GetSignalBridge(out TimelineSignalBridge signalBridge)
     {
-        signalBridge = CombatController.Instance.GetComponentInChildren<TimelineSignalBridge>();
+        signalBridge = Instance;
         if (signalBridge == null)
         {
-            Debug.LogError("<color=pink>[TimelineSignalBridge]</color> TimelineSignalBridge not found in CombatController's children.");
+            Debug.LogError("<color=pink>[TimelineSignalBridge]</color> TimelineSignalBridge Instance not found.");
             return false;
         }
         return true;

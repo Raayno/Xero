@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using Cysharp.Threading.Tasks;
 using System.Threading;
@@ -8,7 +7,6 @@ using System.Threading;
 [EnsureAssetInstance]
 public abstract class TurnExec: ScriptableObject
 {
-    protected static TimelineSignalBridge signalBridge;
     [SerializeField] private AttackSelector attackSelector;
     [SerializeField] private List<AttackDataSO> availableAttacks;
     [Tooltip("Signals that this TurnExec will listen for during the attack sequence.")]
@@ -86,7 +84,6 @@ public abstract class TurnExec: ScriptableObject
 
     private void SubscribeToAttackSequenceEventsBase(bool isSubscribe)
     {
-        if (!TimelineSignalBridge.GetSignalBridge(signalBridge, out signalBridge)) return;
         SubscribeToAttackSequenceEvents(isSubscribe);
     }
 

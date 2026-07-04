@@ -52,14 +52,25 @@ public class CombatController : MMSingleton<CombatController>
     {
         CleanseCombat();
 
+
         GetChild(transform, "Players", out Transform playersTransform);
         GetChild(transform, "Enemies", out Transform enemiesTransform);
 
+        void GetChild(Transform parent, string name, out Transform child)
+        {
+            child = parent.Find(name);
+            if (child == null)
+            {
+                Debug.LogWarning($"[CombatController] Child '{name}' not found under '{parent.name}'. Creating a new GameObject.");
+                // faster and cleaner than using GameObject.Instantiate with a prefab, since we just need an empty GameObject to hold the participants
+                child = new GameObject(name).transform;
+                child.SetParent(parent);
+            }
+        }
+
+
         InstantiateParticipants(data.PlayerParticipants, true);
         InstantiateParticipants(data.EnemyParticipants, false);
-
-        cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
-        RunCombatLoopAsync(cancellationTokenSource.Token).Forget();
 
         void InstantiateParticipants(Participant[] prefabs, bool isPlayer)
         {
@@ -73,16 +84,9 @@ public class CombatController : MMSingleton<CombatController>
             }
         }
 
-        void GetChild(Transform parent, string name, out Transform child)
-        {
-            child = parent.Find(name);
-            if (child == null)
-            {
-                Debug.LogWarning($"[CombatController] Child '{name}' not found under '{parent.name}'. Creating a new GameObject.");
-                child = new GameObject(name).transform;
-                child.SetParent(parent);
-            }
-        }
+
+        cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
+        RunCombatLoopAsync(cancellationTokenSource.Token).Forget();
     }
 
     [Button("Cleanse Combat")]
@@ -153,7 +157,7 @@ public class CombatController : MMSingleton<CombatController>
 
             if (currentParticipant.turnExec == null)
             {
-                Debug.LogError($"[CombatController] {currentParticipant.CombatantName} has no turn executor assigned.");
+                Debug.LogError($"[CombatController] {currentParticipant.CombatantName} has no turn participant assigned.");
                 break;
             }
 

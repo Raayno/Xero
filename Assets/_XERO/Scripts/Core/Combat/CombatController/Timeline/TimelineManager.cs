@@ -2,14 +2,12 @@ using Cysharp.Threading.Tasks;
 using MoreMountains.Tools;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 public class TimelineManager : MMSingleton<TimelineManager>
 {
-    private static TimelineSignalBridge signalBridge;
     [SerializeField] private bool enableDebug = false;
 
     private static readonly Queue<PlayableDirector> directorPool = new();
@@ -27,9 +25,9 @@ public class TimelineManager : MMSingleton<TimelineManager>
             {
                 director.SetGenericBinding(track, animator);
             }
-            if (track is SignalTrack && TimelineSignalBridge.GetSignalBridge(signalBridge, out signalBridge))
+            if (track is SignalTrack)
             {
-                director.SetGenericBinding(track, signalBridge.GetComponent<SignalReceiver>());
+                director.SetGenericBinding(track, TimelineSignalBridge.Instance.GetComponent<SignalReceiver>());
             }
         }
 
@@ -99,7 +97,7 @@ public class TimelineManager : MMSingleton<TimelineManager>
         timelineManager = Instance;
         if (timelineManager == null)
         {
-            Debug.LogError("<color=white>[CombatTimelineManager]</color> CombatTimelineManager not found in CombatController's children.");
+            Debug.LogError("<color=white>[CombatTimelineManager]</color> CombatTimelineManager Instance not found.");
             return false;
         }
         return true;

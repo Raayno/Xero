@@ -8,7 +8,7 @@ public class PlayerTurnExec : TurnExec
     protected List<Damageable> targetDamageables;
     protected DamageDataSO damageData;
 
-    protected override void PrepareForExecution(Participant executor, AttackDataSO attack, List<Participant> targets)
+    protected override void PrepareForExecution(Participant participant, AttackDataSO attack, List<Participant> targets)
     {
         targetDamageables = new List<Damageable>();
         foreach (var target in targets)
@@ -20,7 +20,7 @@ public class PlayerTurnExec : TurnExec
         }
         damageData = attack.DamageData;
 
-        Debug.Log($"<color=purple>[PlayerTurnExec]</color>. Executing player turn for {executor.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
+        Debug.Log($"<color=purple>[PlayerTurnExec]</color>. Executing player turn for {participant.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
 
     protected override void SubscribeToAttackSequenceEvents(bool isSubscribe)

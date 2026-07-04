@@ -1,5 +1,4 @@
 using MoreMountains.Tools;
-using UnityEngine;
 
 public class GameSequenceManager : MMSingleton<GameSequenceManager>
 {
