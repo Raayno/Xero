@@ -21,19 +21,18 @@ public abstract class TurnExec: ScriptableObject
             return;
         }
 
-        bool shouldReturnToOriginalPosition = false;
+        // Select an attack
+        AttackDataSO attack = await attackSelector.SelectAttackAsync(availableAttacks, cancellationToken);
+
+        if (attack == null)
+        {
+            Debug.LogError("<color=purple>[TurnExec]</color> AttackSelector returned a null attack.");
+            return;
+        }
+        Debug.Log($"<color=purple>[TurnExec]</color> {participant.name} selected attack: {attack.name}");
+
         try
         {
-            // Select an attack
-            AttackDataSO attack = await attackSelector.SelectAttackAsync(availableAttacks, cancellationToken);
-
-            if (attack == null)
-            {
-                Debug.LogError("<color=purple>[TurnExec]</color> AttackSelector returned a null attack.");
-                return;
-            }
-            Debug.Log($"<color=purple>[TurnExec]</color> {participant.name} selected attack: {attack.name}");
-
             if (attack.TargetSelector == null)
             {
                 Debug.LogError($"<color=purple>[TurnExec]</color> Attack '{attack.name}' has no target selector assigned.");
@@ -52,8 +51,8 @@ public abstract class TurnExec: ScriptableObject
 
             PrepareForExecution(participant, attack, targets, cancellationToken);
 
-            await participant.ParticipantMovable.MoveToTargetAsync(targets, cancellationToken);
-            shouldReturnToOriginalPosition = true;
+            if (participant.ParticipantMovable != null && attack.IsMoveToTarget)
+                await participant.ParticipantMovable.MoveToTargetAsync(targets, cancellationToken);
             
             SubscribeToAttackSequenceEventsBase(true);
             TimelineManager.PlayTimeline(attack.TimelineAsset, participant.Animator, () => OnAttackSequenceFinishedBase());
@@ -65,10 +64,8 @@ public abstract class TurnExec: ScriptableObject
         {
             SubscribeToAttackSequenceEventsBase(false);
 
-            if (shouldReturnToOriginalPosition && participant.ParticipantMovable != null)
-            {
-                await participant.ParticipantMovable.ReturnToOriginalPositionAsync(CancellationToken.None);
-            }
+            if (participant.ParticipantMovable != null && attack.IsMoveToTarget)
+                await participant.ParticipantMovable.ReturnToOriginalPositionAsync(cancellationToken);
         }
     }
 

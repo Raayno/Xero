@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Participant))]
 public abstract class CombatDamageable : Damageable
 {
     public event Action<Participant> OnDefeated;
@@ -23,7 +22,9 @@ public abstract class CombatDamageable : Damageable
     {
         if (participant == null)
         {
+#pragma warning disable UNT0039 // Use RequireComponent attribute when self-invoking GetComponent
             participant = GetComponent<Participant>();
+#pragma warning restore UNT0039 // Use RequireComponent attribute when self-invoking GetComponent
         }
     }
 }

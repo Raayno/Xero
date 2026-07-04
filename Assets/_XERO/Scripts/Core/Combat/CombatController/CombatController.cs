@@ -37,6 +37,10 @@ public class CombatController : MMSingleton<CombatController>
     private Transform playersTransform;
     private Transform enemiesTransform;
 
+    protected override void Awake()
+    {
+        Reset();
+    }
 
     private void Start()
     {
@@ -141,8 +145,14 @@ public class CombatController : MMSingleton<CombatController>
                 Debug.LogError($"[CombatController] {currentParticipant.CombatantName} has no turn participant assigned.");
                 break;
             }
-
-            await currentParticipant.turnExec.ExecuteTurn(currentParticipant, cancellationToken);
+            
+            // Create a linked CancellationTokenSource for this turn so the participant's
+            // destroy token and the global combat token are both observed.
+            // *without overwriting the global token, so that partcipant's destroy token is observed during his turn execution.
+            using (var turnCancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, currentParticipant.GetCancellationTokenOnDestroy()))
+            {
+                await currentParticipant.turnExec.ExecuteTurn(currentParticipant, turnCancellationTokenSource.Token);
+            }
             Debug.Log($"<color=#55AAFF>[Combat]</color> {currentParticipant.CombatantName} completed their turn.");
         }
     }

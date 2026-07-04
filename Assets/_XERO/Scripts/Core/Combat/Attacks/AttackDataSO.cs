@@ -6,14 +6,12 @@ using UnityEngine.Timeline;
 public class AttackDataSO : ScriptableObject
 {
     [Header("Damage")]
-    public DamageDataSO damageData;
+    public DamageDataSO DamageData;
 
     [Header("Timeline")]
-    public TimelineAsset timelineAsset;
+    public bool IsMoveToTarget = true;
+    public TimelineAsset TimelineAsset;
 
     [Header("Targeting")]
     [Required] public TargetSelector TargetSelector;
-
-    public DamageDataSO DamageData => damageData;
-    public TimelineAsset TimelineAsset => timelineAsset;
 }

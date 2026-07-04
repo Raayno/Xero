@@ -8,7 +8,6 @@ using System.Threading;
 public class ManualTargetSelector : TargetSelector
 {
     [SerializeField] protected TargetSelector selectionPoolSelector;
-    protected ParticipantPointInput pointInput;
     protected LayerMask selectionPoolMask;
     protected int selectionPoolLayer = -1;
     protected bool selectionWasCanceled;
@@ -28,8 +27,6 @@ public class ManualTargetSelector : TargetSelector
 
     protected override async UniTask<List<Participant>> SelectTargetsAsync(Participant self, CancellationToken cancellationToken)
     {
-        pointInput = ParticipantPointInput.Instance;
-
         try
         {
             if (!UpdateSelectionPoolMask())
@@ -40,44 +37,38 @@ public class ManualTargetSelector : TargetSelector
             selectedParticipant = null;
             selectionWasCanceled = false;
             HandlePointInputEventsSubscription(true);
-            pointInput.StartSelection();
+            ParticipantPointInput.Instance.StartSelection();
             
             Debug.Log("<color=yellow>[ManualTargetSelector]</color> Awaiting player input for target selection...");
             await UniTask.WaitUntil(() => selectionWasCanceled || selectedParticipant != null, cancellationToken: cancellationToken);
 
-            if (selectionWasCanceled || pointInput.PointedParticipant == null)
+            if (selectionWasCanceled || ParticipantPointInput.Instance.PointedParticipant == null)
             {
                 return new();
             }
 
-            Debug.Log($"<color=yellow>[ManualTargetSelector]</color> Player selected target: {pointInput.PointedParticipant.CombatantName}");
-            return new() { pointInput.PointedParticipant };
+            Debug.Log($"<color=yellow>[ManualTargetSelector]</color> Player selected target: {ParticipantPointInput.Instance.PointedParticipant.CombatantName}");
+            return new() { ParticipantPointInput.Instance.PointedParticipant };
         }
         finally
         {
             HandlePointInputEventsSubscription(false);
             ClearCurrentSelectionPoolMask();
-            if (pointInput != null) pointInput.StopSelection();
+            if (ParticipantPointInput.Instance != null) ParticipantPointInput.Instance.StopSelection();
         }
     }
 
     protected virtual void HandlePointInputEventsSubscription(bool subscribe)
     {
-        if (pointInput == null)
-        {
-            Debug.LogError("[ManualTargetSelector] PointInput is not assigned.");
-            return;
-        }
-
         if (subscribe)
         {
-            pointInput.OnParticipantSelected += ParticipantSelected;
-            pointInput.OnSelectionCancelled += SelectionCanceled;
+            ParticipantPointInput.Instance.OnParticipantSelected += ParticipantSelected;
+            ParticipantPointInput.Instance.OnSelectionCancelled += SelectionCanceled;
         }
         else
         {
-            pointInput.OnParticipantSelected -= ParticipantSelected;
-            pointInput.OnSelectionCancelled -= SelectionCanceled;
+            ParticipantPointInput.Instance.OnParticipantSelected -= ParticipantSelected;
+            ParticipantPointInput.Instance.OnSelectionCancelled -= SelectionCanceled;
         }
     }
 
@@ -102,7 +93,7 @@ public class ManualTargetSelector : TargetSelector
     {
         if (selectionPoolMask == default)
         {
-            selectionPoolMask = pointInput.pointableLayerMask;
+            selectionPoolMask = ParticipantPointInput.Instance.pointableLayerMask;
             selectionPoolLayer = LayerMaskToLayerIndex(selectionPoolMask);
         }
 
@@ -120,7 +111,7 @@ public class ManualTargetSelector : TargetSelector
         if (selectionPool == null || selectionPool.Count == 0)
         {
             Debug.LogWarning("[ManualTargetSelector] Selection pool is empty. No targets available for selection.");
-            pointInput.CancelSelection();
+            ParticipantPointInput.Instance.CancelSelection();
             return false;
         }
 

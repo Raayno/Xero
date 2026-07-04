@@ -44,12 +44,14 @@ public class AlternatingTurnSelector : TurnSelector
         {
             if (lastEntryIsPlayer)
             {
+                if (enemyParticipants.Count == 0) break;
                 // add enemy participant next
                 TurnTimeline.Add(enemyParticipants[nextEnemyIndex % enemyParticipants.Count]);
                 ++nextEnemyIndex;
             }
             else
             {
+                if (playerParticipants.Count == 0) break;
                 // add player participant next
                 TurnTimeline.Add(playerParticipants[nextPlayerIndex % playerParticipants.Count]);
                 ++nextPlayerIndex;

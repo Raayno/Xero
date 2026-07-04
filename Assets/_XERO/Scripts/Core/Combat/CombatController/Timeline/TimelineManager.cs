@@ -13,9 +13,9 @@ public class TimelineManager : MMSingleton<TimelineManager>
     private static readonly Queue<PlayableDirector> directorPool = new();
     private static readonly List<PlayableDirector> activeDirectors = new();
 
-    public static void PlayTimeline(TimelineAsset timelineAsset, Animator animator, Action onTimelineEnd = null)
+    public static void PlayTimeline(TimelineAsset timelineAsset, Animator animator, out PlayableDirector director, Action onTimelineEnd = null)
     {
-        PlayableDirector director = GetOrCreateDirector();
+        director = GetOrCreateDirector();
 
         director.playableAsset = timelineAsset;
         
@@ -36,6 +36,14 @@ public class TimelineManager : MMSingleton<TimelineManager>
 
         TrackTimelineDuration(director, timelineAsset.duration, onTimelineEnd).Forget();
     }
+
+    public static void PlayTimeline(TimelineAsset timelineAsset, Animator animator, Action onTimelineEnd = null)
+    {
+        PlayTimeline(timelineAsset, animator, out _, onTimelineEnd);
+    }
+
+    /// <param name="director">Get this by adding "out var director" to your PlayTimeline()</param>
+    public static void StopTimeline(PlayableDirector director) => ReturnToPool(director);
 
     private static PlayableDirector GetOrCreateDirector()
     {
@@ -63,16 +71,29 @@ public class TimelineManager : MMSingleton<TimelineManager>
         await UniTask.Delay(TimeSpan.FromSeconds(duration));
         
         onTimelineEnd?.Invoke();
+        ReturnToPool(director);
+    }
 
-        if (director != null)
+    private static void ReturnToPool(PlayableDirector director)
+    {
+        if (director == null)
         {
-            director.Stop();
-            director.playableAsset = null;
-            director.enabled = false;
-            
-            activeDirectors.Remove(director);
-            directorPool.Enqueue(director);
+            Debug.LogError("<color=#55AAFF>[CombatTimelineManager]</color> Cannot return timeline to pool. PlayableDirector is null.");
+            return;
         }
+
+        if (!activeDirectors.Contains(director))
+        {
+            Debug.LogWarning("<color=#55AAFF>[CombatTimelineManager]</color> The provided PlayableDirector is not currently active.");
+            return;
+        }
+
+        director.Stop();
+        director.playableAsset = null;
+        director.enabled = false;
+
+        activeDirectors.Remove(director);
+        directorPool.Enqueue(director);
     }
 
     private void Start()

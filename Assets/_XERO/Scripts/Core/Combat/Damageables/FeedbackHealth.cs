@@ -10,19 +10,24 @@ public class FeedbackHealth : Health
 
     public override void TakeDamage(DamageDataSO damageDataSO)
     {
-        if (damageFeedback != null)
+        try
         {
-            if (Time.time - lastDamageTakenAt >= damageCooldown)
+            if (damageFeedback != null)
             {
-                lastDamageTakenAt = Time.time;
-                damageFeedback.PlayFeedbacks(transform.position, damageDataSO.DamageAmount);
+                if (Time.time - lastDamageTakenAt >= damageCooldown)
+                {
+                    lastDamageTakenAt = Time.time;
+                    damageFeedback.PlayFeedbacks(transform.position, damageDataSO.DamageAmount);
+                }
+            }
+            else
+            {
+                Debug.LogError("<color=red>[FeedbackHealth]</color> BarbarianEnemy reference is not assigned.");
             }
         }
-        else
+        finally
         {
-            Debug.LogError("<color=red>[FeedbackHealth]</color> BarbarianEnemy reference is not assigned.");
+            base.TakeDamage(damageDataSO);
         }
-
-        base.TakeDamage(damageDataSO);
     }
 }
