@@ -18,39 +18,19 @@ public class TimelineSignalBridge : MMSingleton<TimelineSignalBridge>, INotifica
             OnSignalReceived?.Invoke(emitter.asset);
         }
     }
-
-    private static bool GetSignalBridge(out TimelineSignalBridge signalBridge)
-    {
-        signalBridge = Instance;
-        if (signalBridge == null)
-        {
-            Debug.LogError("<color=pink>[TimelineSignalBridge]</color> TimelineSignalBridge Instance not found.");
-            return false;
-        }
-        return true;
-    }
-
-    public static bool GetSignalBridge(TimelineSignalBridge signalBridge, out TimelineSignalBridge foundSignalBridge)
-    {
-        foundSignalBridge = signalBridge;
-        if (foundSignalBridge != null) return true;
-        return GetSignalBridge(out foundSignalBridge);
-    }
     
     public static void SubscribeToSignal(bool isSubscribe, Action<SignalAsset> callback)
     {
-        if (!GetSignalBridge(out TimelineSignalBridge signalBridge)) return;
-
         if (isSubscribe)
         {
-            signalBridge.OnSignalReceived += callback;
+            Instance.OnSignalReceived += callback;
         }
         else
         {
-            signalBridge.OnSignalReceived -= callback;
+            Instance.OnSignalReceived -= callback;
         }
         
-        if (signalBridge.enableDebug) Debug.Log($"<color=#FF69B4>[TimelineSignalBridge]</color> {(isSubscribe ? "Subscribed to" : "Unsubscribed from")} notifications with callback: {callback.Method.Name}");
+        if (Instance.enableDebug) Debug.Log($"<color=#FF69B4>[TimelineSignalBridge]</color> {(isSubscribe ? "Subscribed to" : "Unsubscribed from")} notifications with callback: {callback.Method.Name}");
     }
 
     private struct SubscriptionKey : IEquatable<SubscriptionKey>
@@ -67,7 +47,6 @@ public class TimelineSignalBridge : MMSingleton<TimelineSignalBridge>, INotifica
     public static void SubscribeToSignal(bool isSubscribe, SignalAsset signalAssetToSubscribeTo, Action callback)
     {
         if (callback == null || signalAssetToSubscribeTo == null) return;
-        if (!GetSignalBridge(out TimelineSignalBridge signalBridge)) return;
 
         SubscriptionKey key = new() { signalAsset = signalAssetToSubscribeTo, callback = callback };
         if (isSubscribe)
@@ -79,16 +58,16 @@ public class TimelineSignalBridge : MMSingleton<TimelineSignalBridge>, INotifica
             }
             void signalHandler(SignalAsset signal) => CompareAndNotify(signal, key);
             signalHandlers[key] = new SubscriptionValue { signalHandler = signalHandler };
-            signalBridge.OnSignalReceived += signalHandler;
+            Instance.OnSignalReceived += signalHandler;
         }
         else
         {
             if (!signalHandlers.TryGetValue(key, out var v)) return;
-            signalBridge.OnSignalReceived -= v.signalHandler;
+            Instance.OnSignalReceived -= v.signalHandler;
             signalHandlers.Remove(key);
         }
 
-        if (signalBridge.enableDebug) Debug.Log($"<color=#FF69B4>[TimelineSignalBridge]</color> {(isSubscribe ? "Subscribed to" : "Unsubscribed from")} notifications for signal: {signalAssetToSubscribeTo.name} with callback: {callback.Method.Name}");
+        if (Instance.enableDebug) Debug.Log($"<color=#FF69B4>[TimelineSignalBridge]</color> {(isSubscribe ? "Subscribed to" : "Unsubscribed from")} notifications for signal: {signalAssetToSubscribeTo.name} with callback: {callback.Method.Name}");
     }
 
     private static void CompareAndNotify(SignalAsset signalAsset, SubscriptionKey context)
@@ -101,14 +80,12 @@ public class TimelineSignalBridge : MMSingleton<TimelineSignalBridge>, INotifica
 
     public static void UnsubscribeAll()
     {
-        if (!GetSignalBridge(out TimelineSignalBridge signalBridge)) return;
-
         foreach (var kvp in signalHandlers)
         {
-            signalBridge.OnSignalReceived -= kvp.Value.signalHandler;
+            Instance.OnSignalReceived -= kvp.Value.signalHandler;
         }
         signalHandlers.Clear();
 
-        if (signalBridge.enableDebug) Debug.Log("<color=#FF69B4>[TimelineSignalBridge]</color> Unsubscribed from all notifications.");
+        if (Instance.enableDebug) Debug.Log("<color=#FF69B4>[TimelineSignalBridge]</color> Unsubscribed from all notifications.");
     }
 }

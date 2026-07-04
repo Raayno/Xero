@@ -7,14 +7,6 @@ public abstract class CombatDamageable : Damageable
     public event Action<Participant> OnDefeated;
     [SerializeField] private Participant participant;
 
-    protected virtual void Reset()
-    {
-        if (participant == null)
-        {
-            participant = GetComponent<Participant>();
-        }
-    }
-
     public override void Kill()
     {
         if (!IsDefeated) 
@@ -26,4 +18,12 @@ public abstract class CombatDamageable : Damageable
     }
 
     protected abstract void TakeDeathDamage();
+
+    protected virtual void Reset()
+    {
+        if (participant == null)
+        {
+            participant = GetComponent<Participant>();
+        }
+    }
 }

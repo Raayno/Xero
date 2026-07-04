@@ -10,12 +10,6 @@ public class Health : CombatDamageable
     public int MaxHealth => maxHP;
     public int CurrentHealth => currentHP;
 
-    protected override void Reset()
-    {
-        base.Reset();
-        currentHP = maxHP;
-    }
-
     public override void TakeDamage(DamageDataSO dmg)
     {
         Debug.Log($"<color=red>[Health]</color> {gameObject.name} took {dmg.DamageAmount} damage.");
@@ -30,5 +24,11 @@ public class Health : CombatDamageable
     protected override void TakeDeathDamage()
     {
         currentHP = 0;
+    }
+
+    protected override void Reset()
+    {
+        base.Reset();
+        currentHP = maxHP;
     }
 }

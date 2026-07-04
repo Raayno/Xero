@@ -16,7 +16,7 @@ public abstract class TurnSelector : ScriptableObject
     protected int turnCount = -1;
 
     /// <summary>
-    /// Plans the turn timeline based on the provided player and enemy participants. This method should be called when a new turn begins, and it updates the timeline to reflect the current state of the combatants.
+    /// Plans the turn timeline based on the provided player and enemy participants. This method should be called when a new turn begins, and it updates the timeline to reflect the current state of the participants.
     /// </summary>
     public void NextTurn(List<PlayerParticipant> playerParticipants, List<EnemyParticipant> enemyParticipants)
     {

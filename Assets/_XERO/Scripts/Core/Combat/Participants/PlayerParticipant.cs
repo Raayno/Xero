@@ -41,6 +41,6 @@ public class PlayerParticipant : Participant
     private void OnParrySignal()
     {
         isTrueParry = !isTrueParry;
-        if (enableDebug) Debug.Log($"<color=green>[PlayerParticipant]</color> True Parry window of {combatantName} is now {(isTrueParry ? "open" : "closed")}.");
+        if (enableDebug) Debug.Log($"<color=green>[PlayerParticipant]</color> True Parry window of {participantName} is now {(isTrueParry ? "open" : "closed")}.");
     }
 }

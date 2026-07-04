@@ -16,11 +16,6 @@ public class ManualAttackSelectorUIButton : MonoBehaviour
 
     private AttackDataSO attackDataSO;
 
-    private void Reset()
-    {
-        if(button == null) button = GetComponent<Button>();
-    }
-
     private void OnEnable()
     {
         button.onClick.AddListener(OnButtonClick);
@@ -42,5 +37,10 @@ public class ManualAttackSelectorUIButton : MonoBehaviour
         nameTXT.text = attackDataSO.AttackName;
         descriptionTXT.text = attackDataSO.AttackDescription;
         inputIMG.gameObject.SetActive(false);
+    }
+
+    private void Reset()
+    {
+        if (button == null) button = GetComponent<Button>();
     }
 }

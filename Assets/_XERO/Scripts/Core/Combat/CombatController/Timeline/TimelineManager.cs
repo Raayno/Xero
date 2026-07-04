@@ -48,7 +48,7 @@ public class TimelineManager : MMSingleton<TimelineManager>
         }
 
         GameObject go = new("Pooled_PlayableDirector", typeof(PlayableDirector));
-        go.transform.SetParent(GetTimelineManager(out TimelineManager timelineManager) ? timelineManager.transform : null);
+        go.transform.SetParent(Instance.transform);
         
         var newDirector = go.GetComponent<PlayableDirector>();
         // Wyłączamy automatyczne odtwarzanie przy starcie
@@ -90,23 +90,5 @@ public class TimelineManager : MMSingleton<TimelineManager>
     {
         foreach (var d in activeDirectors) if (d != null) Destroy(d.gameObject);
         foreach (var d in directorPool) if (d != null) Destroy(d.gameObject);
-    }
-
-    private static bool GetTimelineManager(out TimelineManager timelineManager)
-    {
-        timelineManager = Instance;
-        if (timelineManager == null)
-        {
-            Debug.LogError("<color=white>[CombatTimelineManager]</color> CombatTimelineManager Instance not found.");
-            return false;
-        }
-        return true;
-    }
-
-    public static bool GetTimelineManager(TimelineManager timelineManager, out TimelineManager foundTimelineManager)
-    {
-        foundTimelineManager = timelineManager;
-        if (foundTimelineManager != null) return true;
-        return GetTimelineManager(out foundTimelineManager);
     }
 }

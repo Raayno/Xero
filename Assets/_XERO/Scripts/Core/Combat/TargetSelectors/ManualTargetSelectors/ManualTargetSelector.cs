@@ -28,10 +28,7 @@ public class ManualTargetSelector : TargetSelector
 
     protected override async UniTask<List<Participant>> SelectTargetsAsync(Participant self, CancellationToken cancellationToken)
     {
-        if (!EnsurePointInput())
-        {
-            return new();
-        }
+        pointInput = ParticipantPointInput.Instance;
 
         try
         {
@@ -82,30 +79,6 @@ public class ManualTargetSelector : TargetSelector
             pointInput.OnParticipantSelected -= ParticipantSelected;
             pointInput.OnSelectionCancelled -= SelectionCanceled;
         }
-    }
-
-    private bool EnsurePointInput()
-    {
-        if (pointInput == null)
-        {
-            pointInput = combatController.ParticipantPointInput;
-            if (pointInput == null)
-            {
-                pointInput = combatController.GetComponentInChildren<ParticipantPointInput>();
-                if (pointInput == null)
-                {
-                    pointInput = FindFirstObjectByType<ParticipantPointInput>();
-                    if (pointInput == null)
-                    {
-                        Debug.LogError("[ManualTargetSelector] No ParticipantPointInput found in the scene. Please ensure one exists.");
-                        return false;
-                    }
-                    else Debug.LogWarning("[ManualTargetSelector] No ParticipantPointInput found in CombatController's children. Using the first one found in the scene, however it is recommended to fix the hierarchy structure in the scene.");
-                }
-            }
-        }
-
-        return true;
     }
 
     protected void ParticipantSelected(Participant selected)

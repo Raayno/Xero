@@ -4,14 +4,14 @@ using UnityEngine;
 public abstract class Participant : MonoBehaviour
 {
     [Header("Combat Participant")]
-    [SerializeField] protected string combatantName;
+    [SerializeField] protected string participantName;
     public string CombatantName
     {
         get
         {
-            if (!string.IsNullOrWhiteSpace(combatantName))
+            if (!string.IsNullOrWhiteSpace(participantName))
             {
-                return combatantName;
+                return participantName;
             }
 
             return gameObject.name;
@@ -27,19 +27,19 @@ public abstract class Participant : MonoBehaviour
 
     [SerializeField] protected bool enableDebug = false;
 
-    protected virtual void Reset()
+    protected virtual void Awake()
     {
-        Awake();
+        Reset();
     }
 
-    protected virtual void Awake()
+    protected virtual void Reset()
     {
         damageable = damageable != null ? damageable : GetComponent<CombatDamageable>();
         ParticipantMovable = ParticipantMovable != null ? ParticipantMovable : GetComponentInChildren<ParticipantMovable>();
         
-        if (string.IsNullOrWhiteSpace(combatantName))
+        if (string.IsNullOrWhiteSpace(participantName))
         {
-            combatantName = gameObject.name;
+            participantName = gameObject.name;
         }
 
         Animator = Animator != null ? Animator : GetComponentInChildren<Animator>();

@@ -10,7 +10,6 @@ public class EnemyTurnExec : TurnExec
     protected List<Participant> targets;
     protected DamageDataSO damageData;
     protected bool isParryWindowOpen = false;
-    protected static ParryInput parryInput;
     private readonly HashSet<int> parriedTargetIds = new();
     private CancellationToken executionCancellationToken;
 
@@ -21,11 +20,10 @@ public class EnemyTurnExec : TurnExec
         isParryWindowOpen = false; // Reset parry window state at the start of the turn
         damageData = attack.DamageData;
 
-        GetParryInput();
         // Enable parry input
-        parryInput.IsEnabled = true;
+        ParryInput.Instance.IsEnabled = true;
         // Subscribe to parry signal
-        parryInput.OnParry += OnParry;
+        ParryInput.Instance.OnParry += OnParry;
 
         Debug.Log($"<color=purple>[EnemyTurnExec]</color> Executing enemy turn for {participant.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
@@ -108,20 +106,8 @@ public class EnemyTurnExec : TurnExec
     protected override void OnAttackSequenceFinished()
     {
         // Unsubscribe from parry signal
-        parryInput.OnParry -= OnParry;
-        parryInput.IsEnabled = false;
+        ParryInput.Instance.OnParry -= OnParry;
+        ParryInput.Instance.IsEnabled = false;
         isParryWindowOpen = false;
-    }
-
-    protected void GetParryInput()
-    {
-        if (parryInput == null)
-        {
-            parryInput = CombatController.Instance.ParryInput;
-            if (parryInput == null)
-            {
-                Debug.LogError("[EnemyTurnExec] No ParryInput found in the scene. Parry functionality will not work.");
-            }
-        }
     }
 }

@@ -16,13 +16,6 @@ public class ParticipantPointInput : MMSingleton<ParticipantPointInput>
     public event Action<Participant> OnParticipantSelected;
     public event Action OnSelectionCancelled;
 
-    private void Reset()
-    {
-        selectionCamera = selectionCamera != null ? selectionCamera : Camera.main;
-
-        pointableLayerMask = pointableLayerMask != 0 ? pointableLayerMask : LayerMask.GetMask("Pointable Participant Layer");
-    }
-
     protected override void Awake()
     {
         base.Awake();
@@ -108,5 +101,12 @@ public class ParticipantPointInput : MMSingleton<ParticipantPointInput>
     public void StopSelection()
     {
         isDetectInput = false;
+    }
+
+    private void Reset()
+    {
+        selectionCamera = selectionCamera != null ? selectionCamera : Camera.main;
+
+        pointableLayerMask = pointableLayerMask != 0 ? pointableLayerMask : LayerMask.GetMask("Pointable Participant Layer");
     }
 }

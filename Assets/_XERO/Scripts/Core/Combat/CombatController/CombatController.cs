@@ -25,10 +25,6 @@ public class CombatController : MMSingleton<CombatController>
     public ManualAttackSelectorUI CombatOptionsUIManager;
 
     [Header("Input Management")]
-    [SerializeField] private ParticipantPointInput participantPointInput;
-    public ParticipantPointInput ParticipantPointInput => participantPointInput;
-    [SerializeField] private ParryInput parryInput;
-    public ParryInput ParryInput => parryInput;
 
     [Header("Combat Initialization")]
     [SerializeField] private CombatInitializationData combatInitializationData;
@@ -38,6 +34,8 @@ public class CombatController : MMSingleton<CombatController>
     [SerializeField] private bool enableDebug = false;
 
     private CancellationTokenSource cancellationTokenSource;
+    private Transform playersTransform;
+    private Transform enemiesTransform;
 
 
     private void Start()
@@ -51,23 +49,6 @@ public class CombatController : MMSingleton<CombatController>
     public void InitializeCombat(CombatInitializationData data)
     {
         CleanseCombat();
-
-
-        GetChild(transform, "Players", out Transform playersTransform);
-        GetChild(transform, "Enemies", out Transform enemiesTransform);
-
-        void GetChild(Transform parent, string name, out Transform child)
-        {
-            child = parent.Find(name);
-            if (child == null)
-            {
-                Debug.LogWarning($"[CombatController] Child '{name}' not found under '{parent.name}'. Creating a new GameObject.");
-                // faster and cleaner than using GameObject.Instantiate with a prefab, since we just need an empty GameObject to hold the participants
-                child = new GameObject(name).transform;
-                child.SetParent(parent);
-            }
-        }
-
 
         InstantiateParticipants(data.PlayerParticipants, true);
         InstantiateParticipants(data.EnemyParticipants, false);
@@ -191,7 +172,23 @@ public class CombatController : MMSingleton<CombatController>
     
     void Reset()
     {
-        participantPointInput = GetComponentInChildren<ParticipantPointInput>();
-        parryInput = GetComponentInChildren<ParryInput>();
+        playersTransform = GetChild(transform, "Players", playersTransform);
+        enemiesTransform = GetChild(transform, "Enemies", enemiesTransform);
+
+        static Transform GetChild(Transform parent, string name, Transform child)
+        {
+            if (child != null) return child;
+
+            child = parent.Find(name);
+
+            if (child == null)
+            {
+                Debug.LogWarning($"[CombatController] Child '{name}' not found under '{parent.name}'. Creating a new GameObject.");
+                // faster and cleaner than using GameObject.Instantiate with a prefab, since we just need an empty GameObject to hold the participants
+                child = new GameObject(name).transform;
+                child.SetParent(parent);
+            }
+            return child;
+        }
     }
 }
