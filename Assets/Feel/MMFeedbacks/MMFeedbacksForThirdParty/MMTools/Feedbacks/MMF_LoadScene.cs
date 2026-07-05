@@ -38,7 +38,7 @@ namespace MoreMountains.Feedbacks
 		[MMFInspectorGroup("Scene Loading", true, 57, true)]
 		/// the Addressables key of the loading screen scene to use
 		[Tooltip("the Addressables key of the loading screen scene to use")]
-		public string LoadingSceneAddressibleKey = "MMAdditiveLoadingScreen";
+		public string LoadingSceneAddressibleKey = "LoadingScreen";
 		/// the Addressables key of the destination scene
 		[Tooltip("the Addressables key of the destination scene")]
 		public string DestinationSceneAddressibleKey = "";
@@ -49,7 +49,7 @@ namespace MoreMountains.Feedbacks
 		         "- direct : uses Unity's SceneManager API" +
 		         "- MMSceneLoadingManager : the simple, original MM way of loading scenes" +
 		         "- MMAdditiveSceneLoadingManager : a more advanced way of loading scenes, with (way) more options")]
-		public LoadingModes LoadingMode = LoadingModes.MMAdditiveSceneLoadingManager;
+		public LoadingModes LoadingMode = LoadingModes.MMSceneLoadingManager;
         
 		[Header("Loading Scene Manager")]
 		/// the priority to use when loading the new scenes
