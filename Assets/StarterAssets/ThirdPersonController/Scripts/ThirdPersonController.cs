@@ -8,7 +8,6 @@ namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(StarterAssetsInputs))]
-    [RequireComponent(typeof(PlayerAnimationManager))]
     [RequireComponent(typeof(PlayerEffectManager))]
     [RequireComponent(typeof(PlayerCombatActivationManager))]
 #if ENABLE_INPUT_SYSTEM
@@ -76,6 +75,9 @@ namespace StarterAssets
         [Header("Landing Impact Runtime")]
         [SerializeField] private bool debugLandingImpact = false;
 
+        [SerializeField] private PlayerAnimationManager _animationManager;
+
+
         private bool isFalling = false;
 
         private bool _wasGroundedLastFrame = true;
@@ -102,7 +104,6 @@ namespace StarterAssets
 
         private CharacterController _controller;
         private StarterAssetsInputs _input;
-        private PlayerAnimationManager _animationManager;
         private PlayerCombatActivationManager _combatActivationManager;
         private GameObject _mainCamera;
 
@@ -142,7 +143,8 @@ namespace StarterAssets
 
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
-            _animationManager = GetComponent<PlayerAnimationManager>();
+            if (!_animationManager)
+                _animationManager = GetComponentInChildren<PlayerAnimationManager>();
             _combatActivationManager = GetComponent<PlayerCombatActivationManager>();
 
 #if ENABLE_INPUT_SYSTEM
