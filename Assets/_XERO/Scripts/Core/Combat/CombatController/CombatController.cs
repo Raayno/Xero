@@ -10,9 +10,8 @@ public class CombatController : MMSingleton<CombatController>
 
     #region Participants
     [Header("Participants")]
-    [SerializeField] private List<EnemyParticipant> enemyParticipants = new();
-    [SerializeField] private List<PlayerParticipant> playerParticipants = new();
-
+    private readonly List<EnemyParticipant> enemyParticipants = new();
+    private readonly List<PlayerParticipant> playerParticipants = new();
     
     public List<Participant> GetEnemies() => new(enemyParticipants);
     public List<Participant> GetPlayers() => new(playerParticipants);
@@ -62,6 +61,7 @@ public class CombatController : MMSingleton<CombatController>
             for (int i = 0; i < prefabs.Length; i++)
             {
                 Pose poseData = data.GetPose(isPlayer, i, data.PlayerParticipants.Length, data.EnemyParticipants.Length);
+
                 var instance = Instantiate(prefabs[i], poseData.position, poseData.rotation, isPlayer ? playersTransform : enemiesTransform);
 
                 if (isPlayer) playerParticipants.Add((PlayerParticipant)instance);

@@ -14796,6 +14796,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd244370f4834945ae35a169e83930c, type: 3}
+--- !u!114 &2716011287273069260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1265634385537827911, guid: 4cd244370f4834945ae35a169e83930c, type: 3}
+  m_PrefabInstance: {fileID: 3756382677861424779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e08cd56fd2838f45bb3577428403529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7257138624210674607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5807342259850738980, guid: 4cd244370f4834945ae35a169e83930c, type: 3}
@@ -17753,7 +17764,7 @@ PrefabInstance:
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[1779414926392557572].TargetSpring
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2716011287273069260}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[1].ExtraBoundAnimators.Array.size
       value: 0
@@ -20892,7 +20903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2208669174937915535, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: m_Name
-      value: BobEnemy
+      value: BobEnemyCombat
       objectReference: {fileID: 0}
     - target: {fileID: 5708128284347335434, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: m_LocalScale.x
