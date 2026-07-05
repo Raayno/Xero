@@ -53,14 +53,16 @@ public class CombatController : MMSingleton<CombatController>
     {
         CleanseCombat();
 
-        InstantiateParticipants(data.PlayerParticipants, true);
-        InstantiateParticipants(data.EnemyParticipants, false);
+        CombatParticipantsData participantsData = data.ParticipantsData;
+
+        InstantiateParticipants(participantsData.PlayerParticipants, true);
+        InstantiateParticipants(participantsData.EnemyParticipants, false);
 
         void InstantiateParticipants(Participant[] prefabs, bool isPlayer)
         {
             for (int i = 0; i < prefabs.Length; i++)
             {
-                Pose poseData = data.GetPose(isPlayer, i, data.PlayerParticipants.Length, data.EnemyParticipants.Length);
+                Pose poseData = data.GetPose(isPlayer, i, participantsData.PlayerParticipants.Length, participantsData.EnemyParticipants.Length);
 
                 var instance = Instantiate(prefabs[i], poseData.position, poseData.rotation, isPlayer ? playersTransform : enemiesTransform);
 

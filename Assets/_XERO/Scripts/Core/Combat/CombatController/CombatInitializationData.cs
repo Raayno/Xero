@@ -6,19 +6,31 @@ using System.Linq;
 [Serializable]
 public class CombatInitializationData
 {
-    [SerializeField] private bool allowOverwrite = false;
+    [SerializeField] private CombatParticipantsData participantsData = new();
+    public CombatParticipantsData ParticipantsData
+    {
+        get
+        {
+            // Prioritize CombatParticipantsData from CombatDataCarrier if it exists, otherwise use the local participantsData
+            if (CombatDataCarrier.CombatParticipantsData != null) return CombatDataCarrier.CombatParticipantsData;
 
-    [Header("Participant Prefabs")]
-    [Tooltip("Also use these for the initial positioning of participants in the scene with [Add Current Positioning of Participants]. Be sure to change back to prefabs, otherwise nothing will load.")]
-    [SerializeField] private PlayerParticipant[] playerParticipantPrefabs;
-    
-    [Tooltip("Also use these for the initial positioning of participants in the scene with [Add Current Positioning of Participants]. Be sure to change back to prefabs, otherwise nothing will load.")]
-    [SerializeField] private EnemyParticipant[] enemyParticipantPrefabs;
+            if (participantsData == null)
+            {
+                Debug.LogWarning("[CombatInitializationData] CombatParticipantsData is null. Returning a new instance.");
+                return new CombatParticipantsData();
+            }
+            return participantsData;
+        }
+    }
     
     [Header("Positioning")]
+    [SerializeField] private bool allowOverwrite = false;
     [Tooltip("Kinda a dictionary, number of players and enemies as key, positions and rotations as value. This is used to set the initial positions and rotations of participants in the scene.")]
     [SerializeField] private List<CombatPositionsAndRotations> combatPositionsAndRotations = new();
+
+    [Header("Fallback Positioning")]
     [SerializeField] private FallbackPositioningSettings fallbackPositioningSettings = new();
+
     public Pose GetPose(bool isPlayer, int index, int playerCount, int enemyCount)
     {
         var c = combatPositionsAndRotations.Find(cpr => cpr.Key == (playerCount, enemyCount));
@@ -29,9 +41,6 @@ public class CombatInitializationData
         }
         return c.GetPose(isPlayer, index);
     }
-
-    public PlayerParticipant[] PlayerParticipants => playerParticipantPrefabs;
-    public EnemyParticipant[] EnemyParticipants => enemyParticipantPrefabs;
     
     public void AddCurrentPositioningOfParticipants(List<Participant> players, List<Participant> enemies)
     {
@@ -85,6 +94,20 @@ public class CombatPositionsAndRotations
         playerPositionsAndRotations = playerPoses;
         enemyPositionsAndRotations = enemyPoses;
     }
+}
+
+[Serializable]
+public class CombatParticipantsData
+{
+    [Header("Participant Prefabs")]
+    [Tooltip("Also use these for the initial positioning of participants in the scene with [Add Current Positioning of Participants]. Be sure to change back to prefabs, otherwise nothing will load.")]
+    [SerializeField] private PlayerParticipant[] playerParticipantPrefabs;
+    
+    [Tooltip("Also use these for the initial positioning of participants in the scene with [Add Current Positioning of Participants]. Be sure to change back to prefabs, otherwise nothing will load.")]
+    [SerializeField] private EnemyParticipant[] enemyParticipantPrefabs;
+
+    public PlayerParticipant[] PlayerParticipants => playerParticipantPrefabs;
+    public EnemyParticipant[] EnemyParticipants => enemyParticipantPrefabs;
 }
 
 [Serializable]

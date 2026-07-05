@@ -12,4 +12,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadb66c9c78bed646bfcc619137d2c1a, type: 3}
   m_Name: Comp_OriginalStore
   m_EditorClassIdentifier: PlayModeChangesSaver.Editor::PlayModeChangesSaver.Editor.CompOriginalStore
-  entries: []
+  entries:
+  - scenePath: Assets/_XERO/Scenes/Level_01_AR01.unity
+    objectPath: Combat Controller
+    globalObjectId: GlobalObjectId_V1-2-e3d4f7323ff95ae48b84a64b61776fc9-175917253-0
+    componentType: CombatController, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    componentIndex: 0
+    propertyPaths:
+    - turnSelector
+    - CombatOptionsUIManager
+    - combatInitializationData.participantsData.playerParticipantPrefabs.Array.size
+    - 'combatInitializationData.participantsData.playerParticipantPrefabs.Array.data[0]'
+    - 'combatInitializationData.participantsData.playerParticipantPrefabs.Array.data[1]'
+    - combatInitializationData.participantsData.enemyParticipantPrefabs.Array.size
+    - 'combatInitializationData.participantsData.enemyParticipantPrefabs.Array.data[0]'
+    - 'combatInitializationData.participantsData.enemyParticipantPrefabs.Array.data[1]'
+    - 'combatInitializationData.participantsData.enemyParticipantPrefabs.Array.data[2]'
+    - combatInitializationData.allowOverwrite
+    - combatInitializationData.combatPositionsAndRotations.Array.size
+    - combatInitializationData.combatPositionsAndRotations.Array.data[0].playerPositionsAndRotations.Array.size
+    - combatInitializationData.combatPositionsAndRotations.Array.data[0].playerPositionsAndRotations.Array.data[0].position
+    - combatInitializationData.combatPositionsAndRotations.Array.data[0].playerPositionsAndRotations.Array.data[0].rotation
+    - combatInitializationData.combatPositionsAndRotations.Array.data[0].enemyPositionsAndRotations.Array.size
+    - combatInitializationData.combatPositionsAndRotations.Array.data[0].enemyPositionsAndRotations.Array.data[0].position
+    - combatInitializationData.combatPositionsAndRotations.Array.data[0].enemyPositionsAndRotations.Array.data[0].rotation
+    - combatInitializationData.fallbackPositioningSettings.centerPoint
+    - combatInitializationData.fallbackPositioningSettings.spaceBetweenTeams
+    - combatInitializationData.fallbackPositioningSettings.teamSpacing
+    - enableDebug
+    serializedValues:
+    - 
+    - 
+    - 2
+    - 
+    - 
+    - 3
+    - 
+    - 
+    - 
+    - False
+    - 1
+    - 1
+    - -3,0,-5.25
+    - 0,0,0,0
+    - 1
+    - -5,0,1
+    - 0,1,0,-4.371139E-08
+    - 0,0,0
+    - 7
+    - 2
+    - True
+    valueTypes:
+    - 
+    - 
+    - Integer
+    - 
+    - 
+    - Integer
+    - 
+    - 
+    - 
+    - Boolean
+    - Integer
+    - Integer
+    - Vector3
+    - Quaternion
+    - Integer
+    - Vector3
+    - Quaternion
+    - Vector3
+    - Float
+    - Float
+    - Boolean
+    materialGuids: []
