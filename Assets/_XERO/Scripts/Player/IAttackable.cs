@@ -1,4 +1,4 @@
-public interface IAttackable
+ public interface IAttackable
 {
     void OnAttack();
 }

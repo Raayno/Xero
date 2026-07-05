@@ -4113,6 +4113,10 @@ PrefabInstance:
       value: XeroPlayerCombat
       objectReference: {fileID: 0}
     - target: {fileID: 6340271125132534941, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 5806775086009130961}
+    - target: {fileID: 6340271125132534941, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
       propertyPath: participantName
       value: XeroPlayer
       objectReference: {fileID: 0}
@@ -4181,15 +4185,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3479722163208298889, guid: 09bb62e2ae5cde14c839209bc594a90b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3479722163208298889, guid: 09bb62e2ae5cde14c839209bc594a90b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3479722163208298889, guid: 09bb62e2ae5cde14c839209bc594a90b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3479722163208298889, guid: 09bb62e2ae5cde14c839209bc594a90b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
