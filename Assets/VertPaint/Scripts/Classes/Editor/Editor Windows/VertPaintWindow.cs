@@ -1120,7 +1120,7 @@ namespace VertPaint
             // Gather all unused mesh paths.
             // It's: all mesh paths minus the ones currently
             // in use, thanks to LINQ's Enumerable.Except method.
-            IEnumerable<string> unusedMeshPaths = meshPaths.Except(FindObjectsOfType<MeshFilter>()
+            IEnumerable<string> unusedMeshPaths = meshPaths.Except(FindObjectsByType<MeshFilter>(FindObjectsSortMode.None)
                     .Where(meshFilter => meshes.ContainsKey(meshFilter.sharedMesh))
                     .Select(meshFilter => meshes[meshFilter.sharedMesh])
                     .Distinct())
