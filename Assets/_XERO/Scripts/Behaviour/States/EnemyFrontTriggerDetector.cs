@@ -12,10 +12,10 @@ public class EnemyFrontTriggerDetector : MonoBehaviour
     [Tooltip("Angle in degrees considered 'in front'.")]
     [Range(0f, 180f)]
     [SerializeField] private float viewAngle = 90f;
+    // Set of variables used by Behaviour Tree
     [SerializeField] private BlackboardReference blackboard;
 
     [Header("Debug")]
-    [SerializeField] private GameObject detectedPlayer;
 
     private GameObject targetPlayer;
     private bool isPlayerTriggered = false;
@@ -32,7 +32,11 @@ public class EnemyFrontTriggerDetector : MonoBehaviour
         {
             isPlayerTriggered = true;
             if (!targetPlayer)
+            {
                 targetPlayer = other.gameObject;
+
+                blackboard.SetVariableValue(PLAYER_TARGET, targetPlayer.transform);
+            }
         }
     }
 
@@ -44,7 +48,7 @@ public class EnemyFrontTriggerDetector : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnTriggerStay()
     {
         if (isPlayerTriggered)
         {
@@ -56,15 +60,7 @@ public class EnemyFrontTriggerDetector : MonoBehaviour
             if (angle <= viewAngle * 0.5f)
             {
                 blackboard.SetVariableValue(CanSeePlayer, true);
-                detectedPlayer = targetPlayer;
             }
-            else
-            {
-                detectedPlayer = null;
-            }
-
-            if (detectedPlayer)
-                blackboard.SetVariableValue(PLAYER_TARGET, detectedPlayer.transform);
         }
     }
 }
