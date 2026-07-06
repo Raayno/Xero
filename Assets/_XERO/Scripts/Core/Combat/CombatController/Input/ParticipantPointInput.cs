@@ -12,6 +12,7 @@ public class ParticipantPointInput : MMSingleton<ParticipantPointInput>
     [SerializeField] protected float maxRayDistance = 500f;
 
     private bool isDetectInput = false;
+    private bool wasDetectInputLastFrame = false;
 
     public event Action<Participant> OnParticipantSelected;
     public event Action OnSelectionCancelled;
@@ -27,8 +28,21 @@ public class ParticipantPointInput : MMSingleton<ParticipantPointInput>
 
     private void Update()
     {
-        if (!isDetectInput) return;
-        
+        if (!isDetectInput)
+        {
+            wasDetectInputLastFrame = false;
+            return;
+        }
+        else
+        {
+            if (!wasDetectInputLastFrame)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            wasDetectInputLastFrame = true;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             TrySelectTargetFromMouse();

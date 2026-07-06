@@ -12,7 +12,7 @@ public class ManualAttackSelector : AttackSelector
     public override async UniTask<AttackDataSO> SelectAttackAsync(List<AttackDataSO> attacks, CancellationToken cancellationToken = default)
     {
         selectedAttack = null;
-        UI = UI != null ? UI : CombatController.Instance.CombatOptionsUIManager;
+        UI = UI != null ? UI : ManualAttackSelectorUI.Instance;
 
         var playerAttacks = attacks.OfType<PlayerAttackDataSO>().ToList();
 

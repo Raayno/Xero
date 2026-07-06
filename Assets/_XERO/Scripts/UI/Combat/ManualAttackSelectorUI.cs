@@ -1,18 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Tools;
 
-public class ManualAttackSelectorUI : MonoBehaviour
+public class ManualAttackSelectorUI : MMSingleton<ManualAttackSelectorUI>
 {
     [SerializeField] private Transform combatOptionsContainer;
     [SerializeField] private List<ManualAttackSelectorUIButton> combatOptionsUIList = new();
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         HideUI();
     }
 
     public void ShowUI(List<PlayerAttackDataSO> attacks)
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
         combatOptionsContainer.gameObject.SetActive(true);
         ShowOptionsUI(attacks);
     }

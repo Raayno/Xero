@@ -20,21 +20,16 @@ public class CombatController : MMSingleton<CombatController>
     [Header("Turn Management")]
     [SerializeField] private TurnSelector turnSelector;
 
-    [Header("UI Management")]
-    public ManualAttackSelectorUI CombatOptionsUIManager;
-
     [Header("Input Management")]
 
     [Header("Combat Initialization")]
-    [SerializeField] private CombatInitializationData combatInitializationData;
-    [Button("Add Current Positioning of Participants")] private void AddCurrentPositioningOfParticipants() => combatInitializationData?.AddCurrentPositioningOfParticipants(GetPlayers(), GetEnemies());
+    [SerializeField] private CombatInitialization combatInitialization;
+    [Button("Add Current Positioning of Participants")] private void AddCurrentPositioningOfParticipants() => combatInitialization?.CombatPositioning.AddCurrentPositioningOfParticipants(GetPlayers(), GetEnemies());
     
     [Header("Debug")]
     [SerializeField] private bool enableDebug = false;
 
     private CancellationTokenSource cancellationTokenSource;
-    private Transform playersTransform;
-    private Transform enemiesTransform;
 
     protected override void Awake()
     {
@@ -48,33 +43,16 @@ public class CombatController : MMSingleton<CombatController>
 
     #region Initialization
     [Button("Reset Combat")]
-    private void InitializeCombat() => InitializeCombat(combatInitializationData);
-    public void InitializeCombat(CombatInitializationData data)
+    private void InitializeCombat()
     {
         CleanseCombat();
 
-        CombatParticipantsData participantsData = data.ParticipantsData;
-
-        InstantiateParticipants(participantsData.PlayerParticipants, true);
-        InstantiateParticipants(participantsData.EnemyParticipants, false);
-
-        void InstantiateParticipants(Participant[] prefabs, bool isPlayer)
-        {
-            for (int i = 0; i < prefabs.Length; i++)
-            {
-                Pose poseData = data.GetPose(isPlayer, i, participantsData.PlayerParticipants.Length, participantsData.EnemyParticipants.Length);
-
-                var instance = Instantiate(prefabs[i], poseData.position, poseData.rotation, isPlayer ? playersTransform : enemiesTransform);
-
-                if (isPlayer) playerParticipants.Add((PlayerParticipant)instance);
-                else enemyParticipants.Add((EnemyParticipant)instance);
-            }
-        }
-
+        combatInitialization.InitializeCombat(enemyParticipants, playerParticipants);
 
         cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
         RunCombatLoopAsync(cancellationTokenSource.Token).Forget();
     }
+
 
     [Button("Cleanse Combat")]
     private void CleanseCombat()
@@ -90,7 +68,7 @@ public class CombatController : MMSingleton<CombatController>
         // Reset the turn selector
         if (turnSelector != null) turnSelector.ResetTimeline();
 
-        // Clear all subscriptions to timeline signals
+        // Clear all subscriptions to timeline signals (game-wide)
         TimelineSignalBridge.UnsubscribeAll();
 
         // Destroy all existing participants
@@ -184,8 +162,8 @@ public class CombatController : MMSingleton<CombatController>
     
     void Reset()
     {
-        playersTransform = GetChild(transform, "Players", playersTransform);
-        enemiesTransform = GetChild(transform, "Enemies", enemiesTransform);
+        combatInitialization.PlayersTransform = GetChild(transform, "Players", combatInitialization.PlayersTransform);
+        combatInitialization.EnemiesTransform = GetChild(transform, "Enemies", combatInitialization.EnemiesTransform);
 
         static Transform GetChild(Transform parent, string name, Transform child)
         {

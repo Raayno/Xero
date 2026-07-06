@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public static class CombatDataCarrier
+public static class CombatEnemyDataCarrier
 {
     private static readonly bool enableDebug = true;
-    private static CombatParticipantsData combatParticipantsData;
+    private static CombatEnemiesData combatParticipantsData;
 
-    public static CombatParticipantsData CombatParticipantsData
+    public static CombatEnemiesData CombatEnemiesData
     {
         get
         {

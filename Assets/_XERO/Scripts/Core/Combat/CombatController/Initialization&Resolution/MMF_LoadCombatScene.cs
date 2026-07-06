@@ -6,9 +6,14 @@ using UnityEngine;
 [System.Serializable]
 [FeedbackPath("Scene/Load Combat Scene")]
 public class MMF_LoadCombatScene : MMF_LoadScene
-{    
+{
+    public MMF_LoadCombatScene()
+    {
+        DestinationSceneAddressibleKey = "Zone_ID/Arenas/Combat_ID";
+    }
+
     [MMFInspectorGroup("Combat Data", true)] 
-    public CombatParticipantsData participantsData;
+    public CombatEnemiesData participantsData;
 
     protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
     {
@@ -16,7 +21,7 @@ public class MMF_LoadCombatScene : MMF_LoadScene
 
         if (participantsData != null)
         {
-            CombatDataCarrier.CombatParticipantsData = participantsData;
+            CombatEnemyDataCarrier.CombatEnemiesData = participantsData;
         }
 
         base.CustomPlayFeedback(position, feedbacksIntensity);
