@@ -4,7 +4,7 @@ using Unity.Behavior;
 using UnityEngine;
 
 [Serializable, Unity.Properties.GeneratePropertyBag]
-[Condition(name: "IsTargetSpotted", story: "[TargetEyes] on [TargetTag] is within [RadiusAndAngle] and is NOT hidden behind anything (except [ExcludedLayers] ) from [AgentEyes]", category: "Conditions", id: "752341b170f9884cdf22000d288b5a5f")]
+[Condition(name: "IsTargetSpotted", story: "[TargetEyes] on [TargetTag] is NOT null, is within [RadiusAndAngle] and is NOT hidden behind anything except [ExcludedLayers] looking from [AgentEyes] Invert [IsInverted]", category: "Conditions", id: "752341b170f9884cdf22000d288b5a5f")]
 public partial class IsTargetSpottedCondition : Condition
 {
     [SerializeReference] public BlackboardVariable<Transform> TargetEyes;
@@ -12,23 +12,32 @@ public partial class IsTargetSpottedCondition : Condition
     [SerializeReference] public BlackboardVariable<Vector2> RadiusAndAngle;
     [SerializeReference] public BlackboardVariable<List<string>> ExcludedLayers;
     [SerializeReference] public BlackboardVariable<Transform> AgentEyes;
-    private readonly bool enableDebug = true;
+    [SerializeReference] public BlackboardVariable<bool> IsInverted; 
+    private readonly bool enableDebug = false;
 
     public override bool IsTrue()
     {
+        bool isInverted = IsInverted != null && IsInverted.Value;
+        if (enableDebug) Debug.LogWarning("IsInverted: " + isInverted);
+        return isInverted ? !CheckIfTargetIsSpotted() : CheckIfTargetIsSpotted();
+    }
+
+    private bool CheckIfTargetIsSpotted()
+    {
         if (TargetEyes.Value == null || AgentEyes.Value == null)
         {
+            Debug.LogError("TargetEyes or AgentEyes is not assigned.");
             return false;
         }
 
-        Vector3 directionToTarget = TargetEyes.Value.position - AgentEyes.Value.transform.position;
+        Vector3 directionToTarget = TargetEyes.Value.position - AgentEyes.Value.position;
         float distanceToTarget = directionToTarget.magnitude;
 
         if (distanceToTarget > RadiusAndAngle.Value.x)
         {
             if (enableDebug)
             {
-                Debug.Log($"Target is too far away. Distance: {distanceToTarget}, Radius: {RadiusAndAngle.Value.x}");
+                Debug.Log($"<color=red>Target is too far away.</color>");
             }
             return false;
         }
@@ -38,38 +47,45 @@ public partial class IsTargetSpottedCondition : Condition
         {
             if (enableDebug)
             {
-                Debug.Log($"Target is outside of the field of view. Angle: {angleToTarget}, Field of View: {RadiusAndAngle.Value.y}");
+                Debug.Log($"<color=red>Target is outside of the field of view.</color>");
             }
             return false;
         }
 
-        LayerMask layerMask = ~LayerMask.GetMask(ExcludedLayers.Value.ToArray());
+        LayerMask layerMask = ExcludedLayers != null && ExcludedLayers.Value != null
+            ? ~LayerMask.GetMask(ExcludedLayers.Value.ToArray())
+            : ~0;
 
-        if (Physics.Raycast(AgentEyes.Value.transform.position, directionToTarget, out RaycastHit hit, distanceToTarget, layerMask))
+        Vector3 rayDirection = directionToTarget.normalized;
+        if (Physics.Raycast(AgentEyes.Value.position, rayDirection, out RaycastHit hit, distanceToTarget, layerMask, QueryTriggerInteraction.Ignore))
         {
-            if (!hit.transform.CompareTag(TargetTag.Value))
+            Transform targetRoot = TargetEyes.Value.root;
+            bool hitIsTarget = hit.transform == TargetEyes.Value || hit.transform.IsChildOf(targetRoot);
+
+            if (!hitIsTarget && !string.IsNullOrEmpty(TargetTag?.Value) && hit.transform.CompareTag(TargetTag.Value))
+            {
+                hitIsTarget = true;
+            }
+
+            if (!hitIsTarget)
             {
                 if (enableDebug)
                 {
-                    Debug.Log($"Target is hidden behind something else. Hit: {hit.transform.name}, Target Tag: {TargetTag.Value}");
+                    Debug.Log($"<color=red>Target is hidden behind something else. Hit: {hit.transform.name}, Target Tag: {TargetTag.Value}</color>");
                 }
                 return false; // Target is hidden behind something else
             }
         }
 
+        if (enableDebug)
+        {
+            Debug.Log($"<color=green>Target is spotted!</color>");
+        }
         return true;
     }
 
     private Vector3 IgnoreYComponent(Vector3 vector)
     {
         return new Vector3(vector.x, 0, vector.z);
-    }
-
-    public override void OnStart()
-    {
-    }
-
-    public override void OnEnd()
-    {
     }
 }

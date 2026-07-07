@@ -6,15 +6,15 @@ using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "EnemyPatrol", story: "[Agent] patrols along [Waypoints] stopping at each one for time ranging between [WaypointWaitTime] using [Animator], [NavMeshAgent]", category: "Action", id: "f7508cb7a7063c7ffc34c279f82b9e99")]
-public partial class EnemyPatrolAction : Action
+[NodeDescription(name: "FixedEnemyPatrol", story: "[Agent] patrols along [Waypoints] at [Speed] stopping at each one for time ranging between [WaypointWaitTime] using [Animator], [NavMeshAgent]", category: "Action", id: "e1f3c5b2a4d34e7b9c8f6a5d7e2b4c1d")]
+public partial class FixedEnemyPatrolAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<EnemyAIWaypointSequence> Waypoints;
     [SerializeReference] public BlackboardVariable<Vector2> WaypointWaitTime;
     [SerializeReference] public BlackboardVariable<Animator> Animator;
     [SerializeReference] public BlackboardVariable<NavMeshAgent> NavMeshAgent;
-    [SerializeReference] public BlackboardVariable<float> Speed = new(3f);
+    [SerializeReference] public BlackboardVariable<float> Speed = new(3.5f);
     [SerializeReference] public BlackboardVariable<float> DistanceThreshold = new(0.2f);
     [Tooltip("Should patrol restart from the latest point?")]
     [SerializeReference] public BlackboardVariable<bool> PreserveLatestPatrolPoint = new(false);
@@ -178,8 +178,7 @@ public partial class EnemyPatrolAction : Action
         m_CurrentPatrolPoint = (m_CurrentPatrolPoint + 1) % Waypoints.Value.Waypoints.Length;
 
         m_CurrentTarget = GetRandomPointInWaypointRadius(Waypoints.Value.Waypoints[m_CurrentPatrolPoint]);
-
-        Vector3 GetRandomPointInWaypointRadius(EnemyAIWaypoint waypoint)
+        static Vector3 GetRandomPointInWaypointRadius(EnemyAIWaypoint waypoint)
         {
             if (waypoint.Radius <= 0f)
             {

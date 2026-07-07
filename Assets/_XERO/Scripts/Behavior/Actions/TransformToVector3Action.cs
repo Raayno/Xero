@@ -5,7 +5,7 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "TransformToVector3Action", story: "Set [Vector3Variable] to [Transform] position (Y set to zero)", category: "Action", id: "0c1fd72d5a14d04d7c5c876ca545f8c5")]
+[NodeDescription(name: "TransformToVector3Action", story: "Set [Vector3Variable] to [Transform] position", category: "Action", id: "0c1fd72d5a14d04d7c5c876ca545f8c5")]
 public partial class TransformToVector3Action : Action
 {
     [SerializeReference] public BlackboardVariable<Vector3> Vector3Variable;
@@ -17,7 +17,7 @@ public partial class TransformToVector3Action : Action
         {
             return Status.Failure;
         }
-        Vector3Variable.Value = new Vector3(Transform.Value.position.x, 0f, Transform.Value.position.z);
+        Vector3Variable.Value = Transform.Value.position;
         return Status.Success;
     }
 }

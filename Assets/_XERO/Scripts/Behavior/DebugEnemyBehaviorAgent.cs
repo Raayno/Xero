@@ -9,6 +9,8 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!isActiveAndEnabled) return;
+
         agent.GetVariable<Transform>("SelfEyes", out var agentEyes);
         if (agentEyes == null || agentEyes.Value == null) return;
 
