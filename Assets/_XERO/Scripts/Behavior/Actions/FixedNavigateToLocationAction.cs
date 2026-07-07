@@ -3,15 +3,14 @@ using Unity.Properties;
 using UnityEngine;
 using UnityEngine.AI;
 using Unity.Behavior;
-using Action = Unity.Behavior.Action;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(
     name: "FixedNavigateToLocation",
-    story: "[Agent] navigates at [Speed] to [Location] using [Animator] , [NavMeshAgent]",
+    story: "[Agent] partially navigates at [Speed] to [Location] using [Animator] , [NavMeshAgent]",
     category: "Action",
     id: "c67c5c55de9fe94897cf41976250cc83")]
-public partial class FixedNavigateToLocationAction : Action
+public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<Vector3> Location;
@@ -33,12 +32,14 @@ public partial class FixedNavigateToLocationAction : Action
     private enum AnimatorParameter { IsWalk, SpeedMagnitude }
     private readonly float m_CurrentSpeed;
     private float m_StallTimer = 0f;
+    [Tooltip("The multiplier for the distance to the target location. A value of 1 means the agent will navigate to the exact location, while a value of 0.5 means the agent will navigate to a point halfway between its current position and the target location.")]
+    public static readonly float partialLocationMultiplier = 0.5f;
 
     protected override Status OnStart()
     {
         if (Agent.Value == null || Location.Value == null)
         {
-            return Status.Failure;
+            return ReturnFailIfUnreachable();
         }
 
         return Initialize();
@@ -49,10 +50,10 @@ public partial class FixedNavigateToLocationAction : Action
         if (Agent == null || Agent.Value == null || Location == null || NavMeshAgent == null || NavMeshAgent.Value == null)
         {
             Debug.LogError("Agent, Location, or NavMeshAgent is not assigned.");
-            return Status.Failure;
+            return ReturnFailIfUnreachable();
         }
 
-        float distance = GetDistanceToLocation(out Vector3 agentPosition, out Vector3 locationPosition);
+        float distance = GetDistanceToLocation(out Vector3 locationPosition);
 
         // Check if the location has changed.
         bool locationChanged = m_LastLocationPosition != locationPosition;
@@ -71,19 +72,12 @@ public partial class FixedNavigateToLocationAction : Action
         {
             return Status.Success;
         }
-
-        // Process path evaluation only if the NavMesh has processed the request
         
-        // if (!NavMeshAgent.Value.pathPending && !NavMeshAgent.Value.hasPath && NavMeshAgent.Value.pathStatus == NavMeshPathStatus.PathPartial)
-        // {
-        //     // Agent cannot come closer to the target (out of navmesh bound)
-        //     return ReturnFailIfUnreachable();
-        // }
         if (!NavMeshAgent.Value.pathPending)
         {
             if (NavMeshAgent.Value.pathStatus == NavMeshPathStatus.PathPartial || NavMeshAgent.Value.pathStatus == NavMeshPathStatus.PathInvalid)
             {
-                return (FailIfUnreachable != null && FailIfUnreachable.Value) ? Status.Failure : Status.Success;
+                return ReturnFailIfUnreachable();
             }
 
             // Fix Stall check using a Time buffer so it never fails on single-frame recalculations
@@ -97,7 +91,7 @@ public partial class FixedNavigateToLocationAction : Action
                 m_StallTimer += Time.deltaTime;
                 if (m_StallTimer > 0.5f) // Must be completely stuck for half a second before failing
                 {
-                    return (FailIfUnreachable != null && FailIfUnreachable.Value) ? Status.Failure : Status.Success;
+                    return ReturnFailIfUnreachable();
                 }
             }
             else
@@ -113,7 +107,8 @@ public partial class FixedNavigateToLocationAction : Action
 
     private Status ReturnFailIfUnreachable()
     {
-        return FailIfUnreachable.Value ? Status.Failure : Status.Success;
+        Debug.LogWarning("Agent cannot reach the destination.");
+        return ReturnFailIfUnreachable();
     }
 
     protected override void OnEnd()
@@ -150,7 +145,7 @@ public partial class FixedNavigateToLocationAction : Action
 
     private Status Initialize()
     {
-        float distance = GetDistanceToLocation(out Vector3 agentPosition, out Vector3 locationPosition);
+        float distance = GetDistanceToLocation(out Vector3 locationPosition);
         m_LastLocationPosition = locationPosition;
 
         if (distance <= DistanceThreshold)
@@ -178,11 +173,13 @@ public partial class FixedNavigateToLocationAction : Action
         return Status.Running;
     }
 
-    private float GetDistanceToLocation(out Vector3 agentPosition, out Vector3 locationPosition)
+    private Vector3 cashedAgentPosition;
+    private float GetDistanceToLocation(out Vector3 locationPosition)
     {
-        agentPosition = Agent.Value.transform.position;
-        locationPosition = Location.Value;
-        return Vector3.Distance(new Vector3(agentPosition.x, locationPosition.y, agentPosition.z), locationPosition);
+        cashedAgentPosition = cashedAgentPosition != null ? Agent.Value.transform.position : cashedAgentPosition;
+        Vector3 directionToLocation = Location.Value - cashedAgentPosition;
+        locationPosition = cashedAgentPosition + directionToLocation * partialLocationMultiplier;
+        return Vector3.Distance(new Vector3(cashedAgentPosition.x, locationPosition.y, cashedAgentPosition.z), locationPosition);
     }
 
     private void UpdateAnimatorSpeed(float explicitSpeed = -1f)

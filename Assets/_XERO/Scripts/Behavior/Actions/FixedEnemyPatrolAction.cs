@@ -1,13 +1,12 @@
 using System;
 using Unity.Behavior;
 using UnityEngine;
-using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "FixedEnemyPatrol", story: "[Agent] patrols along [Waypoints] at [Speed] stopping at each one for time ranging between [WaypointWaitTime] using [Animator], [NavMeshAgent]", category: "Action", id: "e1f3c5b2a4d34e7b9c8f6a5d7e2b4c1d")]
-public partial class FixedEnemyPatrolAction : Action
+public partial class FixedEnemyPatrolAction : Unity.Behavior.Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<EnemyAIWaypointSequence> Waypoints;

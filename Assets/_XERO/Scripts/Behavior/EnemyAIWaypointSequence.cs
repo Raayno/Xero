@@ -17,7 +17,7 @@ public class EnemyAIWaypointSequence : MonoBehaviour
             if (Waypoints[i] != null)
             {
                 Gizmos.DrawLine(Waypoints[i].transform.position, Waypoints[(i + 1) % Waypoints.Length].transform.position);
-                Handles.Label(Waypoints[i].transform.position + 0.2f * i * Vector3.up, $"{i + 1}");
+                Handles.Label(Waypoints[i].transform.position + 0.2f * i * Vector3.up, $"Waypoint {i + 1} in sequence", EditorStyles.boldLabel);
             }
         }
     }

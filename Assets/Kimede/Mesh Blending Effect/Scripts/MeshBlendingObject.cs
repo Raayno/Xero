@@ -14,10 +14,11 @@ namespace Kimede
         [Range(0.01f, 2f)]
         [Tooltip("Custom blending radius for this object (0.01 - 2.0)")]
         public float blendingRadius = 0.1f;
-
+#pragma warning disable 0414
         [Header("Debug")]
         [SerializeField]
         private bool showDebugInfo = false;
+#pragma warning restore 0414
 
         /// <summary>
         /// Get the actual blending radius value (for external access)

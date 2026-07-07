@@ -1,45 +1,135 @@
+#if UNITY_EDITOR
 using UnityEngine;
+using UnityEditor;
 using Unity.Behavior;
 
+[RequireComponent(typeof(BehaviorGraphAgent))]
 public class DebugEnemyBehaviorAgent : MonoBehaviour
 {
-    [SerializeField] private BehaviorGraphAgent agent;
+    [Header("Blackboard Variables")]
+    [SerializeField] private Transform agentEyes;
+    [SerializeField] private Vector2 spottingRadiusAndAngle;
+    [SerializeField] private Vector2 chasingRadiusAndAngle;
+    [SerializeField] private float lookAroundAngle;
+
+    [Header("Settings")]
+    [Range(1, 13)][SerializeField] private int fieldOfViewApproximationDensity = 6;
     [SerializeField] private Color spottingFieldOfViewColor = Color.red;
     [SerializeField] private Color chasingFieldOfViewColor = Color.yellow;
+    [SerializeField] private Color lookAroundGizmoColor = Color.blue;
+    [SerializeField] private float lookAroundGizmoLength = 1f;
+    [SerializeField] private bool enablePlayModeGizmos = false;
+
+    void OnEnable()
+    {
+        agent = GetComponent<BehaviorGraphAgent>();
+        enablePlayModeGizmos = true;
+    }
+
+    void OnDisable()
+    {
+        enablePlayModeGizmos = false;
+    }
+
+    private BehaviorGraphAgent agent;
+    [Tooltip("Play Mode Only")]
+    [NaughtyAttributes.Button] private void SynchronizeWithAgent()
+    {
+        agent = GetComponent<BehaviorGraphAgent>();
+        if (agent == null)
+        {
+            Debug.LogWarning("No BehaviorGraphAgent found on this GameObject.");
+            return;
+        }
+
+        if (!EditorApplication.isPlaying)
+        {
+            Debug.LogWarning("SynchronizeWithAgent should be called during play mode.");
+            return;
+        }
+
+        agent.GetVariable<Transform>("TargetEyes", out var t1);
+        agentEyes = t1?.Value;
+
+        agent.GetVariable<Vector2>("SpottingRadiusAndAngle", out var t2);
+        spottingRadiusAndAngle = t2?.Value ?? Vector2.zero;
+
+        agent.GetVariable<Vector2>("ChasingRadiusAndAngle", out var t3);
+        chasingRadiusAndAngle = t3?.Value ?? Vector2.zero;
+    }
+    
 
     private void OnDrawGizmos()
     {
         if (!isActiveAndEnabled) return;
 
-        agent.GetVariable<Transform>("SelfEyes", out var agentEyes);
-        if (agentEyes == null || agentEyes.Value == null) return;
+        if (enablePlayModeGizmos) OnDrawGizmosPlayMode();
 
-        agent.GetVariable<Vector2>("SpottingRadiusAndAngle", out var spottingRadiusAndAngle);
-        if (spottingRadiusAndAngle != null && spottingRadiusAndAngle.Value != null)
-        {
-            DrawFieldOfView(spottingRadiusAndAngle.Value, spottingFieldOfViewColor);
-        }
-        
-        agent.GetVariable<Vector2>("ChasingRadiusAndAngle", out var chasingRadiusAndAngle);
-        if (chasingRadiusAndAngle != null && chasingRadiusAndAngle.Value != null)
-        {
-            DrawFieldOfView(chasingRadiusAndAngle.Value, chasingFieldOfViewColor);
-        }
+        if (agentEyes == null) return;
 
-        void DrawFieldOfView(Vector2 radiusAndAngle, Color color)
+        DrawFieldOfView(spottingRadiusAndAngle, spottingFieldOfViewColor, fieldOfViewApproximationDensity);
+        DrawFieldOfView(chasingRadiusAndAngle, chasingFieldOfViewColor, fieldOfViewApproximationDensity);
+
+        DrawFieldOfView(new Vector2(lookAroundGizmoLength, lookAroundAngle), lookAroundGizmoColor, 0);
+
+        void DrawFieldOfView(Vector2 radiusAndAngle, Color color, int approximationDensity)
         {
             float radius = radiusAndAngle.x;
             float angle = radiusAndAngle.y;
 
             Gizmos.color = color;
 
-            Vector3 forward = agentEyes.Value.forward;
+            Vector3 forward = agentEyes.forward;
             Vector3 leftBoundary = Quaternion.Euler(0, -angle/2, 0) * forward;
             Vector3 rightBoundary = Quaternion.Euler(0, angle/2, 0) * forward;
 
-            Gizmos.DrawLine(agentEyes.Value.position, agentEyes.Value.position + leftBoundary * radius);
-            Gizmos.DrawLine(agentEyes.Value.position, agentEyes.Value.position + rightBoundary * radius);
-            Gizmos.DrawLine(agentEyes.Value.position + leftBoundary * radius, agentEyes.Value.position + rightBoundary * radius);
+            Gizmos.DrawLine(agentEyes.position, agentEyes.position + leftBoundary * radius);
+            Gizmos.DrawLine(agentEyes.position, agentEyes.position + rightBoundary * radius);
+
+            Vector3 previousPoint = agentEyes.position + leftBoundary * radius;
+            for (int i = 0; i < approximationDensity; i++)
+            {
+                float t = (float)(i + 1) / approximationDensity;
+                float currentAngle = -angle / 2 + t * angle;
+                Vector3 currentDirection = Quaternion.Euler(0, currentAngle, 0) * forward;
+                Vector3 currentPoint = agentEyes.position + currentDirection * radius;
+
+                Gizmos.DrawLine(previousPoint, currentPoint);
+                previousPoint = currentPoint;
+            }
+        }
+    }
+    
+    private void OnDrawGizmosPlayMode()
+    {
+        if (agent == null) return;
+
+        agent.GetVariable<Transform>("TargetEyes", out var targetEyesVar);
+        Transform targetEyes = targetEyesVar?.Value;
+        agent.GetVariable<EnemyRoamingStates>("State", out var stateVar);
+
+        if (stateVar != null && stateVar.Value == EnemyRoamingStates.Chasing)
+        {
+            if (targetEyes != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(agentEyes.position, targetEyes.position);
+            }
+            
+            agent.GetVariable<Vector3>("LastKnownTargetPosition", out var lastKnownPosVar);
+            Vector3 lastKnownPos = lastKnownPosVar?.Value ?? Vector3.zero;
+
+            if (lastKnownPos != Vector3.zero)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawSphere(lastKnownPos, 0.2f);
+                Handles.Label(lastKnownPos + Vector3.up * 0.5f, "Last Known Position", EditorStyles.boldLabel);
+
+                Vector3 partialLocation = agentEyes.position + (lastKnownPos - agentEyes.position) * FixedNavigateToLocationAction.partialLocationMultiplier;
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(partialLocation, 0.2f);
+            }
         }
     }
 }
+#endif
