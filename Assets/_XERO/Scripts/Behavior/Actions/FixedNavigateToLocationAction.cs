@@ -124,6 +124,8 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
             NavMeshAgent.Value.speed = m_OriginalSpeed;
             NavMeshAgent.Value.stoppingDistance = m_OriginalStoppingDistance;
         }
+
+        cashedAgentPosition = null;
     }
 
     protected override void OnDeserialize()
@@ -173,13 +175,13 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
         return Status.Running;
     }
 
-    private Vector3 cashedAgentPosition;
+    private Vector3? cashedAgentPosition = null;
     private float GetDistanceToLocation(out Vector3 locationPosition)
     {
-        cashedAgentPosition = cashedAgentPosition != null ? Agent.Value.transform.position : cashedAgentPosition;
-        Vector3 directionToLocation = Location.Value - cashedAgentPosition;
-        locationPosition = cashedAgentPosition + directionToLocation * partialLocationMultiplier;
-        return Vector3.Distance(new Vector3(cashedAgentPosition.x, locationPosition.y, cashedAgentPosition.z), locationPosition);
+        cashedAgentPosition ??= Agent.Value.transform.position;
+        Vector3 directionToLocation = Location.Value - cashedAgentPosition.Value;
+        locationPosition = cashedAgentPosition.Value + directionToLocation * partialLocationMultiplier;
+        return Vector3.Distance(new Vector3(cashedAgentPosition.Value.x, locationPosition.y, cashedAgentPosition.Value.z), locationPosition);
     }
 
     private void UpdateAnimatorSpeed(float explicitSpeed = -1f)

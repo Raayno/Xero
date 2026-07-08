@@ -3,34 +3,52 @@ using Unity.Behavior;
 
 public class EnemyRoamZone : MonoBehaviour
 {
-    private BehaviorAgent[] behaviorAgent;
-    private bool isPlayerAssignedToBehaviorAgent = false;
+    [SerializeField] private BehaviorGraphAgent[] behaviorAgent;
+    [SerializeField] private bool enableDebug;
+    private bool isPlayerAssigned = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerAssignedToBehaviorAgent = true;
-        }
+        AssignPlayerToBehaviorAgent(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        AssignPlayerToBehaviorAgent(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (enableDebug) Debug.Log($"OnTriggerExit called with {other.name}");
         if (other.CompareTag("Player"))
         {
-            isPlayerAssignedToBehaviorAgent = false;
+            UnassignPlayerFromBehaviorAgent();
         }
     }
 
     private void AssignPlayerToBehaviorAgent(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (enableDebug) Debug.Log($"AssignPlayerToBehaviorAgent called with {other.name}");
+        if (isPlayerAssigned) return;
 
-        if (isPlayerAssignedToBehaviorAgent) return;
+        if (!other.CompareTag("Player")) return;
 
         foreach (var agent in behaviorAgent)
         {
-            agent?.SetVariable("TargetEyes", other.GetComponentInChildren<EyesTag>().transform);
+            agent.SetVariableValue("TargetEyes", other.transform);
         }
+        isPlayerAssigned = true;
+    }
+
+    private void UnassignPlayerFromBehaviorAgent()
+    {
+        if (enableDebug) Debug.Log($"UnassignPlayerFromBehaviorAgent called");
+        if (!isPlayerAssigned) return;
+
+        foreach (var agent in behaviorAgent)
+        {
+            agent.SetVariableValue<Transform>("TargetEyes", null);
+        }
+        isPlayerAssigned = false;
     }
 }

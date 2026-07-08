@@ -4,7 +4,7 @@ using Unity.Behavior;
 using UnityEngine;
 
 [Serializable, Unity.Properties.GeneratePropertyBag]
-[Condition(name: "IsTargetSpotted", story: "[TargetEyes] on [TargetTag] is NOT null, is within [RadiusAndAngle] and is NOT hidden behind anything except [ExcludedLayers] looking from [AgentEyes] Invert [IsInverted]", category: "Conditions", id: "752341b170f9884cdf22000d288b5a5f")]
+[Condition(name: "IsTargetSpotted", story: "[TargetEyes] with [TargetTag] is NOT null, is within [RadiusAndAngle] and is NOT hidden behind anything except [ExcludedLayers] looking from [AgentEyes] Invert [IsInverted]", category: "Conditions", id: "752341b170f9884cdf22000d288b5a5f")]
 public partial class IsTargetSpottedCondition : Condition
 {
     [SerializeReference] public BlackboardVariable<Transform> TargetEyes;
@@ -24,9 +24,18 @@ public partial class IsTargetSpottedCondition : Condition
 
     private bool CheckIfTargetIsSpotted()
     {
-        if (TargetEyes.Value == null || AgentEyes.Value == null)
+        if (AgentEyes.Value == null)
         {
-            Debug.LogError("TargetEyes or AgentEyes is not assigned.");
+            Debug.LogError("AgentEyes is not assigned.");
+            return false;
+        }
+
+        if (TargetEyes.Value == null)
+        {
+            if (enableDebug)
+            {
+                Debug.Log($"<color=red>TargetEyes is null.</color>");
+            }
             return false;
         }
 

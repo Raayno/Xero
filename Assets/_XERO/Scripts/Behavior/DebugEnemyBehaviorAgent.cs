@@ -100,6 +100,8 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
         }
     }
     
+    private Vector3 locationCashed;
+    private Vector3 partialLocationCashed; 
     private void OnDrawGizmosPlayMode()
     {
         if (agent == null) return;
@@ -121,13 +123,21 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
 
             if (lastKnownPos != Vector3.zero)
             {
+                // Draw the last known position of the target
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawSphere(lastKnownPos, 0.2f);
                 Handles.Label(lastKnownPos + Vector3.up * 0.5f, "Last Known Position", EditorStyles.boldLabel);
 
-                Vector3 partialLocation = agentEyes.position + (lastKnownPos - agentEyes.position) * FixedNavigateToLocationAction.partialLocationMultiplier;
+
+                if (locationCashed != lastKnownPos)
+                {
+                    locationCashed = lastKnownPos;
+                    // Set only on change
+                    partialLocationCashed = agentEyes.position + (lastKnownPos - agentEyes.position) * FixedNavigateToLocationAction.partialLocationMultiplier;
+                }
+                // Draw the partial location based on the last known position if location (lastKnownPos) has changed
                 Gizmos.color = Color.red;
-                Gizmos.DrawSphere(partialLocation, 0.2f);
+                Gizmos.DrawSphere(partialLocationCashed, 0.2f);
             }
         }
     }
