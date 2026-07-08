@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6910351483476867913}
   m_Layer: 0
-  m_Name: XeroPlayerSystems
+  m_Name: XeroPlayerFreeRoam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5022871888483792877, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
