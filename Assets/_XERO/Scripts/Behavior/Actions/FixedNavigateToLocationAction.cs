@@ -39,8 +39,16 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
     {
         if (Agent.Value == null || Location.Value == null)
         {
+            LogFailure("Agent or Location is not assigned.");
             return ReturnFailIfUnreachable();
         }
+
+        if (NavMeshAgent.Value == null || NavMeshAgent.Value.enabled == false)
+        {
+            LogFailure("No NavMeshAgent assigned or it is disabled.");
+            return Status.Failure;
+        }
+
 
         return Initialize();
     }

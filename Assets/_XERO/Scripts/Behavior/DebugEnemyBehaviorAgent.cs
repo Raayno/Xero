@@ -11,6 +11,7 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
     [SerializeField] private Vector2 spottingRadiusAndAngle;
     [SerializeField] private Vector2 chasingRadiusAndAngle;
     [SerializeField] private float lookAroundAngle;
+    [SerializeField] private Vector2 dashRadiusAndAngle;
 
     [Header("Settings")]
     [Range(1, 13)][SerializeField] private int fieldOfViewApproximationDensity = 6;
@@ -18,6 +19,7 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
     [SerializeField] private Color chasingFieldOfViewColor = Color.yellow;
     [SerializeField] private Color lookAroundGizmoColor = Color.blue;
     [SerializeField] private float lookAroundGizmoLength = 1f;
+    [SerializeField] private Color dashGizmoColor = Color.purple;
     [SerializeField] private bool enablePlayModeGizmos = false;
 
     void OnEnable()
@@ -56,6 +58,9 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
 
         agent.GetVariable<Vector2>("ChasingRadiusAndAngle", out var t3);
         chasingRadiusAndAngle = t3?.Value ?? Vector2.zero;
+
+        agent.GetVariable<Vector2>("DashRadiusAndAngle", out var t4);
+        dashRadiusAndAngle = t4?.Value ?? Vector2.zero;
     }
     
 
@@ -69,6 +74,7 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
 
         DrawFieldOfView(spottingRadiusAndAngle, spottingFieldOfViewColor, fieldOfViewApproximationDensity);
         DrawFieldOfView(chasingRadiusAndAngle, chasingFieldOfViewColor, fieldOfViewApproximationDensity);
+        DrawFieldOfView(dashRadiusAndAngle, dashGizmoColor, 1);
 
         DrawFieldOfView(new Vector2(lookAroundGizmoLength, lookAroundAngle), lookAroundGizmoColor, 0);
 

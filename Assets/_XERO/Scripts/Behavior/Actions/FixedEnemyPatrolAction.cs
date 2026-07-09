@@ -43,6 +43,12 @@ public partial class FixedEnemyPatrolAction : Unity.Behavior.Action
             return Status.Failure;
         }
 
+        if (NavMeshAgent.Value == null || NavMeshAgent.Value.enabled == false)
+        {
+            LogFailure("No NavMeshAgent assigned or it is disabled.");
+            return Status.Failure;
+        }
+
         Initialize();
 
         SetWaiting(false);

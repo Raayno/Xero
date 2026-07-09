@@ -4,5 +4,6 @@ using Unity.Behavior;
 public enum EnemyRoamingStates
 {
 	Patroling,
-	Chasing
+	Chasing,
+	Stunned
 }
