@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FeedbackHealth : Health
 {
-    [SerializeField] protected MMFeedbacks damageFeedback;
+    [SerializeField] protected MMF_Player damageFeedback;
     [SerializeField] protected float damageCooldown = 0.25f;
 
     protected float lastDamageTakenAt = int.MinValue;

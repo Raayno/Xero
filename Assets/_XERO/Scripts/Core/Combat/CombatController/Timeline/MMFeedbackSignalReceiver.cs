@@ -4,7 +4,7 @@ using UnityEngine.Timeline;
 
 public class MMFeedbackSignalReceiver : MonoBehaviour
 {
-    [SerializeField] private MMFeedbacks feedbacks;
+    [SerializeField] private MMF_Player feedbacks;
     [SerializeField] private SignalAsset[] signalAssets;
     [SerializeField] private bool enableDebug = false;
 
@@ -12,7 +12,7 @@ public class MMFeedbackSignalReceiver : MonoBehaviour
     {
         if (feedbacks == null)
         {
-            Debug.LogError("<color=black>[MMFeedbackSignalReceiver]</color> MMFeedbacks reference is not assigned.");
+            Debug.LogError("<color=black>[MMFeedbackSignalReceiver]</color> MMF_Player reference is not assigned.");
             return;
         }
 
@@ -62,11 +62,11 @@ public class MMFeedbackSignalReceiver : MonoBehaviour
         {
             if (TryGetComponent(out feedbacks))
             {
-                if (enableDebug) Debug.Log($"<color=black>[MMFeedbackSignalReceiver]</color> MMFeedbacks reference found on the same GameObject.");
+                if (enableDebug) Debug.Log($"<color=black>[MMFeedbackSignalReceiver]</color> MMF_Player reference found on the same GameObject.");
             }
             else
             {
-                Debug.LogWarning("<color=black>[MMFeedbackSignalReceiver]</color> MMFeedbacks reference is not assigned. Attempting to get it from the same GameObject.");
+                Debug.LogWarning("<color=black>[MMFeedbackSignalReceiver]</color> MMF_Player reference is not assigned. Attempting to get it from the same GameObject.");
             }
         }
     }

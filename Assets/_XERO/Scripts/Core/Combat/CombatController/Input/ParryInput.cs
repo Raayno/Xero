@@ -18,7 +18,7 @@ public class ParryInput : MMSingleton<ParryInput>
         if (!IsEnabled) return;
 
         // TODO: Replace this with the actual input detection logic for parry
-        if (Input.GetMouseButtonDown(0)) // Temporarily hardcoded left mouse button for parry input
+        if (Input.GetMouseButtonDown(1)) // Temporarily hardcoded left mouse button for parry input
         {
             OnParry?.Invoke();
             if (enableDebug) Debug.Log($"<color=yellow>[ParryInput]</color>Parry input detected.");

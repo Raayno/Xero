@@ -14,6 +14,7 @@ namespace StarterAssets
         private int _animIDMotionSpeed;
 
         public bool HasAnimator => _animator != null;
+        public Animator Animator => _animator;
 
         public void Initialize()
         {
