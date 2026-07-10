@@ -5,7 +5,7 @@ using StarterAssets;
 
 [RequireComponent(typeof(ThirdPersonController))]
 [RequireComponent(typeof(PlayableDirector))]
-public class ParryThirdPersonControllerExtension : MonoBehaviour
+public class ParryThirdPersonControllerExtension : SignalReceiver
 {
     [Header("Parry Settings")]
     [SerializeField] private TimelineAsset parryTimelineAsset;
@@ -102,11 +102,30 @@ public class ParryThirdPersonControllerExtension : MonoBehaviour
         }
     }
 
+    private BattleEntryType cashedBattleEntryType = BattleEntryType.EnemyAttack;
+    public void OnParrySignal()
+    {
+        if (SpecialCombatDataCarrier.BattleEntryType != BattleEntryType.PlayerParry)
+        {
+            cashedBattleEntryType = SpecialCombatDataCarrier.BattleEntryType; // Cache the current state before parry
+            SpecialCombatDataCarrier.BattleEntryType = BattleEntryType.PlayerParry; // Set to PlayerParry during the parry window (to carry that data into combat if it were entered during the parry window)
+        }
+        else
+        {
+            SpecialCombatDataCarrier.BattleEntryType = cashedBattleEntryType; // Reset to the previous state after parry
+        }
+    }
+
     private void OnParryEnd()
     {
         // Re-enable movement animations
         playerAnimationManager.enabled = true;
         thirdPersonController.BlockMovement = false;
+
+        if (SpecialCombatDataCarrier.BattleEntryType == BattleEntryType.PlayerParry)
+        {
+            SpecialCombatDataCarrier.BattleEntryType = BattleEntryType.EnemyAttack; // Reset to default state if parry ends mid-parry-window
+        }
     }
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {

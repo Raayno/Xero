@@ -23,6 +23,8 @@ public class MMF_LoadCombatScene : MMF_LoadScene
         {
             CombatEnemyDataCarrier.CombatEnemiesData = participantsData;
         }
+        SpecialCombatDataCarrier.VariablesLockedForTransition = true; // Lock variables to prevent overriding during transition
+        // MUST BE UNLOCKED in the Combat Initialization script after the transition is complete!!!
 
         base.CustomPlayFeedback(position, feedbacksIntensity);
     }

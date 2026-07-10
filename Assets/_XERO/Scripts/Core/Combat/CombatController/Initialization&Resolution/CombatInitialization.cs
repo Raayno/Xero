@@ -29,6 +29,8 @@ public class CombatInitialization
     
     public void InitializeCombat(List<EnemyParticipant> enemyParticipants, List<PlayerParticipant> playerParticipants)
     {
+        SpecialCombatDataCarrier.VariablesLockedForTransition = false; // Unlock variables after transition is complete
+
         InstantiateParticipants(PlayerCombatDataCarrier.PlayerParticipants, true);
         InstantiateParticipants(EnemiesData.EnemyParticipants, false);
 

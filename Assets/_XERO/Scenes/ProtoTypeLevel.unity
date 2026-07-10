@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParryInput
   IsEnabled: 0
-  enableDebug: 0
+  enableDebug: 1
 --- !u!1001 &116735396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2706,22 +2706,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442582146}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &460695999 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5482483666070433607, guid: 410b9944888290445919d133e15bee57, type: 3}
-  m_PrefabInstance: {fileID: 565904112}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468de92667b47c24989cada71653a36d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarterAssets.PlayerAnimationManager
---- !u!95 &460696000 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 150066362089641160, guid: 410b9944888290445919d133e15bee57, type: 3}
-  m_PrefabInstance: {fileID: 565904112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &469252505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1574432801461982863, guid: 1eec221b0c9743449be3b1c3fe85baf7, type: 3}
@@ -3082,6 +3066,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9147706339578809975, guid: 410b9944888290445919d133e15bee57, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147706339578809975, guid: 410b9944888290445919d133e15bee57, type: 3}
+      propertyPath: parryIconCooldownController
+      value: 
+      objectReference: {fileID: 827928712}
     m_RemovedComponents:
     - {fileID: 969630884955693846, guid: 410b9944888290445919d133e15bee57, type: 3}
     m_RemovedGameObjects: []
@@ -3093,12 +3085,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 969630884955693845, guid: 410b9944888290445919d133e15bee57, type: 3}
       insertIndex: -1
       addedObject: {fileID: 631962552}
-    - targetCorrespondingSourceObject: {fileID: 3722235958242245933, guid: 410b9944888290445919d133e15bee57, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1542340630}
-    - targetCorrespondingSourceObject: {fileID: 3722235958242245933, guid: 410b9944888290445919d133e15bee57, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1542340629}
   m_SourcePrefab: {fileID: 100100000, guid: 410b9944888290445919d133e15bee57, type: 3}
 --- !u!1001 &577377277
 PrefabInstance:
@@ -4563,7 +4549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &827928710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8177,60 +8163,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 577377278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1542340623 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3722235958242245933, guid: 410b9944888290445919d133e15bee57, type: 3}
-  m_PrefabInstance: {fileID: 565904112}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1542340627 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3722235958242245926, guid: 410b9944888290445919d133e15bee57, type: 3}
-  m_PrefabInstance: {fileID: 565904112}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542340623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!320 &1542340629
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542340623}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -4377515206427247529, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
-    value: {fileID: 460696000}
-  - key: {fileID: 4245172783784984024, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
---- !u!114 &1542340630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542340623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6ae9968952e04e42963ddff8c98d220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  parryTimelineAsset: {fileID: 11400000, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
-  parryIconCooldownController: {fileID: 827928712}
-  thirdPersonController: {fileID: 1542340627}
-  playerAnimationManager: {fileID: 460695999}
-  playableDirector: {fileID: 1542340629}
 --- !u!1 &1544235601
 GameObject:
   m_ObjectHideFlags: 0

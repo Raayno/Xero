@@ -160,8 +160,40 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5022871888483792877, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9147706339578809975}
+    - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1883852354723526458}
+    - targetCorrespondingSourceObject: {fileID: 508182958759458751, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4357882346997449653}
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+--- !u!95 &150066362089641160 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 932596626413855540, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 1073012570248886268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &714232351008555075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 508182958759458751, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 1073012570248886268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4357882346997449653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714232351008555075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9e3ed20fe1fb44392414e026c4aafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EyesTag
+  ParryExtension: {fileID: 9147706339578809975}
 --- !u!114 &835860823732996742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 395623812780260730, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -178,6 +210,78 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 4356229632574847717, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_PrefabInstance: {fileID: 1073012570248886268}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3722235958242245926 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 1073012570248886268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722235958242245933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3722235958242245933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 1073012570248886268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9147706339578809975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722235958242245933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ae9968952e04e42963ddff8c98d220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: bf960d18d99ff524ba37535ecc3a4461, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 9147706339578809975}
+          m_TargetAssemblyTypeName: ParryThirdPersonControllerExtension, Assembly-CSharp
+          m_MethodName: OnParrySignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  parryTimelineAsset: {fileID: 11400000, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
+  parryIconCooldownController: {fileID: 0}
+  thirdPersonController: {fileID: 3722235958242245926}
+  playerAnimationManager: {fileID: 5482483666070433607}
+  playableDirector: {fileID: 1883852354723526458}
+--- !u!320 &1883852354723526458
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722235958242245933}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -4377515206427247529, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
+    value: {fileID: 150066362089641160}
+  - key: {fileID: 4245172783784984024, guid: 6b1a818e600a1a647ad526750abd7e88, type: 2}
+    value: {fileID: 9147706339578809975}
+  m_ExposedReferences:
+    m_References: []
 --- !u!4 &4099359012309870487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -194,6 +298,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
+--- !u!114 &5482483666070433607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4823824587860269243, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 1073012570248886268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468de92667b47c24989cada71653a36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarterAssets.PlayerAnimationManager
 --- !u!4 &9033678605066110065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8338988566280778637, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}

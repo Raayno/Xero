@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using MoreMountains.Tools;
 
+[RequireComponent(typeof(SignalReceiver))]
 public class TimelineSignalBridge : MMSingleton<TimelineSignalBridge>, INotificationReceiver
 {
     [SerializeField] private bool enableDebug = false;

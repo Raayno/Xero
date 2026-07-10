@@ -7,12 +7,6 @@ public class ParryInput : MMSingleton<ParryInput>
     public bool IsEnabled = false;
     [SerializeField] private bool enableDebug = false;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        IsEnabled = false;
-    }
-
     private void Update()
     {
         if (!IsEnabled) return;
