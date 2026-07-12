@@ -2557,6 +2557,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6708322727422929748, guid: 5abc58285cbbd254eb1ddba57c507d00, type: 3}
   m_PrefabInstance: {fileID: 411461474}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &427320019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+  m_PrefabInstance: {fileID: 514825212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
 --- !u!4 &433563296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1574432801461982863, guid: 1eec221b0c9743449be3b1c3fe85baf7, type: 3}
@@ -2796,6 +2807,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6708322727422929748, guid: 5abc58285cbbd254eb1ddba57c507d00, type: 3}
   m_PrefabInstance: {fileID: 480086675}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &514825212
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: managedReferences[4969785055261229656].m_Value
+      value: 
+      objectReference: {fileID: 2145492958}
+    - target: {fileID: 1910668432980424924, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_Name
+      value: FoeEnemyFreeRoam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910668432980424924, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685117478732220082, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f8427d19a1c89cc4ba3969589252f36c, type: 2}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.117281
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.008250631
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.65334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
 --- !u!1 &518117829
 GameObject:
   m_ObjectHideFlags: 0
@@ -9413,6 +9493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRoamZone
   behaviorAgent:
   - {fileID: 1919203164}
+  - {fileID: 427320019}
   enableDebug: 0
 --- !u!4 &1853651024
 Transform:
@@ -11223,6 +11304,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9096c72bd497923479605df131852973, type: 3}
+--- !u!95 &2145492958 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2685117478732220082, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+  m_PrefabInstance: {fileID: 514825212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2146229431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11343,3 +11429,4 @@ SceneRoots:
   - {fileID: 565904112}
   - {fileID: 330719052}
   - {fileID: 117884240}
+  - {fileID: 514825212}

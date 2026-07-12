@@ -15,7 +15,7 @@ public partial class ActivateParryAction : Action
     {
         if (Target.Value == null)
         {
-            Debug.LogError("[ActivateParryAction] Target is null. Cannot activate parry.");
+            Debug.LogWarning("[ActivateParryAction] Target is null. Cannot activate parry.");
             return Status.Failure;
         }
 

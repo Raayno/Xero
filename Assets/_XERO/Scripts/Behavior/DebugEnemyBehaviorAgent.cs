@@ -64,7 +64,7 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
     }
     
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (!isActiveAndEnabled) return;
 
