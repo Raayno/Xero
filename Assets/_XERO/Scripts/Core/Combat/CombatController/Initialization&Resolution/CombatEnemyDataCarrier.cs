@@ -11,14 +11,14 @@ public static class CombatEnemyDataCarrier
         {
             if (combatParticipantsData == null)
             {
-                Debug.LogError("[CombatDataCarrier] CombatInitializationData is null. Returning a new instance.");
+                Debug.LogError("[CombatDataCarrier] CombatEnemiesData is null. Returning a new instance.");
                 return null;
             }
             return combatParticipantsData;
         }
         set
         {
-            if (enableDebug) Debug.Log($"[CombatDataCarrier] CombatInitializationData set from {value.GetType()}.");
+            if (enableDebug) Debug.Log($"[CombatDataCarrier] CombatEnemiesData set from {value.GetType()}.");
             combatParticipantsData = value;
         }
     }

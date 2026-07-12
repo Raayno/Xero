@@ -18,7 +18,7 @@ public class CombatInitialization
             }
             else
             {
-                Debug.LogError("[CombatInitialization] CombatParticipantsDataCarrier data is null. Returning default arena preset.");
+                Debug.LogWarning("[CombatInitialization] CombatParticipantsDataCarrier data is null. Returning default arena preset.");
                 return enemiesData;
             }
         }

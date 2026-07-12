@@ -15,7 +15,7 @@ public class TimelineManager : MMSingleton<TimelineManager>
 
     public static void PlayTimeline(TimelineAsset timelineAsset, Animator animator, out PlayableDirector director, Action onTimelineEnd = null)
     {
-        director = GetOrCreateDirector();
+        director = GetOrCreateDirector(animator.transform);
 
         director.playableAsset = timelineAsset;
         
@@ -45,18 +45,19 @@ public class TimelineManager : MMSingleton<TimelineManager>
     /// <param name="director">Get this by adding "out var director" to your PlayTimeline()</param>
     public static void StopTimeline(PlayableDirector director) => ReturnToPool(director);
 
-    private static PlayableDirector GetOrCreateDirector()
+    private static PlayableDirector GetOrCreateDirector(Transform parent)
     {
         if (directorPool.Count > 0)
         {
             var director = directorPool.Dequeue();
             activeDirectors.Add(director);
+            director.transform.SetParent(parent);
             director.enabled = true;
             return director;
         }
 
         GameObject go = new("Pooled_PlayableDirector", typeof(PlayableDirector));
-        go.transform.SetParent(Instance.transform);
+        go.transform.SetParent(parent);
         
         var newDirector = go.GetComponent<PlayableDirector>();
         // Wyłączamy automatyczne odtwarzanie przy starcie
@@ -91,6 +92,8 @@ public class TimelineManager : MMSingleton<TimelineManager>
         director.Stop();
         director.playableAsset = null;
         director.enabled = false;
+
+        director.transform.SetParent(Instance.transform); // Reset parent to TimelineManager for organization
 
         activeDirectors.Remove(director);
         directorPool.Enqueue(director);
