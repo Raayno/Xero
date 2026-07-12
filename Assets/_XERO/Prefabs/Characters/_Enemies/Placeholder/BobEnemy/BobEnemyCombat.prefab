@@ -14801,6 +14801,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5807342259850738980, guid: 4cd244370f4834945ae35a169e83930c, type: 3}
   m_PrefabInstance: {fileID: 6217398069361021222}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1243863731231045522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5119385390120314548, guid: 4cd244370f4834945ae35a169e83930c, type: 3}
+  m_PrefabInstance: {fileID: 6217398069361021222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cb364c2dfacad469e5df86d6ec5e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1878409679067379345 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5501658478793582519, guid: 4cd244370f4834945ae35a169e83930c, type: 3}
@@ -15389,7 +15400,7 @@ PrefabInstance:
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[0].TargetBlink
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1243863731231045522}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[10].ForceColor
       value: 0
@@ -15573,7 +15584,7 @@ PrefabInstance:
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[1].BoundAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1878409679067379345}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[1].FloatValueMax
       value: 5
@@ -16605,7 +16616,7 @@ PrefabInstance:
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[3].AnimatePositionTarget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1270108747822004696}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[3].DestinationPosition.x
       value: 1
@@ -20962,6 +20973,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6772193629322152449}
   m_SourcePrefab: {fileID: 100100000, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+--- !u!1 &1270108747822004696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5697037559400440976, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+  m_PrefabInstance: {fileID: 6822852643926629704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4614325659065601479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2208669174937915535, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}

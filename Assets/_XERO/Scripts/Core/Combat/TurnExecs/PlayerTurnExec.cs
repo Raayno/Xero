@@ -5,12 +5,12 @@ using UnityEngine.Timeline;
 public class PlayerTurnExec : TurnExec
 {
     [SerializeField] protected SignalAsset hitTargetsSignal;
-    protected List<Damageable> targetDamageables;
+    protected List<CombatDamageable> targetDamageables;
     protected DamageDataSO damageData;
 
     protected override void PrepareForExecution(Participant participant, AttackDataSO attack, List<Participant> targets)
     {
-        targetDamageables = new List<Damageable>();
+        targetDamageables = new List<CombatDamageable>();
         foreach (var target in targets)
         {
             if (target.TryGetComponent<CombatDamageable>(out var damageable))

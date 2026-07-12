@@ -5,6 +5,7 @@ public class FeedbackHealth : Health
 {
     [SerializeField] protected MMF_Player damageFeedback;
     [SerializeField] protected MMF_Player healFeedback;
+    [SerializeField] protected MMF_Player resurrectFeedback;
     [SerializeField] protected MMF_Player deathFeedback;
     [SerializeField] protected bool isDeathFeedbackStopDamageFeedback = true;
     [SerializeField] protected float damageCooldown = 0.25f;
@@ -73,6 +74,33 @@ public class FeedbackHealth : Health
         finally
         {
             base.Kill();
+        }
+    }
+
+    public override void Resurrect(int healthAmount = 1)
+    {
+        try
+        {
+            if (healFeedback != null)
+            {
+                healFeedback.PlayFeedbacks(transform.position, healthAmount);
+            }
+            else
+            {
+                Debug.LogWarning("<color=red>[FeedbackHealth]</color> BarbarianEnemy reference is not assigned.");
+            }
+        }
+        finally
+        {
+            base.Resurrect(healthAmount);
+        }
+    }
+
+    void OnValidate()
+    {
+        if (resurrectFeedback == null && healFeedback != null)
+        {
+            resurrectFeedback = healFeedback;
         }
     }
 }
