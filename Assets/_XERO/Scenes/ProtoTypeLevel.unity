@@ -2816,21 +2816,62 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: 'managedReferences[7042799967583601380]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[System.Single,
+        mscorlib]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: managedReferences[7042799967583601380].Name
+      value: ChaseSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_BlackboardVariableOverridesList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
       propertyPath: managedReferences[4969785055261229656].m_Value
       value: 
       objectReference: {fileID: 2145492958}
+    - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: managedReferences[7042799967583601380].m_Value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[5]'
+      value: 7042799967583601380
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: managedReferences[7042799967583601380].GUID.m_Value0
+      value: 15552199767624347737
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048795195362188266, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: managedReferences[7042799967583601380].GUID.m_Value1
+      value: 2189052862838606397
+      objectReference: {fileID: 0}
     - target: {fileID: 1910668432980424924, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
       propertyPath: m_Name
       value: FoeEnemyFreeRoam
       objectReference: {fileID: 0}
     - target: {fileID: 1910668432980424924, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2685117478732220082, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f8427d19a1c89cc4ba3969589252f36c, type: 2}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.5314
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.5314
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.5314
+      objectReference: {fileID: 0}
     - target: {fileID: 3826111575701525107, guid: b09f5bf9dea68f249abc5643e0ebae6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.117281
@@ -9776,6 +9817,10 @@ PrefabInstance:
     - target: {fileID: 1910668432980424924, guid: 9891d5a1e6b9aa94dabbf8acfe13ed1f, type: 3}
       propertyPath: m_Name
       value: BobEnemyFreeRoam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910668432980424924, guid: 9891d5a1e6b9aa94dabbf8acfe13ed1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3826111575701525107, guid: 9891d5a1e6b9aa94dabbf8acfe13ed1f, type: 3}
       propertyPath: m_LocalPosition.x
