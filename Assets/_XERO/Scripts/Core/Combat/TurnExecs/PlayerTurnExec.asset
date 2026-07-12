@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70b6dec368a71746b0aab8652ff3a62, type: 3}
   m_Name: PlayerTurnExec
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTurnExec
-  attackSelector: {fileID: 0}
-  availableAttacks: []
-  signalsToListenFor: []
+  attackSelector: {fileID: 11400000, guid: 285bc1812e78ee64680d8f046a418ef6, type: 2}
+  availableAttacks:
+  - {fileID: 11400000, guid: a306c4e7f8006b845aa7674bc92b71dd, type: 2}
+  signalsToListenFor:
+  - {fileID: 11400000, guid: b3645349fb4e5b64e8c3332a74d9c5c2, type: 2}
   enableDebug: 0
   hitTargetsSignal: {fileID: 11400000, guid: b3645349fb4e5b64e8c3332a74d9c5c2, type: 2}

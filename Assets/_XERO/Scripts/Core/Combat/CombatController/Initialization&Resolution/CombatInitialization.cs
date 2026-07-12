@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class CombatInitialization
 {
     [Header("Fallback if DataCarrier was not set")]
+    [SerializeField] private PlayerParticipant[] defaultPlayerParticipants;
     [SerializeField] private CombatEnemiesData enemiesData = new();
     private CombatEnemiesData EnemiesData
     {
@@ -29,6 +30,18 @@ public class CombatInitialization
     
     public void InitializeCombat(List<EnemyParticipant> enemyParticipants, List<PlayerParticipant> playerParticipants)
     {
+        // This is a fallback in case Players were not assigned in the FreeRoam
+        if (PlayerCombatDataCarrier.PlayerParticipants == null || PlayerCombatDataCarrier.PlayerParticipants.Length == 0)
+        {
+            if (defaultPlayerParticipants == null || defaultPlayerParticipants.Length == 0)
+            {
+                Debug.LogError("[CombatInitialization] DefaultPlayerParticipants is null or empty. Cannot initialize combat.");
+                return;
+            }
+            Debug.LogError("[CombatInitialization] PlayerParticipants is null or empty. Using default player prefab.");
+            PlayerCombatDataCarrier.PlayerParticipants = defaultPlayerParticipants;
+        }
+
         SpecialCombatDataCarrier.VariablesLockedForTransition = false; // Unlock variables after transition is complete
 
         InstantiateParticipants(PlayerCombatDataCarrier.PlayerParticipants, true);
