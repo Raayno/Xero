@@ -21,28 +21,52 @@ public partial class ActivateParryAction : Action
 
         var eyesTag = Target.Value.GetComponent<EyesTag>();
 
-        ParryThirdPersonControllerExtension parryController;
-
-        if (eyesTag != null)
+        if (eyesTag.NumbersOfEnemiesChasingThisPlayer <= 0 && !IsInvert.Value)
         {
-            parryController = eyesTag.ParryExtension;
-        }
-        else
-        {
-            parryController = Target.Value.GetComponentInChildren<ParryThirdPersonControllerExtension>();
-            if (parryController == null)
+            eyesTag.NumbersOfEnemiesChasingThisPlayer = 1;
+            (bool flowControl, Status value) = HandleActivation(eyesTag);
+            if (!flowControl)
             {
-                Debug.LogError("[ActivateParryAction] ParryThirdPersonControllerExtension not found on target or the children of its parent.");
-                return Status.Failure;
+                return value;
             }
         }
-
-        parryController.enabled = !IsInvert.Value;
-
-        // Enable or disable the parry input system based on the IsInvert value
-        ParryInput.Instance.IsEnabled = !IsInvert.Value;
+        else if (eyesTag.NumbersOfEnemiesChasingThisPlayer > 0 && IsInvert.Value)
+        {
+            eyesTag.NumbersOfEnemiesChasingThisPlayer--;
+            (bool flowControl, Status value) = HandleActivation(eyesTag);
+            if (!flowControl)
+            {
+                return value;
+            }
+        }
+        // else either the parry system is already active or the player is not being chased, so we don't need to do anything.
 
         return Status.Success;
+
+        (bool flowControl, Status value) HandleActivation(EyesTag eyesTag)
+        {
+            ParryThirdPersonControllerExtension parryController;
+
+            if (eyesTag != null)
+            {
+                parryController = eyesTag.ParryExtension;
+            }
+            else
+            {
+                parryController = Target.Value.GetComponentInChildren<ParryThirdPersonControllerExtension>();
+                if (parryController == null)
+                {
+                    Debug.LogError("[ActivateParryAction] ParryThirdPersonControllerExtension not found on target or the children of its parent.");
+                    return (flowControl: false, value: Status.Failure);
+                }
+            }
+
+            parryController.enabled = !IsInvert.Value;
+
+            // Enable or disable the parry input system based on the IsInvert value
+            ParryInput.Instance.IsEnabled = !IsInvert.Value;
+            return (flowControl: true, value: default);
+        }
     }
 }
 

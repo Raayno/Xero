@@ -5,5 +5,7 @@ public enum EnemyRoamingStates
 {
 	Patroling,
 	Chasing,
-	Stunned
+	Stunned,
+	Dashing,
+	TryingToRespotTargetLostOnChase
 }
