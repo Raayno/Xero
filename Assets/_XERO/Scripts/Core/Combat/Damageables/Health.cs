@@ -19,12 +19,13 @@ public class Health : CombatDamageable
             currentHP = 0;
             Kill();
         }
+        else
+        {
+            PlayDamageFeedback(dmg.DamageAmount);
+        }
     }
 
-    protected override void TakeDeathDamage()
-    {
-        currentHP = 0;
-    }
+    protected override void TakeDeathDamage() => TakeDamage(new(damageAmount: maxHP));
 
     protected override void Reset()
     {

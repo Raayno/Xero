@@ -7,9 +7,12 @@ public class PlayerTurnExec : TurnExec
     [SerializeField] protected SignalAsset hitTargetsSignal;
     protected List<CombatDamageable> targetDamageables;
     protected DamageDataSO damageData;
+    protected Participant executingParticipant;
 
     protected override void PrepareForExecution(Participant participant, AttackDataSO attack, List<Participant> targets)
     {
+        executingParticipant = participant;
+
         targetDamageables = new List<CombatDamageable>();
         foreach (var target in targets)
         {
@@ -30,6 +33,8 @@ public class PlayerTurnExec : TurnExec
 
     protected void OnHitTargets()
     {
+        executingParticipant.Feedbacks.PlayFeedback(FeedbackType.PlayerOnAttack, executingParticipant.transform.position, 1f, playGlobal: true);
+
         foreach (var target in targetDamageables)
         {
             target.TakeDamage(damageData);

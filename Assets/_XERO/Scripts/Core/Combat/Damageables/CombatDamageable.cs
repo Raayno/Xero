@@ -7,7 +7,18 @@ public abstract class CombatDamageable : MonoBehaviour
     /// <summary>
     /// Negative dmg should heal the Damageable
     /// </summary>
-    public abstract void TakeDamage(DamageDataSO dmg);
+    public virtual void TakeDamage(DamageDataSO dmg)
+    {
+        PlayDamageFeedback(dmg.DamageAmount);
+        Debug.LogWarning($"<color=orange>[CombatDamageable]</color> TakeDamage method not implemented in {GetType().Name}. Please override this method in a derived class.");
+    }
+    protected void PlayDamageFeedback(float damageAmount)
+    {
+        if (damageAmount > 0)
+            participant.Feedbacks.PlayFeedback(participant is PlayerParticipant ? FeedbackType.PlayerOnDamage : FeedbackType.EnemyOnDamage, transform.position, damageAmount);
+        else if (damageAmount < 0)
+            participant.Feedbacks.PlayFeedback(participant is PlayerParticipant ? FeedbackType.PlayerOnHeal : FeedbackType.EnemyOnHeal, transform.position, damageAmount);
+    }
     public event Action<Participant> OnDefeated;
     public bool IsDefeated { get; protected set; }
 
@@ -19,6 +30,7 @@ public abstract class CombatDamageable : MonoBehaviour
 
     public virtual void Kill()
     {
+        participant.Feedbacks.PlayFeedback(participant is PlayerParticipant ? FeedbackType.PlayerOnDeath : FeedbackType.EnemyOnDeath, transform.position);
         if (!IsDefeated) 
         {
             TakeDeathDamage();

@@ -25,6 +25,9 @@ public abstract class Participant : MonoBehaviour
     public ParticipantMovable ParticipantMovable;
     public Animator Animator;
 
+    [Header("Feedbacks")]
+    public Feedbacks Feedbacks;
+
     [SerializeField] protected bool enableDebug = false;
 
     protected virtual void Awake()

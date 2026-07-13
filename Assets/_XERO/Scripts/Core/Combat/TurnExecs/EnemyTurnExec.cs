@@ -6,6 +6,7 @@ using System.Threading;
 public class EnemyTurnExec : TurnExec
 {
     [SerializeField] protected UnityEngine.Timeline.SignalAsset parryAttackWindowOpenCloseSignal;
+    protected Participant executingParticipant;
     protected List<Participant> targets;
     protected DamageDataSO damageData;
     protected bool isParryWindowOpen = false;
@@ -15,6 +16,7 @@ public class EnemyTurnExec : TurnExec
     protected override void PrepareForExecution(Participant participant, AttackDataSO attack, List<Participant> targets, CancellationToken cancellationToken)
     {
         executionCancellationToken = cancellationToken;
+        executingParticipant = participant;
         this.targets = targets;
         isParryWindowOpen = false; // Reset parry window state at the start of the turn
         damageData = attack.DamageData;
@@ -58,9 +60,10 @@ public class EnemyTurnExec : TurnExec
             for (int i = targets.Count - 1; i >= 0; i--)
             {
                 if (parriedTargetIds.Contains(i)) continue; // Skip already parried targets TODO: Can be optimised if HashSet were sorted
-                if (targets[i] is PlayerParticipant player && player.IsTrueParry)
+                var target = targets[i];
+                if (target is PlayerParticipant player && player.IsTrueParry)
                 {
-                    Debug.Log($"<color=purple>[EnemyTurnExec]</color> <b>{targets[i].name} successfully parried the attack!</b> Damage is not applied.");
+                    target.Feedbacks.PlayFeedback(FeedbackType.PlayerOnParry, target.transform.position);
                     parriedTargetIds.Add(i); // Mark this target as parried
                 }
             }
@@ -82,6 +85,9 @@ public class EnemyTurnExec : TurnExec
 
     protected virtual void HitTargets()
     {
+        // move to SPOT 2 if it shouldn't play feedbacks when parried, but for now, we want to play feedbacks even if parried
+        executingParticipant.Feedbacks.PlayFeedback(FeedbackType.EnemyOnAttack, executingParticipant.transform.position);
+
         if (enableDebug) Debug.Log($"<color=purple>[EnemyTurnExec]</color> HitTargets called");
         for (int i = 0; i < targets.Count; i++)
         {
@@ -90,6 +96,7 @@ public class EnemyTurnExec : TurnExec
             Participant target = targets[i];
             if (target is PlayerParticipant player && player.IsTrueParry)
             {
+                target.Feedbacks.PlayFeedback(FeedbackType.PlayerOnParry, targets[i].transform.position);
                 Debug.Log($"<color=purple>[EnemyTurnExec]</color> <b>{target.name} successfully parried the attack!</b> Damage is not applied.");
                 continue; // Skip damage application for successful parry
             }
@@ -98,6 +105,8 @@ public class EnemyTurnExec : TurnExec
                 Debug.LogWarning($"<color=purple>[EnemyTurnExec]</color> Target {target.name} does not have a CombatDamageable component. Skipping damage application.");
                 continue;
             }
+
+            // SPOT 2
             target.damageable.TakeDamage(damageData);
         }
     }
