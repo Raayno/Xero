@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_DemonWarrior_Body_Sand
-  m_Shader: {fileID: 4800000, guid: 41d07659f9985bc41bbea0c9e6da4b01, type: 3}
+  m_Shader: {fileID: 4800000, guid: 066e28d95d3beec44808acc703792541, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -151,6 +151,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HSV_H: 0
+    - _HSV_S: 0
+    - _HSV_V: 0
     - _Metallic: 0
     - _Mode: 0
     - _NormalsSource: 0
@@ -181,6 +184,7 @@ Material:
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
+    - __BeginGroup_AlbedoHSV: 0
     - __BeginGroup_HSV_albedo: 0
     - __EndGroup: 0
     - __dummy__: 0
