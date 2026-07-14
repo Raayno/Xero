@@ -56,7 +56,7 @@ public class CombatPositioning
         var c = combatPositionsAndRotations.Find(cpr => cpr.Key == (playerCount, enemyCount));
         if (c == null)
         {
-            Debug.LogWarning($"[CombatInitializationData] No CombatPositionsAndRotations found for {playerCount} players and {enemyCount} enemies.");
+            Debug.Log($"[CombatInitializationData] No specialized CombatPositionsAndRotations found for {playerCount} players and {enemyCount} enemies.");
             return fallbackPositioningSettings.GetPose(isPlayer, index, playerCount, enemyCount);
         }
         return c.GetPose(isPlayer, index);

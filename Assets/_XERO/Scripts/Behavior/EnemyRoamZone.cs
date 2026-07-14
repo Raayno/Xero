@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Behavior;
+using System;
 
 public class EnemyRoamZone : MonoBehaviour
 {
@@ -19,8 +20,8 @@ public class EnemyRoamZone : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (enableDebug) Debug.Log($"OnTriggerExit called with {other.name}");
-        if (other.CompareTag("Player"))
+        //if (enableDebug) Debug.Log($"OnTriggerExit called with {other.name}");
+        if (other.CompareTag("Player") && other.TryGetComponent(out EyesTag _))
         {
             UnassignPlayerFromBehaviorAgent();
         }
@@ -28,10 +29,11 @@ public class EnemyRoamZone : MonoBehaviour
 
     private void AssignPlayerToBehaviorAgent(Collider other)
     {
-        if (enableDebug) Debug.Log($"AssignPlayerToBehaviorAgent called with {other.name}");
         if (isPlayerAssigned) return;
 
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player") || !other.TryGetComponent(out EyesTag _)) return;
+        
+        if (enableDebug) Debug.Log($"AssignPlayerToBehaviorAgent called with {other.name}");
 
         foreach (var agent in behaviorAgent)
         {
@@ -42,12 +44,12 @@ public class EnemyRoamZone : MonoBehaviour
 
     private void UnassignPlayerFromBehaviorAgent()
     {
-        if (enableDebug) Debug.Log($"UnassignPlayerFromBehaviorAgent called");
         if (!isPlayerAssigned) return;
 
+        if (enableDebug) Debug.Log($"UnassignPlayerFromBehaviorAgent called");
         foreach (var agent in behaviorAgent)
         {
-            agent.SetVariableValue<Transform>("TargetEyes", null);
+            agent.SetVariableValue("UnassignTargetEyes", true);
         }
         isPlayerAssigned = false;
     }

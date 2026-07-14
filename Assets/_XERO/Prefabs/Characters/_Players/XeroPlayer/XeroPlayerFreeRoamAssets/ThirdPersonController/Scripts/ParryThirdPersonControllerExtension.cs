@@ -37,7 +37,7 @@ public class ParryThirdPersonControllerExtension : SignalReceiver
 
     void OnDisable()
     {
-        if (ParryInput.Instance != null)
+        if (ParryInput.HasInstance)
         {
             ParryInput.Instance.OnParry -= HandleParryInput;
         }

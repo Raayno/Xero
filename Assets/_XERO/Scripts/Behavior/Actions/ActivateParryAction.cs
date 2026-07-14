@@ -15,7 +15,6 @@ public partial class ActivateParryAction : Action
     {
         if (Target.Value == null)
         {
-            Debug.LogWarning("[ActivateParryAction] Target is null. Cannot activate parry.");
             return Status.Failure;
         }
 
@@ -61,6 +60,11 @@ public partial class ActivateParryAction : Action
                 }
             }
 
+            if (parryController == null)
+            {
+                Debug.LogError("[ActivateParryAction] ParryThirdPersonControllerExtension not found on target or the children of its parent.");
+                return (flowControl: true, value: default);
+            }
             parryController.enabled = !IsInvert.Value;
 
             // Enable or disable the parry input system based on the IsInvert value

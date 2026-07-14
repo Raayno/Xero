@@ -1,4 +1,6 @@
+using Unity.Behavior;
 
+[BlackboardEnum]
 //  ------------IMPORTANT NOTE------------
 //  ADD NEW VALUES TO END OF ENUM to avoid breaking existing serialized data. DO NOT CHANGE ORDER of existing values.
 public enum FeedbackType
@@ -12,7 +14,8 @@ public enum FeedbackType
     PlayerOnParry,
     PlayerOnDamage,
     PlayerOnHeal,
-    PlayerOnDeath
+    PlayerOnDeath,
+    FreeRoamEnemyOnDashAnticipation,
 }
 //  ------------IMPORTANT NOTE------------
 //  ADD NEW VALUES TO END OF ENUM to avoid breaking existing serialized data. DO NOT CHANGE ORDER of existing values.
