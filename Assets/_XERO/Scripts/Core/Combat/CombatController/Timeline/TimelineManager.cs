@@ -34,7 +34,7 @@ public class TimelineManager : MMSingleton<TimelineManager>
         director.time = 0;
         director.Play();
 
-        TrackTimelineDuration(director, timelineAsset.duration, onTimelineEnd).Forget();
+        TrackTimelineDuration(director, onTimelineEnd).Forget();
     }
 
     public static void PlayTimeline(TimelineAsset timelineAsset, Animator animator, Action onTimelineEnd = null)
@@ -44,6 +44,15 @@ public class TimelineManager : MMSingleton<TimelineManager>
 
     /// <param name="director">Get this by adding "out var director" to your PlayTimeline()</param>
     public static void StopTimeline(PlayableDirector director) => ReturnToPool(director);
+
+    public static void StopTimeline(Animator animator)
+    {
+        var director = animator.GetComponentInChildren<PlayableDirector>();
+        if (director != null)
+        {
+            ReturnToPool(director);
+        }
+    }
 
     private static PlayableDirector GetOrCreateDirector(Transform parent)
     {
@@ -67,9 +76,12 @@ public class TimelineManager : MMSingleton<TimelineManager>
         return newDirector;
     }
 
-    private static async UniTaskVoid TrackTimelineDuration(PlayableDirector director, double duration, Action onTimelineEnd)
+    private static async UniTaskVoid TrackTimelineDuration(PlayableDirector director, Action onTimelineEnd)
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(duration));
+        while (director.state == PlayState.Playing)
+        {
+            await UniTask.Yield(PlayerLoopTiming.Update);
+        }
         
         onTimelineEnd?.Invoke();
         ReturnToPool(director);
@@ -85,7 +97,7 @@ public class TimelineManager : MMSingleton<TimelineManager>
 
         if (!activeDirectors.Contains(director))
         {
-            Debug.LogWarning("<color=#55AAFF>[CombatTimelineManager]</color> The provided PlayableDirector is not currently active.");
+            Debug.Log("<color=#55AAFF>[CombatTimelineManager]</color> The provided PlayableDirector is not currently active or it was already returned.");
             return;
         }
 

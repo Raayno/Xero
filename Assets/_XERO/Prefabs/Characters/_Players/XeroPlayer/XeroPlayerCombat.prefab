@@ -161,33 +161,17 @@ PrefabInstance:
       value: Log
       objectReference: {fileID: 0}
     - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
-      propertyPath: managedReferences[4969785142420701949].Owner
-      value: 
-      objectReference: {fileID: 5588571745463836425}
-    - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
       propertyPath: managedReferences[8769864613393596712].Label
       value: MMSoundManager Sound
       objectReference: {fileID: 0}
-    - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
-      propertyPath: managedReferences[8769864613393596712].Owner
-      value: 
-      objectReference: {fileID: 5588571745463836425}
     - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
       propertyPath: managedReferences[8769864613393596714].Label
       value: Cinemachine Impulse
       objectReference: {fileID: 0}
     - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
-      propertyPath: managedReferences[8769864613393596714].Owner
-      value: 
-      objectReference: {fileID: 5588571745463836425}
-    - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
       propertyPath: managedReferences[8769864613393596715].Label
       value: Floating Text
       objectReference: {fileID: 0}
-    - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
-      propertyPath: managedReferences[8769864613393596715].Owner
-      value: 
-      objectReference: {fileID: 5588571745463836425}
     - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
       propertyPath: managedReferences[8769864613393596715].Value
       value: 100
@@ -197,25 +181,13 @@ PrefabInstance:
       value: Timescale Modifier
       objectReference: {fileID: 0}
     - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
-      propertyPath: managedReferences[8769864613393596717].Owner
-      value: 
-      objectReference: {fileID: 5588571745463836425}
-    - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
       propertyPath: managedReferences[8769864613393596718].Label
       value: Animator Play State
       objectReference: {fileID: 0}
     - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
-      propertyPath: managedReferences[8769864613393596718].Owner
-      value: 
-      objectReference: {fileID: 5588571745463836425}
-    - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
       propertyPath: managedReferences[8769864613393596720].Label
       value: Feedbacks Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
-      propertyPath: managedReferences[8769864613393596720].Owner
-      value: 
-      objectReference: {fileID: 5588571745463836425}
     - target: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
       propertyPath: managedReferences[4969785142420701949].Active
       value: 1
@@ -3824,17 +3796,6 @@ PrefabInstance:
       addedObject: {fileID: 2732751059923224562}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
---- !u!114 &5588571745463836425 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5254268358315699890, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}
-  m_PrefabInstance: {fileID: 388560122069348795}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
 --- !u!4 &6070398514330103157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5862017750715014350, guid: 813a26f3dd3dbc648a479e37da176385, type: 3}

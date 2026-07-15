@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3372242206435618049}
   - {fileID: 4456093661779917479}
-  m_Father: {fileID: 5806167198054161319}
+  m_Father: {fileID: 1268040621763255874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &7806175531739994556
 ParticleSystem:
@@ -14902,33 +14902,17 @@ PrefabInstance:
       value: MMBlink
       objectReference: {fileID: 0}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[0].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[1].Label
       value: Animation
       objectReference: {fileID: 0}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[1].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[2].Label
       value: Cinemachine Impulse
       objectReference: {fileID: 0}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[2].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[3].Label
       value: Position
       objectReference: {fileID: 0}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[3].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[3].Space
       value: 1
@@ -14938,41 +14922,21 @@ PrefabInstance:
       value: Sound - Grunt
       objectReference: {fileID: 0}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[4].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[5].Label
       value: Sound
       objectReference: {fileID: 0}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[5].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[6].Label
       value: Haptic Preset
       objectReference: {fileID: 0}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[6].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[8].Label
       value: Particles Play
       objectReference: {fileID: 0}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[8].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[9].Label
       value: Floating Text - Small Intensity
       objectReference: {fileID: 0}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[9].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[9].Value
       value: 100
@@ -15029,10 +14993,6 @@ PrefabInstance:
       propertyPath: managedReferences[10].Label
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[10].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[10].Value
       value: 
@@ -16725,10 +16685,6 @@ PrefabInstance:
       propertyPath: managedReferences[1779414926392557572].Label
       value: Spring Float
       objectReference: {fileID: 0}
-    - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      propertyPath: managedReferences[1779414926392557572].Owner
-      value: 
-      objectReference: {fileID: 5042688986027461648}
     - target: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: managedReferences[1].Timing.CooldownDuration
       value: 0
@@ -20941,6 +20897,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5839335782909663537, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+      propertyPath: maxHP
+      value: 1000000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839335782909663537, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+      propertyPath: currentHP
+      value: 1000000000
+      objectReference: {fileID: 0}
     - target: {fileID: 7996203494633548370, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: Animator
       value: 
@@ -20955,14 +20919,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8235266155687096977, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.156
+      value: 1.037
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7666700889573513162, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
     - {fileID: 1472746338292362407, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1025697122715944687, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 5708128284347335434, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7966992980871019293}
     - targetCorrespondingSourceObject: {fileID: 208403165630538532, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
@@ -20973,6 +20937,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6772193629322152449}
   m_SourcePrefab: {fileID: 100100000, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+--- !u!4 &1268040621763255874 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5708128284347335434, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+  m_PrefabInstance: {fileID: 6822852643926629704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1270108747822004696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5697037559400440976, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
@@ -21006,22 +20975,6 @@ CapsuleCollider:
   m_Height: 2.64
   m_Direction: 1
   m_Center: {x: 0, y: 1.04, z: 0}
---- !u!114 &5042688986027461648 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1969373480124535128, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-  m_PrefabInstance: {fileID: 6822852643926629704}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &5806167198054161319 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1025697122715944687, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-  m_PrefabInstance: {fileID: 6822852643926629704}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6650622337692302956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 208403165630538532, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}

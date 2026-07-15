@@ -12,6 +12,7 @@ public abstract class TurnExec: ScriptableObject
     [Tooltip("Signals that this TurnExec will listen for during the attack sequence.")]
     [SerializeField] private List<SignalAsset> signalsToListenFor;
     [SerializeField] protected bool enableDebug = false;
+    protected UnityEngine.Playables.PlayableDirector attackTimelineDirector;
 
     public async UniTask ExecuteTurn(Participant participant, CancellationToken cancellationToken)
     {
@@ -55,7 +56,7 @@ public abstract class TurnExec: ScriptableObject
                 await participant.ParticipantMovable.MoveToTargetAsync(targets, cancellationToken);
             
             SubscribeToAttackSequenceEventsBase(true);
-            TimelineManager.PlayTimeline(attack.TimelineAsset, participant.Animator, () => OnAttackSequenceFinishedBase());
+            TimelineManager.PlayTimeline(attack.TimelineAsset, participant.Animator, out attackTimelineDirector, () => OnAttackSequenceFinished());
 
             // Wait for the attack sequence to complete
             await WaitForAttackSequenceCompletionAsync(cancellationToken);
@@ -95,15 +96,10 @@ public abstract class TurnExec: ScriptableObject
         await UniTask.WaitUntil(() => isSequenceCompleted, cancellationToken: cancellationToken);
     }
     
-    bool isSequenceCompleted = false;
-    private void OnAttackSequenceFinishedBase()
-    {
-        isSequenceCompleted = true;
-        OnAttackSequenceFinished();
-    }
-
+    protected bool isSequenceCompleted = false;
     protected virtual void OnAttackSequenceFinished()
     {
-        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Attack sequence finished.");
+        isSequenceCompleted = true;
+        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Attack sequence completed.");
     }
 }

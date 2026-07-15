@@ -2,14 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using UnityEngine.Timeline;
 
 public class EnemyTurnExec : TurnExec
 {
-    [SerializeField] protected UnityEngine.Timeline.SignalAsset parryAttackWindowOpenCloseSignal;
+    [SerializeField] protected SignalAsset parryAttackWindowOpenCloseSignal;
+    [SerializeField] protected SignalAsset interruptAttackWithParryCounterSignal;
     protected Participant executingParticipant;
     protected List<Participant> targets;
     protected DamageDataSO damageData;
     protected bool isParryWindowOpen = false;
+    protected bool hasMissedParry = false;
     private readonly HashSet<int> parriedTargetIds = new();
     private CancellationToken executionCancellationToken;
 
@@ -19,6 +22,7 @@ public class EnemyTurnExec : TurnExec
         executingParticipant = participant;
         this.targets = targets;
         isParryWindowOpen = false; // Reset parry window state at the start of the turn
+        hasMissedParry = false; // Reset missed parry state at the start of the turn
         damageData = attack.DamageData;
 
         // Enable parry input
@@ -32,6 +36,7 @@ public class EnemyTurnExec : TurnExec
     protected override void SubscribeToAttackSequenceEvents(bool isSubscribe)
     {
         TimelineSignalBridge.SubscribeToSignal(isSubscribe, parryAttackWindowOpenCloseSignal, OnParryWindowOpenClose);
+        TimelineSignalBridge.SubscribeToSignal(isSubscribe, interruptAttackWithParryCounterSignal, OnInterruptAttackWithParryCounter);
     }
 
     protected void OnParryWindowOpenClose()
@@ -59,7 +64,7 @@ public class EnemyTurnExec : TurnExec
         {
             for (int i = targets.Count - 1; i >= 0; i--)
             {
-                if (parriedTargetIds.Contains(i)) continue; // Skip already parried targets TODO: Can be optimised if HashSet were sorted
+                if (parriedTargetIds.Contains(i)) continue;
                 var target = targets[i];
                 if (target is PlayerParticipant player && player.IsTrueParry)
                 {
@@ -82,6 +87,35 @@ public class EnemyTurnExec : TurnExec
         }
     }
 
+    protected virtual void OnInterruptAttackWithParryCounter()
+    {
+        OnInterruptAttackWithParryCounterAsync().Forget();
+    }
+
+    protected virtual async UniTask OnInterruptAttackWithParryCounterAsync()
+    {
+        if (hasMissedParry)
+        {
+            if (enableDebug) Debug.Log($"<color=purple>[EnemyTurnExec]</color> At least one target missed the parry. Attack will not be interrupted by a counter.");
+            return; // Do not interrupt if any target missed the parry
+        }
+
+        // interrupt the timeline
+
+        TimelineManager.StopTimeline(attackTimelineDirector);
+
+        HashSet<UniTask> counters = new(); // Create a copy to avoid modification during iteration
+        foreach (var target in targets)
+        {
+            if (target is PlayerParticipant player)
+            {
+                counters.Add(player.OnPerformCounterattack(executingParticipant.damageable, executionCancellationToken));
+            }
+        }
+        // wait until all counters are completed
+        await UniTask.WhenAll(counters);
+        isSequenceCompleted = true; // Mark the sequence as completed after all counters are done
+    }
 
     protected virtual void HitTargets()
     {
@@ -100,6 +134,9 @@ public class EnemyTurnExec : TurnExec
                 Debug.Log($"<color=purple>[EnemyTurnExec]</color> <b>{target.name} successfully parried the attack!</b> Damage is not applied.");
                 continue; // Skip damage application for successful parry
             }
+
+            hasMissedParry = true; // At least one target has missed the parry
+
             if (target.damageable == null)
             {
                 Debug.LogWarning($"<color=purple>[EnemyTurnExec]</color> Target {target.name} does not have a CombatDamageable component. Skipping damage application.");
@@ -117,5 +154,11 @@ public class EnemyTurnExec : TurnExec
         ParryInput.Instance.OnParry -= OnParry;
         ParryInput.Instance.IsEnabled = false;
         isParryWindowOpen = false;
+
+        // If any target missed the parry, the sequence completes normally, otherwise it will be interrupted by the counterattack and handled there
+        if (hasMissedParry)
+        {
+            isSequenceCompleted = true;
+        }
     }
 }
