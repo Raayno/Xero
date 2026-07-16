@@ -4,6 +4,8 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Timeline;
 
+[IgnoreAssetInstanceEnsurement]
+[CreateAssetMenu(fileName = "EnemyTurnExec", menuName = "Combat/TurnExecs/EnemyTurnExec")]
 public class EnemyTurnExec : TurnExec
 {
     [SerializeField] protected SignalAsset parryAttackWindowOpenCloseSignal;

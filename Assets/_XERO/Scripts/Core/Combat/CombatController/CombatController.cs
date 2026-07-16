@@ -8,6 +8,13 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
     [Header("Debug")]
     [SerializeField] private bool enableDebug = false;
 
+    [Gaskellgames.Button("Reset Combat")]
+    public void ResetCombat()
+    {
+        CleanseCombat();
+        Start();
+    }
+
     private void Start()
     {
         InitializeCombat();

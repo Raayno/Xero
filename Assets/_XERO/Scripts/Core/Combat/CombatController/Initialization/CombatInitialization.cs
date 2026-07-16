@@ -63,13 +63,6 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
             return enemiesTransform;
         }
     }
-
-    [Button("Reset Combat")]
-    public void ResetCombat()
-    {
-        CleanseCombat();
-        InitializeCombat();
-    }
     
     private void InitializeCombat()
     {

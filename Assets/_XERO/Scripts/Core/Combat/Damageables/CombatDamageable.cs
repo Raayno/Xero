@@ -35,13 +35,13 @@ public abstract class CombatDamageable : MonoBehaviour
         participant.Feedbacks.PlayFeedback(participant is PlayerParticipant ? FeedbackType.PlayerOnDeath : FeedbackType.EnemyOnDeath, transform.position);
         if (!IsDefeated) 
         {
-            TakeDeathDamage();
+            SetDamageableStatsToDead();
             OnDefeated?.Invoke(participant);
         }
         IsDefeated = true;
     }
 
-    protected abstract void TakeDeathDamage();
+    protected abstract void SetDamageableStatsToDead();
 
     protected virtual void Reset()
     {

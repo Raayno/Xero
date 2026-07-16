@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Timeline;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
@@ -10,7 +9,6 @@ public abstract class TurnExec: ScriptableObject
     [SerializeField] private AttackSelector attackSelector;
     [SerializeField] private List<AttackDataSO> availableAttacks;
     [Tooltip("Signals that this TurnExec will listen for during the attack sequence.")]
-    [SerializeField] private List<SignalAsset> signalsToListenFor;
     [SerializeField] protected bool enableDebug = false;
     protected UnityEngine.Playables.PlayableDirector attackTimelineDirector;
 

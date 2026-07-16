@@ -25,7 +25,7 @@ public class Health : CombatDamageable
         }
     }
 
-    protected override void TakeDeathDamage() => TakeDamage(new(damageAmount: maxHP));
+    protected override void SetDamageableStatsToDead() => currentHP = 0;
 
     protected override void Reset()
     {
