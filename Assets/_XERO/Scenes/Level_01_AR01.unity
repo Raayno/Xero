@@ -626,21 +626,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
   turnSelector: {fileID: 11400000, guid: a8b541c4226ad37458fb56587361f577, type: 2}
-  combatInitialization:
-    defaultPlayerParticipants:
-    - {fileID: 5951889126656808230, guid: 0bf74bf0e1746b74d962fdc5177349ed, type: 3}
-    enemiesData:
-      enemyParticipantPrefabs:
-      - {fileID: 3483425334849337114, guid: 2056b5f78021acb4bbb8925aaf108250, type: 3}
-      - {fileID: 3483425334849337114, guid: 2056b5f78021acb4bbb8925aaf108250, type: 3}
-    combatPositioning:
-      allowOverwrite: 0
-      combatPositionsAndRotations: []
-      fallbackPositioningSettings:
-        centerPoint: {x: -2.99, y: 0, z: -1.97}
-        spaceBetweenTeams: 7
-        teamSpacing: 3
   enableDebug: 1
+  combatPositioning:
+    allowOverwrite: 0
+    combatPositionsAndRotations: []
+    fallbackPositioningSettings:
+      centerPoint: {x: -5, y: 0, z: -3.5}
+      spaceBetweenTeams: 7
+      teamSpacing: 3
+  playersData:
+    playerParticipantPrefabs:
+    - {fileID: 5951889126656808230, guid: 0bf74bf0e1746b74d962fdc5177349ed, type: 3}
+  enemiesData:
+    enemyParticipantPrefabs:
+    - {fileID: 3483425334849337114, guid: 2056b5f78021acb4bbb8925aaf108250, type: 3}
+    - {fileID: 3483425334849337114, guid: bb3a38150d7f3284c8ac405fb887bc5a, type: 3}
+    - {fileID: 3483425334849337114, guid: 2056b5f78021acb4bbb8925aaf108250, type: 3}
 --- !u!1 &185330562
 GameObject:
   m_ObjectHideFlags: 0

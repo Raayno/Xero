@@ -6,13 +6,13 @@ using System.Linq;
 [Serializable]
 public class CombatPositioning
 {
-    [Header("Positioning")]
+    [Header("Special Positioning")]
     [SerializeField] private bool allowOverwrite = false;
     [Tooltip("Kinda a dictionary, number of players and enemies as key, positions and rotations as value. This is used to set the initial positions and rotations of participants in the scene.")]
     [SerializeField] private List<CombatPositionsAndRotations> combatPositionsAndRotations = new();
 
-    [Header("Fallback Positioning")]
-    [SerializeField] private FallbackPositioningSettings fallbackPositioningSettings = new();
+    [Header("Positioning")]
+    [SerializeField] private ParticipantPositioningSettings fallbackPositioningSettings = new();
 
     public void AddCurrentPositioningOfParticipants(List<Participant> players, List<Participant> enemies)
     {
@@ -80,7 +80,7 @@ public class CombatPositionsAndRotations
 }
 
 [Serializable]
-public class FallbackPositioningSettings
+public class ParticipantPositioningSettings
 {
     [SerializeField] private Vector3 centerPoint = Vector3.zero;
     [SerializeField] private float spaceBetweenTeams = 7f;

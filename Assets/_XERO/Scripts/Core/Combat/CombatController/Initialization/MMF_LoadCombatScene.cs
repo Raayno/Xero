@@ -13,7 +13,7 @@ public class MMF_LoadCombatScene : MMF_LoadScene
     }
 
     [MMFInspectorGroup("Combat Data", true)] 
-    public CombatEnemiesData participantsData;
+    public EnemiesCombatData participantsData;
 
     protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
     {
@@ -21,7 +21,7 @@ public class MMF_LoadCombatScene : MMF_LoadScene
 
         if (participantsData != null)
         {
-            CombatEnemyDataCarrier.CombatEnemiesData = participantsData;
+            EnemyCombatDataCarrier.EnemiesCombatData = participantsData;
         }
         SpecialCombatDataCarrier.VariablesLockedForTransition = true; // Lock variables to prevent overriding during transition
         // MUST BE UNLOCKED in the Combat Initialization script after the transition is complete!!!

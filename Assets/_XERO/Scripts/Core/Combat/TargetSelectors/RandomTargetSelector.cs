@@ -5,8 +5,8 @@ public class RandomTargetSelector : TargetSelector
 {
     protected override List<Participant> SelectTargets()
     {
-        var players = combatController.GetPlayers();
-        var enys = combatController.GetEnemies();
+        var players = combatController.GetPlayersAsParticipant();
+        var enys = combatController.GetEnemiesAsParticipant();
         int randomIndex = Random.Range(0, players.Count + enys.Count);
         if (randomIndex < players.Count)
         {

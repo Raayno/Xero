@@ -4,8 +4,8 @@ public class AllTargetSelector : TargetSelector
 {
     protected override List<Participant> SelectTargets()
     {
-        var a = combatController.GetPlayers();
-        a.AddRange(combatController.GetEnemies());
+        var a = combatController.GetPlayersAsParticipant();
+        a.AddRange(combatController.GetEnemiesAsParticipant());
         return a;
     }
 }

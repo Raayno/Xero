@@ -5,7 +5,7 @@ public class RandomEnemyTargetSelector : TargetSelector
 {
     protected override List<Participant> SelectTargets()
     {
-        var enys = combatController.GetEnemies();
+        var enys = combatController.GetEnemiesAsParticipant();
         return new() {enys[Random.Range(0, enys.Count)]};        
     }
 }

@@ -10,7 +10,7 @@ public class DebugPlayerCombatDataCarrier : MonoBehaviour
     {
         var sb = new StringBuilder();
         sb.AppendLine("[DebugPlayerCombatDataCarrier] Player Participants:");
-        foreach (var participant in PlayerCombatDataCarrier.PlayerParticipants)
+        foreach (var participant in PlayerCombatDataCarrier.PlayersCombatData.PlayerParticipants)
         {
             sb.AppendLine($"- {participant.name}");
         }
@@ -19,7 +19,7 @@ public class DebugPlayerCombatDataCarrier : MonoBehaviour
 
     [Button("Get Player Participants (overwrite this array)")] private void GetDebugPlayerParticipantsArray()
     {
-        debugPlayerParticipants = PlayerCombatDataCarrier.PlayerParticipants;
+        debugPlayerParticipants = PlayerCombatDataCarrier.PlayersCombatData.PlayerParticipants;
         Debug.Log($"[DebugPlayerCombatDataCarrier] Player Participants array overwritten with {debugPlayerParticipants.Length} participants.");
     }
 
@@ -31,7 +31,7 @@ public class DebugPlayerCombatDataCarrier : MonoBehaviour
             return;
         }
 
-        PlayerCombatDataCarrier.PlayerParticipants = debugPlayerParticipants;
+        PlayerCombatDataCarrier.PlayersCombatData = new(debugPlayerParticipants);
     }
 
     private void Start() => SetDebugPlayerParticipants();

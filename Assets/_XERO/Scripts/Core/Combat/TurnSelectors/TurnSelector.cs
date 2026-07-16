@@ -25,17 +25,25 @@ public abstract class TurnSelector : ScriptableObject
             Debug.LogWarning("[CombatTimelineController] Cannot update timeline because one or both participant lists are null.");
             return;
         }
+
+        ValidateParticipantList(playerParticipants);
+        ValidateParticipantList(enemyParticipants);
         
-        PlanTurnTimeline(ValidatedParticipantList(playerParticipants), ValidatedParticipantList(enemyParticipants));
+        PlanTurnTimeline(playerParticipants, enemyParticipants);
         ++turnCount;
     }
 
-    private List<PlayerParticipant> ValidatedParticipantList(List<PlayerParticipant> participants) => participants.Where(p => p != null && !p.damageable.IsDefeated).ToList();
-    private List<EnemyParticipant> ValidatedParticipantList(List<EnemyParticipant> participants) => participants.Where(p => p != null && !p.damageable.IsDefeated).ToList();
+    private void ValidateParticipantList<T>(List<T> participants) where T : Participant
+    {
+        if (participants.RemoveAll(p => p == null || p.damageable == null || p.damageable.IsDefeated) > 0)
+        {
+            Debug.LogWarning($"[CombatTimelineController] Some participants were removed from the list because they were null or defeated. This should not happen if participants are properly managed. Please verify participant lifecycle management.");
+        }
+    }
 
     protected virtual void PlanTurnTimeline(List<PlayerParticipant> playerParticipants, List<EnemyParticipant> enemyParticipants)
     {
-        if (TurnTimeline.Count == 0 || TurnTimeline == null || TurnTimeline.All(p => p == null))
+        if (TurnTimeline.Count == 0 || TurnTimeline == null || TurnTimeline.All(p => p == null || p.damageable == null || p.damageable.IsDefeated))
             InitializeTimeline(playerParticipants, enemyParticipants);
         else
             UpdateTimeline(playerParticipants, enemyParticipants);

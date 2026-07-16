@@ -4,6 +4,6 @@ public class AllEnemiesTargetSelector : TargetSelector
 {
     protected override List<Participant> SelectTargets()
     {
-        return combatController.GetEnemies();
+        return combatController.GetEnemiesAsParticipant();
     }
 }

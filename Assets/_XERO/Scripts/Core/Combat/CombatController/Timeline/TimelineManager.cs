@@ -69,7 +69,6 @@ public class TimelineManager : MMSingleton<TimelineManager>
         go.transform.SetParent(parent);
         
         var newDirector = go.GetComponent<PlayableDirector>();
-        // Wyłączamy automatyczne odtwarzanie przy starcie
         newDirector.playOnAwake = false; 
         
         activeDirectors.Add(newDirector);
@@ -78,7 +77,7 @@ public class TimelineManager : MMSingleton<TimelineManager>
 
     private static async UniTaskVoid TrackTimelineDuration(PlayableDirector director, Action onTimelineEnd)
     {
-        while (director.state == PlayState.Playing)
+        while (director != null && director.state == PlayState.Playing)
         {
             await UniTask.Yield(PlayerLoopTiming.Update);
         }

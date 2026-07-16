@@ -20,11 +20,13 @@ public abstract class CombatDamageable : MonoBehaviour
             participant.Feedbacks.PlayFeedback(participant is PlayerParticipant ? FeedbackType.PlayerOnHeal : FeedbackType.EnemyOnHeal, transform.position, damageAmount);
     }
     public event Action<Participant> OnDefeated;
+    public event Action<Participant> OnResurrected;
     public bool IsDefeated { get; protected set; }
 
     public virtual void Resurrect(int healthAmount = 1)
     {
         IsDefeated = false;
+        OnResurrected?.Invoke(participant);
         TakeDamage(new(damageAmount: -healthAmount));
     }
 
