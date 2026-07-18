@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6910351483476867913}
+  - component: {fileID: 2136486020528588199}
+  - component: {fileID: 6147343384963102924}
   m_Layer: 6
   m_Name: COPYXeroPlayerFreeRoam
   m_TagString: Untagged
@@ -36,6 +38,37 @@ Transform:
   - {fileID: 8628245864110236667}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2136486020528588199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827716133817461614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38aa822c0bed7b24d8ea16820a3b0498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ShaderCrew.SeeThroughShader.Core.Runtime::ShaderCrew.SeeThroughShader.PrefabInstance
+--- !u!114 &6147343384963102924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827716133817461614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5d5e910565a9c42a415916bbe57bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ShaderCrew.SeeThroughShader.Core.Runtime::ShaderCrew.SeeThroughShader.SeeThroughShaderPlayer
+  triggerZoneEventOnDisable: 0
+  OnEnterZoneEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitZoneEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1073012570248886268
 PrefabInstance:
   m_ObjectHideFlags: 0

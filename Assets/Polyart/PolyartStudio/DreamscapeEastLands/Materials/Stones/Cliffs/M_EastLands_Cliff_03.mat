@@ -233,7 +233,7 @@ Material:
     - _Coverage_Mask_Contrast: 3.17
     - _Coverage_Multiply: 1
     - _Coverage_Normal_Mask_Gradience: 0.46
-    - _Coverage_Normal_Mask_Slope: 0.54
+    - _Coverage_Normal_Mask_Slope: 0.34
     - _Coverage_Normal_Strength: 1
     - _Coverage_Shadows_Contrast: 0.37
     - _Coverage_Shadows_Intensity: 0.6
@@ -243,6 +243,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _Dirt_Mask_Contrast: 0.87
     - _Dirt_Strenght: 0.168
+    - _DitherSize: 0.34
     - _DstBlend: 0
     - _Edgewear_Mask_Contrast: 0.89
     - _Edgewear_Strenght: 0.353
@@ -252,7 +253,7 @@ Material:
     - _Layer_1_Brightness: 1
     - _Layer_1_Hue: 0
     - _Layer_1_Normal_Strength: 1
-    - _Layer_1_Smoothness_Strength: 1
+    - _Layer_1_Smoothness_Strength: 0
     - _Layer_1_Tiling: 8
     - _Layer_2_Brightness: 1
     - _Layer_2_Hue: 0
@@ -275,7 +276,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Roughness_Strenght: 0.89
-    - _Scale_UVs_with_Object: 1
+    - _Scale_UVs_with_Object: 0.388
     - _SmoothnessTextureChannel: 0
     - _Smoothstep_Offset: 0.3
     - _Smoothstep_Start_angle: 0.92
@@ -283,7 +284,7 @@ Material:
     - _SrcBlend: 1
     - _Stylization_Edges_Contrast: 2.17
     - _Stylization_Edges_Multiply: 0.08
-    - _Stylization_Mask_Contrast: -0.15
+    - _Stylization_Mask_Contrast: 0
     - _Stylization_Overlay_Contrast: 1
     - _Stylization_Overlay_Multiply: 0
     - _TestAdd: -5.4
@@ -299,11 +300,12 @@ Material:
     m_Colors:
     - _AO_Color: {r: 0.921, g: 0.921, b: 0.921, a: 1}
     - _AO_Multiply_Color: {r: 0.81960785, g: 0.7921569, b: 0.7411765, a: 0}
+    - _Alpha: {r: 1, g: 1, b: 1, a: 0.27058825}
     - _Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
     - _Dirt_Color: {r: 0.4245283, g: 0.34717047, b: 0.23829654, a: 0.3137255}
     - _Edgewear_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Stylization_Color: {r: 0.41568628, g: 0.44313726, b: 0.44313726, a: 0.6509804}
+    - _Stylization_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0.6509804}
     - _Stylization_Edges_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 0}
     - _Stylization_Overlay_Color: {r: 0.83107865, g: 0.8679245, b: 0.8650902, a: 0}
     - _TestColor: {r: 1, g: 1, b: 1, a: 0}
