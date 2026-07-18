@@ -45,6 +45,22 @@
 							<ObjectRef Name="Play_Music_Combat" ID="{B8068D6B-BD8D-46BB-B133-F8FEF407B278}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
 							<Position X="3" Y="2"/>
 						</Module>
+						<Module>
+							<ObjectRef Name="Play_Menu_Hover" ID="{2DCD3685-3FBD-4D79-890C-E39441E7F370}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="5" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Menu_select" ID="{38755668-8931-4D65-A730-D76A50BE890A}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="5" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Menu_Exit" ID="{267420C0-8299-4993-B5F1-72D55D8E7DFC}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="6" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Menu_select_Dramatic" ID="{AFC68080-E79A-4B2D-A287-FC0482CF8906}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="6" Y="2"/>
+						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>

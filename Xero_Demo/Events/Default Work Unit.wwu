@@ -141,6 +141,74 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="UI_Events" ID="{9741116B-3161-4210-8F80-045EE01EBF48}" ShortID="336129886">
+					<ChildrenList>
+						<Event Name="Play_Menu_select" ID="{38755668-8931-4D65-A730-D76A50BE890A}">
+							<ChildrenList>
+								<Action Name="" ID="{BCEEA57F-BCBD-4389-A169-2A6D67A254CA}" ShortID="566568332">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SfxPh_UI_26" ID="{462E4852-0C8C-4300-98C2-11F8748E3F5A}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Menu_Hover" ID="{2DCD3685-3FBD-4D79-890C-E39441E7F370}">
+							<ChildrenList>
+								<Action Name="" ID="{F6958941-CF9A-439C-A16E-D0A44F5F59BF}" ShortID="1037380259">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SfxPh_UI_11" ID="{5795CE3B-BB0C-44A6-83F7-2FE9A07DA7AC}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Menu_Exit" ID="{267420C0-8299-4993-B5F1-72D55D8E7DFC}">
+							<ChildrenList>
+								<Action Name="" ID="{B92E96A2-D858-4F9F-925F-06F0BEC460CB}" ShortID="409090628">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SfxPh_UI_20" ID="{42870500-AD5E-442C-9F5D-D5D24F6C7F1A}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{9B27383C-762D-49C1-BB23-1F145FF634FA}" ShortID="933932462">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SfxPh_UI_01" ID="{EE264F8C-4325-4EF6-9DD0-0F244410DCDF}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Menu_select_Dramatic" ID="{AFC68080-E79A-4B2D-A287-FC0482CF8906}">
+							<ChildrenList>
+								<Action Name="" ID="{34CCA8EC-A056-403C-9C76-13510DBCB9C6}" ShortID="1740998">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.25"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SfxPh_UI_27" ID="{9B62C864-2EA6-4F69-8810-1111AF8B5C67}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{C989F21D-CA8A-4F19-AD78-A8104276B3E7}" ShortID="1001515611">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SfxPh_UI_26" ID="{462E4852-0C8C-4300-98C2-11F8748E3F5A}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
