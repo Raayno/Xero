@@ -3,7 +3,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class LightFlickering : MonoBehaviour
 {
-    private Light light;
+    private Light _light;
 
     public float speed1 = 0.5f, speed2 = 3f;
     public float minIntensity = 0.1f, maxIntensity = 3.8f;
@@ -11,7 +11,7 @@ public class LightFlickering : MonoBehaviour
 
     private void Awake()
     {
-        light = GetComponent<Light>();
+        _light = GetComponent<Light>();
     }
 
     void Update()
@@ -29,6 +29,6 @@ public class LightFlickering : MonoBehaviour
         intensity *= maxIntensity - minIntensity;
         intensity += minIntensity;
 
-        light.intensity = intensity;
+        _light.intensity = intensity;
     }
 }

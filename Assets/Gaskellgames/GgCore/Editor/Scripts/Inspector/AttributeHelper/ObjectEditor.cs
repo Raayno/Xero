@@ -1,7 +1,6 @@
 #if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
-using NaughtyAttributes.Editor;
 
 namespace Gaskellgames.EditorOnly
 {
@@ -11,19 +10,13 @@ namespace Gaskellgames.EditorOnly
     /// </summary>
     
     [CustomEditor(typeof(Object), true), CanEditMultipleObjects]
-    internal class ObjectEditor : NaughtyInspector
+    internal class ObjectEditor : Editor
     {
         private ButtonDrawer buttonDrawer;
 
-        protected override void OnEnable()
+        protected void OnEnable()
         {
-            base.OnEnable();
             buttonDrawer = new ButtonDrawer(target);
-        }
-
-        protected override void OnDisable()
-        {
-            base.OnDisable();
         }
 
         public override void OnInspectorGUI()

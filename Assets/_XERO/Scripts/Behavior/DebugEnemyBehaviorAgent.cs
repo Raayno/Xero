@@ -35,7 +35,7 @@ public class DebugEnemyBehaviorAgent : MonoBehaviour
 
     private BehaviorGraphAgent agent;
     [Tooltip("Play Mode Only")]
-    [NaughtyAttributes.Button] private void SynchronizeWithAgent()
+    [Alchemy.Inspector.Button] private void SynchronizeWithAgent()
     {
         agent = GetComponent<BehaviorGraphAgent>();
         if (agent == null)

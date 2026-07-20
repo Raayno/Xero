@@ -250,7 +250,7 @@ namespace Polyart
 
         private void InitReflectionProbe()
         {
-            ReflectionProbe probe = FindObjectOfType<ReflectionProbe>();
+            ReflectionProbe probe = FindFirstObjectByType<ReflectionProbe>();
             if (probe != null)
             {
 
@@ -549,7 +549,7 @@ namespace Polyart
 
             buoyancyComputeShader.Dispatch(buoyancyKernel, maxFloatingObjectsNum / 64, 1, 1);
 
-            // Request async readback (schedules it — not immediate!)
+            // Request async readback (schedules it ï¿½ not immediate!)
             AsyncGPUReadback.Request(buoyancyResultsBuffer, HandleBuoyancy);
 #endif
         }

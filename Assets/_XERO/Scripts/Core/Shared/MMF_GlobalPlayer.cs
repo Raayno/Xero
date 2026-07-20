@@ -20,8 +20,8 @@ public class MMF_GlobalPlayer : MMSingleton<MMF_GlobalPlayer>
         }
     }
 
-    [NaughtyAttributes.Button("Sort Dictionary Alphabetically by FeedbackType")]
-    private void SortDictionaryByFeedbackType()
+    [Alchemy.Inspector.Button]
+    private void SortDictionaryAlphabeticallyByFeedbackType()
     {
         System.Text.StringBuilder sb = new();
         sb.AppendLine("<color=orange>[Feedbacks]</color> Dictionary sorted alphabetically by FeedbackType. Missing entries:");

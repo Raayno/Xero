@@ -1,12 +1,12 @@
 using UnityEngine;
-using NaughtyAttributes;
 using System.Text;
+using Alchemy.Inspector;
 
 public class DebugPlayerCombatDataCarrier : MonoBehaviour
 {
     [SerializeField] private PlayerParticipant[] debugPlayerParticipants;
 
-    [Button("Get Player Participants (Console)")] private void GetDebugPlayerParticipantsConsole()
+    [Button] private void GetDebugPlayerParticipantsConsole()
     {
         var sb = new StringBuilder();
         sb.AppendLine("[DebugPlayerCombatDataCarrier] Player Participants:");
@@ -17,13 +17,13 @@ public class DebugPlayerCombatDataCarrier : MonoBehaviour
         Debug.Log(sb.ToString());
     }
 
-    [Button("Get Player Participants (overwrite this array)")] private void GetDebugPlayerParticipantsArray()
+    [Button] private void GetDebugPlayerParticipantsArray()
     {
         debugPlayerParticipants = PlayerCombatDataCarrier.PlayersCombatData.PlayerParticipants;
         Debug.Log($"[DebugPlayerCombatDataCarrier] Player Participants array overwritten with {debugPlayerParticipants.Length} participants.");
     }
 
-    [Button("Set Player Participants")] private void SetDebugPlayerParticipants()
+    [Button] private void SetDebugPlayerParticipants()
     {
         if (debugPlayerParticipants == null || debugPlayerParticipants.Length == 0)
         {

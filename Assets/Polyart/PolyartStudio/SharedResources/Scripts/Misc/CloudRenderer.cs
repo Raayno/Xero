@@ -80,7 +80,7 @@ public class CloudRenderer : MonoBehaviour
         if (directionalLight != null)
         {
             directionalLight.cookie = finalClouds;
-            directionalLight.cookieSize = cookieSize;
+            directionalLight.cookieSize2D = cookieSize * Vector2.one;
         }
     }
 
@@ -89,7 +89,7 @@ public class CloudRenderer : MonoBehaviour
         directionalLight = GetComponent<Light>();
         if (directionalLight != null)
         {
-            directionalLight.cookieSize = cookieSize;
+            directionalLight.cookieSize2D = cookieSize * Vector2.one;
         }
     }
 
