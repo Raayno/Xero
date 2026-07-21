@@ -3847,7 +3847,7 @@ GameObject:
   - component: {fileID: 1844887517}
   - component: {fileID: 1844887518}
   m_Layer: 0
-  m_Name: Participant Point Input
+  m_Name: Participant Selection Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3885,6 +3885,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   maxRayDistance: 500
+  minShowPointTravelDistance: 0.1
 --- !u!1 &1873840762
 GameObject:
   m_ObjectHideFlags: 0

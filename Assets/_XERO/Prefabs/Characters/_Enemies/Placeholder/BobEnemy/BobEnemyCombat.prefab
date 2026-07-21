@@ -20857,6 +20857,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BobEnemyCombat
       objectReference: {fileID: 0}
+    - target: {fileID: 4277721927698919326, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+      propertyPath: m_Height
+      value: 2.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277721927698919326, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+      propertyPath: m_Radius
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277721927698919326, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
+      propertyPath: m_Center.y
+      value: 1.04
+      objectReference: {fileID: 0}
     - target: {fileID: 5708128284347335434, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -20944,10 +20956,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 208403165630538532, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
       insertIndex: -1
       addedObject: {fileID: 495239407737170946}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2208669174937915535, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6772193629322152449}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
 --- !u!4 &1268040621763255874 stripped
 Transform:
@@ -20959,34 +20968,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5697037559400440976, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
   m_PrefabInstance: {fileID: 6822852643926629704}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4614325659065601479 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2208669174937915535, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}
-  m_PrefabInstance: {fileID: 6822852643926629704}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &6772193629322152449
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4614325659065601479}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.99
-  m_Height: 2.64
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.04, z: 0}
 --- !u!4 &6650622337692302956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 208403165630538532, guid: ed9b61b52ba7c9649b6f4855bb6dcd60, type: 3}

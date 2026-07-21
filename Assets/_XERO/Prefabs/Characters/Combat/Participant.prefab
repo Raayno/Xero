@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600453742967823470}
   - component: {fileID: 1773758175576086299}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Feedbacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Feedbacks
   feedbacks:
     serializedDictionary: []
+  searchPrefix: 
 --- !u!1 &1015663654951317564
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5169713879796309700}
   - component: {fileID: 8006076238568649252}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Movable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4896477518783281032}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855736816475087270}
   - component: {fileID: 7439033218847704629}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hit Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,9 +215,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1018083591455299494}
   - component: {fileID: 1161595808398970269}
-  m_Layer: 6
+  - component: {fileID: 8811900299986762546}
+  m_Layer: 0
   m_Name: Participant
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,6 +256,29 @@ MonoBehaviour:
   participant: {fileID: 0}
   maxHP: 1000
   currentHP: 1000
+--- !u!136 &8811900299986762546
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895408120608932899}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8611546897610403853
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3701438965698291261}
   - component: {fileID: 3546998783485893035}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Attack Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
