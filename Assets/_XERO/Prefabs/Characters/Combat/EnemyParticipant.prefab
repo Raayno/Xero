@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6872080664617685022}
   - component: {fileID: 1134206175490042876}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: OnHeal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5161862070631304856}
   - component: {fileID: 2119122204511487551}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: OnDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4221924096106084797}
   - component: {fileID: 32061609590589130}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: OnDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7961680847359901754}
   - component: {fileID: 71949659904904308}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: OnAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,6 +1084,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 852604074890279854, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015663654951317564, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1018083591455299494, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1123,6 +1131,10 @@ PrefabInstance:
     - target: {fileID: 1018083591455299494, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030761509559767643, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1161595808398970269, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
       propertyPath: participant
@@ -1172,14 +1184,26 @@ PrefabInstance:
       propertyPath: participant
       value: 
       objectReference: {fileID: 7996203494633548370}
+    - target: {fileID: 3603535910136753840, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6895408120608932899, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
       propertyPath: m_Name
       value: EnemyParticipant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895408120608932899, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8006076238568649252, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
       propertyPath: participant
       value: 
       objectReference: {fileID: 7996203494633548370}
+    - target: {fileID: 8611546897610403853, guid: cf41a16f25018094bb64c0e434c966cc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

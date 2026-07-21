@@ -2,15 +2,20 @@ using UnityEngine;
 
 namespace Vastav.Utils.Input
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : MoreMountains.Tools.MMSingleton<InputManager>
     {
         [SerializeField] private InputSystem_PlayerActionsSO inputSystem_PlayerActionsSO;
         [SerializeField] private InputSystem_UIActionsSO inputSystem_UIActionsSO;
 
         public InputSystem_Actions inputActions { get; private set; }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            if (this == Instance)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
             inputActions = new InputSystem_Actions();
         }
 
