@@ -68,14 +68,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _AO_Multiply_Strenght: 0.557
+    - _Coverage_Brightness: 0.86
     - _Coverage_Height_Mask_Length: 5
-    - _Coverage_Height_Mask_Pivot_Offset: 0
+    - _Coverage_Height_Mask_Pivot_Offset: -1.49
+    - _Coverage_Hue: 1
     - _Coverage_Mask_Contrast: 1
-    - _Coverage_Normal_Mask_Gradience: 0.09
-    - _Coverage_Normal_Mask_Slope: 0.24
+    - _Coverage_Normal_Mask_Gradience: 0.45
+    - _Coverage_Normal_Mask_Slope: 0.11
     - _Coverage_Shadows_Intensity: 1
-    - _Coverage_Tiling: 11
+    - _Coverage_Smoothness_Strength: 1.16
+    - _Coverage_Tiling: 2
     - _Dirt_Mask_Contrast: 0.94
+    - _DitherSize: 1.14
     - _Layer_1_Brightness: 1.3
     - _Layer_1_Tiling: 6
     - _Layer_2_Tiling: 6
@@ -87,6 +91,7 @@ Material:
     - _TestSmooth: -2.4
     m_Colors:
     - _AO_Color: {r: 0.92, g: 0.92, b: 0.92, a: 1}
+    - _Alpha: {r: 1, g: 1, b: 1, a: 0.27058825}
     - _Dirt_Color: {r: 0.34901962, g: 0.2901961, b: 0.22745098, a: 0.4117647}
     - _Stylization_Color: {r: 0.41568613, g: 0.4431371, b: 0.4431371, a: 0.6392157}
   m_BuildTextureStacks: []
