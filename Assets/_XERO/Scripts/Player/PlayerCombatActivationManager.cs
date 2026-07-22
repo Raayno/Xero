@@ -67,7 +67,7 @@ namespace StarterAssets
             _thirdPersonController = thirdPersonController;
             _animationManager = animationManager;
             _effectManager = GetComponent<PlayerEffectManager>();
-            _input = thirdPersonController.Input;
+            //_input = thirdPersonController.Input;
         }
 
         private void OnEnable()

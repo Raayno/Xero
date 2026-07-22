@@ -68,13 +68,6 @@ public class ParryThirdPersonControllerExtension : SignalReceiver
 
     private bool CannotParry()
     {
-        // Check if the player is grounded
-        if (!thirdPersonController.Grounded)
-        {
-            Debug.Log("Player is not grounded.");
-            return true;
-        }
-        
         if (playableDirector.state == PlayState.Playing)
         {
             Debug.Log("Parry is already in progress.");
@@ -89,7 +82,6 @@ public class ParryThirdPersonControllerExtension : SignalReceiver
         // disable movement animations
         playerAnimationManager.SetMovementBlend(0f, 0f); // Reset movement blend to idle
         playerAnimationManager.enabled = false;
-        thirdPersonController.BlockMovement = true;
 
         // Start the parry timeline
         playableDirector.playableAsset = parryTimelineAsset;
@@ -120,7 +112,6 @@ public class ParryThirdPersonControllerExtension : SignalReceiver
     {
         // Re-enable movement animations
         playerAnimationManager.enabled = true;
-        thirdPersonController.BlockMovement = false;
 
         if (SpecialCombatDataCarrier.BattleEntryType == BattleEntryType.PlayerParry)
         {
@@ -145,11 +136,6 @@ public class ParryThirdPersonControllerExtension : SignalReceiver
         if (thirdPersonController == null)
         {
             thirdPersonController = GetComponent<ThirdPersonController>();
-        }
-
-        if (playerAnimationManager == null && thirdPersonController != null)
-        {
-            playerAnimationManager = thirdPersonController.AnimationManager;
         }
 
         if (playableDirector == null)

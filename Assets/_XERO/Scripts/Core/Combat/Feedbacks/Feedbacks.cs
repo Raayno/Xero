@@ -21,7 +21,7 @@ public class Feedbacks : MonoBehaviour
     }
 
     [Button("Sort Dictionary Alphabetically by FeedbackType")]
-    private void SortDictionaryByFeedbackType()
+    private void SortDictionaryAlphabeticallyByFeedbackType()
     {
         System.Text.StringBuilder sb = new();
         sb.AppendLine("<color=orange>[Feedbacks]</color> Dictionary sorted alphabetically by FeedbackType. Missing entries:");

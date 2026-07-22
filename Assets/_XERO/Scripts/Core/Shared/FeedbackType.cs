@@ -17,6 +17,7 @@ public enum FeedbackType
     PlayerOnDeath,
     FreeRoamEnemyOnDashAnticipation,
     PlayerOnCounterattack,
+    FreeRoamPlayerLandAfterFall,
 }
 //  ------------IMPORTANT NOTE------------
 //  ADD NEW VALUES TO END OF ENUM to avoid breaking existing serialized data. DO NOT CHANGE ORDER of existing values.

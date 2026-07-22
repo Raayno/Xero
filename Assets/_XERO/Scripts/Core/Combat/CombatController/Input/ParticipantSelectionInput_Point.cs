@@ -16,7 +16,7 @@ public partial class ParticipantSelectionInput : MoreMountains.Tools.MMSingleton
     [FoldoutGroup("Pointing/Point Input Detection")]
     [SerializeField] private float minShowPointTravelDistance = 0.1f;
     [FoldoutGroup("Pointing/Point Input Detection")]
-    [ReadOnly, SerializeField] private Vector2? lastPointPosition;
+    private Vector2? lastPointPosition;
 
     private int selectionPoolLayer = -1;
     private int[] cashedSelectionPoolLayers;

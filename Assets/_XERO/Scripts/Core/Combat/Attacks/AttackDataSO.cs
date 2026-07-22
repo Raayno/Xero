@@ -1,4 +1,3 @@
-using Alchemy.Inspector;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -13,5 +12,5 @@ public class AttackDataSO : ScriptableObject
     public TimelineAsset TimelineAsset;
 
     [Header("Targeting")]
-    [Required] public TargetSelector TargetSelector;
+    public TargetSelector TargetSelector;
 }
