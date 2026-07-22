@@ -209,6 +209,67 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="Enemies_Events" ID="{4989CDF1-9D57-4EDD-B554-DFFF2F324532}" ShortID="729803657">
+					<ChildrenList>
+						<Folder Name="RockGolemFrost" ID="{860450A8-E7FB-4606-8686-4D9BF6960DAB}" ShortID="234085733">
+							<ChildrenList>
+								<Event Name="Play_Attack_BuildUp" ID="{647A500A-F2FC-4FF5-9BDD-762696DB1DBC}">
+									<ChildrenList>
+										<Action Name="" ID="{9D04B4D0-1DD3-49C4-A357-CE9210DDDF40}" ShortID="624191301">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Sfx_RockGolemFrost_Anticipation_Attack" ID="{15747172-44BD-4B8F-8E2D-75AB21F79D62}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Attack_Release" ID="{6A81226D-DACF-4D9B-8FC2-F8EA5D8ABA9F}">
+									<ChildrenList>
+										<Action Name="" ID="{BC96E819-022D-452A-9972-74B6DCB2E832}" ShortID="864652613">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Sfx_RockGolemFrost_Anticipation_Attack" ID="{15747172-44BD-4B8F-8E2D-75AB21F79D62}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{6F7228EA-58BE-4310-BE1E-A3C3F89DB811}" ShortID="435635656">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Sfx_RockGolemFrost_Release_attack" ID="{16EFECDC-697D-490C-94AA-9201C814CF2F}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Attack_Linear" ID="{23B1E82A-DB8A-48EB-9255-70F64D2A0603}">
+									<ChildrenList>
+										<Action Name="" ID="{38A8D77F-112A-4BBB-90C7-708F76941428}" ShortID="513812628">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Sfx_RockGolemFrost_Anticipation_Attack" ID="{15747172-44BD-4B8F-8E2D-75AB21F79D62}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{34299235-E67D-4193-853F-DEBB59476476}" ShortID="963833981">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="4.15"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Sfx_RockGolemFrost_Release_attack" ID="{16EFECDC-697D-490C-94AA-9201C814CF2F}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

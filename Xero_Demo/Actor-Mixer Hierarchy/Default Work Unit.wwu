@@ -8021,6 +8021,66 @@
 						</Sound>
 					</ChildrenList>
 				</ActorMixer>
+				<ActorMixer Name="Enemies" ID="{978D7CB7-E496-4BF8-8D90-9F1420A21E6F}" ShortID="739622511">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Folder Name="RockGolemFrost" ID="{C53D3C3A-6BC7-409A-8F7D-853C0314AEFA}" ShortID="324228638">
+							<ChildrenList>
+								<Sound Name="Sfx_RockGolemFrost_Release_attack" ID="{16EFECDC-697D-490C-94AA-9201C814CF2F}" ShortID="324520824">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Sfx_RockGolemFrost_Release_attack" ID="{73CC0266-D63F-4F38-8D53-B2C54B272FE0}">
+											<Language>SFX</Language>
+											<AudioFile>Sfx_RockGolemFrost_Release_attack.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1042691690"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Sfx_RockGolemFrost_Release_attack" ID="{73CC0266-D63F-4F38-8D53-B2C54B272FE0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Sfx_RockGolemFrost_Anticipation_Attack" ID="{15747172-44BD-4B8F-8E2D-75AB21F79D62}" ShortID="191056438">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Sfx_RockGolemFrost_Anticipation_Attack" ID="{8DD1FAF2-5A23-4A30-A89A-607FFDBDE0FD}">
+											<Language>SFX</Language>
+											<AudioFile>Sfx_RockGolemFrost_Anticipation_Attack.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="21185442"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Sfx_RockGolemFrost_Anticipation_Attack" ID="{8DD1FAF2-5A23-4A30-A89A-607FFDBDE0FD}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
