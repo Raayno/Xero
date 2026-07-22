@@ -180,11 +180,43 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
+		<SoundBank Id="1933438525" Type="User" Language="SFX" Hash="{8FAB0E54-96E9-A499-7593-84D2353CD821}">
+			<ShortName>Enemy_Soundbank</ShortName>
+			<Path>Enemy_Soundbank.bnk</Path>
+			<Media>
+				<File Id="21185442" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sfx_RockGolemFrost_Anticipation_Attack.wav</ShortName>
+					<CachePath>SFX/Sfx_RockGolemFrost_Anticipation_Attack_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1042691690" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sfx_RockGolemFrost_Release_attack.wav</ShortName>
+					<CachePath>SFX/Sfx_RockGolemFrost_Release_attack_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2939491000" Name="Play_Attack_BuildUp" DurationType="OneShot" DurationMin="4.15" DurationMax="4.15">
+					<MediaRefs>
+						<MediaRef Id="21185442"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4259991470" Name="Play_Attack_Linear" DurationType="OneShot" DurationMin="5.1270523" DurationMax="5.1270523">
+					<MediaRefs>
+						<MediaRef Id="21185442"/>
+						<MediaRef Id="1042691690"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3153700340" Name="Play_Attack_Release" DurationType="OneShot" DurationMin="0.97705215" DurationMax="0.97705215">
+					<MediaRefs>
+						<MediaRef Id="1042691690"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 		<SoundBank Id="2457701263" Type="User" Language="SFX" Hash="{E97AFFEA-FC41-B414-80EC-3A6856385ABC}">
 			<ShortName>Weapon_Soundbank</ShortName>
 			<Path>Weapon_Soundbank.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2574191756" Type="User" Language="SFX" Hash="{DB1221AA-98EE-EE33-342D-978EECE8E399}">
+		<SoundBank Id="2574191756" Type="User" Language="SFX" Hash="{83F0B27C-A92D-DF60-0057-EF4B3824C630}">
 			<ShortName>Player_Sounbank</ShortName>
 			<Path>Player_Sounbank.bnk</Path>
 			<Media>
@@ -290,7 +322,7 @@
 				</File>
 				<File Id="180262110" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_03.wav</ShortName>
-					<CachePath>SFX/Fx_Grass_Jump_Land_03_EA00738F.wem</CachePath>
+					<CachePath>SFX/Fx_Grass_Jump_Land_03_C8DE7BF0.wem</CachePath>
 				</File>
 				<File Id="180482098" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sfx_Plyr_walk_Concrete_01.wav</ShortName>
@@ -398,7 +430,7 @@
 				</File>
 				<File Id="376535749" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_Medium_05.wav</ShortName>
-					<CachePath>SFX/Fx_Grass_Jump_Land_Medium_05_7042F29A.wem</CachePath>
+					<CachePath>SFX/Fx_Grass_Jump_Land_Medium_05_568C0AAD.wem</CachePath>
 				</File>
 				<File Id="384838235" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sfx_Player_Land_Grunt_01.wav</ShortName>
@@ -410,7 +442,7 @@
 				</File>
 				<File Id="398293339" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_01.wav</ShortName>
-					<CachePath>SFX/Fx_Grass_Jump_Land_01_07BF7943.wem</CachePath>
+					<CachePath>SFX/Fx_Grass_Jump_Land_01_A93C173D.wem</CachePath>
 				</File>
 				<File Id="409671041" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sfx_Concrete_Jump_Land_Light_08.wav</ShortName>
@@ -478,7 +510,7 @@
 				</File>
 				<File Id="562598194" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_04.wav</ShortName>
-					<CachePath>SFX/Fx_Grass_Jump_Land_04_4AB7B969.wem</CachePath>
+					<CachePath>SFX/Fx_Grass_Jump_Land_04_B40F6AAB.wem</CachePath>
 				</File>
 				<File Id="563519861" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_High_06.wav</ShortName>
@@ -494,7 +526,7 @@
 				</File>
 				<File Id="578345513" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_05.wav</ShortName>
-					<CachePath>SFX/Fx_Grass_Jump_Land_05_F9A9069D.wem</CachePath>
+					<CachePath>SFX/Fx_Grass_Jump_Land_05_A5D7BA8D.wem</CachePath>
 				</File>
 				<File Id="584301781" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_High_02.wav</ShortName>
@@ -534,7 +566,7 @@
 				</File>
 				<File Id="637981773" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_06.wav</ShortName>
-					<CachePath>SFX/Fx_Grass_Jump_Land_06_6706CDF0.wem</CachePath>
+					<CachePath>SFX/Fx_Grass_Jump_Land_06_6F58A7EF.wem</CachePath>
 				</File>
 				<File Id="641685538" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sfx_Plyr_run_Concrete_17.wav</ShortName>
@@ -598,7 +630,7 @@
 				</File>
 				<File Id="824455123" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_Medium_02.wav</ShortName>
-					<CachePath>SFX/Fx_Grass_Jump_Land_Medium_02_8781CA96.wem</CachePath>
+					<CachePath>SFX/Fx_Grass_Jump_Land_Medium_02_4721F87E.wem</CachePath>
 				</File>
 				<File Id="834446793" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sfx_Plyr_run_Concrete_11.wav</ShortName>
@@ -618,7 +650,7 @@
 				</File>
 				<File Id="889079753" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fx_Grass_Jump_Land_Medium_06.wav</ShortName>
-					<CachePath>SFX/Fx_Grass_Jump_Land_Medium_06_5FB0E25E.wem</CachePath>
+					<CachePath>SFX/Fx_Grass_Jump_Land_Medium_06_3198A523.wem</CachePath>
 				</File>
 				<File Id="906484459" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sfx_Plyr_run_Grass_14.wav</ShortName>
@@ -920,5 +952,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{494E7B87-DEDE-803B-9C9F-76B47307E894}</FileHash>
+	<FileHash>{EA697B92-C48D-E518-9474-7A7EABA19027}</FileHash>
 </SoundBanksInfo>
