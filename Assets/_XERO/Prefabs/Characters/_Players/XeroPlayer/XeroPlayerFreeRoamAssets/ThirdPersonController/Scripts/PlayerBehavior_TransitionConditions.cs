@@ -82,6 +82,7 @@ public partial class PlayerBehavior : MonoBehaviour
     }
 
     public Vector3? LastGroundedPosition { get; private set; }
+    public Vector3? PreviousLastGroundedPosition { get; private set; }
 
     private void IsGroundedCheck()
     {
@@ -102,10 +103,9 @@ public partial class PlayerBehavior : MonoBehaviour
 
         if (isGrounded)
         {
+            PreviousLastGroundedPosition = LastGroundedPosition;
             LastGroundedPosition = refs.playerTransform.position;
         }
-        // TODO: This is a temporary solution, until animation manager is fully integrated with player behavior. Once it is, we can remove this and just have the animation manager listen to the IsGrounded property.
-        if (refs?.animationManager) refs?.animationManager.SetGrounded(isGrounded);
     }
 
     private void IsGroundedGizmos()

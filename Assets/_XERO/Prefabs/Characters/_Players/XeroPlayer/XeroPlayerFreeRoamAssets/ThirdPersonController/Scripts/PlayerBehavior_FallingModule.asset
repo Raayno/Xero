@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c808280d73ac94c8bb4b75d22b3728, type: 3}
   m_Name: PlayerBehavior_FallingModule
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehavior_FallingModule
-  enableDebug: 0
-  enableContinuousDebug: 0
-  movementModule: {fileID: 0}
+  enableDebug: 1
+  enableContinuousDebug: 1
+  movementModule: {fileID: 11400000, guid: 38639d3317b10b448afd945222cca387, type: 2}
   fallDistanceImpactRange: {x: 1, y: 10}
   feedbackImpactRange: {x: 0.25, y: 1}
   dieOnFallDistanceExceed: 0

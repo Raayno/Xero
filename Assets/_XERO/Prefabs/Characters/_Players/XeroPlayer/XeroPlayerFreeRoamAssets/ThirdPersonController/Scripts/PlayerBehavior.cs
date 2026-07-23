@@ -83,7 +83,13 @@ public partial class PlayerBehavior : MonoBehaviour
         Debug.Log("[PlayerBehavior] No available modules met the transition conditions.");
     }
 
-
+    private void OnDestroy()
+    {
+        foreach (var module in activeModules)
+        {
+            module.Disable();
+        }
+    }
 
     // /// <summary>
     // /// CAREFUL: This will clear the activeModules list and force transition to the new modules.
@@ -123,6 +129,7 @@ public class PlayerBehavior_References
     public PlayerAnimationManager animationManager;
     public Camera mainCamera;
     public Feedbacks feedbacks;
+    public UnityEngine.InputSystem.PlayerInput playerInput;
 
     public void OnValidate(PlayerBehavior playerBehavior)
     {
@@ -132,5 +139,6 @@ public class PlayerBehavior_References
         if (animationManager == null) animationManager = playerBehavior.GetComponent<PlayerAnimationManager>();
         if (mainCamera == null) mainCamera = Camera.main;
         if (feedbacks == null) feedbacks = playerBehavior.GetComponent<Feedbacks>();
+        if (playerInput == null) playerInput = playerBehavior.GetComponent<UnityEngine.InputSystem.PlayerInput>();
     }
 }

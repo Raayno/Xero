@@ -1,6 +1,9 @@
 using UnityEngine;
 using Vastav.Utils.Input;
 using UnityEngine.InputSystem;
+using Cysharp.Threading.Tasks;
+using Gaskellgames;
+using System.Threading;
 
 public class PlayerBehavior_MovementModule : PlayerBehavior_Module
 {
@@ -13,7 +16,6 @@ public class PlayerBehavior_MovementModule : PlayerBehavior_Module
     [SerializeField] private float sprintSpeed = 5.335f;
 
     [Tooltip("How fast the character turns to face movement direction")]
-    [Range(0.0f, 0.3f)]
     [SerializeField] private float rotationSmoothTime = 0.12f;
 
     [Tooltip("Acceleration and deceleration")]
@@ -22,8 +24,11 @@ public class PlayerBehavior_MovementModule : PlayerBehavior_Module
     [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
     [SerializeField] private float fallTimeout = 0.15f;
 
+    [SerializeField] private float downforce = -2f;
+
     // [Group("Input")]
     [SerializeField] private bool sprintIsToggle = true;
+    [SerializeField] private float unresponsiveMovementDectionDelay = 0.5f;
 
     private bool isSprint = false;
     private Vector2 moveInput = Vector2.zero;
@@ -32,11 +37,18 @@ public class PlayerBehavior_MovementModule : PlayerBehavior_Module
     private float targetRotation = 0.0f;
     private float rotationVelocity;
     private float fallTimeoutDelta = 0.1f;
+    private CancellationTokenSource cancellationTokenSource;
 
 #region Enable
     protected override void EnableModule()
     {
         SubscribeToInputEvents();
+        
+        // Reset variables
+        moveInput = refs.playerInput.actions["Move"].ReadValue<Vector2>();
+        fallTimeoutDelta = fallTimeout;
+
+        cancellationTokenSource = new CancellationTokenSource();
     }
 
 #endregion
@@ -45,8 +57,8 @@ public class PlayerBehavior_MovementModule : PlayerBehavior_Module
     {
         if (ShouldStartFalling()) return;
 
-        Gravity();
         Move();
+        DetectUnresponsiveInput();
     }
 
     private bool ShouldStartFalling()
@@ -61,21 +73,10 @@ public class PlayerBehavior_MovementModule : PlayerBehavior_Module
                 TransitionToModule(fallingModule);
                 return true;
             }
+            return false;
         }
         fallTimeoutDelta = fallTimeout;
         return false;
-    }
-
-    private void Gravity()
-    {
-        if (refs.characterController.velocity.y > 0.0f)
-        {
-            refs.characterController.Move(new Vector3(
-                refs.characterController.velocity.x,
-                -2f,
-                refs.characterController.velocity.z
-            ));
-        }
     }
 
     private void Move()
@@ -127,11 +128,18 @@ public class PlayerBehavior_MovementModule : PlayerBehavior_Module
         }
 
         Vector3 finalMovement = worldMoveDirection * (speed * Time.deltaTime);
-        finalMovement.y = refs.characterController.velocity.y * Time.deltaTime;
+        finalMovement.y = GetVerticalDisplacement();
 
         refs.characterController.Move(finalMovement);
 
         refs.animationManager.SetMovementBlend(animationBlend, inputMagnitude);
+    }
+
+    private float GetVerticalDisplacement()
+    {
+        float baseVerticalVelocity = downforce;
+    
+        return baseVerticalVelocity * Time.deltaTime;
     }
 
     private void CalculateInputDirection(out Vector3 worldMoveDirection)
@@ -158,6 +166,8 @@ public class PlayerBehavior_MovementModule : PlayerBehavior_Module
     protected override void DisableModule()
     {
         SubscribeToInputEvents(false);
+        cancellationTokenSource?.CancelAndDispose();
+        cancellationTokenSource = null;
     }
 #endregion
 #region Input
@@ -186,19 +196,44 @@ public class PlayerBehavior_MovementModule : PlayerBehavior_Module
         }
         else
         {
-            // Hold sprint
+            // Hold walk (sprint as default)
             if (context.started)
             {
-                isSprint = true;
+                isSprint = false;
             }
             else if (context.canceled)
             {
-                isSprint = false;
+                isSprint = true;
             }
         }
     }
 
     private void OnMoveInput(InputAction.CallbackContext context) => moveInput = context.ReadValue<Vector2>();
+    
+    private Vector3? positionBeforeUnresponsiveInput = null;
+    private void DetectUnresponsiveInput(bool isAfterDelay = false)
+    {
+        if (moveInput != Vector2.zero && refs.characterController.velocity.magnitude < 0.1f)
+        {
+            if (isAfterDelay)
+            {
+                Debug.LogWarning($"<color=cyan>[PlayerBehavior_MovementModule]</color> Detected unresponsive input. Nudge applied to break out of freeze.");
+                // Nudge the player more strongly to break out of the freeze. This is a last resort if the player is stuck and not moving.
+                Vector3 nudgeDirection = refs.playerTransform.forward;
+                refs.characterController.Move(nudgeDirection * 0.1f);
+            }
+            else
+            {
+                positionBeforeUnresponsiveInput ??= refs.playerBehavior.PreviousLastGroundedPosition;;
+                DetectUnresponsiveInputAfterDelay(unresponsiveMovementDectionDelay).Forget();
+            }
+        }
+    }
 
+    private async UniTask DetectUnresponsiveInputAfterDelay(float delay)
+    {
+        await UniTask.Delay((int)(delay * 1000), cancellationToken: cancellationTokenSource.Token);
+        DetectUnresponsiveInput(true);
+    }
 #endregion
 }

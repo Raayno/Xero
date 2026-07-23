@@ -25,6 +25,7 @@ public class PlayerBehavior_FallingModule : PlayerBehavior_Module
 
     protected override void EnableModule()
     {
+        refs.animationManager.SetGrounded(false);
         refs.animationManager.SetFreeFall(true);
 
         fallStartHeight = refs.playerTransform.position.y;
@@ -36,8 +37,32 @@ public class PlayerBehavior_FallingModule : PlayerBehavior_Module
         if (refs.playerBehavior.IsGrounded)
         {
             Land();
+            return;
         }
 
+        ApplyGravity();
+        CheckForFallDistanceDeath();
+    }
+
+    // private bool ShouldLand()
+    // {
+    //     if (!refs.playerBehavior.IsGrounded)
+    //     {
+    //         fallTimeoutDelta -= Time.deltaTime;
+    //         if (fallTimeoutDelta <= 0.0f)
+    //         {
+    //             if (enableDebug) Debug.Log($"<color=cyan>[PlayerBehavior_MovementModule]</color> Transitioning to FallingModule due to fall timeout.");
+
+    //             Land();
+    //             return true;
+    //         }
+    //     }
+    //     fallTimeoutDelta = fallTimeout;
+    //     return false;
+    // }
+
+    private void CheckForFallDistanceDeath()
+    {
         if (dieOnFallDistanceExceed && !refs.playerBehavior.IsGrounded)
         {
             float currentFallDistance = Mathf.Max(
@@ -57,18 +82,29 @@ public class PlayerBehavior_FallingModule : PlayerBehavior_Module
         }
     }
 
-    private void JumpAndGravity()
+    public float ApplyGravityToVerticalVelocity(float velocity)
     {
-        if (verticalVelocity < terminalVelocity)
+        if (velocity < terminalVelocity)
         {
-            verticalVelocity += Mathf.Clamp(Gravity * Time.deltaTime, -terminalVelocity, terminalVelocity);
+            velocity += Gravity * Time.deltaTime;
+            velocity = Mathf.Clamp(velocity, -terminalVelocity, terminalVelocity);
         }
+        return velocity;
+    }
 
-        refs.characterController.Move(new Vector3(
+    private void ApplyGravity()
+    {
+        // Akumulujemy grawitację bezpośrednio w zmiennej modułu
+        verticalVelocity = ApplyGravityToVerticalVelocity(verticalVelocity);
+
+        // W locie zachowujemy pęd poziomy z CharacterController bez mnożenia go przez deltaTime
+        Vector3 airMovement = new(
             refs.characterController.velocity.x,
             verticalVelocity,
             refs.characterController.velocity.z
-        ));
+        );
+
+        refs.characterController.Move(airMovement * Time.deltaTime);
     }
 
     private void RespawnAtLastGroundedPosition()
@@ -98,9 +134,12 @@ public class PlayerBehavior_FallingModule : PlayerBehavior_Module
             0f,
             fallStartHeight - refs.playerTransform.position.y
         );
-
+        
         float feedbackImpact = CalculateLandingImpact(fallDistance);
         refs.feedbacks.PlayFeedback(FeedbackType.FreeRoamPlayerLandAfterFall, refs.playerTransform.position, feedbackImpact);
+        refs.animationManager.SetFreeFall(false);
+        refs.animationManager.SetGrounded(true);
+        refs.animationManager.SetJumpEnd(true);
 
         if (enableDebug)
         {
