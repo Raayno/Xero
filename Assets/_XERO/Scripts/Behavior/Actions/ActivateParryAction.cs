@@ -5,10 +5,11 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "ActivateParry", story: "[Target] unlocks the parry system Invert [IsInvert]", category: "Action", id: "81933de0bd9fcde772e883633b346735")]
+[NodeDescription(name: "ActivateParry", story: "[Target] unlocks the [ParryAvailableModule] Invert [IsInvert]", category: "Action", id: "81933de0bd9fcde772e883633b346735")]
 public partial class ActivateParryAction : Action
 {
     [SerializeReference] public BlackboardVariable<Transform> Target;
+    [SerializeReference] public BlackboardVariable<PlayerBehavior_ParryModule> ParryAvailableModule;
     [SerializeReference] public BlackboardVariable<bool> IsInvert;
 
     protected override Status OnStart()
@@ -23,54 +24,40 @@ public partial class ActivateParryAction : Action
         if (eyesTag.NumbersOfEnemiesChasingThisPlayer <= 0 && !IsInvert.Value)
         {
             eyesTag.NumbersOfEnemiesChasingThisPlayer = 1;
-            (bool flowControl, Status value) = HandleActivation(eyesTag);
-            if (!flowControl)
-            {
-                return value;
-            }
+            HandleActivation(eyesTag);
         }
         else if (eyesTag.NumbersOfEnemiesChasingThisPlayer > 0 && IsInvert.Value)
         {
             eyesTag.NumbersOfEnemiesChasingThisPlayer--;
-            (bool flowControl, Status value) = HandleActivation(eyesTag);
-            if (!flowControl)
-            {
-                return value;
-            }
+            HandleActivation(eyesTag, false);
         }
         // else either the parry system is already active or the player is not being chased, so we don't need to do anything.
 
         return Status.Success;
 
-        (bool flowControl, Status value) HandleActivation(EyesTag eyesTag)
+        void HandleActivation(EyesTag eyesTag, bool activate = true)
         {
-            ParryThirdPersonControllerExtension parryController;
-
-            if (eyesTag != null)
+            var playerBehavior = eyesTag.PlayerBehavior;
+            if (playerBehavior == null)
             {
-                parryController = eyesTag.ParryExtension;
+                Debug.LogError("[ActivateParryAction] PlayerBehavior component not found on the target.");
+                return;
+            }
+
+            if (ParryAvailableModule.Value == null)
+            {
+                Debug.LogError("[ActivateParryAction] ParryModule reference is not set.");
+                return;
+            }
+
+            if (activate)
+            {
+                playerBehavior.TryTransition(null, ParryAvailableModule.Value);
             }
             else
             {
-                parryController = Target.Value.GetComponentInChildren<ParryThirdPersonControllerExtension>();
-                if (parryController == null)
-                {
-                    Debug.LogError("[ActivateParryAction] ParryThirdPersonControllerExtension not found on target or the children of its parent.");
-                    return (flowControl: false, value: Status.Failure);
-                }
+                playerBehavior.TryTransition(ParryAvailableModule.Value, null);
             }
-
-            if (parryController == null)
-            {
-                Debug.LogError("[ActivateParryAction] ParryThirdPersonControllerExtension not found on target or the children of its parent.");
-                return (flowControl: true, value: default);
-            }
-            parryController.enabled = !IsInvert.Value;
-
-            // Enable or disable the parry input system based on the IsInvert value
-            ParryInput.Instance.IsEnabled = !IsInvert.Value;
-            return (flowControl: true, value: default);
         }
     }
 }
-

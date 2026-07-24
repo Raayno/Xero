@@ -55,6 +55,11 @@ public abstract class PlayerBehavior_Module : ScriptableObject
         refs.playerBehavior.TryTransition(this, newModule);
     }
 
+    public virtual void OnSignalReceived(UnityEngine.Timeline.SignalAsset signal)
+    {
+        if (enableDebug) Debug.Log("[PlayerBehavior_Module] OnSignalReceived() not implemented in " + GetType().Name + " for signal: " + signal.name);
+    }
+
     public virtual void OnDrawGizmos()
     {
         if (enableContinuousDebug) Debug.Log("[PlayerBehavior_Module] OnDrawGizmos() not implemented in " + GetType().Name);

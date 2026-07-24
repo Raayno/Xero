@@ -88,7 +88,7 @@ public partial class DashForwardAction : Unity.Behavior.Action
             dashTween.Kill();
         }
 
-        if (NavMeshAgent != null && NavMeshAgent.Value != null)
+        if (NavMeshAgent != null && NavMeshAgent.Value != null && NavMeshAgent.Value.isActiveAndEnabled && NavMeshAgent.Value.isOnNavMesh)
         {
             NavMeshAgent.Value.Warp(transform.position);
             

@@ -3,6 +3,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Timeline;
+using Vastav.Utils.Input;
 
 [IgnoreAssetInstanceEnsurement]
 [CreateAssetMenu(fileName = "EnemyTurnExec", menuName = "Combat/TurnExecs/EnemyTurnExec")]
@@ -27,10 +28,8 @@ public class EnemyTurnExec : TurnExec
         hasMissedParry = false; // Reset missed parry state at the start of the turn
         damageData = attack.DamageData;
 
-        // Enable parry input
-        ParryInput.Instance.IsEnabled = true;
         // Subscribe to parry signal
-        ParryInput.Instance.OnParry += OnParry;
+        InputSystem_PlayerActionsSO.OnParryEvent += OnParry;
 
         Debug.Log($"<color=purple>[EnemyTurnExec]</color> Executing enemy turn for {participant.name} with attack {attack.name} on targets: {string.Join(", ", targets.ConvertAll(t => t.name))}");
     }
@@ -78,8 +77,10 @@ public class EnemyTurnExec : TurnExec
         }
     }
 
-    protected virtual void OnParry()
+    protected virtual void OnParry(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
+        
         foreach (var target in targets)
         {
             if (target is PlayerParticipant player)
@@ -153,8 +154,7 @@ public class EnemyTurnExec : TurnExec
     protected override void OnAttackSequenceFinished()
     {
         // Unsubscribe from parry signal
-        ParryInput.Instance.OnParry -= OnParry;
-        ParryInput.Instance.IsEnabled = false;
+        InputSystem_PlayerActionsSO.OnParryEvent -= OnParry;
         isParryWindowOpen = false;
 
         // If any target missed the parry, the sequence completes normally, otherwise it will be interrupted by the counterattack and handled there

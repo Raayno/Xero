@@ -47,10 +47,7 @@ namespace Vastav.Utils.Input
         /// </summary>
         public void OnParry(InputAction.CallbackContext context)
         {
-            if (isParrySeparateFromInteract)
-            {
-                OnParryEvent?.Invoke(context);
-            }
+            OnParryEvent?.Invoke(context);
         }
 
         public void OnJump(InputAction.CallbackContext context)

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Gaskellgames;
 using System;
 using StarterAssets;
+using UnityEngine.Timeline;
 
-// [AlchemySerialize]
+[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(SignalReceiver))]
 public partial class PlayerBehavior : MonoBehaviour
 {
     [SerializeField, ReadOnly] private List<PlayerBehavior_Module> activeModules = new();
@@ -12,11 +14,7 @@ public partial class PlayerBehavior : MonoBehaviour
     [Tooltip("The default modules should be first in the list, and will be transitioned to if no other modules are playing (first of which conditions are met).")]
     [SerializeField] private SerializedDictionary<PlayerBehavior_Module, TransitionConditionType[]> availableModules = new();
 
-    [SerializeField, ReadOnly] private HashSet<TransitionConditionType> conditionsToUpdate = new();
-
     [SerializeField] private PlayerBehavior_References refs;
-
-    private bool IsBlockForcedTarnsition => activeModules.Exists(module => module.IsBlockForcedTransition);
 
     private void Awake()
     {
@@ -31,6 +29,21 @@ public partial class PlayerBehavior : MonoBehaviour
             PlayerBehavior_Module module = activeModules[i];
             module.UpdatePublic();
         }
+    }
+
+    /// <returns>false if any of the modules cannot be transitioned to</returns>
+    public bool TryAddModules(PlayerBehavior_Module[] newModules)
+    {
+        bool anyFailed = false;
+        foreach (var newModule in newModules)
+        {
+            if (!TryTransition(null, newModule))
+            {
+                anyFailed = true;
+            }
+        }
+
+        return !anyFailed;
     }
 
     public bool TryTransition(PlayerBehavior_Module oldModule = null, PlayerBehavior_Module newModule = null)
@@ -91,28 +104,30 @@ public partial class PlayerBehavior : MonoBehaviour
         }
     }
 
-    // /// <summary>
-    // /// CAREFUL: This will clear the activeModules list and force transition to the new modules.
-    // /// </summary>
-    // /// <param name="newModules"></param>
-    // public void ForceTransitionTo(PlayerBehavior_Module[] newModules)
-    // {
-    //     if (newModules == null) return;
+    public void ClearAllExcept(PlayerBehavior_Module moduleToKeep, out List<PlayerBehavior_Module> clearedModules)
+    {
+        clearedModules = new();
 
-    //     if (IsBlockForcedTarnsition)
-    //     {
-    //         Debug.Log("[PlayerBehavior] Transition blocked, one or more of active modules are blocking forced transitions.");
-    //         return;
-    //     }
+        bool moduleToKeepFound = false;
+        for (int i = 0; i < activeModules.Count; i++)
+        {
+            PlayerBehavior_Module module = activeModules[i];
+            if (module == moduleToKeep)
+            {
+                moduleToKeepFound = true;
+                continue; // Skip the module to keep
+            }
+            module.Disable();
+            clearedModules.Add(module);
+        }
 
-    //     activeModules.ForEach(module => module.Disable());
-    //     activeModules.Clear();
-
-    //     foreach (var module in newModules)
-    //     {
-    //         TryTransition(null, module);
-    //     }
-    // }
+        activeModules.Clear();
+        if (!moduleToKeepFound)
+        {
+            Debug.LogWarning("[PlayerBehavior] The module to keep was not found in the active modules list.");
+        }
+        activeModules.Add(moduleToKeep); // Add the module to keep back to the active list, 
+    }
 
     private void OnValidate()
     {
@@ -130,6 +145,10 @@ public class PlayerBehavior_References
     public Camera mainCamera;
     public Feedbacks feedbacks;
     public UnityEngine.InputSystem.PlayerInput playerInput;
+    public UnityEngine.Playables.PlayableDirector playableDirector;
+    public TimelineAsset parryTimelineAsset;
+    public SignalAsset parrySignalAsset;
+    public IconCooldownController parryIconCooldownController;
 
     public void OnValidate(PlayerBehavior playerBehavior)
     {
@@ -140,5 +159,6 @@ public class PlayerBehavior_References
         if (mainCamera == null) mainCamera = Camera.main;
         if (feedbacks == null) feedbacks = playerBehavior.GetComponent<Feedbacks>();
         if (playerInput == null) playerInput = playerBehavior.GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        if (playableDirector == null) playableDirector = playerBehavior.GetComponent<UnityEngine.Playables.PlayableDirector>();
     }
 }
