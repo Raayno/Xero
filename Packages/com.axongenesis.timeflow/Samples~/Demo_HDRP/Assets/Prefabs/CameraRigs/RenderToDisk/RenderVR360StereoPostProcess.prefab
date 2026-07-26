@@ -1,0 +1,1407 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4041452524342900696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4041452524342900697}
+  - component: {fileID: 4041452524342900699}
+  - component: {fileID: 4041452524342900698}
+  - component: {fileID: 7353864855454460192}
+  - component: {fileID: -8560910887144750873}
+  m_Layer: 0
+  m_Name: RenderVR360StereoPostProcess
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4041452524342900697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452524342900696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4041452525183001152}
+  - {fileID: 4041452525076837059}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4041452524342900699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452524342900696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff6acaa8b9f1994499dd387e6188532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comments: "This demonstrates VR 360 stereoscopic rendering (left and right eye)
+    using 2 cameras with post processing effects applied in a second pass. Every
+    frame, both cameras are rendered to cubemaps and combined into a top-bottom equirectangular
+    layout, which is then rendered by the post process camera for final output.\n\nWhy
+    Two Camera Passes?\nSince post processing effects often introduce visible seams
+    in cubemaps, this setup overcomes that by re-rendering the final output with
+    a separate camera to apply post processing. \n\n360 Render Without Post Processing?\nThere
+    is no setup for plain 360 rendering without post processing due to an internal
+    gamma issue which slows down rendering considerably to correct. This is resolved
+    by using the 2-pass camera method, so if you wish to render without post processing,
+    simply use this setup but deactivate the post processing volume.\n\nTo preserve
+    HDR quality floating space render textures are recommended.\n\nFor use in production
+    the interocular distance (between cameras) and other settings may need to be
+    adjusted to your project. The interocular distance is set by slightly shifting
+    the camera positions. This is to simulate the distance between human eyes for
+    a natural feel. This is usually between 50 and 75mm. For this example, 60mm is
+    used which provides an interocular distance in meters of 0.06. This is applied
+    to the left camera only to leave the right camera centered, since most people
+    are right-eye dominant. This allows the right side to be used for standard flatscreen
+    video and maintain centering for titles."
+  Warning: 'Certain rendering features such as screen space effects, some shaders,
+    and post processing effects may not be supported in stereo rendering setups.
+    This can result in rendering anomalies between left and right eye. To avoid these
+    issues, test early on and decide on rendering features that do work with multi-eye
+    rendering. Also refer to Unity''s documentation for single and multipass rendering.
+
+
+    Layer
+    Masks
+
+    The built-in ''Ignore Raycast'' layer is used to separate the rendering
+    of the MainCamera from the post processing camera, volume, and image plane. Note
+    also that the MainCamera exlcudes the ''Ignore Raycast'' layer in its culling
+    mask so that it doesn''t render the image plane.
+
+
+    You may change the layer
+    to any that works best for your project, though make sure that both the Culling
+    Mask and Volume Mask on the cameras are set to match the layer assigned, otherwise
+    you may not get the results desired.'
+  URLTitle: Render To Disk Documentation
+  URL: https://axongenesis.gitbook.io/timeflow/reference/behaviors/rendering/render-to-disk
+  URL2Title: Stereo Rendering
+  URL2: https://docs.unity3d.com/Manual/SinglePassStereoRendering.html
+--- !u!114 &4041452524342900698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452524342900696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ba3c143a541004da37bf47627037f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _Enabled: 1
+  _DebugEnabled: 0
+  EditorShowUI: 1
+  OutputFormat: 2
+  FileFormat: 1
+  JPEGQuality: 100
+  OutputAlpha: 0
+  EXRFlags: 4
+  PreviewOnly: 0
+  EditorPreviewSize: 3
+  OpenDirectoryWhenFinished: 1
+  SaveToDirectory: $PROJECT\Renders\
+  SaveToDirectoryRight: E:\Renders\TestR\
+  SaveToDirectoryStills: E:\Renders\Test\
+  FilenamePrefix: 
+  FilenamePrefix2: 
+  FilenamePrefixUseSceneName: 0
+  Framestep: 1
+  Subframes: 0
+  SubframeScale: 1
+  TimeScale: 1
+  UseScreenCapture: 0
+  IsStereo: 1
+  StereoSeparation: 0.064
+  SetCaptureSize: 1
+  OverrideCaptureSize: {x: 4096, y: 4096}
+  StereoscopicFormat: 1
+  UseActiveCamera: 0
+  _MainCamera: {fileID: 4041452525070312865}
+  RightCamera: {fileID: 4041452525999535607}
+  UsePostStereoCameras: 0
+  LeftCameraPost: {fileID: 0}
+  RightCameraPost: {fileID: 0}
+  TexFormat: 3
+  RenderTexFormat: 7
+  TexFormatHDR: 0
+  CubemapLeft: {fileID: 8400000, guid: de02d531f3639f7488e5f273e517a774, type: 2}
+  CubemapRight: {fileID: 8400000, guid: 24e3220adc29766498a43953d4cc0d23, type: 2}
+  ImageLeft: {fileID: 0}
+  ImageRight: {fileID: 0}
+  OutputTexture: {fileID: 8400000, guid: fc5ebac99c3061f43a453420fde4570e, type: 2}
+  DomeOrientation: 0
+  CubemapFace: 63
+  DomeHorizon: 90
+  DomeTilt: 30
+  DomeMasked: 0
+  MaskRoundness: 1
+  MaskSoftness: 0
+  RenderMode: 0
+  AutoStart: 1
+  KeyPress: 282
+  FrameRate: 60
+  UseTimeflowFrameRate: 1
+  Ranges:
+  - OutputPath: E:\Timeflow\DEV_2020_URP\Renders\VR360StereoPostProcess\
+    FileExtension: .jpg
+    FrameRate: 60
+    NamePrefix: 
+    Name: VR360StereoPostProcess
+    EnableRender: 1
+    _OldStartFrame: 0
+    _OldEndFrame: 100
+    StartTime:
+      Mode: 0
+      TimeType: 11
+      DurationType: 0
+      UseTimeflowBPM: 1
+      BPM: 120
+      Note: 0
+      NoteCount: 1
+      Marker: 0
+      MarkerEnd: -1
+      Time: 0
+      Frame: 0
+    EndTime:
+      Mode: 0
+      TimeType: 11
+      DurationType: 0
+      UseTimeflowBPM: 1
+      BPM: 120
+      Note: 0
+      NoteCount: 1
+      Marker: 0
+      MarkerEnd: -1
+      Time: 0
+      Frame: 0
+    FrameHandles: 0
+    PerfectLoop: 0
+    PreRoll: 0
+    PreRollStartFrame: 0
+    RenumberFrames: 0
+    RenumberStartingAt: 0
+    FrameNumberPadding: 4
+    EditorShowSettings: 1
+    EnableVideoEncoding: 1
+    Encoding: {fileID: 11400000, guid: 1fa5046bc1cc57a4680057fbeca1eb9f, type: 2}
+    AutoOutputPath: 1
+    VideoOutputPath: E:\Timeflow\DEV_2020_URP\Renders\
+    VideoFilename: VR360StereoPostProcess
+    AutoVideoFilepath: 1
+    ShowProcessWindow: 0
+    Metadata: -metadata:s:v stereo_mode=top_bottom
+    AutoMetadata: 1
+    OverwriteVideo: 1
+    VideoHasAudio: 0
+    AutoAudioStartTime: 1
+    AudioStartTime: 0
+    AudioFilepath: 
+  OverlayCamera: {fileID: 4041452525076837086}
+  CaptureOverlayCamera: 1
+  HasCurrentTimeProperty: 0
+  CurrentTimeProperty:
+    _IsEnabled: 1
+    CanBeAssigned: 1
+    IsDataOnly: 0
+    EnableHandlers: 1
+    Component: {fileID: 0}
+    ShowComponentName: 0
+    Attribute: -1
+    ForcePropertyType: 0
+    PropertyFilter: 0
+    LinkID: 
+    _Name: 
+    _DisplayName: 
+    _DebugEnabled: 0
+    _IsMaterial: 0
+    _PropertyType: 0
+    _DataTypeName: 
+    _Handler:
+      rid: -2
+  CurrentTimeAsTimecode: 1
+  HasTimeRemainingProperty: 0
+  TimeRemainingProperty:
+    _IsEnabled: 1
+    CanBeAssigned: 1
+    IsDataOnly: 0
+    EnableHandlers: 1
+    Component: {fileID: 0}
+    ShowComponentName: 0
+    Attribute: -1
+    ForcePropertyType: 0
+    PropertyFilter: 0
+    LinkID: 
+    _Name: 
+    _DisplayName: 
+    _DebugEnabled: 0
+    _IsMaterial: 0
+    _PropertyType: 0
+    _DataTypeName: 
+    _Handler:
+      rid: -2
+  TimeRemainingAsTimecode: 1
+  HasFrameNumbersProperty: 0
+  FrameNumbersProperty:
+    _IsEnabled: 1
+    CanBeAssigned: 1
+    IsDataOnly: 0
+    EnableHandlers: 1
+    Component: {fileID: 0}
+    ShowComponentName: 0
+    Attribute: -1
+    ForcePropertyType: 0
+    PropertyFilter: 0
+    LinkID: 
+    _Name: 
+    _DisplayName: 
+    _DebugEnabled: 0
+    _IsMaterial: 0
+    _PropertyType: 0
+    _DataTypeName: 
+    _Handler:
+      rid: -2
+  FrameNumbersPadded: 1
+  ForceLOD0: 1
+  HideOnRender: {fileID: 0}
+  EnableDebugBreak: 0
+  DebugBreakOnFrame: 100
+  LogEvery: 10
+  SuppressVideoLog: 0
+  RenderNext: {fileID: 0}
+  EditorShowEvents: 0
+  OnEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRenderStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRenderAborted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRenderFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  TimeRemaining: 0
+  EditorShowCamera: 1
+  EditorShowOutput: 1
+  EditorShowTiming: 1
+  EditorShowOverlay: 1
+  EditorShowOptions: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &7353864855454460192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452524342900696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810eb12fcfc04198982804799db2a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _Enabled: 1
+  _DebugEnabled: 0
+  EditorShowUI: 0
+  UpdateMethod: 0
+  TrackActivated: 0
+  ForceFramerate: 15
+  TimeInterval: 0.1
+  LinkedBehaviors: []
+  DefaultValue: 0
+  MinValue: 0
+  MaxValue: 1
+  _UpdateFrequency: 0
+  _UpdateAfter: {fileID: 0}
+  _CurrentTime: 0
+  _TimeOffset: 0
+  _TimeScale: 1
+  _CanDragTimeOffset: 0
+  TrackOn:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackOff:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  EditorShowTime: 0
+  EditorShowChannels: 1
+  Track:
+    _IsNameCustom: 1
+    _SortOrder: 100
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: 
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 0
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      OverrideGUIColor: 0
+      ExposedID: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: -2
+      _KeyValue: 20
+      _KeyTime: 0
+      _LockValue: 1
+      _LockTime: 1
+      _PropertyType: 0
+      _InTangent: {x: -0.5, y: 0}
+      _OutTangent: {x: 0.5, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+      HasZoomInRange: 0
+      _GUIColor: {r: 1, g: 1, b: 1, a: 1}
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 0
+      EnableHandlers: 1
+      Component: {fileID: 0}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: 
+      _DisplayName: 
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 0
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 0, y: 0, z: 0, w: 0}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    EnableSnap: 0
+    SnapIncrement: 0
+    LoopStart: 0
+    LoopEnd: 0
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 0
+    EnableLoopIn: 0
+    EnableLoopOut: 0
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 1
+    LegacyVisibility: 
+    ShowValue: 0
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 0
+    _IsEnabled: 0
+    __Name: Track
+    _TimeOffset: 0
+    _TimeScale: 0
+    _EnableLoop: 0
+    _HasProperty: 0
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: a13357be-815f-43c9-a96c-5eda643111ca
+    _PropertyType: 0
+    _CurrentTime: 0
+    _DisplayChannel: 0
+    _DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 0
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 0
+    _GUIColor: {r: 0.203125, g: 0.64138746, b: 0.8125, a: 1}
+    GUITextColor: {r: 0, g: 0, b: 0, a: 0}
+    _GUIColorComputed: {r: 0, g: 0, b: 0, a: 0}
+    _GUIColorAdustment: 0
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 0, g: 0, b: 0, a: 0}
+    GUICanDraw: 0
+    DrawPath: 0
+    GUIHeightLocked: 0
+    _GUIHeightOffset: 0
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    IsTimeLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+    _VisibilityMode: 0
+    ViewObjects: []
+    _AutoFullLength: 1
+    AutoSetWorkArea: 0
+  OverrideTimeflowParent: 0
+  _TimeflowParentOverride: {fileID: 0}
+  UpdateAnimation: 1
+  AnimationSpeed: 1
+  AnimationOffset: 0
+  AnimationRand: 0
+  _SortOrder: 100
+  IsLocked: 0
+  EditorShowObject: 0
+  EditorShowTrack: 0
+  EditorShowTrackKeys: 0
+  EditorShowViewOptions: 0
+  EditorShowBehaviors: 0
+  EditorShowEvents: 0
+  EditorShowTimeflow: 0
+  _DisplaySolo: 0
+  OverrideData:
+    IsLocked: 0
+    IsUniformScale: 0
+    HasKeyframer: 0
+    HasMotionPath: 0
+    HasFlyby: 0
+    EulerAngles: {x: 0, y: 0, z: 0}
+    _Position:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+    _Rotation:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+    _Scale:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+  _DisplayChannels: 1
+  _IsCollapsed: 0
+  _ShowChildren: 1
+  _IconIndex: -1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &-8560910887144750873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452524342900696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660b4f2e8d969de4d9a1ed45e0aa119b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Name: VR360 Stereo (Post Process)
+  InsertParentGroup: 0
+  ClearTargetObjects: 1
+  ApplyToParentGroup: 0
+  ApplyTransforms: 1
+  ApplyPosition: 1
+  ApplyRotation: 1
+  ApplyScale: 1
+  KeepPrefabLinkage: 0
+  Selected: 01010101010101010101
+  ExcludeComponents: []
+  IsExpanded: 1
+  _Color: {r: 0.36688924, g: 0.18229471, b: 0.9512605, a: 1}
+  _Label: VR360PP
+--- !u!1 &4041452525070312871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4041452525070312864}
+  - component: {fileID: 4041452525070312865}
+  - component: {fileID: 1046208998828864498}
+  m_Layer: 0
+  m_Name: LeftCamera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4041452525070312864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525070312871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4041452525183001152}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 13.89, y: -5.6, z: 0}
+--- !u!20 &4041452525070312865
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525070312871}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.13550201, g: 0.05268779, b: 0.3018868, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 87.2
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 51
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &1046208998828864498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525070312871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 0
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 1
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 72198262773251917
+      data2: 13763000468760363032
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 7
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
+--- !u!1 &4041452525076837058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4041452525076837059}
+  - component: {fileID: 4041452525076837086}
+  - component: {fileID: 4076587193684990967}
+  m_Layer: 2
+  m_Name: PostProcessCamera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4041452525076837059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525076837058}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 255822672330233458}
+  - {fileID: 4041452526038478366}
+  m_Father: {fileID: 4041452524342900697}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 13.89, y: -5.6, z: 0}
+--- !u!20 &4041452525076837086
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525076837058}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.01
+  far clip plane: 1000
+  field of view: 87.2
+  orthographic: 1
+  orthographic size: 0.5
+  m_Depth: 2
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 0
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &4076587193684990967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525076837058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 1
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 0
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 1
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 72198262773251917
+      data2: 13763000468760363032
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 7
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
+--- !u!1 &4041452525183001159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4041452525183001152}
+  - component: {fileID: 4041452525183001154}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4041452525183001152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525183001159}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4041452525070312864}
+  - {fileID: 4041452525999535605}
+  m_Father: {fileID: 4041452524342900697}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 13.89, y: -5.6, z: 0}
+--- !u!81 &4041452525183001154
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525183001159}
+  m_Enabled: 1
+--- !u!1 &4041452525999535604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4041452525999535605}
+  - component: {fileID: 4041452525999535607}
+  - component: {fileID: 961414870294841721}
+  m_Layer: 0
+  m_Name: RightCamera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4041452525999535605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525999535604}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4041452525183001152}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 13.89, y: -5.6, z: 0}
+--- !u!20 &4041452525999535607
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525999535604}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.13550201, g: 0.05268779, b: 0.3018868, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 87.2
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 51
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &961414870294841721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452525999535604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 0
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 1
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 72198262773251917
+      data2: 13763000468760363032
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 7
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
+--- !u!1 &4041452526038478365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4041452526038478366}
+  - component: {fileID: 4041452526038478361}
+  - component: {fileID: 4041452526038478360}
+  m_Layer: 2
+  m_Name: StereoTopBottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4041452526038478366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452526038478365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4041452525076837059}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4041452526038478361
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452526038478365}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4041452526038478360
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041452526038478365}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dde0ab452207b0147ba5219a1357bdeb, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &4041452525580519910
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4041452525076837059}
+    m_Modifications:
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294959554965872535, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+        type: 3}
+      propertyPath: m_Name
+      value: RenderPostProcess
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3fcbb1f8f2dd130408daa93bb0d3998e, type: 3}
+--- !u!4 &255822672330233458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4294959554965872532, guid: 3fcbb1f8f2dd130408daa93bb0d3998e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4041452525580519910}
+  m_PrefabAsset: {fileID: 0}

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80260680bb89ac46aec044dc4ff1254, type: 3}
+  m_Name: Content00_Welcome
+  m_EditorClassIdentifier: 
+  BaseScale: 178.53
+  Width: 4.58
+  Height: 2.2
+  TitleText: WELCOME
+  TitleFontSize: 2.74
+  TitleOffset: 0.1
+  BodyText: "This app demonstrates key features of the Timeflow animation system
+    for Unity. To use this app, tap on widgets in the control panel to view details
+    and load additional demos. \n\nAll of the animations and dynamic movements in
+    this app have been created using Timeflow. The full source to this app is included
+    in the examples.\n\nPlease visit the Unity Asset Store to purchase a license
+    for Timeflow."
+  BodyFontSize: 2.4
+  BodyOffset: -0.42
+  ShowFooter: 1
+  FooterScale: 0.87
+  FooterOffset: 0.37
+  ShowLoadButton: 1
+  LoadText: VIEW IN THE ASSET STORE
+  DimScreen: 1

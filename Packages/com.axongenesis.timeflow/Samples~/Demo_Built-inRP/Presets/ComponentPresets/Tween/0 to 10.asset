@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c3d705382b9f74e8f55e6f8bd5c286, type: 3}
+  m_Name: 0 to 10
+  m_EditorClassIdentifier: 
+  ComponentType: AxonGenesis.Tween, AxonGenesis, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  ComponentName: Tween
+  _Color: {r: 0.001503004, g: 0.32515284, b: 0.47798735, a: 1}
+  Data:
+    ID: 0
+  CanReinitialize: 0
+  _Name: 0 to 10
+  _Label: 10
+  _isSetup: 1
+  Properties:
+  - Index: 49
+    OwnerClass: Tween
+    PropertyPath: MinValue
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 33
+    OwnerClass: Tween
+    PropertyPath: MinRandValue
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 6
+    OwnerClass: Tween
+    PropertyPath: MaxValue
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 10
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 34
+    OwnerClass: Tween
+    PropertyPath: MaxRandValue
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  DefaultPropertyName: Local Rotation
+  DefaultPropertyAttribute: 1

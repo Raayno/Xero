@@ -1,0 +1,1369 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c41705aaceb779747bd83d8f150a7c70, type: 3}
+  m_Name: _Default
+  m_EditorClassIdentifier: 
+  ComponentType: AxonGenesis.AudioReactive, AxonGenesis, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  ComponentName: AudioReactive
+  Data:
+    ID: 0
+  CanReinitialize: 0
+  _isSetup: 1
+  Properties:
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: Amount
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: Attack
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ClipThreshold
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ColorEnd
+    PropertyType: 4
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ColorEndScale
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ColorStart
+    PropertyType: 4
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 1}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ColorStartScale
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: _CurrentTime
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: _DebugEnabled
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: EnableOverride
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: _Enabled
+    PropertyType: 0
+    BoolValue: 1
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: Interpolate
+    PropertyType: 6
+    BoolValue: 0
+    IntValue: 1
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: Multiply
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: OnThreshold
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0.8
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: OverrideBlend
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: OverrideColor
+    PropertyType: 4
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 1, g: 1, b: 1, a: 1}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: OverrideValue
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: OverrideVector
+    PropertyType: 9
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: Release
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: Sample
+    PropertyType: 10
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: SendTrigger
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: _TimeOffset
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: _TimeScale
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: _UpdateAfter
+    PropertyType: 10
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: _UpdateFrequency
+    PropertyType: 6
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ValueEnd
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ValuePreview
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ValueScale
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: ValueStart
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: VectorEnd
+    PropertyType: 9
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 1, y: 1, z: 1, w: 1}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 0
+    OwnerClass: AudioReactive
+    PropertyPath: VectorStart
+    PropertyType: 9
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  _Color: {r: 0.4618418, g: 0.41383407, b: 0.83396226, a: 1}
+  _DisplayName: Default
+  _Label: Dflt
+  Loop:
+    Loop: 0
+    AutoLoop: 0
+    LoopIn: 1
+    LoopOut: 1
+    LoopStart: 0
+    LoopEnd: 10
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EditorShowLoop: 1

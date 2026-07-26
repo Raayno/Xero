@@ -1,0 +1,1110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a259e081aab1cd4e826fc618efe3df1, type: 3}
+  m_Name: Standard
+  m_EditorClassIdentifier: 
+  Folders:
+  - Color: {r: 1, g: 0.7603567, b: 0, a: 1}
+    _Icon: {fileID: 2800000, guid: 21877a4383da3314489f46980897e078, type: 3}
+    Index: 0
+    NameWarningTimeout: 0
+    NameWarning: 
+    ShowSettings: 0
+    IsExpanded: 0
+    _Name: Animation
+    _Layout:
+      _Mode: 1
+      _Label: 0
+      _ButtonWidth: 100
+      _ButtonHeight: 10
+      _GridTabIconSize: 26
+      _ButtonSpacing: 0
+      _ItemsPerRow: 4
+      _AutoWidth: 0
+      _AutoItemsPerRow: 1
+      _OverrideLayout: 0
+      OverrideMode: 0
+    Groups:
+    - Color: {r: 1, g: 0.56050247, b: 0.07232696, a: 1}
+      _Icon: {fileID: 2800000, guid: 84beb9148bfbc9941b6d4f720cfff915, type: 3}
+      Index: 0
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Keyframer
+      _Layout:
+        _Mode: 1
+        _Label: 0
+        _ButtonWidth: 82
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 5
+        _ItemsPerRow: 4
+        _AutoWidth: 1
+        _AutoItemsPerRow: 0
+        _OverrideLayout: 1
+        OverrideMode: 0
+      Presets:
+      - {fileID: -2367510197639434145, guid: 548c33907bb69504db8d5f465f7ef44d, type: 3}
+      - {fileID: 6675405021044680816, guid: 06aaf63f88126604e9819947baf5c246, type: 3}
+      - {fileID: 3121180938073719748, guid: 0954ab4914883ff46835cbab6d30b674, type: 3}
+      - {fileID: 2624591974164953204, guid: dbb9f6d0c08c29c49bd3c0da4e0318dc, type: 3}
+      - {fileID: 7491830116267249746, guid: 14f12c6c39abb804681feba333140a17, type: 3}
+      - {fileID: 1912665300961846983, guid: 698a930b19a5d374f88577d94c90fc53, type: 3}
+      - {fileID: 4754901420865297893, guid: d526912d06e7f6c43a8549577e9516d8, type: 3}
+      - {fileID: 5306787445326828015, guid: cd422c816b9d48641be80479699e2b27, type: 3}
+      - {fileID: 5686216124155368500, guid: 350d26731b578d24596115e53f4b0cc4, type: 3}
+      - {fileID: 5850007901324344504, guid: 669bf975ddabdb94ba2813d091995ed8, type: 3}
+      - {fileID: 8012375189331964952, guid: 55f092fcb197b4e4480531cb58c2a867, type: 3}
+      - {fileID: 3623531797218432602, guid: 8c487d20268ab7c44ad17777a3616fe3, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 1, g: 0.2295596, b: 0.2295596, a: 1}
+      _Icon: {fileID: 2800000, guid: 016ce087eef0e3245ba42045be030179, type: 3}
+      Index: 1
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Motion Path
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -7519620301149060071, guid: 9a4d5a790665d10478801f2dca3e105c, type: 3}
+      - {fileID: 2754476523766336475, guid: 4fd360e29565c61489ec4ba73551f67c, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.20440245, g: 0.7646357, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: 7059d52a84826eb458f7943eac50459f, type: 3}
+      Index: 2
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Tween
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 50
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 5
+        _ItemsPerRow: 4
+        _AutoWidth: 1
+        _AutoItemsPerRow: 0
+        _OverrideLayout: 1
+        OverrideMode: 0
+      Presets:
+      - {fileID: 7818325706192898101, guid: 6a12ef503371078489249a3bf39b5482, type: 3}
+      - {fileID: 4483649052754294334, guid: 6ced32a6924c0954fac818c8cb22cca9, type: 3}
+      - {fileID: 8092444422504406880, guid: 22691257754cc3949b4991353cbda98f, type: 3}
+      - {fileID: 5433236827904704504, guid: 4a86241abd759be4dbca96e77e183724, type: 3}
+      - {fileID: 7830339664846503869, guid: 351b691cf59128c49ae8e911fe13ba41, type: 3}
+      - {fileID: -1630892494427718029, guid: f431a7e942c71d348bb5d77908486edb, type: 3}
+      - {fileID: 232228335698380093, guid: a68642fa61fad644ab021b48a8c9298d, type: 3}
+      - {fileID: 2032317321240968347, guid: 5a2ee16ae895eb0499dc1b3db2cac54e, type: 3}
+      - {fileID: 6482324251402916828, guid: 1674826b65ef3d04cb8effa8202122f2, type: 3}
+      - {fileID: 953058842249694913, guid: 2af7a0a7ea8fd84459aa2ad1500de47f, type: 3}
+      - {fileID: -4777764932783404782, guid: 558c2167395c8824cb0544d063bf706a, type: 3}
+      - {fileID: -1240205063671193990, guid: 45b1e6a6ba9b3ac429cbed6458d5e744, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: e8e0dc134b4be044bbc9485905b6ba31, type: 2}
+      - {fileID: 11400000, guid: 5b63c32f64518b640a7c7020bcfe69e9, type: 2}
+      - {fileID: 11400000, guid: 0a1bf7ee64d1cce4cbcf5044f2dd52ec, type: 2}
+      - {fileID: 11400000, guid: d8d1e793e1943e24f88daa408bdb7438, type: 2}
+      - {fileID: 11400000, guid: c16d4d8c2961dd747b4c8ad8c79de223, type: 2}
+      - {fileID: 11400000, guid: eecc4336a914ee942aeefa9341191de4, type: 2}
+      - {fileID: 11400000, guid: 85442557a5c1ec34ea3cc8040d84569d, type: 2}
+      - {fileID: 11400000, guid: d8bf681e6b6f3f44dad2aea266200861, type: 2}
+      - {fileID: 11400000, guid: e0b956f938416ef4d84e3667ceb91a60, type: 2}
+      - {fileID: 11400000, guid: 8825b1fe4c19fbb469cdd9b8d2cc6b0d, type: 2}
+      - {fileID: 11400000, guid: 39d6863787269e54a8b981dc45932abe, type: 2}
+      - {fileID: 11400000, guid: 7d424102bba575c42b1e1e2eca70b1c6, type: 2}
+      - {fileID: 11400000, guid: 40987b8b0fed24940a9fa88e721bef8e, type: 2}
+      - {fileID: 11400000, guid: 45c9d8e33db052d4b86401f973ed6b3f, type: 2}
+      - {fileID: 11400000, guid: 6035f202ac1df134e84b6782348dffd9, type: 2}
+      - {fileID: 11400000, guid: 511b84e6f46ec5b41b6bba4a487a86b2, type: 2}
+      - {fileID: 11400000, guid: 888f8fc188a8a81408145f5bb827622f, type: 2}
+      - {fileID: 11400000, guid: a0b9a9c89d965ee4dbc541bf067db2ea, type: 2}
+      - {fileID: 11400000, guid: 6af7fededa6d2fe4d8d4de7c94d6c07a, type: 2}
+      - {fileID: 11400000, guid: 07208b293fd068b49ab577bd365e3ad3, type: 2}
+      - {fileID: 11400000, guid: d73020724fcbdfe40a7d6f3fabd6a1f9, type: 2}
+      - {fileID: 11400000, guid: 342538318feea1f4881e83c6589bd7e2, type: 2}
+      - {fileID: 11400000, guid: fc222c1074d5ab941b3b3ab15891eaba, type: 2}
+      - {fileID: 11400000, guid: 8384ec19d52085e4496441aa37947ab8, type: 2}
+      - {fileID: 11400000, guid: 542a40bcb2852b040be6063bdc98b6c4, type: 2}
+      - {fileID: 11400000, guid: 7109a2a30b5b14748ae33861308e53b0, type: 2}
+      - {fileID: 11400000, guid: 46e141d165c1e164f9a362212707b0c8, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: c234cc93db30bd5458b800ed5b32049c,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.34905648, g: 1, b: 0.8966756, a: 1}
+      _Icon: {fileID: 2800000, guid: 3679e763ee754ce49b08663d36d93c3c, type: 3}
+      Index: 3
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Flyby
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 1
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -6582585986869557240, guid: 520b759c30d5324418cb5307b25f7932, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: b77ff93f7023d6343be44ba849393ba2, type: 2}
+      - {fileID: 11400000, guid: fdae1c281694d804095b0e4091bb4527, type: 2}
+      - {fileID: 11400000, guid: c08362179901cb14e971810a313dda43, type: 2}
+      - {fileID: 11400000, guid: 470ea134404a8ac43aa96a2378481049, type: 2}
+      - {fileID: 11400000, guid: 98c5227cbbf707e4cab33a654d5ddf91, type: 2}
+      - {fileID: 11400000, guid: a22bf5825405791439a479b98418d045, type: 2}
+      - {fileID: 11400000, guid: e7fb36ff819b5fa4c9a21e5e2d7e67be, type: 2}
+      - {fileID: 11400000, guid: 305c1b9d5e4b99c4cbf92fb7515509e9, type: 2}
+      - {fileID: 11400000, guid: f088222078e2f974793ba653603667a4, type: 2}
+      - {fileID: 11400000, guid: 8e2c540d35b40de40bdfae5521f05c02, type: 2}
+      - {fileID: 11400000, guid: f6bf3bf4a906ed04bbda5b00283472dd, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: 37c9b6f9413740d47af0d090df1b52f1,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.5251572, g: 0.85235995, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: cc6187662bb4b8c4982671ec1d133557, type: 3}
+      Index: 4
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Blend
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 8841650948647557584, guid: 42cfaa9e196d03546a3d2c9889874329, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: cbf7647860fe2b0498aaabd4cfe2bfdc, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: 2bc1c2b9853ce6047b222861bb88b466,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+  - Color: {r: 0.6117647, g: 0.9687618, b: 1, a: 1}
+    _Icon: {fileID: 2800000, guid: 1bccbbe95f41a024893f5e6013288368, type: 3}
+    Index: 1
+    NameWarningTimeout: 0
+    NameWarning: 
+    ShowSettings: 0
+    IsExpanded: 0
+    _Name: Automation
+    _Layout:
+      _Mode: 0
+      _Label: 0
+      _ButtonWidth: 100
+      _ButtonHeight: 20
+      _GridTabIconSize: 26
+      _ButtonSpacing: 0
+      _ItemsPerRow: 4
+      _AutoWidth: 0
+      _AutoItemsPerRow: 1
+      _OverrideLayout: 0
+      OverrideMode: 0
+    Groups:
+    - Color: {r: 0.92549026, g: 0.38431376, b: 0.31764707, a: 1}
+      _Icon: {fileID: 2800000, guid: 85e25d91e3f3582468f37df2c71fae51, type: 3}
+      Index: 0
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Look At
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -1843558813338501431, guid: 0a0f382f398583a48b71a46de433a311, type: 3}
+      - {fileID: -1357865831886141321, guid: 5d2acfb185c04de47b0c2168a9c0fbd3, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 2456629c4d8b6624ab44218ff794fac5, type: 2}
+      - {fileID: 11400000, guid: da32c16b10fa94b43a0e6231b6f06a25, type: 2}
+      - {fileID: 11400000, guid: 571993181aebd9742b760b1a13ef2cf2, type: 2}
+      - {fileID: 11400000, guid: 4a8c56641dcc51d4b96309733901a028, type: 2}
+      - {fileID: 11400000, guid: 89e469a5f8bce33449ed050199b163b0, type: 2}
+      - {fileID: 11400000, guid: 209ecdbc251503c4b96d001c9caf7254, type: 2}
+      - {fileID: 11400000, guid: abd87827cc5f077469a4603739630f3d, type: 2}
+      - {fileID: 11400000, guid: 93f7a79fac39c444d85709e09e49db72, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: 2b6f91b733497174eb4f6ff3d4b3cdb4,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.9843138, g: 0.46274513, b: 0, a: 1}
+      _Icon: {fileID: 2800000, guid: 3bd7a47c2564b9b468f93cb8b46f7aa0, type: 3}
+      Index: 1
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Follow
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 2144798946032773509, guid: 7092502f412582c4f8a976c1dcc08a5c, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: be63efc2a5e7aac478d3ebb3880597b7, type: 2}
+      - {fileID: 11400000, guid: 0e9e31cd9ae6f5240b6a80fb80172215, type: 2}
+      - {fileID: 11400000, guid: a31c3c824af16b245ba47ddd4bf6d13f, type: 2}
+      - {fileID: 11400000, guid: 7d9e999be0eebc84fbe6483ff43f4119, type: 2}
+      - {fileID: 11400000, guid: 00074a13e3b4275409bd7f68cac786f0, type: 2}
+      - {fileID: 11400000, guid: 9bc73cfed1ec4fe47ae2bd7451dec214, type: 2}
+      - {fileID: 11400000, guid: a7df0ae118f5b9c418ba225a6ab3859c, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: f7c41e2caea02ee4880912cc351c41ea,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.5019608, g: 0.9843138, b: 0.90196085, a: 1}
+      _Icon: {fileID: 2800000, guid: 1bccbbe95f41a024893f5e6013288368, type: 3}
+      Index: 2
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Auto Bank
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -8555566136942399664, guid: 907a471706a3c0d458db65a234f220bd, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: e74f6c126d1a0e840ae8e1ef9a33188f, type: 2}
+      - {fileID: 11400000, guid: 479080b6662ed494da1519c26521b2cf, type: 2}
+      - {fileID: 11400000, guid: 75c64e7d6fb41954fae735c681768cc4, type: 2}
+      - {fileID: 11400000, guid: 8608b361aac1188418d5a9a80c64a336, type: 2}
+      - {fileID: 11400000, guid: b356d757ab718b64aa9490ef66b6a826, type: 2}
+      - {fileID: 11400000, guid: 6ed822c2f97a0d64291c053b1c036876, type: 2}
+      - {fileID: 11400000, guid: c8ceb9bfa27cf4f4ba73b0e6b8268c27, type: 2}
+      - {fileID: 11400000, guid: 2249c43157403164fbe0199359f693a1, type: 2}
+      - {fileID: 11400000, guid: b06247f2b2ffed14cad918be3afd9b98, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: 253bc8deee6d9534b9de41c5e0f2802e,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.9921569, g: 0.92549026, b: 0.70980394, a: 1}
+      _Icon: {fileID: 2800000, guid: c713b8b19460186459056c0fa5692334, type: 3}
+      Index: 3
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Auto Rotate
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 6635190933324728058, guid: 5760e29a2fbe79240b80185d23f77e2c, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 2fbdb9a9bc1f6dd408811d16bf1aeb0b, type: 2}
+      - {fileID: 11400000, guid: 6199a80ff5ef83a42bd651777d9f3173, type: 2}
+      - {fileID: 11400000, guid: a0b5a0a1671d53144afc1b86ff065186, type: 2}
+      - {fileID: 11400000, guid: d18e426d9391e8343b4e32cfc5e7b3da, type: 2}
+      - {fileID: 11400000, guid: 93057f23bda9de7429507749acbec2e8, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: d6531c3c14a7792408f328ace0f1b8f8,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.9960785, g: 0.8745099, b: 0, a: 1}
+      _Icon: {fileID: 2800000, guid: dbbf18a2a9fb2494a8af464d05b98b6e, type: 3}
+      Index: 4
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Place On Path
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 7170986208239265763, guid: a3d6147aff9c10f49bfe3a8f3a26131a, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 0942b1720475cdc49b739d96ab92b04d, type: 2}
+      - {fileID: 11400000, guid: c6e9d33abfc97e54282c799bd8bcf0e7, type: 2}
+      - {fileID: 11400000, guid: d82e1758627a8c44485632cde52ba076, type: 2}
+      - {fileID: 11400000, guid: 60b487f3fb7598246bff24c44391599b, type: 2}
+      - {fileID: 11400000, guid: 754612a565c0f614595758e6db9bd971, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: ebfad09e9ecbef84b94bd9d453988a2b,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.56078434, g: 0.7725491, b: 0.18823531, a: 1}
+      _Icon: {fileID: 2800000, guid: f2093d9131de611448978da0a5d4f86d, type: 3}
+      Index: 5
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Place On Surface
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -3130220236360498624, guid: c5889b643fd5fdd49a8495b1063d1604, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 4d318846c0aa4a742a16c2f5c49fad1e, type: 2}
+      - {fileID: 11400000, guid: 5e62d4c70c1459941acff760d3c731b8, type: 2}
+      - {fileID: 11400000, guid: 3c45de984d7fd67409c519cbff0e5972, type: 2}
+      - {fileID: 11400000, guid: 4cc845247b545a14d900a245e754f484, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: 429440548a6461243861ad9a25011481,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.70771945, g: 0.4433961, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: acd64d959a72a2748bf647bf6b2be31b, type: 3}
+      Index: 6
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Noise
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 3838391230694876120, guid: 18a7292dc795ffd4f84ffbeb240df316, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: efb403697f5248b46b0c610fea1b84d1, type: 2}
+      - {fileID: 11400000, guid: c232ae74ffe0be84a834ebe3e803c7c5, type: 2}
+      - {fileID: 11400000, guid: 9eec85c54aab8f14ab4fedb82ef80ed7, type: 2}
+      - {fileID: 11400000, guid: 7832d3ece99c38f47b21e21ce82afa8c, type: 2}
+      - {fileID: 11400000, guid: 28c5f418415809e43a31232ffd086e86, type: 2}
+      - {fileID: 11400000, guid: 4f33106c6adb64042b968f921f4511ff, type: 2}
+      - {fileID: 11400000, guid: ec087d507815c074bbc7f121d89217fe, type: 2}
+      - {fileID: 11400000, guid: 750b46ddffd7b0a4c93c30b3be7fb7e7, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: c231140f9024ad04fb5b314110951afe,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 1, g: 0.48416567, b: 0.39937097, a: 1}
+      _Icon: {fileID: 2800000, guid: 9189e975c62c14a4387c8e882e883a6b, type: 3}
+      Index: 7
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Events
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 3626004415818823541, guid: 7ad5afc9fc6bb5f49bd315bfd75e3e40, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 005eddf76c3571e4fa9239fe594c875a, type: 2}
+      - {fileID: 11400000, guid: 1066dd1c5966777419eeb3d86bbc9952, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: 8a97b79ac5fea8f42a612fbe03e12d85,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.72955966, g: 0.60549855, b: 0.40148717, a: 1}
+      _Icon: {fileID: 2800000, guid: 85f8129d35952444997d3403d9f08dfe, type: 3}
+      Index: 8
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Tools
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 3979571265036864893, guid: 3d2c47b30693c2341af623c25d3fdf81, type: 3}
+      - {fileID: -4041262681279383611, guid: d31e24c1f740b6944958c3d10b80267c, type: 3}
+      - {fileID: -2234356732715423009, guid: 5984681e0f819dd4cb5b74a921a33711, type: 3}
+      - {fileID: 6123174979406806173, guid: 6c9ea9556de8d0f42ab36a580781877e, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+  - Color: {r: 0.0593923, g: 0.899371, b: 0.7968039, a: 1}
+    _Icon: {fileID: 2800000, guid: 33820dda4734b244d8b0aa1d52792636, type: 3}
+    Index: 2
+    NameWarningTimeout: 0
+    NameWarning: 
+    ShowSettings: 0
+    IsExpanded: 0
+    _Name: Audio
+    _Layout:
+      _Mode: 0
+      _Label: 0
+      _ButtonWidth: 100
+      _ButtonHeight: 20
+      _GridTabIconSize: 26
+      _ButtonSpacing: 0
+      _ItemsPerRow: 4
+      _AutoWidth: 0
+      _AutoItemsPerRow: 1
+      _OverrideLayout: 0
+      OverrideMode: 0
+    Groups:
+    - Color: {r: 0.0593923, g: 0.899371, b: 0.7968039, a: 1}
+      _Icon: {fileID: 2800000, guid: 1d28c34441be8394ba4aecc307207d6c, type: 3}
+      Index: 0
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Audio Track
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -7039211477453828352, guid: f8db84874a2af51499de99dd986e9b95, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.058823533, g: 0.68235296, b: 0.97647065, a: 1}
+      _Icon: {fileID: 2800000, guid: 7fe6184f2e37b5a498978cf422c070d3, type: 3}
+      Index: 1
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Audio Spectrum
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -4672204006566448599, guid: cb6c7509f35fe2b43b985b626f97c17d, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 9893564bd2221d44c8a00db16720b28e, type: 2}
+      - {fileID: 11400000, guid: f6373b47cb8628c42bc828475ecd2b19, type: 2}
+      - {fileID: 11400000, guid: 648edd0d72eba3d4dad5256f82be6b01, type: 2}
+      - {fileID: 11400000, guid: 5aaa48e01312a00419e3b6657bf53c5b, type: 2}
+      - {fileID: 11400000, guid: 95797c927ade77340ab56f28478931f3, type: 2}
+      - {fileID: 11400000, guid: f7dccaa5fdb555e4b8b543907f51af7b, type: 2}
+      - {fileID: 11400000, guid: 7d75b49bb999b3c47817c012bc2c4030, type: 2}
+      - {fileID: 11400000, guid: 0f9ae196195273a4cb01add3f7cac3c2, type: 2}
+      - {fileID: 11400000, guid: a1ba65adc91417644a39e1be8adc9bab, type: 2}
+      - {fileID: 11400000, guid: 79f6d7e6834658c49834823aebe69b28, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: fdb922d96f74cf94f9cdf5424109dbfc,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.10196079, g: 0.8078432, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: 45b547b08e771a4459ffcfc11dc737cd, type: 3}
+      Index: 2
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Audio Sample
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -5546217526311179655, guid: 145a2595fc5c91d4582548145b8a9f1d, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 378f9094cca37274d8ab6076e5a6fb0e, type: 2}
+      - {fileID: 11400000, guid: 4c67b51a9b904b447b54a433f1c57056, type: 2}
+      - {fileID: 11400000, guid: 063e77584da05e945bd1c49725ac8a54, type: 2}
+      - {fileID: 11400000, guid: 4696a83e86de2194fb6cacbdf7f2da96, type: 2}
+      - {fileID: 11400000, guid: 25eee2cfb2259de48a98cf349fdd097d, type: 2}
+      - {fileID: 11400000, guid: f13dfee1f77d86d4782ea6543cdffbbb, type: 2}
+      - {fileID: 11400000, guid: bc0692c89b8bb8944b3f855a8a132186, type: 2}
+      - {fileID: 11400000, guid: c05ac15d88617544fb6800a4d82f0157, type: 2}
+      - {fileID: 11400000, guid: 8546dc2b10c272642ab79342e6a4e00a, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: e273b4ce4101907449c8803711539bc4,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.7216232, g: 0.5503144, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: 968044f9d30aee0419ae55af3ef8cde4, type: 3}
+      Index: 3
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: Audio Reactive
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -6691456866935439687, guid: 2256275e5c1177045a5af9461e9b3b44, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 55d722f0d268ccd44a624a990bb237da, type: 2}
+      - {fileID: 11400000, guid: 2e7a274dcbbbaeb4ebe315b2f4db13e1, type: 2}
+      - {fileID: 11400000, guid: c9b9640468ade7b4391dfe6112220a1b, type: 2}
+      - {fileID: 11400000, guid: 2f8ea156db53db145a4d13ef56fbff28, type: 2}
+      - {fileID: 11400000, guid: ca6016cd40e158545b53e009e3c7c1c2, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 102900000, guid: 227fe498071312343850f5ed292946b8,
+        type: 3}
+      IsComponentPresetsExpanded: 1
+  - Color: {r: 0.49513522, g: 0.41194963, b: 1, a: 1}
+    _Icon: {fileID: 2800000, guid: 95503ad1d659c8444be89f22a155c6fd, type: 3}
+    Index: 3
+    NameWarningTimeout: 0
+    NameWarning: 
+    ShowSettings: 0
+    IsExpanded: 0
+    _Name: MIDI
+    _Layout:
+      _Mode: 0
+      _Label: 0
+      _ButtonWidth: 100
+      _ButtonHeight: 20
+      _GridTabIconSize: 26
+      _ButtonSpacing: 0
+      _ItemsPerRow: 4
+      _AutoWidth: 0
+      _AutoItemsPerRow: 1
+      _OverrideLayout: 0
+      OverrideMode: 0
+    Groups:
+    - Color: {r: 0.49411768, g: 0.41176474, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: 95503ad1d659c8444be89f22a155c6fd, type: 3}
+      Index: 0
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: MIDI File
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -5667166373474574334, guid: d020efaca436e7c4489f80b10533a117, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 1, g: 0.33647794, b: 0.53825057, a: 1}
+      _Icon: {fileID: 2800000, guid: 3ea2da9f556ff844bbdea60e4a435b64, type: 3}
+      Index: 1
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: MIDI Receiver
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 1946539652401147213, guid: f16efc9e08c2a8e4dabd68da678f39d9, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.3803922, g: 0.1137255, b: 0.67058825, a: 1}
+      _Icon: {fileID: 2800000, guid: 01c8eef686a650144b1a05a313ac46ef, type: 3}
+      Index: 2
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: MIDI Tween
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 835407385071102196, guid: d9d81339a985f164fa88c70230c80ca6, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.39607847, g: 0.5568628, b: 0.67058825, a: 1}
+      _Icon: {fileID: 2800000, guid: 6cd5e1ae28b134a4ab8d7634ddc9714b, type: 3}
+      Index: 3
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 0
+      _Name: MIDI Cloner
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -8783813006153319287, guid: 7c30427f8d9cb26479c85576e387c41b, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+  - Color: {r: 0.6313726, g: 0.8995133, b: 1, a: 1}
+    _Icon: {fileID: 2800000, guid: 8168aa28b7fe8fb4985c45c78f5b47de, type: 3}
+    Index: 4
+    NameWarningTimeout: 0
+    NameWarning: 
+    ShowSettings: 0
+    IsExpanded: 1
+    _Name: Objects
+    _Layout:
+      _Mode: 1
+      _Label: 0
+      _ButtonWidth: 100
+      _ButtonHeight: 20
+      _GridTabIconSize: 26
+      _ButtonSpacing: 0
+      _ItemsPerRow: 4
+      _AutoWidth: 0
+      _AutoItemsPerRow: 1
+      _OverrideLayout: 0
+      OverrideMode: 0
+    Groups:
+    - Color: {r: 0.51257855, g: 0.8449113, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: 8168aa28b7fe8fb4985c45c78f5b47de, type: 3}
+      Index: 0
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 1
+      _Name: 3D Primitives
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 1
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 8084512342119616239, guid: 44235e3f6bf1e364b886c9e683f27680, type: 3}
+      - {fileID: -8745892059478446693, guid: a273629fc91d7e7469b668bbaa2f9af5, type: 3}
+      - {fileID: -68105735554148053, guid: 1b845b7eb0c4a4f41a00386b5cb27932, type: 3}
+      - {fileID: 857173205804626100, guid: 4fad606e80f3474448096d3ccdbbb7de, type: 3}
+      - {fileID: -7974277076042584653, guid: 741c17430ad5f2c44aa8d363c15e4ad0, type: 3}
+      - {fileID: -2699470926785101795, guid: 902a78d6b7524644699d962df1b34450, type: 3}
+      - {fileID: -3897917160977789163, guid: 4f9e5dca6d2e1c5409e973113055d857, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.7137711, g: 0.56289303, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: 5ef88d68de79a484b8d6ef2aebfdcb49, type: 3}
+      Index: 1
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 1
+      _Name: 2D Sprites
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -8586607125873384054, guid: 99a8cbbe0a9cadf4baaf51e6d56e45db, type: 3}
+      - {fileID: 4341657700438323066, guid: dcf3a2f519096804083f3ad4992b395e, type: 3}
+      - {fileID: 8849576536661827880, guid: 2326243f625b34141b7d507caeed77d3, type: 3}
+      - {fileID: -8970857622425441280, guid: 859ed1201a27b38478aacb7f746b0f3e, type: 3}
+      - {fileID: -7905248518669574675, guid: 46b30d026cbde1c45a9c57fb2affb353, type: 3}
+      - {fileID: -6223902357475931524, guid: f1bf392f4e8b47b4a8b84896bbc2d3b8, type: 3}
+      - {fileID: 2088836845322285026, guid: e347a328e40eb0047835abf3c75b1ea8, type: 3}
+      - {fileID: 92516308679320028, guid: 71c39ab73aceb0842ba56b10e6878c00, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.5764706, g: 0.70959055, b: 1, a: 1}
+      _Icon: {fileID: 2800000, guid: 5755bb3538f898d40bf5cd6481b9a84a, type: 3}
+      Index: 2
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 1
+      _Name: Materials
+      _Layout:
+        _Mode: 0
+        _Label: 1
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 1
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 1
+        OverrideMode: 0
+      Presets:
+      - {fileID: 2617906647390669940, guid: 0c890b392914a144e821fe974fcfb64f, type: 3}
+      - {fileID: -3293523799422370655, guid: 6d43237b2da752546959098c56ddf03c, type: 3}
+      - {fileID: -4670704538168097454, guid: fad0ce9c7eb6ce644b0ffc182904a140, type: 3}
+      - {fileID: -5574135938089848741, guid: 6c5b6c0f466547742a391133ff2e80bc, type: 3}
+      - {fileID: -4637043459124270145, guid: fd21fd903915e454dae229a4ef79f4ea, type: 3}
+      - {fileID: 6850884914063351423, guid: dec8703e60cba124b9bfa37127fe548e, type: 3}
+      - {fileID: 2681460078911667183, guid: 7faf3bb83327f32419f23212758867a8, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+  - Color: {r: 0.36477977, g: 0.34527895, b: 0.34527895, a: 1}
+    _Icon: {fileID: 3764734208316478041, guid: 0000000000000000d000000000000000, type: 0}
+    Index: 5
+    NameWarningTimeout: 0
+    NameWarning: 
+    ShowSettings: 0
+    IsExpanded: 1
+    _Name: Scene
+    _Layout:
+      _Mode: 0
+      _Label: 0
+      _ButtonWidth: 100
+      _ButtonHeight: 20
+      _GridTabIconSize: 26
+      _ButtonSpacing: 0
+      _ItemsPerRow: 4
+      _AutoWidth: 0
+      _AutoItemsPerRow: 1
+      _OverrideLayout: 0
+      OverrideMode: 0
+    Groups:
+    - Color: {r: 1, g: 0.3226195, b: 0.22327036, a: 1}
+      _Icon: {fileID: 2800000, guid: b2a95702b77880e46b4a39824b1d3055, type: 3}
+      Index: 0
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 1
+      _Name: Timeflow
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 2380466687821420887, guid: 53cb58a56df5b1e479430ed6e46da86d, type: 3}
+      - {fileID: 3356237342812408227, guid: d541d9cb8df37494da888894d14d5576, type: 3}
+      - {fileID: 5457551506191222496, guid: 5caa32a90fd810f4fb21639fdc2487b9, type: 3}
+      ComponentPresets:
+      - {fileID: 11400000, guid: 80c0b7af0a5d8ba4583dd3b031add113, type: 2}
+      - {fileID: 11400000, guid: 533eb0b216b5ebe41a910fa5a63cfe3a, type: 2}
+      - {fileID: 11400000, guid: 790a74b222c55c64d95d1010e253bbaf, type: 2}
+      - {fileID: 11400000, guid: 226a8e092c4af18408d950190a8fe35f, type: 2}
+      - {fileID: 11400000, guid: 20cc3a11227a25a40a7e9e03cbf652ef, type: 2}
+      - {fileID: 11400000, guid: 5d59eb8b22c940b498487ebedd319ded, type: 2}
+      - {fileID: 11400000, guid: b1682608258e2994c9364816e7161861, type: 2}
+      - {fileID: 11400000, guid: 9f999f40c323ef9428e12e770c219850, type: 2}
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.9529412, g: 0.8923828, b: 0.6392157, a: 1}
+      _Icon: {fileID: 2800000, guid: db58e92d1c76d504b9b6c4f247fcf8d7, type: 3}
+      Index: 1
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 1
+      _Name: Lighting
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: 7145783461321920276, guid: b127754999a35ff4dbad1e4d0c738e97, type: 3}
+      - {fileID: -502404154769145133, guid: 7bcd1ff7f6137434195ad17f2ce4718e, type: 3}
+      - {fileID: 3459097837371996296, guid: 7c7706cad12869a4f8d1f46b3304ebf3, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.23921569, g: 0.61556023, b: 0.65882355, a: 1}
+      _Icon: {fileID: 2800000, guid: 3339eb36ac5f01d4e903ecb9296d2bc5, type: 3}
+      Index: 2
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 1
+      _Name: Cameras & Rendering
+      _Layout:
+        _Mode: 0
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -8939133054749755288, guid: f6af3851505e43044a84dfa3d421ff06, type: 3}
+      - {fileID: 8949280871197369267, guid: 80bb0734b0d6189478cb27d07fdbc117, type: 3}
+      - {fileID: 686478164106357598, guid: 05730d40ffbbf4f41aa555ee35cb2e6e, type: 3}
+      - {fileID: 1391882983196487466, guid: 99a9fe1848e76934fb2129261026fda0, type: 3}
+      - {fileID: -8036439637566164936, guid: d64bf9f72ddf0d0439b85aecfb405a40, type: 3}
+      - {fileID: -946731998034588791, guid: d7b7192a36bb8174aac0ee3b772cba2e, type: 3}
+      - {fileID: 9131434201731396361, guid: 71bdbb2b16ec9e44b9fca8d1d17eaa4a, type: 3}
+      - {fileID: -5182496201121727052, guid: 6f9061067d8b52447a5ba5de700a8755, type: 3}
+      - {fileID: -5310946286078028317, guid: 8f2f2701e26074341980ce0288a403de, type: 3}
+      - {fileID: 1828901297859038058, guid: 2d1a3dc604c1faa4ea158692b487eb58, type: 3}
+      - {fileID: -8771448177707108588, guid: 563454402c4f9e14f9ae0238f1ab627c, type: 3}
+      - {fileID: -2222948193706085976, guid: 0fdeee14250c2a04c8daf989c46cd002, type: 3}
+      - {fileID: -4584738041090738042, guid: 976d66fe7ed87ab4cb8a45b28216318b, type: 3}
+      - {fileID: -2337012184733842208, guid: 2785944c330dcdf4b87a8877b0d9f5bd, type: 3}
+      - {fileID: -4532425935034652843, guid: d71a0f092dff6d945880a51c95b82ac5, type: 3}
+      - {fileID: 7276987173363475325, guid: d0a4ae01f7cec29439b25e9af42fce41, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+    - Color: {r: 0.408805, g: 0.408805, b: 0.408805, a: 1}
+      _Icon: {fileID: 2800000, guid: ab766c48d63447442b06875423015fa7, type: 3}
+      Index: 3
+      NameWarningTimeout: 0
+      NameWarning: 
+      ShowSettings: 0
+      IsExpanded: 1
+      _Name: Assets
+      _Layout:
+        _Mode: 2
+        _Label: 0
+        _ButtonWidth: 100
+        _ButtonHeight: 20
+        _GridTabIconSize: 26
+        _ButtonSpacing: 0
+        _ItemsPerRow: 4
+        _AutoWidth: 0
+        _AutoItemsPerRow: 1
+        _OverrideLayout: 0
+        OverrideMode: 0
+      Presets:
+      - {fileID: -3901632958373410937, guid: d96ee72b25bb5e641a9a3605996d19e6, type: 3}
+      - {fileID: 4090350003841337255, guid: 5988d876902bb6d4ab4cdd8b6f2c3e86, type: 3}
+      ComponentPresets: []
+      ComponentType: 
+      ComponentPresetsFolder: {fileID: 0}
+      IsComponentPresetsExpanded: 1
+  _Layout:
+    _Mode: 1
+    _Label: 0
+    _ButtonWidth: 100
+    _ButtonHeight: 20
+    _GridTabIconSize: 26
+    _ButtonSpacing: 0
+    _ItemsPerRow: 4
+    _AutoWidth: 0
+    _AutoItemsPerRow: 1
+    _OverrideLayout: 0
+    OverrideMode: 1
+  _DisplayName: Standard
+  Color: {r: 0.72641504, g: 0.8387364, b: 1, a: 1}
+  PopupLayoutMode: 1
+  _Icon: {fileID: 2800000, guid: b2a95702b77880e46b4a39824b1d3055, type: 3}

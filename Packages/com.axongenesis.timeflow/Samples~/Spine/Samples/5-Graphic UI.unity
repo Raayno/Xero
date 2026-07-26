@@ -1,0 +1,2784 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &263066310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263066311}
+  - component: {fileID: 263066313}
+  - component: {fileID: 263066312}
+  m_Layer: 5
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &263066311
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263066310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923234032}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 66.1}
+  m_SizeDelta: {x: 0, y: -132.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &263066312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263066310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 41
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 66
+    m_Alignment: 7
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Spine for Canvas UI
+--- !u!222 &263066313
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263066310}
+  m_CullTransparentMesh: 1
+--- !u!1 &394021581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394021583}
+  - component: {fileID: 394021582}
+  m_Layer: 0
+  m_Name: Timeflow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &394021582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394021581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5c02f54f7054e1ca3dcc937178db52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _debugEnabled: 0
+  EditorShowUI: 1
+  UpdateMethod: 0
+  TrackActivated: 0
+  ForceFramerate: 15
+  TimeInterval: 0.1
+  LinkedBehaviors: []
+  DefaultValue: 0
+  MinValue: 0
+  MaxValue: 1
+  _UpdateFrequency: 0
+  _UpdateAfter: {fileID: 0}
+  _CurrentTime: 0
+  _TimeOffset: 0
+  TrackOn:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackOff:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  EditorShowTime: 0
+  EditorShowChannels: 1
+  CanDragTimeOffset: 0
+  Track:
+    IsNameCustom: 1
+    _SortOrder: 100
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: 
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 0
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: -2
+      _KeyValue: 10
+      _KeyTime: 0
+      _LockValue: 1
+      _LockTime: 1
+      _PropertyType: 0
+      _InTangent: {x: -0.5, y: 0}
+      _OutTangent: {x: 0.5, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 0
+      EnableHandlers: 1
+      Component: {fileID: 0}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: 
+      _DisplayName: 
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 0
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 0, y: 0, z: 0, w: 0}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    LoopStart: 0
+    LoopEnd: 0
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 0
+    EnableLoopIn: 0
+    EnableLoopOut: 0
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 1
+    LegacyVisibility: 
+    ShowValue: 0
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 0
+    _IsEnabled: 0
+    __Name: 
+    _TimeOffset: 0
+    _EnableLoop: 0
+    _HasProperty: 0
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: 516f23ec-f79b-4bd4-a19d-c4e4d01132b0
+    _PropertyType: 0
+    _CurrentTime: 0
+    DisplayChannel: 0
+    DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 0
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 0
+    _GUIColor: {r: 0, g: 0.6, b: 1, a: 1}
+    _GUIColorComputed: {r: 0, g: 0.6, b: 1, a: 1}
+    _GUIColorAdustment: 1
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 0, g: 0, b: 0, a: 0}
+    GUICanDraw: 0
+    DrawPath: 0
+    _GUIHeightOffset: 0
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+    VisibilityMode: 0
+    ViewObjects: []
+    _AutoFullLength: 1
+    AutoSetWorkArea: 0
+  UpdateAnimation: 1
+  AnimationSpeed: 1
+  AnimationOffset: 0
+  AnimationRand: 0
+  _SortOrder: 200
+  _ShowChildren: 1
+  IsLocked: 0
+  EditorShowObject: 0
+  EditorShowTrack: 0
+  EditorShowTrackKeys: 0
+  EditorShowViewOptions: 0
+  EditorShowBehaviors: 0
+  EditorShowEvents: 0
+  _DisplaySolo: 0
+  OverrideData:
+    IsLocked: 0
+    IsUniformScale: 0
+    HasKeyframer: 0
+    HasMotionPath: 0
+    HasFlyby: 0
+    EulerAngles: {x: 0, y: 0, z: 0}
+    _Position:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+    _Rotation:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+    _Scale:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+  _DisplayChannels: 1
+  _IsCollapsed: 0
+  _IconIndex: -1
+  TimeflowParent: {fileID: 394021582}
+  LockParent: 0
+  ResetObjects: 0
+  EditorShowObjects: 0
+  Preferences: {fileID: 11400000, guid: ddec13a35193cca4b9a89e8be0f49db8, type: 2}
+  LoopInParent: 0
+  HideObjectOnPlay: {fileID: 0}
+  Audio: {fileID: 0}
+  Displays: []
+  AutoSaveDisplay: 0
+  EditorShowSettings: 0
+  EditorShowWorkArea: 0
+  EditorShowTimeScope: 0
+  EditorShowTimeSettings: 1
+  EditorShowParentSettings: 1
+  EditorShowPlaySettings: 1
+  EditorShowMarkers: 0
+  EditorShowOptions: 0
+  EditorShowAudio: 1
+  EditorShowDisplayLists: 0
+  EditorShowTools: 0
+  EditorShowTimeflowObj: 0
+  ShowKeyframeValues: 1
+  IsEditingMarkerIndices: 0
+  View:
+    _isInitialized: 1
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    _IsGraphAutoFit: 0
+    _IsGraphMode: 0
+    GridEnabled: 1
+    Layout:
+      ShowSwitches: 1
+      ShowValues: 1
+      ShowOffsets: 1
+      _h1: 350
+      _h2: 510
+      _h3: 670
+    Display:
+      SearchTerm: 
+      _ObjectMode: 2
+      _ChannelMode: 0
+      _VisibleOnly: 0
+      _UnlockedOnly: 0
+      _LockedOnly: 0
+      _EnabledOnly: 0
+      _Index: 0
+    FollowPlayhead: 0
+    _ScrollScale: 95.882355
+    _ScrollOffset: {x: -0, y: 0}
+    _ScrollInPoint: 0
+    _ScrollOutPoint: 1
+    _TimeScopeScrollInPoint: 0
+    _TimeScopeScrollOutPoint: 0
+    SelectionMode: 0
+    _BPMSnap: 4
+    TimeDisplay: 0
+    TimeDisplay2nd: 1
+    UseFractionalTime: 1
+    _UseMusicalTiming: 0
+    LockDuration: 0
+  _IsLastActive: 1
+  RootObjects:
+  - {fileID: 1023697965}
+  MarkerList: []
+  MarkerTimeMode: 0
+  MarkersSetWorkArea: 1
+  _ShowMarkers: 0
+  _ShowMarkersInPrefabs: 0
+  AutoGenerateMarkersEvery: 60
+  NameMarkersWithTimecode: 0
+  AutoPlay: 1
+  ContinuousPlay: 0
+  PlayFromStart: 1
+  IsPlayReverse: 0
+  PlayPastEnd: 0
+  _LoopEnabled: 1
+  _AutoKeyframingEnabled: 0
+  QuickSelectObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  EditorShowQuickSelect: 0
+  EditorViewQuickSelect: 0
+  SetShaderTime: 0
+  ShaderTimeName: _TimeflowTime
+  SetShaderFrame: 0
+  ShaderFrameName: _TimeflowFrame
+  _StartTime: 0
+  _EndTime: 10
+  _FPS: 60
+  _BPM: 120
+  _BeatsPerBar: 4
+  _BeatNoteSize: 4
+  Director: {fileID: 0}
+  DirectorSyncEnabled: 0
+  DirectorIsPlaying: 0
+  DirectorTime: 0
+  DirectorTimeStart: 0
+  DirectorTimeEnd: 0
+  IsDirectorInControl: 0
+  _IsTimeScopeEnabled: 0
+  _IsTimeScopeLocalized: 1
+  _TimeScopeStart: 0
+  _TimeScopeEnd: 0
+  _TimeScopeTrack:
+    rid: -2
+  _TimeScopeMarker:
+    rid: -2
+  TitleMode: 1
+  TitlePrefab: {fileID: 0}
+  TitleContainer: {fileID: 0}
+  TitleRainbow: 0
+  IsTitleUI: 1
+  EditorTool: 0
+  ScaleToolValue: 1
+  AddEndKeysOnCrop: 1
+  StartupFrameBuffer: 3
+  WorkAreaDisableOnStart: 1
+  WorkAreaAllowsLeadIn: 0
+  WorkAreaLocked: 0
+  _WorkAreaEnabled: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!4 &394021583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394021581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1923234032}
+  - {fileID: 866017708}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &739452417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 739452418}
+  - component: {fileID: 739452420}
+  - component: {fileID: 739452419}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &739452418
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739452417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923234032}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 41.56494}
+  m_SizeDelta: {x: 0, y: -83.13}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &739452419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739452417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 41
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 66
+    m_Alignment: 7
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Timeflow also supports animating SkeletonGraphic components
+--- !u!222 &739452420
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739452417}
+  m_CullTransparentMesh: 1
+--- !u!1 &866017707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866017708}
+  - component: {fileID: 866017710}
+  - component: {fileID: 866017709}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866017708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866017707}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 394021583}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &866017709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866017707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &866017710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866017707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!1 &1006393411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1006393413}
+  - component: {fileID: 1006393412}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1006393412
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006393411}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1006393413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006393411}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1023697960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1023697964}
+  - component: {fileID: 1023697963}
+  - component: {fileID: 1023697962}
+  - component: {fileID: 1023697965}
+  - component: {fileID: 1023697966}
+  m_Layer: 0
+  m_Name: SpineboyGraphic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1023697962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023697960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85b887af7e6c3f45a2e2d2920d641bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: b66cf7a186d13054989b33a5c90044e4, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  skeletonDataAsset: {fileID: 11400000, guid: af38a3de26ed9b84abc2fe7c7f3b209d, type: 2}
+  additiveMaterial: {fileID: 2100000, guid: 2e8245019faeb8c43b75f9ca3ac8ee34, type: 2}
+  multiplyMaterial: {fileID: 2100000, guid: e74a1f8978a7da348a721508d0d58834, type: 2}
+  screenMaterial: {fileID: 2100000, guid: bab24c479f34eec45be6ea8595891569, type: 2}
+  m_SkeletonColor: {r: 1, g: 1, b: 1, a: 1}
+  initialSkinName: 
+  initialFlipX: 0
+  initialFlipY: 0
+  startingAnimation: 
+  startingLoop: 0
+  timeScale: 1
+  freeze: 0
+  layoutScaleMode: 0
+  referenceSize: {x: 100, y: 100}
+  pivotOffset: {x: 0, y: 0}
+  referenceScale: 1
+  layoutScale: 1
+  rectTransformSize: {x: 100, y: 100}
+  editReferenceRect: 0
+  updateWhenInvisible: 3
+  allowMultipleCanvasRenderers: 0
+  canvasRenderers: []
+  separatorSlotNames: []
+  enableSeparatorSlots: 0
+  separatorParts: []
+  updateSeparatorPartLocation: 1
+  updateSeparatorPartScale: 0
+  disableMeshAssignmentOnOverride: 1
+  physicsPositionInheritanceFactor: {x: 1, y: 1}
+  physicsRotationInheritanceFactor: 1
+  physicsMovementRelativeTo: {fileID: 0}
+  meshGenerator:
+    settings:
+      useClipping: 1
+      zSpacing: 0
+      tintBlack: 0
+      canvasGroupCompatible: 0
+      pmaVertexColors: 1
+      addNormals: 0
+      calculateTangents: 0
+      immutableTriangles: 0
+  updateTiming: 0
+  unscaledTime: 0
+--- !u!222 &1023697963
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023697960}
+  m_CullTransparentMesh: 0
+--- !u!224 &1023697964
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023697960}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923234032}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -296.64, y: -328.4}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1023697965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023697960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810eb12fcfc04198982804799db2a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _debugEnabled: 0
+  EditorShowUI: 0
+  UpdateMethod: 0
+  TrackActivated: 0
+  ForceFramerate: 15
+  TimeInterval: 0.1
+  LinkedBehaviors: []
+  DefaultValue: 0
+  MinValue: 0
+  MaxValue: 1
+  _UpdateFrequency: 0
+  _UpdateAfter: {fileID: 0}
+  _CurrentTime: 0
+  _TimeOffset: 0
+  TrackOn:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackOff:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  EditorShowTime: 0
+  EditorShowChannels: 1
+  CanDragTimeOffset: 0
+  Track:
+    IsNameCustom: 1
+    _SortOrder: 500
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: 
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 0
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: -2
+      _KeyValue: 10
+      _KeyTime: 0
+      _LockValue: 1
+      _LockTime: 1
+      _PropertyType: 0
+      _InTangent: {x: -0.5, y: 0}
+      _OutTangent: {x: 0.5, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 0
+      EnableHandlers: 1
+      Component: {fileID: 0}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: 
+      _DisplayName: 
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 0
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 0, y: 0, z: 0, w: 0}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    LoopStart: 0
+    LoopEnd: 0
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 0
+    EnableLoopIn: 0
+    EnableLoopOut: 0
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 1
+    LegacyVisibility: 
+    ShowValue: 0
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 0
+    _IsEnabled: 0
+    __Name: 
+    _TimeOffset: 0
+    _EnableLoop: 0
+    _HasProperty: 0
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: 7218d4f8-2715-425e-b84f-d666d7ee634b
+    _PropertyType: 0
+    _CurrentTime: 0
+    DisplayChannel: 0
+    DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 0
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 0
+    _GUIColor: {r: 1, g: 1, b: 1, a: 1}
+    _GUIColorComputed: {r: 1, g: 1, b: 1, a: 1}
+    _GUIColorAdustment: 1
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 0, g: 0, b: 0, a: 0}
+    GUICanDraw: 0
+    DrawPath: 0
+    _GUIHeightOffset: 13
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 1
+    IsSearchDisplayed: 0
+    VisibilityMode: 0
+    ViewObjects: []
+    _AutoFullLength: 1
+    AutoSetWorkArea: 0
+  UpdateAnimation: 1
+  AnimationSpeed: 1
+  AnimationOffset: 0
+  AnimationRand: 0
+  _SortOrder: 100
+  _ShowChildren: 1
+  IsLocked: 0
+  EditorShowObject: 0
+  EditorShowTrack: 0
+  EditorShowTrackKeys: 0
+  EditorShowViewOptions: 0
+  EditorShowBehaviors: 0
+  EditorShowEvents: 0
+  _DisplaySolo: 0
+  OverrideData:
+    IsLocked: 0
+    IsUniformScale: 0
+    HasKeyframer: 0
+    HasMotionPath: 0
+    HasFlyby: 0
+    EulerAngles: {x: 0, y: 0, z: 0}
+    _Position:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+    _Rotation:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+    _Scale:
+      Type: 0
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 0, y: 0, z: 0}
+      IsUniformMinMax: 0
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 0, y: 0, z: 0}
+  _DisplayChannels: 1
+  _IsCollapsed: 0
+  _IconIndex: -1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &1023697966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023697960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9030c22de57e543841f460c27f1537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _debugEnabled: 0
+  EditorShowUI: 1
+  UpdateMethod: 0
+  TrackActivated: 0
+  ForceFramerate: 15
+  TimeInterval: 0.1
+  LinkedBehaviors: []
+  DefaultValue: 0
+  MinValue: 0
+  MaxValue: 1
+  _UpdateFrequency: 0
+  _UpdateAfter: {fileID: 0}
+  _CurrentTime: 0
+  _TimeOffset: 0
+  TrackOn:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackOff:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  EditorShowTime: 0
+  EditorShowChannels: 1
+  CanDragTimeOffset: 0
+  TimeScale: 1
+  InitialFlipX: 0
+  InitialFlipY: 0
+  Scale: {x: 1, y: 1}
+  SpineChannels:
+  - IsNameCustom: 1
+    _SortOrder: 100
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: idle
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494686
+      _KeyValue: 0
+      _KeyTime: 0
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.13333334, y: -0}
+      _OutTangent: {x: 0.13333334, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    - IsKeyEnabled: 1
+      _KeyString: walk
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494687
+      _KeyValue: 0
+      _KeyTime: 0.6166667
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.13333334, y: -0}
+      _OutTangent: {x: 0.13333334, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    - IsKeyEnabled: 1
+      _KeyString: run
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494688
+      _KeyValue: 0
+      _KeyTime: 2.3000002
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.13333334, y: 0}
+      _OutTangent: {x: 0.13333334, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    - IsKeyEnabled: 1
+      _KeyString: jump
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494689
+      _KeyValue: 0
+      _KeyTime: 5.533334
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.13333334, y: 0}
+      _OutTangent: {x: 0.13333334, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    - IsKeyEnabled: 1
+      _KeyString: hoverboard
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494690
+      _KeyValue: 0
+      _KeyTime: 6.55
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.25, y: -0}
+      _OutTangent: {x: 0.25, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 1
+      EnableHandlers: 1
+      Component: {fileID: 1023697964}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: Base
+      _DisplayName: Spine Track 0
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 12
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 1, y: 1, z: 1, w: 1}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    LoopStart: 0
+    LoopEnd: 6.55
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 1
+    EnableLoopIn: 1
+    EnableLoopOut: 1
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 0
+    LegacyVisibility: 
+    ShowValue: 1
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 1
+    _IsEnabled: 1
+    __Name: Base
+    _TimeOffset: 0
+    _EnableLoop: 0
+    _HasProperty: 1
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: a3f5313f-d606-4251-ae46-67b328718b98
+    _PropertyType: 12
+    _CurrentTime: 0
+    DisplayChannel: 1
+    DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 1
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 1
+    _GUIColor: {r: 0.37250867, g: 0.13842262, b: 0.20124164, a: 1}
+    _GUIColorComputed: {r: 0.37250867, g: 0.13842262, b: 0.20124164, a: 1}
+    _GUIColorAdustment: 1
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 1, g: 0, b: 0, a: 1}
+    GUICanDraw: 1
+    DrawPath: 0
+    _GUIHeightOffset: 13
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+  - IsNameCustom: 1
+    _SortOrder: 200
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: aim
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494691
+      _KeyValue: 0
+      _KeyTime: 1.3833334
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.25, y: -0}
+      _OutTangent: {x: 0.25, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 1
+      EnableHandlers: 1
+      Component: {fileID: 1023697964}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: Aim
+      _DisplayName: Spine Track 1
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 12
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 1, y: 1, z: 1, w: 1}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    LoopStart: 1.3833334
+    LoopEnd: 3.766667
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 1
+    EnableLoopIn: 1
+    EnableLoopOut: 1
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 0
+    LegacyVisibility: 
+    ShowValue: 1
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 1
+    _IsEnabled: 1
+    __Name: Aim
+    _TimeOffset: 0
+    _EnableLoop: 0
+    _HasProperty: 1
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: a7b449dc-2967-43ee-8c68-9222e78af3b0
+    _PropertyType: 12
+    _CurrentTime: 0
+    DisplayChannel: 1
+    DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 1
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 1
+    _GUIColor: {r: 0.1575488, g: 0.7409943, b: 0.58697647, a: 1}
+    _GUIColorComputed: {r: 0.1575488, g: 0.7409943, b: 0.58697647, a: 1}
+    _GUIColorAdustment: 1
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 1, g: 0, b: 0, a: 1}
+    GUICanDraw: 1
+    DrawPath: 0
+    _GUIHeightOffset: 13
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+  - IsNameCustom: 1
+    _SortOrder: 300
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: death
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494692
+      _KeyValue: 0
+      _KeyTime: 8.416667
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.25, y: -0}
+      _OutTangent: {x: 0.25, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 1
+      EnableHandlers: 1
+      Component: {fileID: 1023697964}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: Death
+      _DisplayName: Spine Track 1 (Copy) (String)
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 12
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 1, y: 1, z: 1, w: 1}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    LoopStart: 1.6833334
+    LoopEnd: 4.7333336
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 1
+    EnableLoopIn: 1
+    EnableLoopOut: 1
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 0
+    LegacyVisibility: 
+    ShowValue: 1
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 1
+    _IsEnabled: 1
+    __Name: Death
+    _TimeOffset: 0
+    _EnableLoop: 0
+    _HasProperty: 1
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: e024fea7-d9e9-4573-83c5-5a43f373a34e
+    _PropertyType: 12
+    _CurrentTime: 0
+    DisplayChannel: 1
+    DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 1
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 1
+    _GUIColor: {r: 0.3289509, g: 0.8163266, b: 0.30362538, a: 1}
+    _GUIColorComputed: {r: 0.3289509, g: 0.8163266, b: 0.30362538, a: 1}
+    _GUIColorAdustment: 1
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 1, g: 0, b: 0, a: 1}
+    GUICanDraw: 1
+    DrawPath: 0
+    _GUIHeightOffset: 13
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+  - IsNameCustom: 1
+    _SortOrder: 400
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: shoot
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494693
+      _KeyValue: 0
+      _KeyTime: 1.6833334
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.76250005, y: -0}
+      _OutTangent: {x: 0.76250005, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    - IsKeyEnabled: 1
+      _KeyString: shoot
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494694
+      _KeyValue: 0
+      _KeyTime: 2.6166668
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.28750002, y: -0}
+      _OutTangent: {x: 0.28750002, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    - IsKeyEnabled: 1
+      _KeyString: shoot
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494695
+      _KeyValue: 0
+      _KeyTime: 3.766667
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.28750002, y: -0}
+      _OutTangent: {x: 0.28750002, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    - IsKeyEnabled: 1
+      _KeyString: shoot
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 1
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      UseKeyColor: 0
+      ExposedID: 0
+      HasZoomInRange: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: 5690186102921494696
+      _KeyValue: 0
+      _KeyTime: 4.7333336
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 12
+      _InTangent: {x: -0.76250005, y: -0}
+      _OutTangent: {x: 0.76250005, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 1
+      EnableHandlers: 1
+      Component: {fileID: 1023697964}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: Fire
+      _DisplayName: Spine Track 3 (Copy) (String)
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 12
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 1, y: 1, z: 1, w: 1}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    LoopStart: 1.6833334
+    LoopEnd: 4.7333336
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 1
+    EnableLoopIn: 1
+    EnableLoopOut: 1
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 0
+    LegacyVisibility: 
+    ShowValue: 1
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 1
+    _IsEnabled: 1
+    __Name: Fire
+    _TimeOffset: 0
+    _EnableLoop: 0
+    _HasProperty: 1
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: 4dc4a340-a5d6-41b9-a350-874b8011baac
+    _PropertyType: 12
+    _CurrentTime: 0
+    DisplayChannel: 1
+    DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 1
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 1
+    _GUIColor: {r: 1, g: 0.103773475, b: 0.56424963, a: 1}
+    _GUIColorComputed: {r: 1, g: 0.103773475, b: 0.56424963, a: 1}
+    _GUIColorAdustment: 1
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 1, g: 0, b: 0, a: 1}
+    GUICanDraw: 1
+    DrawPath: 0
+    _GUIHeightOffset: 13
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 1
+    IsSearchDisplayed: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 4905454894653112753
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: idle
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494686
+        _KeyValue: 0
+        _KeyTime: 0
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.13333334, y: -0}
+        _OutTangent: {x: 0.13333334, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112754
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: walk
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494687
+        _KeyValue: 0
+        _KeyTime: 0.6166667
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.13333334, y: -0}
+        _OutTangent: {x: 0.13333334, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112755
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: run
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494688
+        _KeyValue: 0
+        _KeyTime: 2.3000002
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.13333334, y: 0}
+        _OutTangent: {x: 0.13333334, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112756
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: jump
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494689
+        _KeyValue: 0
+        _KeyTime: 5.533334
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.13333334, y: 0}
+        _OutTangent: {x: 0.13333334, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112757
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: hoverboard
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494690
+        _KeyValue: 0
+        _KeyTime: 6.55
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.25, y: -0}
+        _OutTangent: {x: 0.25, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112758
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: aim
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494691
+        _KeyValue: 0
+        _KeyTime: 1.3833334
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.25, y: -0}
+        _OutTangent: {x: 0.25, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112759
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: death
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494692
+        _KeyValue: 0
+        _KeyTime: 8.416667
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.25, y: -0}
+        _OutTangent: {x: 0.25, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112760
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: shoot
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494693
+        _KeyValue: 0
+        _KeyTime: 1.6833334
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.76250005, y: -0}
+        _OutTangent: {x: 0.76250005, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112761
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: shoot
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494694
+        _KeyValue: 0
+        _KeyTime: 2.6166668
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.28750002, y: -0}
+        _OutTangent: {x: 0.28750002, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112762
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: shoot
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494695
+        _KeyValue: 0
+        _KeyTime: 3.766667
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.28750002, y: -0}
+        _OutTangent: {x: 0.28750002, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 4905454894653112763
+      type: {class: Keyframe, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        IsKeyEnabled: 1
+        _KeyString: shoot
+        _KeyComponent: {fileID: 0}
+        _KeyGameObject: {fileID: 0}
+        _KeyObject: {fileID: 0}
+        IsCustomType: 1
+        Hold: 0
+        Linear: 0
+        IsAutoTangents: 1
+        UnifyTangents: 1
+        UnifyTangentLengths: 1
+        UnifyTangentLengthRatio: 0
+        UseKeyColor: 0
+        ExposedID: 0
+        HasZoomInRange: 0
+        _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+        _VectorInTangent: {x: -1, y: 0, z: 0}
+        _VectorOutTangent: {x: 1, y: 0, z: 0}
+        _CustomKey:
+          rid: 5690186102921494696
+        _KeyValue: 0
+        _KeyTime: 4.7333336
+        _LockValue: 0
+        _LockTime: 0
+        _PropertyType: 12
+        _InTangent: {x: -0.76250005, y: -0}
+        _OutTangent: {x: 0.76250005, y: 0}
+        _InTangent1: {x: -0.5, y: 0}
+        _OutTangent1: {x: 0.5, y: 0}
+        _InTangent2: {x: -0.5, y: 0}
+        _OutTangent2: {x: 0.5, y: 0}
+        _InTangent3: {x: -0.5, y: 0}
+        _OutTangent3: {x: 0.5, y: 0}
+        ShowTangents: 1
+    - rid: 5690186102921494686
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112753
+        Loop: 0
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 1.6667
+        MixDuration: 0
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494687
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112754
+        Loop: 1
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 0.8667
+        MixDuration: 0.5
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494688
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112755
+        Loop: 1
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 0.8
+        MixDuration: 0.5
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494689
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112756
+        Loop: 0
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 1.3333
+        MixDuration: 0.25
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494690
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112757
+        Loop: 1
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 1
+        MixDuration: 0.25
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494691
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112758
+        Loop: 0
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 0
+        MixDuration: 0
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494692
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112759
+        Loop: 0
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 4.9333
+        MixDuration: 0
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494693
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112760
+        Loop: 0
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 0.6333
+        MixDuration: 0
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494694
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112761
+        Loop: 0
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 0.6333
+        MixDuration: 0
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494695
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112762
+        Loop: 0
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 0.6333
+        MixDuration: 0
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 5690186102921494696
+      type: {class: SpineKey, ns: AxonGenesis, asm: Assembly-CSharp}
+      data:
+        Key:
+          rid: 4905454894653112763
+        Loop: 0
+        FlipX: 0
+        FlipY: 0
+        AllTracks: 0
+        IsEmpty: 0
+        Duration: 0.6333
+        MixDuration: 0
+        TintColor: {r: 1, g: 1, b: 1, a: 0.25}
+        Event:
+          m_PersistentCalls:
+            m_Calls: []
+--- !u!1 &1923234031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923234032}
+  - component: {fileID: 1923234035}
+  - component: {fileID: 1923234034}
+  - component: {fileID: 1923234033}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1923234032
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923234031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1023697964}
+  - {fileID: 263066311}
+  - {fileID: 739452418}
+  m_Father: {fileID: 394021583}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1923234033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923234031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1923234034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923234031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1923234035
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923234031}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!1 &2075129262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2075129265}
+  - component: {fileID: 2075129264}
+  - component: {fileID: 2075129263}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &2075129263
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075129262}
+  m_Enabled: 1
+--- !u!20 &2075129264
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075129262}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0.06603772, b: 0.16981131, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &2075129265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075129262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

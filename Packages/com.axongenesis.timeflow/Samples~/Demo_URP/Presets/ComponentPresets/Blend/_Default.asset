@@ -1,0 +1,1484 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375a81a7f234a4f42988bd4c9d06ad4b, type: 3}
+  m_Name: _Default
+  m_EditorClassIdentifier: 
+  ComponentType: AxonGenesis.Blend, AxonGenesis, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  ComponentName: Blend
+  Data:
+    ID: 0
+  CanReinitialize: 0
+  _isSetup: 1
+  Properties:
+  - Index: 12
+    OwnerClass: Blend
+    PropertyPath: BlendAmount
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 13
+    OwnerClass: Blend
+    PropertyPath: BlendMode
+    PropertyType: 6
+    BoolValue: 0
+    IntValue: 4
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames:
+    - None
+    - Linear
+    - Ease In
+    - Ease Out
+    - Ease In Out
+    - Ease In Expo
+    - Ease Out Expo
+    - Ease In Out Expo
+    - Ease In Circle
+    - Ease Out Circle
+    - Ease In Out Circle
+    - Animation Curve
+    - Use Channel Curve
+    - Switch
+  - Index: 46
+    OwnerClass: Blend
+    PropertyPath: Categorize
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 33
+    OwnerClass: Blend
+    PropertyPath: DirectControl
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 45
+    OwnerClass: Blend
+    PropertyPath: EditKeyframes
+    PropertyType: 0
+    BoolValue: 1
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 30
+    OwnerClass: Blend
+    PropertyPath: EnableActivateObjects
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 31
+    OwnerClass: Blend
+    PropertyPath: EnableEvents
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 29
+    OwnerClass: Blend
+    PropertyPath: EnableFieldOfView
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 23
+    OwnerClass: Blend
+    PropertyPath: EnablePosition
+    PropertyType: 0
+    BoolValue: 1
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 25
+    OwnerClass: Blend
+    PropertyPath: EnableQuaternions
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 27
+    OwnerClass: Blend
+    PropertyPath: EnableReparent
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 24
+    OwnerClass: Blend
+    PropertyPath: EnableRotation
+    PropertyType: 0
+    BoolValue: 1
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 26
+    OwnerClass: Blend
+    PropertyPath: EnableScale
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 22
+    OwnerClass: Blend
+    PropertyPath: EnableUpdate
+    PropertyType: 0
+    BoolValue: 1
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 28
+    OwnerClass: Blend
+    PropertyPath: EnableUpdateAfter
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 34
+    OwnerClass: Blend
+    PropertyPath: ForceWorld
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 47
+    OwnerClass: Blend
+    PropertyPath: _From
+    PropertyType: 1
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 14
+    OwnerClass: Blend
+    PropertyPath: Hold
+    PropertyType: 0
+    BoolValue: 1
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 32
+    OwnerClass: Blend
+    PropertyPath: ManualOverride
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 41
+    OwnerClass: Blend
+    PropertyPath: OverrideBlend
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 42
+    OwnerClass: Blend
+    PropertyPath: OverrideBlendMode
+    PropertyType: 6
+    BoolValue: 0
+    IntValue: 4
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames:
+    - None
+    - Linear
+    - Ease In
+    - Ease Out
+    - Ease In Out
+    - Ease In Expo
+    - Ease Out Expo
+    - Ease In Out Expo
+    - Ease In Circle
+    - Ease Out Circle
+    - Ease In Out Circle
+    - Animation Curve
+    - Use Channel Curve
+    - Switch
+  - Index: 39
+    OwnerClass: Blend
+    PropertyPath: OverrideFrom
+    PropertyType: 1
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 43
+    OwnerClass: Blend
+    PropertyPath: OverrideHold
+    PropertyType: 0
+    BoolValue: 1
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 36
+    OwnerClass: Blend
+    PropertyPath: OverridePosition
+    PropertyType: 8
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 44
+    OwnerClass: Blend
+    PropertyPath: OverrideReverse
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 37
+    OwnerClass: Blend
+    PropertyPath: OverrideRotation
+    PropertyType: 8
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 38
+    OwnerClass: Blend
+    PropertyPath: OverrideScale
+    PropertyType: 8
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 1, y: 1, z: 1}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 40
+    OwnerClass: Blend
+    PropertyPath: OverrideTo
+    PropertyType: 1
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 15
+    OwnerClass: Blend
+    PropertyPath: Reverse
+    PropertyType: 0
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 10
+    OwnerClass: Blend
+    PropertyPath: _TimeOffset
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 11
+    OwnerClass: Blend
+    PropertyPath: _TimeScale
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 48
+    OwnerClass: Blend
+    PropertyPath: _To
+    PropertyType: 1
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 0
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  - Index: 35
+    OwnerClass: Blend
+    PropertyPath: TransitionDuration
+    PropertyType: 2
+    BoolValue: 0
+    IntValue: 0
+    FloatValue: 1
+    StringValue: 
+    ObjectReference: {fileID: 0}
+    Vector2Value: {x: 0, y: 0}
+    Vector3Value: {x: 0, y: 0, z: 0}
+    Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+    QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+    ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    LayerMaskValue:
+      serializedVersion: 2
+      m_Bits: 0
+    RectValue:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    Vector2IntValue: {x: 0, y: 0}
+    Vector3IntValue: {x: 0, y: 0, z: 0}
+    RectIntValue:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    BoundsValue:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    BoundsIntValue:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    AnimationCurveValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    EnumNames: []
+  _Color: {r: 0.21176472, g: 0.6431373, b: 0.8235295, a: 1}
+  _DisplayName: Default
+  _Label: Default
+  Loop:
+    ApplyLoopPreset: 0
+    EnableLoop: 0
+    AutoLoop: 0
+    LoopIn: 1
+    LoopOut: 1
+    LoopStart: 0
+    LoopEnd: 10
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EditorShowLoop: 1

@@ -1,0 +1,614 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &670848286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670848287}
+  - component: {fileID: 670848289}
+  - component: {fileID: 670848288}
+  - component: {fileID: 2144798946032773509}
+  m_Layer: 0
+  m_Name: Follow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &670848287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670848286}
+  m_LocalRotation: {x: 0.030311808, y: 0.020941509, z: 0.042807505, w: 0.99840385}
+  m_LocalPosition: {x: 1, y: 2, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1858208243}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &670848289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670848286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660ef1e9a5d96884988c620fea4b30ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _Enabled: 1
+  _DebugEnabled: 0
+  EditorShowUI: 1
+  UpdateMethod: 0
+  TrackActivated: 0
+  ForceFramerate: 15
+  TimeInterval: 0.1
+  LinkedBehaviors: []
+  DefaultValue: 0
+  MinValue: 0
+  MaxValue: 1
+  _UpdateFrequency: 0
+  _UpdateAfter: {fileID: 0}
+  _CurrentTime: 4.1833334
+  _TimeOffset: 0
+  _TimeScale: 1
+  _CanDragTimeOffset: 0
+  TrackOn:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackOff:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  EditorShowTime: 0
+  EditorShowChannels: 1
+  _Channel:
+    _IsNameCustom: 1
+    _SortOrder: 100
+    _Keys: []
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 0
+      IsDataOnly: 1
+      EnableHandlers: 0
+      Component: {fileID: 670848287}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: Follow
+      _DisplayName: Follow
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 5
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 1, y: 1, z: 1, w: 1}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    EnableSnap: 0
+    SnapIncrement: 0.1
+    LoopStart: 0
+    LoopEnd: 1
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 1
+    EnableLoopIn: 1
+    EnableLoopOut: 1
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 1
+    LegacyVisibility: 
+    ShowValue: 1
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 0
+    _DebugEnabled: 0
+    _IsLoopSupported: 1
+    _IsEnabled: 1
+    __Name: Follow
+    _TimeOffset: 0
+    _TimeScale: 1
+    _EnableLoop: 0
+    _HasProperty: 1
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: 60466860-793d-4b1c-bc61-cd8b7244c1fd
+    _PropertyType: 5
+    _CurrentTime: 4.1833334
+    _DisplayChannel: 1
+    _DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 1
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 1
+    _GUIColor: {r: 0.5469639, g: 0.16304593, b: 0.2855266, a: 1}
+    GUITextColor: {r: 0, g: 0, b: 0, a: 1}
+    _GUIColorComputed: {r: 0.5469639, g: 0.16304593, b: 0.2855266, a: 1}
+    _GUIColorAdustment: 0
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 100
+    GUIHandles: {r: 1, g: 0, b: 0, a: 1}
+    GUICanDraw: 0
+    DrawPath: 0
+    GUIHeightLocked: 0
+    _GUIHeightOffset: 0
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    IsTimeLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+  CalculateOnly: 0
+  ObjectToFollow: {fileID: 0}
+  EnablePosition: 1
+  EnablePositionX: 1
+  EnablePositionY: 1
+  EnablePositionZ: 1
+  LimitPosition: 0
+  LimitPositionX: 0
+  LimitPositionY: 0
+  LimitPositionZ: 0
+  PostionMin: {x: 0, y: 0, z: 0}
+  PositionMax: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffsetWorld: 0
+  Mode: 0
+  EditorMode: 0
+  TargetDistance: 0
+  ApproachSpeed: 10
+  SmoothSeconds: 1
+  SmoothMax: 1
+  RotationSmoothTime: 0
+  StartAtTime: 0
+  AxisLerpSeconds: {x: 0, y: 0, z: 0}
+  StartPosition: 3
+  StartAtPosition: {x: -17.17, y: 0, z: -19.14}
+  StartRotation: 3
+  StartAtRotation: {x: 0, y: 0, z: 0}
+  RotationMode: 1
+  EnableRotationX: 1
+  EnableRotationY: 1
+  EnableRotationZ: 1
+  LimitRotation: 0
+  RotationMin: {x: 0, y: 0, z: 0}
+  RotationMax: {x: 0, y: 0, z: 0}
+  LimitDistance: 0
+  MinDistance: 0
+  MaxDistance: 100
+  LimitVelocity: 0
+  MaxVelocity: 0.1
+  LimitAngularVelocity: 0
+  MaxAngularVelocity: 1
+  LookAtObject: {fileID: 0}
+  UpVector: {x: 0, y: 1, z: 0}
+  Orientation: {x: 0, y: 0, z: 0}
+  ForceCloseGap: 0
+  OverallBlend: 1
+  Force: 0
+  AngularForce: 0
+  ApplyToRigidbody: 0
+  UseAngularForce: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &670848288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670848286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810eb12fcfc04198982804799db2a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _Enabled: 1
+  _DebugEnabled: 0
+  EditorShowUI: 1
+  UpdateMethod: 0
+  TrackActivated: 0
+  ForceFramerate: 15
+  TimeInterval: 0.1
+  LinkedBehaviors: []
+  DefaultValue: 0
+  MinValue: 0
+  MaxValue: 1
+  _UpdateFrequency: 0
+  _UpdateAfter: {fileID: 0}
+  _CurrentTime: 4.1833334
+  _TimeOffset: 0
+  _TimeScale: 1
+  _CanDragTimeOffset: 0
+  TrackOn:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackOff:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  EditorShowTime: 0
+  EditorShowChannels: 1
+  Track:
+    _IsNameCustom: 0
+    _SortOrder: 200
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: 
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 0
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      OverrideGUIColor: 0
+      ExposedID: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: -2
+      _KeyValue: 70
+      _KeyTime: 0
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 0
+      _InTangent: {x: -0.5, y: 0}
+      _OutTangent: {x: 0.5, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+      HasZoomInRange: 0
+      _GUIColor: {r: 1, g: 1, b: 1, a: 1}
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 0
+      EnableHandlers: 1
+      Component: {fileID: 0}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: 
+      _DisplayName: 
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 0
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 0, y: 0, z: 0, w: 0}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    EnableSnap: 0
+    SnapIncrement: 0
+    LoopStart: 0
+    LoopEnd: 0
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 0
+    EnableLoopIn: 0
+    EnableLoopOut: 0
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 1
+    LegacyVisibility: 
+    ShowValue: 0
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 0
+    _IsEnabled: 0
+    __Name: 
+    _TimeOffset: 0
+    _TimeScale: 0
+    _EnableLoop: 0
+    _HasProperty: 0
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: 6239ad5c-908e-4a97-a16b-49e8d12529dd
+    _PropertyType: 0
+    _CurrentTime: 4.1833334
+    _DisplayChannel: 0
+    _DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 0
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 0
+    _GUIColor: {r: 0.4462458, g: 0.42399272, b: 0.73000896, a: 1}
+    GUITextColor: {r: 0, g: 0, b: 0, a: 0}
+    _GUIColorComputed: {r: 0.4462458, g: 0.42399272, b: 0.73000896, a: 1}
+    _GUIColorAdustment: 0
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 0, g: 0, b: 0, a: 0}
+    GUICanDraw: 0
+    DrawPath: 0
+    GUIHeightLocked: 0
+    _GUIHeightOffset: 0
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    IsTimeLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+    _VisibilityMode: 0
+    ViewObjects: []
+    _AutoFullLength: 1
+    AutoSetWorkArea: 0
+  OverrideTimeflowParent: 0
+  _TimeflowParentOverride: {fileID: 0}
+  UpdateAnimation: 1
+  AnimationSpeed: 1
+  AnimationOffset: 0
+  AnimationRand: 0
+  _SortOrder: 100
+  IsLocked: 0
+  EditorShowObject: 0
+  EditorShowTrack: 0
+  EditorShowTrackKeys: 0
+  EditorShowViewOptions: 0
+  EditorShowBehaviors: 0
+  EditorShowEvents: 0
+  EditorShowTimeflow: 0
+  _DisplaySolo: 0
+  OverrideData:
+    IsLocked: 0
+    IsUniformScale: 0
+    HasKeyframer: 0
+    HasMotionPath: 0
+    HasFlyby: 0
+    EulerAngles: {x: 3.367145, y: 2.5498226, z: 4.9851713}
+    _Position:
+      Type: 0
+      Min: {x: -10, y: -10, z: -10}
+      Max: {x: 10, y: 10, z: 10}
+      IsUniformMinMax: 1
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 1
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0.1
+      SliderMin: {x: -10, y: -10, z: -10}
+      SliderMax: {x: 10, y: 10, z: 10}
+    _Rotation:
+      Type: 1
+      Min: {x: -360, y: -360, z: -360}
+      Max: {x: 360, y: 360, z: 360}
+      IsUniformMinMax: 1
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 1
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0.1
+      SliderMin: {x: -360, y: -360, z: -360}
+      SliderMax: {x: 360, y: 360, z: 360}
+    _Scale:
+      Type: 2
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 1, y: 1, z: 1}
+      IsUniformMinMax: 1
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 1
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0.1
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 1, y: 1, z: 1}
+  _DisplayChannels: 1
+  _IsCollapsed: 0
+  _ShowChildren: 1
+  _IconIndex: -1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &2144798946032773509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670848286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660b4f2e8d969de4d9a1ed45e0aa119b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Name: Follow
+  ApplyTransforms: 0
+  ApplyPosition: 1
+  ApplyRotation: 1
+  ApplyScale: 1
+  Selected: 00010000000000
+  ExcludeComponents: []
+  IsExpanded: 1
+  _Label: Follow
+  _Color: {r: 0.91823894, g: 0.6663305, b: 0.15303974, a: 1}
+--- !u!1 &1858208242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1858208243}
+  - component: {fileID: 1858208246}
+  - component: {fileID: 1858208245}
+  - component: {fileID: 1858208244}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1858208243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858208242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 670848287}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1858208246
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858208242}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1858208245
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858208242}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1858208244
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858208242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

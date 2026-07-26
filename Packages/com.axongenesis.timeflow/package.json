@@ -1,0 +1,61 @@
+{
+   "name": "com.axongenesis.timeflow",
+   "version": "1.9.3",
+   "displayName": "Timeflow Animation System Samples",
+   "description": "Timeflow is a powerful and flexible animation system built from the ground up, offering a new range of creative possibilities for designers and developers. With a focus on motion graphics, cutscenes, and music synchronization, Timeflow offers a robust integrated track and channel based timeline with advanced curve editing tools, procedural animations, dynamic behaviors, and much more. ",
+   "author":
+   {
+      "name": "Axon Genesis",
+      "email": "support@axongenesis.com",
+      "url": "https://axongenesis.com/timeflow"
+   },
+   "unity": "2021.3",
+   "type": "tool",
+   "documentationUrl": "https://axongenesis.gitbook.io/timeflow",
+   "changelogUrl": "https://axongenesis.gitbook.io/timeflow/reference/version-history",
+   "keywords": [
+     "animation",
+     "timeline",
+     "cutscenes",
+     "sequencing",
+     "motion graphics"
+   ],
+   "samples":
+   [
+      {
+         "displayName": "Demo Built-in RP",
+         "description": "A buildable demo app with example assets and scenes for the built-in render pipeline",
+         "path": "Samples~/Demo_Built-inRP"
+      },
+      {
+        "displayName": "Demo HDRP",
+        "description": "A buildable demo app with example assets and scenes for the high definition render pipeline",
+        "path": "Samples~/Demo_HDRP"
+     },
+     {
+        "displayName": "Demo URP",
+        "description": "A buildable demo app with example assets and scenes for the universal render pipeline",
+        "path": "Samples~/Demo_URP"
+     },
+     {
+         "displayName": "MidiJack",
+         "description": "Support for live MIDI input using MidiJack with examples",
+         "path": "Samples~/MidiJack"
+      },
+      {
+        "displayName": "Minis",
+        "description": "Support for live MIDI input using Minis with examples",
+        "path": "Samples~/Minis"
+     },
+     {
+        "displayName": "Spine",
+        "description": "Support for Spine Animation in Timeflow with examples",
+        "path": "Samples~/Spine"
+     },
+     {
+        "displayName": "Timeline",
+        "description": "Integration with Unity Timeline with examples",
+        "path": "Samples~/Timeline"
+     }
+   ]
+}

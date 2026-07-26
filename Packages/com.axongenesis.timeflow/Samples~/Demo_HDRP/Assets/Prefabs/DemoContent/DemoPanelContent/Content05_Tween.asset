@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ad6a94ec7a527439ccbcfb07b72715, type: 3}
+  m_Name: Content05_Tween
+  m_EditorClassIdentifier: 
+  BaseScale: 40
+  Width: 2
+  Height: 2.34
+  TitleText: TWEEN
+  TitleFontSize: 2.75
+  TitleOffset: 0.1
+  BodyText: 'Create oscillating motions on any property with a range of options.
+    Use Tween for anything that pulses, bobs, spins, or moves back and forth. Motions
+    can be precise and regular or random and chaotic. Create animations that play
+    once or loop indefinitely. '
+  BodyFontSize: 2.5
+  BodyOffset: -0.5
+  ShowFooter: 1
+  FooterScale: 0.75
+  FooterOffset: 0.3
+  ShowLoadButton: 1
+  LoadText: LOAD DEMO
+  DimScreen: 0

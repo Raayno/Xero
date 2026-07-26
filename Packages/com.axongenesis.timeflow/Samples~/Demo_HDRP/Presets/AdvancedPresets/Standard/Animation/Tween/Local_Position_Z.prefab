@@ -1,0 +1,760 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8524691709368315575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588180316548611596}
+  - component: {fileID: 3989037275852443662}
+  - component: {fileID: 4287861816342766392}
+  - component: {fileID: 8206580615361312196}
+  - component: {fileID: 7556240709026356579}
+  - component: {fileID: 5433236827904704504}
+  m_Layer: 0
+  m_Name: Local_Position_Z
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &588180316548611596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524691709368315575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3989037275852443662
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524691709368315575}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4287861816342766392
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524691709368315575}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 62f6290f8919de1479e934ab26de21fb, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8206580615361312196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524691709368315575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810eb12fcfc04198982804799db2a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _Enabled: 1
+  _DebugEnabled: 0
+  EditorShowUI: 0
+  UpdateMethod: 0
+  TrackActivated: 0
+  ForceFramerate: 15
+  TimeInterval: 0.1
+  LinkedBehaviors: []
+  DefaultValue: 0
+  MinValue: 0
+  MaxValue: 1
+  _UpdateFrequency: 0
+  _UpdateAfter: {fileID: 0}
+  _CurrentTime: 0
+  _TimeOffset: 0
+  _TimeScale: 1
+  _CanDragTimeOffset: 1
+  TrackOn:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackOff:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  EditorShowTime: 0
+  EditorShowChannels: 1
+  Track:
+    _IsNameCustom: 0
+    _SortOrder: 200
+    _Keys:
+    - IsKeyEnabled: 1
+      _KeyString: 
+      _KeyComponent: {fileID: 0}
+      _KeyGameObject: {fileID: 0}
+      _KeyObject: {fileID: 0}
+      IsCustomType: 0
+      Hold: 0
+      Linear: 0
+      IsAutoTangents: 1
+      UnifyTangents: 1
+      UnifyTangentLengths: 1
+      UnifyTangentLengthRatio: 0
+      OverrideGUIColor: 0
+      ExposedID: 0
+      _KeyVector: {x: 0, y: 0, z: 0, w: 0}
+      _VectorInTangent: {x: -1, y: 0, z: 0}
+      _VectorOutTangent: {x: 1, y: 0, z: 0}
+      _CustomKey:
+        rid: -2
+      _KeyValue: 10
+      _KeyTime: 0
+      _LockValue: 0
+      _LockTime: 0
+      _PropertyType: 0
+      _InTangent: {x: -0.5, y: 0}
+      _OutTangent: {x: 0.5, y: 0}
+      _InTangent1: {x: -0.5, y: 0}
+      _OutTangent1: {x: 0.5, y: 0}
+      _InTangent2: {x: -0.5, y: 0}
+      _OutTangent2: {x: 0.5, y: 0}
+      _InTangent3: {x: -0.5, y: 0}
+      _OutTangent3: {x: 0.5, y: 0}
+      ShowTangents: 1
+      HasZoomInRange: 0
+      _GUIColor: {r: 1, g: 1, b: 1, a: 1}
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 0
+      EnableHandlers: 1
+      Component: {fileID: 0}
+      ShowComponentName: 0
+      Attribute: -1
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: 
+      _DisplayName: 
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 0
+      _DataTypeName: 
+      _Handler:
+        rid: -2
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 0, y: 0, z: 0, w: 0}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    EnableSnap: 0
+    SnapIncrement: 0
+    LoopStart: 0
+    LoopEnd: 0
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 0
+    EnableLoopIn: 0
+    EnableLoopOut: 0
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 1
+    LegacyVisibility: 
+    ShowValue: 0
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 1
+    _DebugEnabled: 0
+    _IsLoopSupported: 0
+    _IsEnabled: 0
+    __Name: 
+    _TimeOffset: 0
+    _TimeScale: 0
+    _EnableLoop: 0
+    _HasProperty: 0
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: 2b59e810-913d-4cdc-a396-20609e58f444
+    _PropertyType: 0
+    _CurrentTime: 0
+    _DisplayChannel: 0
+    _DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 0
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 0
+    _GUIColor: {r: 0.303649, g: 0.2070404, b: 0.3943183, a: 1}
+    GUITextColor: {r: 0, g: 0, b: 0, a: 0}
+    _GUIColorComputed: {r: 0.303649, g: 0.2070404, b: 0.3943183, a: 1}
+    _GUIColorAdustment: 0
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 0
+    GUIHandles: {r: 0, g: 0, b: 0, a: 0}
+    GUICanDraw: 0
+    DrawPath: 0
+    GUIHeightLocked: 0
+    _GUIHeightOffset: 0
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    IsTimeLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+    _VisibilityMode: 0
+    ViewObjects: []
+    _AutoFullLength: 1
+    AutoSetWorkArea: 0
+  OverrideTimeflowParent: 0
+  _TimeflowParentOverride: {fileID: 0}
+  UpdateAnimation: 1
+  AnimationSpeed: 1
+  AnimationOffset: 0
+  AnimationRand: 0
+  _SortOrder: 100
+  IsLocked: 0
+  EditorShowObject: 0
+  EditorShowTrack: 0
+  EditorShowTrackKeys: 0
+  EditorShowViewOptions: 0
+  EditorShowBehaviors: 0
+  EditorShowEvents: 0
+  EditorShowTimeflow: 0
+  _DisplaySolo: 0
+  OverrideData:
+    IsLocked: 0
+    IsUniformScale: 0
+    HasKeyframer: 0
+    HasMotionPath: 0
+    HasFlyby: 0
+    EulerAngles: {x: -0, y: 0, z: 0}
+    _Position:
+      Type: 0
+      Min: {x: -10, y: -10, z: -10}
+      Max: {x: 10, y: 10, z: 10}
+      IsUniformMinMax: 1
+      IsSeparate: 1
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0.1
+      SliderMin: {x: -10, y: -10, z: -10}
+      SliderMax: {x: 10, y: 10, z: 10}
+    _Rotation:
+      Type: 1
+      Min: {x: -360, y: -360, z: -360}
+      Max: {x: 360, y: 360, z: 360}
+      IsUniformMinMax: 1
+      IsSeparate: 1
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 0
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0.1
+      SliderMin: {x: -360, y: -360, z: -360}
+      SliderMax: {x: 360, y: 360, z: 360}
+    _Scale:
+      Type: 2
+      Min: {x: 0, y: 0, z: 0}
+      Max: {x: 1, y: 1, z: 1}
+      IsUniformMinMax: 1
+      IsSeparate: 0
+      ShowSettings: 0
+      HasAnimationConflict: 0
+      _IsLocked: 0
+      _IsLockedX: 0
+      _IsLockedY: 0
+      _IsLockedZ: 0
+      _IsFoldout: 0
+      _ShowCombined: 1
+      _IsMicroAdjust: 0
+      _MicroAdjustScale: 0.1
+      SliderMin: {x: 0, y: 0, z: 0}
+      SliderMax: {x: 1, y: 1, z: 1}
+  _DisplayChannels: 1
+  _IsCollapsed: 0
+  _ShowChildren: 1
+  _IconIndex: -1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &7556240709026356579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524691709368315575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d72e1f62dc644099c64f28ba139e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaybackMode: 0
+  _Enabled: 1
+  _DebugEnabled: 0
+  EditorShowUI: 1
+  UpdateMethod: 0
+  TrackActivated: 0
+  ForceFramerate: 15
+  TimeInterval: 0.1
+  LinkedBehaviors: []
+  DefaultValue: 0
+  MinValue: 0
+  MaxValue: 1
+  _UpdateFrequency: 0
+  _UpdateAfter: {fileID: 0}
+  _CurrentTime: 0
+  _TimeOffset: 0
+  _TimeScale: 1
+  _CanDragTimeOffset: 0
+  TrackOn:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackOff:
+    m_PersistentCalls:
+      m_Calls: []
+  TrackVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  EditorShowTime: 0
+  EditorShowChannels: 1
+  _Channel:
+    _IsNameCustom: 0
+    _SortOrder: 100
+    _Keys: []
+    CanAddRemoveKeys: 1
+    _ToProperty:
+      _IsEnabled: 1
+      CanBeAssigned: 1
+      IsDataOnly: 0
+      EnableHandlers: 1
+      Component: {fileID: 588180316548611596}
+      ShowComponentName: 0
+      Attribute: 2
+      ForcePropertyType: 0
+      PropertyFilter: 0
+      LinkID: 
+      _Name: Local Position
+      _DisplayName: Local Position Z
+      _DebugEnabled: 0
+      _IsMaterial: 0
+      _PropertyType: 5
+      _DataTypeName: Vector3
+      _Handler:
+        rid: 6150395814930546690
+    Link:
+      rid: -2
+    LimitValue: 0
+    MinValue: {x: 0, y: 0, z: 0, w: 0}
+    MaxValue: {x: 1, y: 1, z: 1, w: 1}
+    SetGlobalShaderProperty: 0
+    GlobalShaderProperty: 
+    EnableSnap: 0
+    SnapIncrement: 0.1
+    LoopStart: 0
+    LoopEnd: 1
+    LoopLimit: 0
+    LoopPingPong: 0
+    LoopMatchEnds: 0
+    EnableAutoLoop: 1
+    EnableLoopIn: 1
+    EnableLoopOut: 1
+    VectorLength: 0
+    IsVectorLoop: 0
+    IsVectorExtended: 0
+    AlwaysUpdate: 0
+    AlwaysShowValues: 0
+    IsUpdated: 1
+    LegacyVisibility: 
+    ShowValue: 1
+    ShowFloat: 0
+    ShowColor: 0
+    ShowVector: 0
+    ShowComponent: 0
+    ShowGameObject: 0
+    ShowObject: 0
+    ShowString: 0
+    SortingMode: 0
+    _DebugEnabled: 0
+    _IsLoopSupported: 1
+    _IsEnabled: 1
+    __Name: Local Position Z
+    _TimeOffset: 0
+    _TimeScale: 1
+    _EnableLoop: 0
+    _HasProperty: 1
+    _IsCustomType: 0
+    _Interpolation: 0
+    _UniqueID: 92bed2cd-21a9-4066-bc65-2d902c7b3aee
+    _PropertyType: 5
+    _CurrentTime: 0
+    _DisplayChannel: 1
+    _DisplayChannelSolo: 0
+    EditorShowChannel: 0
+    EditorShowKeys: 0
+    ShowTangents: 1
+    GraphFloatValueOnly: 0
+    ExportEveryFrame: 1
+    _GUIColor: {r: 0.933497, g: 0.48561108, b: 0.83838993, a: 1}
+    GUITextColor: {r: 0, g: 0, b: 0, a: 1}
+    _GUIColorComputed: {r: 0.933497, g: 0.48561108, b: 0.83838993, a: 1}
+    _GUIColorAdustment: 0
+    _GUIColorGlobalHue: 0
+    _GUIColorGlobalSaturation: 0
+    _GUIColorGlobalLightness: 0
+    _GraphMinValue: 0
+    _GraphMaxValue: 100
+    GUIHandles: {r: 1, g: 0, b: 0, a: 1}
+    GUICanDraw: 1
+    DrawPath: 0
+    GUIHeightLocked: 0
+    _GUIHeightOffset: 0
+    IsHiddenInGraph: 0
+    _IsHidden: 0
+    _IsLocked: 0
+    IsTimeLocked: 0
+    _IsGraphLocked: 0
+    _GUIColorAuto: 0
+    IsSearchDisplayed: 0
+  Span:
+    Mode: 1
+    TimeType: 2
+    DurationType: 1
+    UseTimeflowBPM: 1
+    BPM: 120
+    Note: 0
+    NoteCount: 1
+    Marker: 0
+    MarkerEnd: -1
+    Time: 2
+    Frame: 0
+  StartAt:
+    Mode: 0
+    TimeType: 0
+    DurationType: 0
+    UseTimeflowBPM: 1
+    BPM: 120
+    Note: 0
+    NoteCount: 1
+    Marker: 0
+    MarkerEnd: -1
+    Time: 0
+    Frame: 0
+  EndAt:
+    Mode: 0
+    TimeType: 7
+    DurationType: 0
+    UseTimeflowBPM: 1
+    BPM: 120
+    Note: 0
+    NoteCount: 1
+    Marker: 0
+    MarkerEnd: -1
+    Time: 10
+    Frame: 600
+  Interpolation: 4
+  InvertInterpolation: 0
+  AnimCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  AutoRefresh: 1
+  OverrideInterpolation: 0
+  OverrideInterpolate: 0
+  HoldMode: 1
+  RepeatMode: 0
+  RepeatDuration:
+    Mode: 1
+    TimeType: 2
+    DurationType: 1
+    UseTimeflowBPM: 1
+    BPM: 120
+    Note: 0
+    NoteCount: 1
+    Marker: 0
+    MarkerEnd: -1
+    Time: 2
+    Frame: 0
+  RepeatLimit: 0
+  RepeatCount: 0
+  ApplyToEach: 0
+  ApplyToEachParent: {fileID: 0}
+  ApplyToEachMode: 0
+  ApplyToObjectsOnly: 0
+  ApplyAtRuntimeOnly: 0
+  ApplyToEachRecursive: 0
+  ApplyToObjects: []
+  ApplyToFind: 
+  ApplyToFindExact: 0
+  EachDuration:
+    Mode: 0
+    TimeType: 11
+    DurationType: 0
+    UseTimeflowBPM: 1
+    BPM: 120
+    Note: 0
+    NoteCount: 1
+    Marker: 0
+    MarkerEnd: -1
+    Time: 0
+    Frame: 0
+  EachInterpolation: 0
+  EachCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  EachInvert: 0
+  MinRandValue: 0
+  MaxRandValue: 0
+  ClampValue: 1
+  EnableOffset: 0
+  OffsetValue: 0
+  OffsetVector: {x: 0, y: 0, z: 0, w: 0}
+  DefaultVector: {x: 0, y: 0, z: 0, w: 0}
+  MinVector: {x: 0, y: 0, z: 0, w: 0}
+  MaxVector: {x: 0, y: 0, z: 0, w: 0}
+  MinRandVector: {x: 0, y: 0, z: 0, w: 0}
+  MaxRandVector: {x: 0, y: 0, z: 0, w: 0}
+  MinVectorScale: 1
+  MaxVectorScale: 1
+  InterpolateHue: 0
+  RandomSeed: 1
+  Amount: 1
+  Phase: 0
+  InPoint: 0
+  OutPoint: 1
+  Smoothness: 1
+  PingPong: 1
+  AllowTrigger: 0
+  TriggerIsToggle: 0
+  TriggerCompleteCycle: 0
+  TriggerChain: {fileID: 0}
+  OverrideValue: 0
+  OverrideVector: {x: 1, y: 1, z: 1, w: 1}
+  OverrideBlend: 0
+  EnableRemoteControl: 0
+  _Name: Local Position Z
+  RandomValues:
+  - {x: 0.9996847, y: 0.7742628, z: 0.68098384, w: 0.4604562}
+  - {x: 0.5944274, y: 0.78478944, z: 0.91438377, w: 0.13735415}
+  - {x: 0.25689176, y: 0.5561134, z: 0.78227973, w: 0.3288125}
+  - {x: 0.46004575, y: 0.16194333, z: 0.9611027, w: 0.8372383}
+  - {x: 0.87750435, y: 0.8264214, z: 0.21308199, w: 0.07605303}
+  - {x: 0.31556883, y: 0.66401845, z: 0.2439498, w: 0.36109963}
+  - {x: 0.4159934, y: 0.39516872, z: 0.96553946, w: 0.70991033}
+  - {x: 0.13370682, y: 0.2075161, z: 0.2032744, w: 0.4910707}
+  - {x: 0.15128745, y: 0.7706897, z: 0.016975405, w: 0.12674}
+  - {x: 0.29373363, y: 0.48722798, z: 0.6332788, w: 0.7598249}
+  - {x: 0.032938603, y: 0.6395326, z: 0.123166814, w: 0.98784816}
+  - {x: 0.9711604, y: 0.746944, z: 0.70079166, w: 0.3582628}
+  - {x: 0.12010647, y: 0.33378223, z: 0.8483864, w: 0.45133454}
+  - {x: 0.6427167, y: 0.25840488, z: 0.64630395, w: 0.8693025}
+  - {x: 0.89585674, y: 0.33873013, z: 0.9359813, w: 0.3525454}
+  - {x: 0.24484506, y: 0.74942774, z: 0.6634857, w: 0.48266965}
+  - {x: 0.6843857, y: 0.23957673, z: 0.06384421, w: 0.6514639}
+  - {x: 0.8975835, y: 0.37898785, z: 0.5761388, w: 0.86199427}
+  - {x: 0.78847337, y: 0.040752772, z: 0.30821124, w: 0.32794157}
+  - {x: 0.83601165, y: 0.71939236, z: 0.8121848, w: 0.46941322}
+  - {x: 0.35180417, y: 0.008175732, z: 0.59309596, w: 0.43849355}
+  - {x: 0.32736364, y: 0.59376866, z: 0.49561578, w: 0.15271558}
+  - {x: 0.2426776, y: 0.7361279, z: 0.22866407, w: 0.8031585}
+  - {x: 0.071422346, y: 0.84790885, z: 0.5156854, w: 0.08891321}
+  - {x: 0.8675072, y: 0.6523755, z: 0.8560481, w: 0.14372696}
+  - {x: 0.4572063, y: 0.027444843, z: 0.18858543, w: 0.5101693}
+  - {x: 0.77879095, y: 0.7906214, z: 0.5198329, w: 0.78265166}
+  - {x: 0.630922, y: 0.33329585, z: 0.48559934, w: 0.18654074}
+  - {x: 0.9885336, y: 0.768288, z: 0.72636324, w: 0.7739996}
+  - {x: 0.13293196, y: 0.2192494, z: 0.84155464, w: 0.31250504}
+  - {x: 0.59234315, y: 0.04024053, z: 0.27559152, w: 0.3258547}
+  - {x: 0.47749633, y: 0.96722066, z: 0.29438475, w: 0.22916654}
+  - {x: 0.22553733, y: 0.012028219, z: 0.78413737, w: 0.20770279}
+  - {x: 0.94057906, y: 0.5516612, z: 0.29045478, w: 0.5275884}
+  - {x: 0.5789562, y: 0.29386953, z: 0.6018823, w: 0.17377843}
+  - {x: 0.56060916, y: 0.99398756, z: 0.9217745, w: 0.03364027}
+  - {x: 0.090609916, y: 0.60775226, z: 0.88678396, w: 0.40341872}
+  - {x: 0.77119327, y: 0.43343264, z: 0.67982846, w: 0.6941326}
+  - {x: 0.42230493, y: 0.09209467, z: 0.2874309, w: 0.3847049}
+  - {x: 0.44756848, y: 0.029888157, z: 0.3176302, w: 0.2052367}
+  - {x: 0.14473201, y: 0.7445838, z: 0.7685516, w: 0.75569713}
+  - {x: 0.6230336, y: 0.6789182, z: 0.5316985, w: 0.6910036}
+  - {x: 0.4021085, y: 0.90390027, z: 0.9576725, w: 0.5495588}
+  - {x: 0.5400061, y: 0.9558221, z: 0.10581495, w: 0.5409383}
+  - {x: 0.36181286, y: 0.7515831, z: 0.71228606, w: 0.85625196}
+  - {x: 0.30110088, y: 0.54838103, z: 0.6770703, w: 0.8892822}
+  - {x: 0.5116151, y: 0.6550849, z: 0.28147975, w: 0.04905594}
+  - {x: 0.3692285, y: 0.9183159, z: 0.78690267, w: 0.112771645}
+  - {x: 0.28918353, y: 0.068961985, z: 0.30870894, w: 0.6283236}
+  - {x: 0.26469973, y: 0.15510155, z: 0.9165547, w: 0.2602562}
+  - {x: 0.32748893, y: 0.953212, z: 0.9644669, w: 0.7501701}
+  - {x: 0.59200066, y: 0.8863344, z: 0.4047733, w: 0.45737046}
+  - {x: 0.0380317, y: 0.35846582, z: 0.12963142, w: 0.12151326}
+  - {x: 0.41730136, y: 0.59378153, z: 0.48552483, w: 0.044801716}
+  - {x: 0.2519249, y: 0.33762148, z: 0.46036857, w: 0.6884957}
+  - {x: 0.8343277, y: 0.04318941, z: 0.28480783, w: 0.19585815}
+  - {x: 0.42984372, y: 0.13577987, z: 0.91923237, w: 0.0990621}
+  - {x: 0.13481463, y: 0.26797727, z: 0.92146766, w: 0.55975145}
+  - {x: 0.95035815, y: 0.27351037, z: 0.06014479, w: 0.9340098}
+  - {x: 0.87386036, y: 0.6357712, z: 0.37386706, w: 0.5295965}
+  - {x: 0.05088187, y: 0.6572408, z: 0.3955049, w: 0.43203944}
+  - {x: 0.92376244, y: 0.8590977, z: 0.5591417, w: 0.69563395}
+  - {x: 0.6793888, y: 0.07107676, z: 0.88217354, w: 0.9463258}
+  - {x: 0.89493334, y: 0.28996375, z: 0.79065335, w: 0.4370907}
+  - {x: 0.49313945, y: 0.61776394, z: 0.714258, w: 0.22293487}
+  - {x: 0.83447707, y: 0.46522337, z: 0.96979403, w: 0.06952787}
+  - {x: 0.5037078, y: 0.44279617, z: 0.3974213, w: 0.8147652}
+  - {x: 0.78383577, y: 0.6396876, z: 0.53100866, w: 0.21733525}
+  - {x: 0.7234718, y: 0.60543007, z: 0.5130088, w: 0.9437057}
+  - {x: 0.76572, y: 0.09414257, z: 0.25457898, w: 0.7007957}
+  - {x: 0.48186594, y: 0.8727921, z: 0.22247866, w: 0.32771137}
+  - {x: 0.42032653, y: 0.0044103866, z: 0.68175143, w: 0.32851925}
+  - {x: 0.22319809, y: 0.47410578, z: 0.9236015, w: 0.17746581}
+  - {x: 0.91210485, y: 0.80231667, z: 0.6659977, w: 0.6418552}
+  - {x: 0.12767924, y: 0.82722247, z: 0.6846294, w: 0.5622991}
+  - {x: 0.393071, y: 0.6502436, z: 0.89241254, w: 0.039579276}
+  - {x: 0.466901, y: 0.34385625, z: 0.80168426, w: 0.58179826}
+  - {x: 0.49490815, y: 0.98552537, z: 0.45742673, w: 0.4146461}
+  - {x: 0.43785363, y: 0.8553827, z: 0.72743434, w: 0.79979694}
+  - {x: 0.05931271, y: 0.3359708, z: 0.6620702, w: 0.5390888}
+  - {x: 0.99461615, y: 0.13910355, z: 0.5540531, w: 0.9088272}
+  - {x: 0.66584104, y: 0.36507013, z: 0.7923459, w: 0.019280912}
+  - {x: 0.22202793, y: 0.44389135, z: 0.66510636, w: 0.41853207}
+  - {x: 0.5582935, y: 0.46052152, z: 0.09117497, w: 0.012880446}
+  - {x: 0.952464, y: 0.9830787, z: 0.95121086, w: 0.8072518}
+  - {x: 0.36848524, y: 0.12515582, z: 0.9846686, w: 0.99778414}
+  - {x: 0.771597, y: 0.3417962, z: 0.04648495, w: 0.17665912}
+  - {x: 0.40377682, y: 0.054716833, z: 0.16572537, w: 0.30768672}
+  - {x: 0.64552885, y: 0.29757074, z: 0.8395629, w: 0.78943014}
+  - {x: 0.17899026, y: 0.89873314, z: 0.71395355, w: 0.7789804}
+  - {x: 0.45833904, y: 0.6905598, z: 0.999071, w: 0.2543054}
+  - {x: 0.1532612, y: 0.9689481, z: 0.60084885, w: 0.3557507}
+  - {x: 0.2574928, y: 0.8191035, z: 0.27576843, w: 0.30364528}
+  - {x: 0.60975057, y: 0.56163484, z: 0.4601912, w: 0.020933153}
+  - {x: 0.97230184, y: 0.20260528, z: 0.9200382, w: 0.5047088}
+  - {x: 0.77499616, y: 0.768983, z: 0.85297596, w: 0.8269763}
+  - {x: 0.7933512, y: 0.7939508, z: 0.926363, w: 0.8767406}
+  - {x: 0.6999766, y: 0.05242289, z: 0.5485439, w: 0.69496423}
+  - {x: 0.037991527, y: 0.35565737, z: 0.91516435, w: 0.8908204}
+  - {x: 0.56630856, y: 0.54714745, z: 0.8722453, w: 0.12749745}
+  RandomValuesCount: 100
+  StartAfterTween: {fileID: 0}
+  EditorShowTiming: 1
+  EditorShowTween: 1
+  EditorShowInterpolation: 0
+  EditorShowOverrides: 0
+  EditorShowObjects: 0
+  EditorShowMore: 0
+  EditorShowOutput: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 6150395814930546690
+      type: {class: PropertiesOfTransform, ns: AxonGenesis, asm: AxonGenesis}
+      data:
+        _Name: Local Position
+        _Object: {fileID: 588180316548611596}
+        Obj: {fileID: 588180316548611596}
+        PropertyMode: 1
+        _Rotate: {fileID: 0}
+--- !u!114 &5433236827904704504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524691709368315575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660b4f2e8d969de4d9a1ed45e0aa119b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Name: Position Z
+  InsertParentGroup: 0
+  ApplyToParentGroup: 0
+  ApplyTransforms: 0
+  ApplyPosition: 1
+  ApplyRotation: 1
+  ApplyScale: 1
+  Selected: 0000000001
+  ExcludeComponents: []
+  IsExpanded: 1
+  _Color: {r: 1, g: 0.5, b: 0, a: 1}
+  _Label: P.Z

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac063846d1345af4092fb036101b7a4d, type: 3}
+  m_Name: Content01_About
+  m_EditorClassIdentifier: 
+  BaseScale: 178.53
+  Width: 4.58
+  Height: 2.25
+  TitleText: ABOUT
+  TitleFontSize: 2.74
+  TitleOffset: 0.1
+  BodyText: 'Timeflow is a powerful and flexible animation system for Unity offering
+    a new range of creative possibilities for artists and developers. With a focus
+    on motion graphics and music synchronization, Timeflow offers a robust integrated
+    track and channel based timeline with advanced curve editing tools, procedural
+    animations, dynamic behaviors, and much more. This app demonstrates some of the
+    key features of Timeflow for both choreographed and interactive contexts.
+
+
+    <align="center">For
+    more information visit: axongenesis.com/timeflow</align>'
+  BodyFontSize: 2.48
+  BodyOffset: -0.42
+  ShowFooter: 1
+  FooterScale: 0.87
+  FooterOffset: 0.31
+  ShowLoadButton: 1
+  LoadText: GO TO WEBSITE
+  DimScreen: 1
