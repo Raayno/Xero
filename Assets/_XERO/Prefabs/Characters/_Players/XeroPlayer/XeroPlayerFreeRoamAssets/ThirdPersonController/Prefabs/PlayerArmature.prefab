@@ -614,31 +614,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehavior
   activeModules: []
+  startingModules:
+  - {fileID: 11400000, guid: 38639d3317b10b448afd945222cca387, type: 2}
+  - {fileID: 11400000, guid: 9eaad603336f5744794b3eda2a016fc2, type: 2}
   availableModules:
     serializedDictionary:
     - key: {fileID: 11400000, guid: 38639d3317b10b448afd945222cca387, type: 2}
       value: 01000000
     - key: {fileID: 11400000, guid: a3c9b9e99d5e4694cb2b5443c7c957a5, type: 2}
       value: 02000000
+    - key: {fileID: 11400000, guid: 6bf7e1a582067874cb95e86e3af80486, type: 2}
+      value: 01000000
+    - key: {fileID: 11400000, guid: 9eaad603336f5744794b3eda2a016fc2, type: 2}
+      value: 01000000
   refs:
     playerBehavior: {fileID: 7469852384973976610}
     playerTransform: {fileID: 3893294197879345259}
     characterController: {fileID: 4416926081852918491}
     animationManager: {fileID: 4823824587860269243}
     mainCamera: {fileID: 0}
-    feedbacks: {fileID: 4304418251851821699}
+    feedbacks: {fileID: 0}
     playerInput: {fileID: 3451866056059201387}
     playableDirector: {fileID: 0}
     parryTimelineAsset: {fileID: 11400000, guid: a24c6deccc2fb9a46b766d17d262e29c, type: 2}
     parrySignalAsset: {fileID: 11400000, guid: bf960d18d99ff524ba37535ecc3a4461, type: 2}
     parryIconCooldownController: {fileID: 0}
+  isGroundedGizmos: 1
+  attackGizmos: 1
+  attackModuleForGizmos: {fileID: 11400000, guid: 9eaad603336f5744794b3eda2a016fc2, type: 2}
+  approximationDensity: 10
   isGrounded: 1
   GroundedOffset: -0.14
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
     m_Bits: 513
-  isGroundedGizmos: 1
 --- !u!114 &3451866056059201387
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public partial class PlayerBehavior : MonoBehaviour
 {
     [SerializeField, ReadOnly] private List<PlayerBehavior_Module> activeModules = new();
 
+    [SerializeField] private PlayerBehavior_Module[] startingModules;
+
     [Tooltip("The default modules should be first in the list, and will be transitioned to if no other modules are playing (first of which conditions are met).")]
     [SerializeField] private SerializedDictionary<PlayerBehavior_Module, TransitionConditionType[]> availableModules = new();
 
@@ -19,7 +21,18 @@ public partial class PlayerBehavior : MonoBehaviour
     private void Awake()
     {
         refs.animationManager.Initialize();
-        TransitionToFirstAvailableModule();
+    }
+
+    private void Start()
+    {
+        foreach (var module in startingModules)
+        {
+            TryTransition(null, module);
+        }
+        if (activeModules.Count == 0)
+        {
+            TransitionToFirstAvailableModule();
+        }
     }
 
     private void Update()
@@ -70,8 +83,9 @@ public partial class PlayerBehavior : MonoBehaviour
             activeModules.Add(newModule);
             newModule.Enable(refs);
         }
-        else
+        else if (activeModules.Count == 0) // If no modules are active, transition to the first available module
         {
+            Debug.LogWarning("[PlayerBehavior] No modules are active after transition. Transitioning to the first available module.");
             TransitionToFirstAvailableModule();
         }
     }
@@ -88,7 +102,7 @@ public partial class PlayerBehavior : MonoBehaviour
         {
             if (TryTransition(null, module))
             {
-                Debug.LogWarning("[PlayerBehavior] No module was active after the transition to module: " + module.GetType().Name);
+                Debug.LogWarning("[PlayerBehavior] Transitioning to module: " + module.GetType().Name);
                 return;
             }
         }

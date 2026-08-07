@@ -55,22 +55,14 @@ public partial class PlayerBehavior : MonoBehaviour
     [Gaskellgames.ReadOnly, SerializeField] private bool isGrounded;
     private int lastIsGroundedCheckFrame = -1;
 
-    // [Group("1) IsGrounded")]
     [Tooltip("Useful for rough ground")]
     [SerializeField] private float GroundedOffset = -0.14f;
-    
-    // [Group("1) IsGrounded")]
 
     [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
     [SerializeField] private float GroundedRadius = 0.28f;
-    
-    // [Group("1) IsGrounded")]
 
     [Tooltip("What layers the character uses as ground")]
     [SerializeField] private LayerMask GroundLayers;
-
-    // [Group("1) IsGrounded")]
-    [SerializeField] private bool isGroundedGizmos = true;
 
     public bool IsGrounded
     {
@@ -107,29 +99,7 @@ public partial class PlayerBehavior : MonoBehaviour
             LastGroundedPosition = refs.playerTransform.position;
         }
     }
-
-    private void IsGroundedGizmos()
-    {
-        Color transparentGreen = new (0.0f, 1.0f, 0.0f, 0.35f);
-        Color transparentRed = new (1.0f, 0.0f, 0.0f, 0.35f);
-
-        Gizmos.color = IsGrounded ? transparentGreen : transparentRed;
-
-        Gizmos.DrawSphere(
-            new Vector3(
-                transform.position.x,
-                transform.position.y - GroundedOffset,
-                transform.position.z
-            ),
-            GroundedRadius
-        );
-    }
     #endregion
-
-    private void OnDrawGizmosSelected()
-    {
-        if (isGroundedGizmos) IsGroundedGizmos();
-    }
 
     private bool WasNotSetThisFrame(int lastCheckFrame)
     {
