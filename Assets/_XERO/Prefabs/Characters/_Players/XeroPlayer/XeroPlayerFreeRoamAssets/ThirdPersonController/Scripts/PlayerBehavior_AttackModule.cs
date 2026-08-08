@@ -69,16 +69,25 @@ public class PlayerBehavior_AttackModule : PlayerBehavior_Module
                 float projectionDistance = Mathf.Clamp(Vector3.Dot(toTarget, forward), 0f, reach);
                 Vector3 closestPointOnAttackLine = pos + forward * projectionDistance;
 
-                Vector3 evaluationPoint = hit.ClosestPoint(closestPointOnAttackLine);
-                return new { 
-                    HitPoint = evaluationPoint,
+                Vector3 closestToSymmetryAxis = hit.ClosestPoint(closestPointOnAttackLine);
+                closestToSymmetryAxis.y = 0; // Ignore vertical difference for angle calculations
+                Vector3 closestToPlayer = hit.ClosestPoint(pos);
+                closestToPlayer.y = 0; // Ignore vertical difference for angle calculations
+                Vector3 center = hit.bounds.center;
+                center.y = 0; // Ignore vertical difference for angle calculations
+                var ret = new { 
+                    ClosestToSymmetryAxis = closestToSymmetryAxis,
+                    ClosestToPlayer = closestToPlayer,
+                    Center = center,
                     Attackable = hit.GetComponent<IFreeRoamAttackable>()
                 };
+                return ret;
             })
             .Where(hit => hit.Attackable != null
-                && IsWithinTheAngle(hit.HitPoint)
-                && IsInFrontOfPlayer(hit.HitPoint))
-            .OrderByDescending(hit => PlayerIntentionValue(hit.HitPoint)) // Sort by player intention value from highest to lowest
+                && (IsWithinTheAngle(hit.ClosestToSymmetryAxis) && IsInFrontOfPlayer(hit.ClosestToSymmetryAxis)
+                || (IsWithinTheAngle(hit.ClosestToPlayer) && IsInFrontOfPlayer(hit.ClosestToPlayer))
+                || (IsWithinTheAngle(hit.Center) && IsInFrontOfPlayer(hit.Center))))
+            .OrderByDescending(hit => PlayerIntentionValue(hit.Center)) // Sort by player intention value from highest to lowest
             .Select(hit => hit.Attackable)
             .ToArray();
 
