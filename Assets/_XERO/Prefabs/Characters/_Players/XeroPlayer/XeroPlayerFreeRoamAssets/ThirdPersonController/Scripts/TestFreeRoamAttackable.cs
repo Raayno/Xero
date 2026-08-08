@@ -12,6 +12,6 @@ public class TestFreeRoamAttackable : MonoBehaviour, IFreeRoamAttackable
         {
             feedbacks.PlayFeedbacks();
         }
-        return true; // Return true to indicate that this object should block other things in range from being attacked by this attack
+        return false; // do not block other attackables from being attacked
     }
 }
