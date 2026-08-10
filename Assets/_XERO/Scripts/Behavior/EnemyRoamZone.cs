@@ -37,6 +37,7 @@ public class EnemyRoamZone : MonoBehaviour
 
         foreach (var agent in behaviorAgent)
         {
+            if (enableDebug) Debug.Log($"Assigning player {other.name} to agent {agent.name}");
             agent.SetVariableValue("TargetEyes", other.transform);
         }
         isPlayerAssigned = true;
@@ -49,6 +50,7 @@ public class EnemyRoamZone : MonoBehaviour
         if (enableDebug) Debug.Log($"UnassignPlayerFromBehaviorAgent called");
         foreach (var agent in behaviorAgent)
         {
+            if (enableDebug) Debug.Log($"Unassigning player from agent {agent.name}");
             agent.SetVariableValue("UnassignTargetEyes", true);
         }
         isPlayerAssigned = false;
