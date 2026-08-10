@@ -12,7 +12,7 @@ public partial class TransformToVector3Action : Unity.Behavior.Action
 
     protected override Status OnStart()
     {
-        if (Vector3Variable == null || Transform == null)
+        if (Vector3Variable == null || Transform == null || Transform.Value == null)
         {
             return Status.Failure;
         }

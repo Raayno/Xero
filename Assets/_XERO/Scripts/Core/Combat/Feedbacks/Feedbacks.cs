@@ -2,6 +2,7 @@ using UnityEngine;
 using MoreMountains.Feedbacks;
 using Gaskellgames;
 using System.Linq;
+using System.Collections.Generic;
 
 public class Feedbacks : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class Feedbacks : MonoBehaviour
         if (playGlobal) MMF_GlobalPlayer.Instance.PlayGlobalFeedback(feedbackType, position, intensity);
     }
 
-    [Button("Sort Dictionary Alphabetically by FeedbackType")]
+    [Button("Sort Alphabetically by FeedbackType")]
     private void SortDictionaryAlphabeticallyByFeedbackType()
     {
         System.Text.StringBuilder sb = new();
@@ -33,6 +34,7 @@ public class Feedbacks : MonoBehaviour
             .Cast<FeedbackType>()
             .OrderBy(e => e.ToString());
 
+        int childIndex = 0;
         foreach (FeedbackType feedbackType in alphabeticalFeedbackTypes)
         {
             if (feedbackType == FeedbackType.None) continue; // Skip the None type
@@ -40,6 +42,10 @@ public class Feedbacks : MonoBehaviour
             if (feedbacks.TryGetValue(feedbackType, out MMF_Player feedback))
             {
                 sorted.Add(feedbackType, feedback);
+                // Move the corresponding child in the hierarchy to match the sorted order
+                if (feedback != null && feedback.transform.parent == transform && childIndex < transform.childCount)
+                    feedback.transform.SetSiblingIndex(childIndex);
+                childIndex++;
             }
             else
             {
@@ -52,34 +58,58 @@ public class Feedbacks : MonoBehaviour
     }
 
     [SerializeField] private string searchPrefix;
+    private FeedbackType[] GetMissingFeedbackTypesWithPrefix()
+    {
+        return System.Enum.GetValues(typeof(FeedbackType))
+            .Cast<FeedbackType>()
+            .Where(type => type != FeedbackType.None 
+                        && type.ToString().StartsWith(searchPrefix) 
+                        && !feedbacks.ContainsKey(type))
+                        .ToArray();
+    }
+
     [Button("Search for missing with SearchPrefix")]
     private void SearchForMissingWithPrefix()
     {
+        var missingTypes = GetMissingFeedbackTypesWithPrefix();
+
+        if (missingTypes.Length == 0)
+        {
+            Debug.Log("<color=orange>[Feedbacks]</color> No missing FeedbackTypes found with the specified prefix.");
+            return;
+        }
+
         System.Text.StringBuilder sb = new();
         sb.AppendLine($"<color=orange>[Feedbacks]</color> Missing FeedbackTypes with prefix '{searchPrefix}':");
         
-        var allFeedbackTypes = System.Enum.GetValues(typeof(FeedbackType))
-            .Cast<FeedbackType>();
-
-        bool foundAnyMissing = false;
-        foreach (FeedbackType feedbackType in allFeedbackTypes)
+        foreach (var feedbackType in missingTypes)
         {
-            if (feedbackType == FeedbackType.None) continue; // Skip the None type
-            
-            if (feedbackType.ToString().StartsWith(searchPrefix) && !feedbacks.ContainsKey(feedbackType))
-            {
-                foundAnyMissing = true;
-                sb.AppendLine($"{feedbackType}");
-            }
+            sb.AppendLine($"{feedbackType}");
         }
         
-        if (!foundAnyMissing)
+        Debug.Log(sb.ToString());
+    }
+
+    [Button("Add missing with SearchPrefix")]
+    private void AddMissingWithPrefix()
+    {
+        var missingTypes = GetMissingFeedbackTypesWithPrefix();
+
+        if (missingTypes.Length == 0)
         {
             Debug.Log("<color=orange>[Feedbacks]</color> No missing FeedbackTypes found with the specified prefix.");
+            return;
         }
-        else
+
+        System.Text.StringBuilder sb = new();
+        sb.AppendLine($"<color=orange>[Feedbacks]</color> Adding missing FeedbackTypes with prefix '{searchPrefix}':");
+        
+        foreach (var feedbackType in missingTypes)
         {
-            Debug.Log(sb.ToString());
+            feedbacks.Add(feedbackType, null);
+            sb.AppendLine($"{feedbackType}");
         }
+        
+        Debug.Log(sb.ToString());
     }
 }

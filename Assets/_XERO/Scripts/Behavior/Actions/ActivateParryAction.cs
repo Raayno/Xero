@@ -5,17 +5,19 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "ActivateParry", story: "[Target] unlocks the [ParryAvailableModule] Invert [IsInvert]", category: "Action", id: "81933de0bd9fcde772e883633b346735")]
+[NodeDescription(name: "ActivateParry", story: "[Target] unlocks the [ParryAvailableModule] Parry bool [ParryIsEnabled] Invert [IsInvert]", category: "Action", id: "81933de0bd9fcde772e883633b346735")]
 public partial class ActivateParryAction : Action
 {
     [SerializeReference] public BlackboardVariable<Transform> Target;
     [SerializeReference] public BlackboardVariable<PlayerBehavior_ParryModule> ParryAvailableModule;
+    [SerializeReference] public BlackboardVariable<bool> ParryIsEnabled;
     [SerializeReference] public BlackboardVariable<bool> IsInvert;
 
     protected override Status OnStart()
     {
         if (Target.Value == null)
         {
+            Debug.LogError("[ActivateParryAction] Target is not assigned.");
             return Status.Failure;
         }
 
@@ -53,10 +55,12 @@ public partial class ActivateParryAction : Action
             if (activate)
             {
                 playerBehavior.TryTransition(null, ParryAvailableModule.Value);
+                ParryIsEnabled.Value = true;
             }
             else
             {
                 playerBehavior.TryTransition(ParryAvailableModule.Value, null);
+                ParryIsEnabled.Value = false;
             }
         }
     }

@@ -10,6 +10,9 @@ using UnityEngine.Timeline;
 public partial class PlayerBehavior : MonoBehaviour
 {
     [SerializeField, ReadOnly] private List<PlayerBehavior_Module> activeModules = new();
+    [Tooltip("Asleep modules can are like active modules, but they are not called on Update()")]
+    [SerializeField, ReadOnly] private List<PlayerBehavior_Module> asleepModules = new();
+    
 
     [SerializeField] private PlayerBehavior_Module[] startingModules;
 
@@ -59,28 +62,36 @@ public partial class PlayerBehavior : MonoBehaviour
         return !anyFailed;
     }
 
-    public bool TryTransition(PlayerBehavior_Module oldModule = null, PlayerBehavior_Module newModule = null)
+    public bool TryTransition(PlayerBehavior_Module oldModule = null, PlayerBehavior_Module newModule = null, bool transitionNewAsAsleep = false)
     {
         if (newModule != null && !CanTransition(newModule)) return false;
 
-        Transition(oldModule, newModule);
+        Transition(oldModule, newModule, transitionNewAsAsleep);
         return true;
     }
 
     /// <summary>
     /// Leaving oldModule or newModule as null will just add a newModule or disable the oldModule respectively.
     /// </summary>
-    private void Transition(PlayerBehavior_Module oldModule = null, PlayerBehavior_Module newModule = null)
+    private void Transition(PlayerBehavior_Module oldModule = null, PlayerBehavior_Module newModule = null, bool transitionNewAsAsleep = false)
     {
         if (oldModule != null)
         {
             activeModules.Remove(oldModule);
+            asleepModules.Remove(oldModule);
             oldModule.Disable();
         }
 
         if (newModule != null)
         {
-            activeModules.Add(newModule);
+            if (transitionNewAsAsleep)
+            {
+                asleepModules.Add(newModule);
+            }
+            else
+            {
+                activeModules.Add(newModule);
+            }
             newModule.Enable(refs);
         }
         else if (activeModules.Count == 0) // If no modules are active, transition to the first available module
@@ -118,10 +129,24 @@ public partial class PlayerBehavior : MonoBehaviour
         }
     }
 
-    public void ClearAllExcept(PlayerBehavior_Module moduleToKeep, out List<PlayerBehavior_Module> clearedModules)
+    public void WakeUpAsleepModules(PlayerBehavior_Module moduleCallingThis = null)
     {
-        clearedModules = new();
+        if (moduleCallingThis != null && !activeModules.Contains(moduleCallingThis))
+        {
+            Debug.Log("[PlayerBehavior] WakeUpAsleepModules called by a module that is not active. Ignoring.");
+            return;
+        }
 
+        for (int i = asleepModules.Count - 1; i >= 0; i--)
+        {
+            PlayerBehavior_Module module = asleepModules[i];
+            asleepModules.RemoveAt(i);
+            activeModules.Add(module);
+        }
+    }
+
+    public void PutToSleepAllExcept(PlayerBehavior_Module moduleToKeep)
+    {
         bool moduleToKeepFound = false;
         for (int i = 0; i < activeModules.Count; i++)
         {
@@ -131,8 +156,7 @@ public partial class PlayerBehavior : MonoBehaviour
                 moduleToKeepFound = true;
                 continue; // Skip the module to keep
             }
-            module.Disable();
-            clearedModules.Add(module);
+            asleepModules.Add(module);
         }
 
         activeModules.Clear();

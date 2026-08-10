@@ -136,7 +136,7 @@ public class PlayerBehavior_FallingModule : PlayerBehavior_Module
         );
         
         float feedbackImpact = CalculateLandingImpact(fallDistance);
-        refs.feedbacks.PlayFeedback(FeedbackType.FreeRoamPlayerLandAfterFall, refs.playerTransform.position, feedbackImpact);
+        refs.feedbacks.PlayFeedback(FeedbackType.FreeRoamPlayerOnLandAfterFall, refs.playerTransform.position, feedbackImpact);
         refs.animationManager.SetFreeFall(false);
         refs.animationManager.SetGrounded(true);
         refs.animationManager.SetJumpEnd(true);

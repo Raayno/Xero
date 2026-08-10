@@ -1,21 +1,28 @@
 using UnityEngine;
 using UnityEngine.Playables;
 using Vastav.Utils.Input;
-using System.Collections.Generic;
 
 public class PlayerBehavior_ParryModule : PlayerBehavior_Module
 {
 
     protected override void EnableModule()
     {
-        InputSystem_PlayerActionsSO.OnParryEvent += HandleParryInput;
         ShowIcon();
+    }
+
+    protected override void WakeUpModule()
+    {
+        InputSystem_PlayerActionsSO.OnParryEvent += HandleParryInput;
     }
 
     protected override void DisableModule()
     {
-        InputSystem_PlayerActionsSO.OnParryEvent -= HandleParryInput;
         HideIcon();
+    }
+
+    protected override void PutToSleepModule()
+    {
+        InputSystem_PlayerActionsSO.OnParryEvent -= HandleParryInput;
         EndParry(); // Ensure that any ongoing parry is ended when the module is disabled
     }
 
@@ -63,11 +70,10 @@ public class PlayerBehavior_ParryModule : PlayerBehavior_Module
 
 #region Parry performing
     private bool isParryInProgress = false;
-    private List<PlayerBehavior_Module> clearedModules;
     private void Parry()
     {
         isParryInProgress = true;
-        refs.playerBehavior.ClearAllExcept(this, out clearedModules);
+        refs.playerBehavior.PutToSleepAllExcept(this);
 
         refs.playableDirector.stopped += OnPlayableDirectorStopped;
 
@@ -94,11 +100,7 @@ public class PlayerBehavior_ParryModule : PlayerBehavior_Module
         }
 
         // Restore modules from before parry
-        if (clearedModules != null && clearedModules.Count > 0)
-        {
-            refs.playerBehavior.TryAddModules(clearedModules.ToArray());
-            clearedModules.Clear();
-        }
+        refs.playerBehavior.WakeUpAsleepModules(this);
     }
     
     private void OnPlayableDirectorStopped(PlayableDirector director)

@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehavior_AttackModule
   enableDebug: 0
   enableContinuousDebug: 0
+  cooldown: 1.4444447
   reach: 2.6
   angleDeg: 110
   sourceWidth: 1.28
+  detectableLayers:
+    serializedVersion: 2
+    m_Bits: 1280

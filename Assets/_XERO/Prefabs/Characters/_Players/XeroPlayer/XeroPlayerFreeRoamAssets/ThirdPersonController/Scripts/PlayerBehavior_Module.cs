@@ -15,6 +15,7 @@ public abstract class PlayerBehavior_Module : ScriptableObject
     {
         refs = references;
         EnableModule();
+        WakeUp();
     }
 
     protected virtual void EnableModule()
@@ -36,12 +37,39 @@ public abstract class PlayerBehavior_Module : ScriptableObject
     public void Disable()
     {
 
+        PutToSleep();
         DisableModule();
     }
 
     protected virtual void DisableModule()
     {
         if (enableDebug) Debug.Log("[PlayerBehavior_Module] Disable() not implemented in " + GetType().Name);
+    }
+
+    public void WakeUp()
+    {
+        WakeUpModule();
+    }
+
+    /// <summary>
+    /// Waking up and putting to sleep are used for enabling/disabling update-like behavior. For instance subscriptions to input events or coroutines.
+    /// </summary>
+    protected virtual void WakeUpModule()
+    {
+        if (enableDebug) Debug.Log("[PlayerBehavior_Module] WakeUp() not implemented in " + GetType().Name);
+    }
+
+    public void PutToSleep()
+    {
+        PutToSleepModule();
+    }
+
+    /// <summary>
+    /// Waking up and putting to sleep are used for enabling/disabling update-like behavior. For instance subscriptions to input events or coroutines.
+    /// </summary>
+    protected virtual void PutToSleepModule()
+    {
+        if (enableDebug) Debug.Log("[PlayerBehavior_Module] PutToSleep() not implemented in " + GetType().Name);
     }
 
     protected void TransitionToModule(PlayerBehavior_Module newModule)

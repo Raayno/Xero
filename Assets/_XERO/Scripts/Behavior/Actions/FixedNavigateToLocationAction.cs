@@ -116,7 +116,7 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
     private Status ReturnFailIfUnreachable()
     {
         Debug.LogWarning("Agent cannot reach the destination.");
-        return ReturnFailIfUnreachable();
+        return Status.Failure;
     }
 
     protected override void OnEnd()

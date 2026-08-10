@@ -1,12 +1,15 @@
 using UnityEngine;
 using Vastav.Utils.Input;
 using System.Linq;
+using System.Collections;
 
 public class PlayerBehavior_AttackModule : PlayerBehavior_Module
 {
+    [SerializeField] private float cooldown = 1f;
     [SerializeField] private float reach = 3f;
     [SerializeField, Range(0f, 360f)] private float angleDeg = 60f;
     [SerializeField] private float sourceWidth = 0f;
+    [SerializeField] LayerMask detectableLayers;
 
     public Vector3 ReachAngleAndSourceWidth
     {
@@ -20,12 +23,21 @@ public class PlayerBehavior_AttackModule : PlayerBehavior_Module
     protected override void EnableModule()
     {
         ValidateReachAngleAndSourceWidth();
+    }
+
+    protected override void WakeUpModule()
+    {
         InputSystem_PlayerActionsSO.OnAttackEvent += HandleAttackInput;
     }
 
     protected override void DisableModule()
     {
+    }
+
+    protected override void PutToSleepModule()
+    {
         InputSystem_PlayerActionsSO.OnAttackEvent -= HandleAttackInput;
+        EndAttack(); // Ensure that any ongoing attack is ended when the module is disabled
     }
 
     private void ValidateReachAngleAndSourceWidth()
@@ -45,12 +57,41 @@ public class PlayerBehavior_AttackModule : PlayerBehavior_Module
         if (!context.performed) return;
         Debug.Log("[PlayerBehavior_AttackModule] Attack input received.");
 
+        if (CannotAttack())
+        {
+            Debug.Log("Cannot attack at this time.");
+            return;
+        }
+        
         Attack();
+    }
+
+    private bool CannotAttack()
+    {
+        if (attackCooldownCoroutine != null)
+        {
+            Debug.Log("Attack is on cooldown.");
+            return true;
+        }
+
+        return false;
+    }
+
+    private Coroutine attackCooldownCoroutine = null;
+    private IEnumerator AttackCooldownCoroutine()
+    {
+        yield return new WaitForSeconds(cooldown);
+        EndAttack();
     }
 
     private readonly Collider[] hits = new Collider[100]; // Preallocate an array to avoid garbage collection
     private void Attack()
     {
+        refs.feedbacks.PlayFeedback(FeedbackType.FreeRoamPlayerOnAttack, refs.playerTransform.position);
+        
+        refs.playerBehavior.PutToSleepAllExcept(this);
+        attackCooldownCoroutine = refs.playerBehavior.StartCoroutine(AttackCooldownCoroutine());
+
         // SphereCast to detect IFreeRoamAttackable objects within the attack range
         Vector3 pos = refs.playerTransform.position;
         pos.y = 0; // Ignore vertical difference for attack detection
@@ -58,7 +99,12 @@ public class PlayerBehavior_AttackModule : PlayerBehavior_Module
 
         Vector3 backwardOffsetPoint = pos - CalculateBackwardOffset(out float halfAngleFromOriginDeg) * forward;
 
-        int hitCount = Physics.OverlapSphereNonAlloc(pos, reach, hits);
+        if (detectableLayers == 0)
+        {
+            Debug.LogWarning("[PlayerBehavior_AttackModule] Detectable layers are not set. No attackable objects will be detected.");
+            return;
+        }
+        int hitCount = Physics.OverlapSphereNonAlloc(pos, reach, hits, detectableLayers);
 
         var sortedAttackables = hits
             .Take(hitCount) // Only consider the valid hits returned by OverlapSphereNonAlloc
@@ -97,6 +143,8 @@ public class PlayerBehavior_AttackModule : PlayerBehavior_Module
             if (shouldBlockOthers)
             {
                 Debug.Log("[PlayerBehavior_AttackModule] Attack hit: " + attackable.GetType().Name + ". Blocking other targets.");
+
+                refs.feedbacks.PlayFeedback(FeedbackType.FreeRoamPlayerOnAttackHitHard, refs.playerTransform.position);
                 break; // Stop processing further targets if this one blocks others
             }
             else
@@ -106,6 +154,8 @@ public class PlayerBehavior_AttackModule : PlayerBehavior_Module
                 {
                     Debug.Log("[PlayerBehavior_AttackModule] That is " + mb.name + " at " + (mb.transform.parent != null ? mb.transform.parent.name : "root") + " with a player intention value of " + PlayerIntentionValue(mb.GetComponent<Collider>().ClosestPoint(pos)));
                 }
+
+                refs.feedbacks.PlayFeedback(FeedbackType.FreeRoamPlayerOnAttackHitSoft, refs.playerTransform.position);
             }
         }
 
@@ -123,6 +173,24 @@ public class PlayerBehavior_AttackModule : PlayerBehavior_Module
         /// <returns>Value between 0 and 1</returns>
         float PlayerIntentionValue(Vector3 hitPoint) => 1 - 0.5f * (Vector3.Distance(backwardOffsetPoint, hitPoint) / reach  +  Vector3.Angle(forward, hitPoint - backwardOffsetPoint) / halfAngleFromOriginDeg);
     }
+
+    private void EndAttack()
+    {
+        if (attackCooldownCoroutine != null)
+        {
+            refs.playerBehavior.StopCoroutine(attackCooldownCoroutine);
+            attackCooldownCoroutine = null;
+        }
+
+        if (SpecialCombatDataCarrier.BattleEntryType == BattleEntryType.PlayerAttack)
+        {
+            SpecialCombatDataCarrier.BattleEntryType = BattleEntryType.EnemyAttack; // ensure that we reset the state after attack (it was changed from EnemyFreeRamAttackable OnAttack() if at all)
+        }
+        
+        // Restore modules from before attack
+        refs.playerBehavior.WakeUpAsleepModules(this);
+    }
+
 
     private float CalculateBackwardOffset(out float halfAngleFromOriginDeg)
     {
