@@ -272,7 +272,11 @@
 				</Folder>
 				<Folder Name="Amb_Events" ID="{71A37D2B-CBFD-4B76-86BF-90E96C479769}" ShortID="632600609">
 					<ChildrenList>
-						<Event Name="Play_Forest_Bed" ID="{1A82E65A-5C78-45ED-A641-C78604EEE338}">
+						<Event Name="Play_2D_Amb_Forest_Bed" ID="{1A82E65A-5C78-45ED-A641-C78604EEE338}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{DCA729AA-1B1C-44BC-907E-2D8C4927B8DF}" ShortID="414618971">
 									<PropertyList>
@@ -287,7 +291,11 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Stop_Forest_Bed" ID="{EDDDDF13-AC1F-4433-879E-0C5260DC063F}">
+						<Event Name="STOP_2D_Amb_Forest_Bed" ID="{EDDDDF13-AC1F-4433-879E-0C5260DC063F}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{E8A5E41D-0CEF-47CF-9CD9-3EBB7C998E4D}" ShortID="607141029">
 									<PropertyList>
@@ -303,6 +311,140 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Play_3D_Amb_Cricket_01" ID="{417D3BB7-E761-4ED8-BFAE-CB3B45BB59B1}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="12"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{0EDAF2AF-75D4-4035-BFD5-2211CCC6CB88}" ShortID="97157523">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Crickets1" ID="{845E478A-9786-4972-9E7C-CC34EE9B8399}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_3D_Amb_Cricket_02" ID="{551E8A0C-9DCB-4520-94EB-9740ED8CC789}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="12"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{0CE85528-1A42-45B5-A31F-3AD92E4F19E6}" ShortID="637798999">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Crickets2" ID="{34A57653-1C22-44CD-BDB6-9D98030D5CF3}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_3D_Amb_River" ID="{FFFD44CC-579C-4257-B04B-111D9EF79DAB}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="12"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{1EE36EA7-584F-498F-9D5F-FA78115496D6}" ShortID="304857353">
+									<PropertyList>
+										<Property Name="FadeTime" Type="Real64" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_3D_River" ID="{36176295-0D01-4325-BDB7-B458AB66BE8A}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_3D_Amb_Waterfall" ID="{D2550E5C-35B1-47AF-9139-63A3AF411D86}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="12"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{FE409DE5-B43B-412A-B816-33EC1B6C4D37}" ShortID="694054285">
+									<PropertyList>
+										<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_3D_Waterfall" ID="{9C41DCEA-529F-46CA-884E-10AC80AEA6FC}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="STOP_3D_Amb_Crickets" ID="{A2222AB8-48B2-4B69-8179-08E82B53021A}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{1A8BC082-00CF-4BC1-B57E-8226896AAAA7}" ShortID="675460755">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Crickets1" ID="{845E478A-9786-4972-9E7C-CC34EE9B8399}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3DECB617-1504-4EF2-9C8D-72CEBAE2AEEC}" ShortID="1057559579">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Crickets2" ID="{34A57653-1C22-44CD-BDB6-9D98030D5CF3}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_3D_Amb_EnvCrystal" ID="{4E0B2F6C-B05F-4B2B-B85F-EF8B823C97A0}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="12"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{1621B57D-AB85-41CF-8CF8-2C42194150B5}" ShortID="620638834">
+									<PropertyList>
+										<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Sfx_3Damb_Crystal_MainBed" ID="{27219AE4-ED81-40FD-A7BD-A8E184E71658}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{BCB28085-9914-41A2-AA5E-8A14F3024A6A}" ShortID="568196640">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="1"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Sfx_3Damb_Crystal_Sparks" ID="{A9FCB1FD-0E0E-48AC-AE8E-C7927CD8521F}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{993EDA38-3CFF-4CF6-A6B3-E4F3F261A7E6}" ShortID="1024438428">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Sfx_3Damb_Crystal_Sweet" ID="{D5E09629-39B9-475A-B40F-ACB4D656BDD6}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="New_Event_01" ID="{253DBBEB-15D1-4994-BC91-67A2888A133B}"/>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

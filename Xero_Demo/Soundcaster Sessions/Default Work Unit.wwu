@@ -46,6 +46,14 @@
 							<Position X="3" Y="2"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="Play_2D_Amb_Forest_Bed" ID="{1A82E65A-5C78-45ED-A641-C78604EEE338}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="4" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="STOP_2D_Amb_Forest_Bed" ID="{EDDDDF13-AC1F-4433-879E-0C5260DC063F}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="4" Y="5"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Play_Menu_Hover" ID="{2DCD3685-3FBD-4D79-890C-E39441E7F370}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
 							<Position X="5" Y="1"/>
 						</Module>
@@ -54,8 +62,16 @@
 							<Position X="5" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_Forest_Bed" ID="{1A82E65A-5C78-45ED-A641-C78604EEE338}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<ObjectRef Name="Play_3D_Amb_Cricket_01" ID="{417D3BB7-E761-4ED8-BFAE-CB3B45BB59B1}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
 							<Position X="5" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_3D_Amb_Cricket_02" ID="{551E8A0C-9DCB-4520-94EB-9740ED8CC789}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="5" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="STOP_3D_Amb_Crickets" ID="{A2222AB8-48B2-4B69-8179-08E82B53021A}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="5" Y="6"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="Play_Menu_Exit" ID="{267420C0-8299-4993-B5F1-72D55D8E7DFC}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
@@ -66,8 +82,12 @@
 							<Position X="6" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Stop_Forest_Bed" ID="{EDDDDF13-AC1F-4433-879E-0C5260DC063F}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<ObjectRef Name="Play_3D_Amb_Waterfall" ID="{D2550E5C-35B1-47AF-9139-63A3AF411D86}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
 							<Position X="6" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_3D_Amb_River" ID="{FFFD44CC-579C-4257-B04B-111D9EF79DAB}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="6" Y="5"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
@@ -77,7 +97,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Player_Fall_Velocity" ID="{A9A396C7-F4EA-4432-9B08-3CFD8B01D3C6}"/>
-							<Value>98</Value>
+							<Value>50</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SS_Air_Month" ID="{09E2B445-C4A3-447F-B3CA-818A1D925EF7}"/>
@@ -105,7 +125,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Firefliesammount" ID="{98F1E45A-B49B-47F1-B878-FA59D3A4457D}"/>
-							<Value>0</Value>
+							<Value>50</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SS_Air_Presence" ID="{E3B7811A-7B2F-490F-B44F-5FE51B468041}"/>
