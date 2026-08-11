@@ -18,7 +18,7 @@ public partial class ActivateParryAction : Action
         if (Target.Value == null)
         {
             Debug.LogError("[ActivateParryAction] Target is not assigned.");
-            return Status.Failure;
+            return Status.Success; // Return success to avoid failing the behavior tree due to a missing target.
         }
 
         var eyesTag = Target.Value.GetComponent<EyesTag>();

@@ -3,6 +3,7 @@ using Unity.Behavior;
 using UnityEngine;
 using Unity.Properties;
 using UnityEngine.AI;
+using UnityEngine.PlayerLoop;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "FixedEnemyPatrol", story: "[Agent] patrols along [Waypoints] at [Speed] stopping at each one for time ranging between [WaypointWaitTime] using [Animator], [NavMeshAgent]", category: "Action", id: "e1f3c5b2a4d34e7b9c8f6a5d7e2b4c1d")]
@@ -26,8 +27,8 @@ public partial class FixedEnemyPatrolAction : Unity.Behavior.Action
     private float m_CurrentSpeed;
     [CreateProperty] private int m_CurrentPatrolPoint = 0;
     [CreateProperty] private bool m_Waiting;
-    [CreateProperty] private readonly string[] m_AnimatorParameters = new[] { "IsWalk", "SpeedMagnitude" };
-    private enum AnimatorParameter { IsWalk, SpeedMagnitude }
+    [CreateProperty] private readonly string[] m_AnimatorParameters = new[] { "SpeedMagnitude" };
+    private enum AnimatorParameter { SpeedMagnitude }
 
     protected override Status OnStart()
     {
@@ -54,7 +55,7 @@ public partial class FixedEnemyPatrolAction : Unity.Behavior.Action
         SetWaiting(false);
         m_WaypointWaitTimer = 0.0f;
 
-        MoveToNextWaypoint();
+        SetNextWaypointDestination();
         return Status.Running;
     }
 
@@ -75,11 +76,12 @@ public partial class FixedEnemyPatrolAction : Unity.Behavior.Action
             {
                 m_WaypointWaitTimer = 0f;
                 SetWaiting(false);
-                MoveToNextWaypoint();
+                SetNextWaypointDestination();
             }
         }
         else
         {
+
             float distance = GetDistanceToWaypoint();
             bool destinationReached = distance <= DistanceThreshold;
 
@@ -93,9 +95,14 @@ public partial class FixedEnemyPatrolAction : Unity.Behavior.Action
 
                 return Status.Running;
             }
-            else if (NavMeshAgent.Value == null) // transform-based movement
+            else 
             {
-                Debug.LogError("Transform-based movement is not implemented in this version of EnemyPatrolAction. Please ensure a NavMeshAgent.Value is attached to the Agent.");
+                if (NavMeshAgent.Value == null) // transform-based movement
+                {
+                    Debug.LogError("Transform-based movement is not implemented in this version of EnemyPatrolAction. Please ensure a NavMeshAgent.Value is attached to the Agent.");
+                    return Status.Failure;
+                }
+                else m_CurrentSpeed = NavMeshAgent.Value.velocity.magnitude;
             }
         }
 
@@ -107,7 +114,6 @@ public partial class FixedEnemyPatrolAction : Unity.Behavior.Action
     protected void SetWaiting(bool waiting)
     {
         m_Waiting = waiting;
-        Animator.Value.SetBool(m_AnimatorParameters[(int)AnimatorParameter.IsWalk], !waiting);
     }
 
     protected override void OnEnd()
@@ -178,7 +184,7 @@ public partial class FixedEnemyPatrolAction : Unity.Behavior.Action
         return Vector3.Distance(agentPosition, targetPosition);
     }
 
-    private void MoveToNextWaypoint()
+    private void SetNextWaypointDestination()
     {
         m_CurrentPatrolPoint = (m_CurrentPatrolPoint + 1) % Waypoints.Value.Waypoints.Length;
 

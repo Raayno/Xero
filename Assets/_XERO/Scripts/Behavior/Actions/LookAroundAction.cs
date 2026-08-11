@@ -4,12 +4,15 @@ using UnityEngine;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "LookAround", story: "[Agent] rotates by [Angle] to the left, and to the right for [LookCycleDuration] seconds", category: "Action", id: "a5089a6880776f369b2c9e516df0f5c2")]
+[NodeDescription(name: "LookAround", story: "[Agent] rotates by [Angle] to the left, and to the right for [LookCycleDuration] seconds Animator [Animator]", category: "Action", id: "a5089a6880776f369b2c9e516df0f5c2")]
 public partial class LookAroundAction : Unity.Behavior.Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<float> Angle;
     [SerializeReference] public BlackboardVariable<float> LookCycleDuration;
+    [SerializeReference] public BlackboardVariable<Animator> Animator;
+    [CreateProperty] private readonly string[] m_AnimatorParameters = new[] { "SpeedMagnitude" };
+    private enum AnimatorParameter { SpeedMagnitude }
 
     [CreateProperty] private Transform m_AgentTransform;
     [CreateProperty] private Quaternion m_InitialRotation;
@@ -20,6 +23,11 @@ public partial class LookAroundAction : Unity.Behavior.Action
         if (Agent == null || Agent.Value == null || Angle == null || LookCycleDuration == null)
         {
             return Status.Failure;
+        }
+
+        if (Animator != null && Animator.Value != null)
+        {
+            Animator.Value.SetFloat(m_AnimatorParameters[(int)AnimatorParameter.SpeedMagnitude], 0.5f);
         }
 
         m_AgentTransform = Agent.Value.transform;

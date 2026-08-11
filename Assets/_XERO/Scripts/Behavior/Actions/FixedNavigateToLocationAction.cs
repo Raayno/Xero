@@ -18,7 +18,6 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
     [SerializeReference] public BlackboardVariable<Animator> Animator;
     [SerializeReference] public BlackboardVariable<NavMeshAgent> NavMeshAgent;
     [SerializeReference] public BlackboardVariable<float> DistanceThreshold = new(0.2f);
-    [SerializeReference] public BlackboardVariable<string> AnimatorSpeedParam = new("SpeedMagnitude");
 
     // This will only be used in movement without a navigation agent.
     [SerializeReference] public BlackboardVariable<float> SlowDownDistance = new(1.0f);
@@ -28,9 +27,9 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
     private Vector3 m_LastLocationPosition;
     [CreateProperty] private float m_OriginalStoppingDistance = -1f;
     [CreateProperty] private float m_OriginalSpeed = -1f;
-    [CreateProperty] private readonly string[] m_AnimatorParameters = new[] { "IsWalk", "SpeedMagnitude" };
-    private enum AnimatorParameter { IsWalk, SpeedMagnitude }
-    private readonly float m_CurrentSpeed;
+    [CreateProperty] private readonly string[] m_AnimatorParameters = new[] { "SpeedMagnitude" };
+    private enum AnimatorParameter { SpeedMagnitude }
+    private float CurrentSpeed => NavMeshAgent.Value != null ? NavMeshAgent.Value.velocity.magnitude : 0f;
     private float m_StallTimer = 0f;
     [Tooltip("The multiplier for the distance to the target location. A value of 1 means the agent will navigate to the exact location, while a value of 0.5 means the agent will navigate to a point halfway between its current position and the target location.")]
     public static readonly float partialLocationMultiplier = 0.5f;
@@ -121,8 +120,6 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
 
     protected override void OnEnd()
     {
-        UpdateAnimatorSpeed(0f);
-
         if (NavMeshAgent.Value != null)
         {
             if (NavMeshAgent.Value.isOnNavMesh)
@@ -178,8 +175,6 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
             NavMeshAgent.Value.SetDestination(locationPosition);
         }
 
-        UpdateAnimatorSpeed(0f);
-
         return Status.Running;
     }
 
@@ -196,7 +191,7 @@ public partial class FixedNavigateToLocationAction : Unity.Behavior.Action
     {
         if (Animator.Value == null) return;
 
-        float speedToSet = explicitSpeed >= 0f ? explicitSpeed : m_CurrentSpeed;
+        float speedToSet = explicitSpeed >= 0f ? explicitSpeed : CurrentSpeed;
         Animator.Value.SetFloat(m_AnimatorParameters[(int)AnimatorParameter.SpeedMagnitude], speedToSet);
     }
 }
