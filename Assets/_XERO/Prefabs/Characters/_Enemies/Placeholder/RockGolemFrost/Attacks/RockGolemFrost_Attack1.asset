@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1a13ceaed52404dbe1c607445ab079, type: 3}
+  m_Name: RockGolemFrost_Attack1
+  m_EditorClassIdentifier: Assembly-CSharp::AttackDataSO
+  DamageData: {fileID: 11400000, guid: db8e6d951429b6745b3c59c1f80984c7, type: 2}
+  IsMoveToTarget: 1
+  TimelineAsset: {fileID: 11400000, guid: 1bdeb864b53162f428988ba5b08d1090, type: 2}
+  TargetSelector: {fileID: 11400000, guid: ef5717d4223b5d7448ee535b73af43cb, type: 2}

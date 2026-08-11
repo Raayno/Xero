@@ -22,6 +22,13 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
+				<SoundBank Name="Enemy_Soundbank" ID="{B60B5D8B-2143-4AEE-B23A-592CF26D4324}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Enemies_Events" ID="{4989CDF1-9D57-4EDD-B554-DFFF2F324532}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>
