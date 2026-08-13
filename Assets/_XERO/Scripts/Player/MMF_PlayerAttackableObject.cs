@@ -1,13 +1,13 @@
 using MoreMountains.Feedbacks;
 using UnityEngine;
 
-public class TestAttackableObject : MonoBehaviour, IAttackable
+public class MMF_PlayerAttackableObject : MonoBehaviour, IAttackable
 {
-    [SerializeField] private MMF_Player testFeedback;
+    [SerializeField] private MMF_Player feedback;
 
     public void OnAttack()
     {
         Debug.Log($"<color=red>[IAttackable]</color> {name} received attack.");
-        testFeedback?.PlayFeedbacks();
+        feedback?.PlayFeedbacks();
     }
 }
