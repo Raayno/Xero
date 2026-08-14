@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7374164075046979811}
-  - component: {fileID: 3647447137379955785}
   - component: {fileID: 7787829317082399218}
+  - component: {fileID: 5629107843470814951}
   m_Layer: 6
   m_Name: Eyes
   m_TagString: Player
@@ -33,20 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3893294197879345259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3647447137379955785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508182958759458751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb9e3ed20fe1fb44392414e026c4aafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EyesTag
-  playerBehavior: {fileID: 7469852384973976610}
-  ParryModule: {fileID: 11400000, guid: 6bf7e1a582067874cb95e86e3af80486, type: 2}
 --- !u!136 &7787829317082399218
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -70,6 +56,20 @@ CapsuleCollider:
   m_Height: 1.8362007
   m_Direction: 1
   m_Center: {x: -0.08039594, y: -0.7203891, z: -0.16607547}
+--- !u!114 &5629107843470814951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508182958759458751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313466c90d118924e9cbb3432243c378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EyesTagPlayer
+  playerBehavior: {fileID: 7469852384973976610}
+  ParryModule: {fileID: 11400000, guid: 6bf7e1a582067874cb95e86e3af80486, type: 2}
 --- !u!1 &2363583385875355962
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehavior
   activeModules: []
+  asleepModules: []
   startingModules:
   - {fileID: 11400000, guid: 38639d3317b10b448afd945222cca387, type: 2}
   - {fileID: 11400000, guid: 9eaad603336f5744794b3eda2a016fc2, type: 2}

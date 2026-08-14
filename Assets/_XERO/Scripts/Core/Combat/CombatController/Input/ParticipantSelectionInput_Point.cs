@@ -7,15 +7,12 @@ using UnityEngine.InputSystem.Interactions;
 public partial class ParticipantSelectionInput : MoreMountains.Tools.MMSingleton<ParticipantSelectionInput>
 {
     
-    [FoldoutGroup("Pointing")]
+    [Header("Pointing")]
     [SerializeField] private Camera selectionCamera;
-    [FoldoutGroup("Pointing")]
     public LayerMask pointableLayerMask;
-    [FoldoutGroup("Pointing")]
     [SerializeField] private float maxRayDistance = 500f;
-    [FoldoutGroup("Pointing/Point Input Detection")]
+    [Header("Point Input Detection")]
     [SerializeField] private float minShowPointTravelDistance = 0.1f;
-    [FoldoutGroup("Pointing/Point Input Detection")]
     private Vector2? lastPointPosition;
 
     private int selectionPoolLayer = -1;

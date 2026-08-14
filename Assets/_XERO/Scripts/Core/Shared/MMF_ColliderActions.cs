@@ -9,6 +9,11 @@ public class MMF_ColliderActions : MonoBehaviour
     [SerializeField] private Collider coll;
     [SerializeField] private int intensity = 1;
     [SerializeField] private MMF_Player[] feedbacks = new MMF_Player[0];
+    public MMF_Player[] Feedbacks
+    {
+        get => feedbacks;
+        set => feedbacks = value;
+    }
     [Header("Play feedbacks on")]
     [SerializeField] private bool onTriggerEnter = true;
     [SerializeField] private bool onTriggerExit = false;

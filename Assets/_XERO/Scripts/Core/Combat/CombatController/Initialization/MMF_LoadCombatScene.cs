@@ -19,6 +19,11 @@ public class MMF_LoadCombatScene : MMF_LoadScene
     {
         if (!Active || !FeedbackTypeAuthorized) return;
 
+        if (DestinationSceneAddressibleKey == "Zone_ID/Arenas/Combat_ID")
+        {
+            Debug.LogWarning($"<color=orange>[MMF_LoadCombatScene]</color> The DestinationSceneAddressibleKey is set to the default value 'Zone_ID/Arenas/Combat_ID'. Please set it to the correct addressable key for the combat arena scene you want to load.");
+        }
+
         if (participantsData != null)
         {
             EnemyCombatDataCarrier.EnemiesCombatData = participantsData;

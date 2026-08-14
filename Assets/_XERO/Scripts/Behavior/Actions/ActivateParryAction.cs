@@ -21,7 +21,7 @@ public partial class ActivateParryAction : Action
             return Status.Success; // Return success to avoid failing the behavior tree due to a missing target.
         }
 
-        var eyesTag = Target.Value.GetComponent<EyesTag>();
+        var eyesTag = Target.Value.GetComponent<EyesTagPlayer>();
 
         if (eyesTag.NumbersOfEnemiesChasingThisPlayer <= 0 && !IsInvert.Value)
         {
@@ -37,7 +37,7 @@ public partial class ActivateParryAction : Action
 
         return Status.Success;
 
-        void HandleActivation(EyesTag eyesTag, bool activate = true)
+        void HandleActivation(EyesTagPlayer eyesTag, bool activate = true)
         {
             var playerBehavior = eyesTag.PlayerBehavior;
             if (playerBehavior == null)

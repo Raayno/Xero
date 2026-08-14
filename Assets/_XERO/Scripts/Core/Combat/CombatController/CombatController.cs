@@ -8,7 +8,7 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
     [Header("Debug")]
     [SerializeField] private bool enableDebug = false;
 
-    [Alchemy.Inspector.Button]
+    [Gaskellgames.Button]
     public void ResetCombat()
     {
         CleanseCombat();

@@ -1,10 +1,14 @@
 using UnityEngine;
 using Unity.Behavior;
-using System;
 
 public class EnemyRoamZone : MonoBehaviour
 {
-    [SerializeField] private BehaviorGraphAgent[] behaviorAgent;
+    [SerializeField] private BehaviorGraphAgent[] behaviorAgents;
+    public BehaviorGraphAgent[] BehaviorAgents
+    {
+        get => behaviorAgents;
+        set => behaviorAgents = value;
+    }
     [SerializeField] private bool enableDebug;
     private bool isPlayerAssigned = false;
 
@@ -35,7 +39,7 @@ public class EnemyRoamZone : MonoBehaviour
         
         if (enableDebug) Debug.Log($"AssignPlayerToBehaviorAgent called with {other.name}");
 
-        foreach (var agent in behaviorAgent)
+        foreach (var agent in behaviorAgents)
         {
             if (enableDebug) Debug.Log($"Assigning player {other.name} to agent {agent.name}");
             agent.SetVariableValue("TargetEyes", other.transform);
@@ -48,7 +52,7 @@ public class EnemyRoamZone : MonoBehaviour
         if (!isPlayerAssigned) return;
 
         if (enableDebug) Debug.Log($"UnassignPlayerFromBehaviorAgent called");
-        foreach (var agent in behaviorAgent)
+        foreach (var agent in behaviorAgents)
         {
             if (enableDebug) Debug.Log($"Unassigning player from agent {agent.name}");
             agent.SetVariableValue("UnassignTargetEyes", true);

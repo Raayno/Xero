@@ -20,7 +20,7 @@ public class MMF_GlobalPlayer : MMSingleton<MMF_GlobalPlayer>
         }
     }
 
-    [Alchemy.Inspector.Button]
+    [Button]
     private void SortDictionaryAlphabeticallyByFeedbackType()
     {
         System.Text.StringBuilder sb = new();

@@ -7,7 +7,7 @@ public class IconCooldownController : MonoBehaviour
     [SerializeField] private Image filledCooldownOverlay;
     [SerializeField] private AnimationCurve cooldownCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
     [SerializeField] private MMF_Player cooldownFeedback;
-    [Alchemy.Inspector.Button] private void TestCooldown() => StartCooldown(3f); // Test with a 3-second cooldown
+    [Gaskellgames.Button] private void TestCooldown() => StartCooldown(3f); // Test with a 3-second cooldown
     private float cashedDuration = 0f;
     private float elapsedTime = 0f;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Text;
-using Alchemy.Inspector;
+using Gaskellgames;
 
 public class DebugPlayerCombatDataCarrier : MonoBehaviour
 {
