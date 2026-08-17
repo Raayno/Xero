@@ -40,6 +40,8 @@ public class EnemyGroupUtilities : MonoBehaviour
 
     [Button] private void UpdateLoadCombatSceneFeedback()
     {
+        OnValidate();
+
         if (enemiesParent == null)
         {
             Debug.LogWarning($"<color=orange>[EnemyGroupUtilities]</color> No EnemiesParent assigned in {gameObject.name}. Please assign a parent GameObject that contains all the enemy GameObjects.");
@@ -113,7 +115,7 @@ public class EnemyGroupUtilities : MonoBehaviour
         if (participantsData == null || participantsData.EnemyParticipants == null || participantsData.EnemyParticipants.Length == 0)
         {
             // foreach enemy child of enemiesParent, get the prefab path and load the Combat asset, then create a new EnemiesCombatData with those assets
-            participantsData = new(enemiesParent.Cast<Transform>()
+            participantsData = new(participantsData, enemiesParent.Cast<Transform>()
                 .Select(child =>
                 {
                     var freeRoamPrefab = PrefabUtility.GetCorrespondingObjectFromSource(child.gameObject);
@@ -148,6 +150,15 @@ public class EnemyGroupUtilities : MonoBehaviour
                 .Where(asset => asset != null)
                 .ToArray());
             EditorUtility.SetDirty(this);
+        }
+
+        if (TryGetComponent<PersistenceKey>(out var persistenceKey))
+        {
+            if (participantsData == null || participantsData.FreeRoamEnemyPersistenceKey == null || participantsData.FreeRoamEnemyPersistenceKey == string.Empty
+                || participantsData.FreeRoamEnemyPersistenceKey != persistenceKey.Key)
+            {
+                participantsData = new (participantsData, freeRoamEnemyPersistenceKey: persistenceKey.Key);
+            }
         }
     }
 }

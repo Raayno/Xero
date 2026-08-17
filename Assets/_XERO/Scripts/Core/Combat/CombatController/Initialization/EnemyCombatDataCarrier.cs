@@ -3,14 +3,16 @@ using UnityEngine;
 [System.Serializable]
 public class EnemiesCombatData
 {
-    [Header("Enemy Participant Prefabs")]
     [SerializeField] private EnemyParticipant[] enemyParticipantPrefabs;
+    [SerializeField, Gaskellgames.ReadOnly] private string freeRoamEnemyPersistenceKey;
 
     public EnemyParticipant[] EnemyParticipants => enemyParticipantPrefabs;
+    public string FreeRoamEnemyPersistenceKey => freeRoamEnemyPersistenceKey;
 
-    public EnemiesCombatData(EnemyParticipant[] enemyParticipantPrefabs = null)
+    public EnemiesCombatData(EnemiesCombatData defaultEnemiesData = null, EnemyParticipant[] enemyParticipantPrefabs = null, string freeRoamEnemyPersistenceKey = null)
     {
-        this.enemyParticipantPrefabs = enemyParticipantPrefabs ?? (new EnemyParticipant[0]);
+        this.enemyParticipantPrefabs = enemyParticipantPrefabs ?? defaultEnemiesData.enemyParticipantPrefabs ?? new EnemyParticipant[0];
+        this.freeRoamEnemyPersistenceKey = freeRoamEnemyPersistenceKey ?? defaultEnemiesData.freeRoamEnemyPersistenceKey ?? string.Empty;
     }
 }
 

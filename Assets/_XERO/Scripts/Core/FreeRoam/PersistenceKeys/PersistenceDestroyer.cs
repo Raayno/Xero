@@ -8,7 +8,7 @@ public class PersistenceDestroyer : MonoBehaviour
 
     private void Awake()
     {
-        if (registry.ContainsKey(persistenceKey.PersistentKey))
+        if (registry.ContainsKey(persistenceKey.Key))
         {
             gameObject.SetActive(false);
 

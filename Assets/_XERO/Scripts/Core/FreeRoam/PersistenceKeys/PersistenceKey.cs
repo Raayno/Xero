@@ -4,7 +4,7 @@ using UnityEngine;
 public class PersistenceKey : MonoBehaviour
 {
     [SerializeField, Gaskellgames.ReadOnly] private string key;
-    public string PersistentKey => key;
+    public string Key => key;
 
 #if UNITY_EDITOR
     [SerializeField, HideInInspector] private PersistenceRegistry registry;

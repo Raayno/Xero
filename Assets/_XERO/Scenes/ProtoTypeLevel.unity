@@ -29730,6 +29730,10 @@ PrefabInstance:
       value: Zone01/Arenas/Combat01
       objectReference: {fileID: 0}
     - target: {fileID: 1536802669774322269, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
+      propertyPath: managedReferences[4969785128794980352].participantsData.freeRoamEnemyPersistenceKey
+      value: 1a381c1e-0018-489d-9b33-6cb5d3a55200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536802669774322269, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
       propertyPath: managedReferences[4969785128794980352].participantsData.enemyParticipantPrefabs.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -29812,6 +29816,10 @@ PrefabInstance:
     - target: {fileID: 6754893653042069938, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
       propertyPath: ZoneAndArenaID.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754893653042069938, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
+      propertyPath: participantsData.freeRoamEnemyPersistenceKey
+      value: 1a381c1e-0018-489d-9b33-6cb5d3a55200
       objectReference: {fileID: 0}
     - target: {fileID: 6754893653042069938, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
       propertyPath: participantsData.enemyParticipantPrefabs.Array.size
