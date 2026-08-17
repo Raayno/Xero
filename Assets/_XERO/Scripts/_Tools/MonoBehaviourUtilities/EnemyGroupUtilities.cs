@@ -9,11 +9,11 @@ using System.Linq;
 [StripOnBuild]
 public class EnemyGroupUtilities : MonoBehaviour
 {
-    [SerializeField] private EnemiesCombatData participantsData;
-    [SerializeField] private Vector2Int ZoneAndArenaID = new(0, 0);
-    [SerializeField] private MMF_Player LoadCombatSceneFeedback;
+    [SerializeField, OnValueChanged(nameof(UpdateLoadCombatSceneFeedback))] private EnemiesCombatData participantsData;
+    [SerializeField, OnValueChanged(nameof(UpdateLoadCombatSceneFeedback))] private Vector2Int ZoneAndArenaID = new(0, 0);
+    [SerializeField, OnValueChanged(nameof(UpdateLoadCombatSceneFeedback))] private MMF_Player LoadCombatSceneFeedback;
     [SerializeField] private Transform enemiesParent;
-    [SerializeField] private EnemyRoamZone enemyRoamZone;
+    [SerializeField, OnValueChanged(nameof(UpdateRoamZone))] private EnemyRoamZone enemyRoamZone;
 
     [Button] private void UpdateRoamZone()
     {
@@ -53,6 +53,8 @@ public class EnemyGroupUtilities : MonoBehaviour
             Undo.RecordObject(LoadCombatSceneFeedback, "Update LoadCombatScene Feedback DestinationSceneAddressibleKey");
             LoadCombatSceneFeedback.GetFeedbackOfType<MMF_LoadCombatScene>().DestinationSceneAddressibleKey = destinationSceneKey;
             EditorUtility.SetDirty(LoadCombatSceneFeedback);
+
+            Debug.Log($"<color=orange>[EnemyGroupUtilities]</color> Updated LoadCombatScene feedback to destination scene key: {destinationSceneKey}");
 
             static string IntToString(int num) => num < 10 ? $"0{num}" : num.ToString();
         }
@@ -147,9 +149,6 @@ public class EnemyGroupUtilities : MonoBehaviour
                 .ToArray());
             EditorUtility.SetDirty(this);
         }
-    
-        UpdateRoamZone();
-        UpdateLoadCombatSceneFeedback();
     }
 }
 #endif
