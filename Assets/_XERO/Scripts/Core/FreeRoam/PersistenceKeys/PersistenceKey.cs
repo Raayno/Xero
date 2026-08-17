@@ -58,18 +58,7 @@ public class PersistenceKey : MonoBehaviour
     {
         key = System.Guid.NewGuid().ToString();
         UnityEditor.EditorUtility.SetDirty(this);
-        registry.AllKeys.Add(key);
-        UnityEditor.EditorUtility.SetDirty(registry);
         UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gameObject.scene);
-    }
-
-    private void OnDestroy()
-    {
-        if (!Application.isPlaying && !string.IsNullOrEmpty(key))
-        {
-            registry.AllKeys.Remove(key);
-            UnityEditor.EditorUtility.SetDirty(registry);
-        }
     }
 #endif
 }

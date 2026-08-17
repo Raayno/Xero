@@ -48,23 +48,23 @@ public struct PersistenceItem
 }
 
 [EnsureAssetInstance]
-public class PersistenceRegistry : ScriptableObject, ISerializationCallbackReceiver
+public partial class PersistenceRegistry : ScriptableObject, ISerializationCallbackReceiver
 {
-    // Używamy zwykłych list struktur, które Unity serializuje bezbłędnie i natychmiast wyświetla w inspektorze
     [ReadOnly, SerializeField] private List<PersistenceItem> serializedClearable = new();
     [ReadOnly, SerializeField] private List<PersistenceItem> serializedNonclearable = new();
 
     private readonly Dictionary<string, object> activePersistancesClearable = new();
     private readonly Dictionary<string, object> activeObjectPersistancesNonclearable = new();
-
-    // Wywoływane przez Unity podczas zapisu projektu/wejścia w Playmode - zabezpieczenie synchronizacji
     public void OnBeforeSerialize()
     {
         SyncDictionariesToLists();
     }
-
-    // Wywoływane przez Unity zaraz po uruchomieniu Playmode - przywraca dane do pamięci RAM
     public void OnAfterDeserialize()
+    {
+        DeserializeListsBackToDictionaries();
+    }
+
+    private void DeserializeListsBackToDictionaries()
     {
         activePersistancesClearable.Clear();
         foreach (var item in serializedClearable)
@@ -106,8 +106,7 @@ public class PersistenceRegistry : ScriptableObject, ISerializationCallbackRecei
         {
             activeObjectPersistancesNonclearable[key] = value;
         }
-
-        // Natychmiastowa synchronizacja z listami widocznymi w inspektorze
+        
         SyncDictionariesToLists();
 
 #if UNITY_EDITOR
@@ -152,157 +151,4 @@ public class PersistenceRegistry : ScriptableObject, ISerializationCallbackRecei
         UnityEditor.EditorUtility.SetDirty(this);
 #endif
     }
-
-    [ReadOnly, SerializeField, OnValueChanged(nameof(ValidatePersistences))] private List<string> allKeys = new();
-    public List<string> AllKeys
-    {
-        get => allKeys;
-        set => allKeys = value;
-    }
-
-    [SerializeField] private string utilityField = string.Empty;
-    
-    [SerializeField] private bool enableDebug = true;
-
-#if UNITY_EDITOR
-    private void ValidatePersistences()
-    {
-        foreach (var key in activePersistancesClearable.Keys)
-        {
-            if (!allKeys.Contains(key))
-            {
-                activePersistancesClearable.Remove(key);
-            }
-        }
-        foreach (var key in activeObjectPersistancesNonclearable.Keys)
-        {
-            if (!allKeys.Contains(key))
-            {
-                activeObjectPersistancesNonclearable.Remove(key);
-            }
-        }
-    }
-
-    [Button] private void SearchForUtilityField()
-    {
-        System.Text.StringBuilder sb = new($"PersistenceRegistry: Search results for '{utilityField}':\n");
-        bool found = false;
-        foreach (var key in allKeys)
-        {
-            if (key.Contains(utilityField))
-            {
-                found = true;
-                sb.AppendLine(key);
-            }
-        }
-        if (!found)
-        {
-            sb.AppendLine("Nothing found.");
-        }
-        Debug.Log(sb.ToString());
-    }
-
-    [Button] private void GetValueForUtilityField()
-    {
-        if (!allKeys.Contains(utilityField))
-        {
-            Debug.LogWarning($"PersistenceRegistry: Key '{utilityField}' not found in allKeys.");
-        }
-
-        object value = GetValue(utilityField);
-        if (value != null)
-        {
-            Debug.Log($"PersistenceRegistry: Value for key '{utilityField}': {value}");
-        }
-        else
-        {
-            Debug.LogWarning($"PersistenceRegistry: No value found for key '{utilityField}'.");
-        }
-    }
-
-    [Button, Tooltip("Check active persistances for the key entered in Utility Field without removing them")] 
-    private void CheckActivePersistancesForUtilityFieldKey()
-    {
-        if (!allKeys.Contains(utilityField))
-        {
-            Debug.LogWarning($"PersistenceRegistry: Key '{utilityField}' not found in allKeys, there shouldn't be any active persistances.");
-        }
-
-        bool foundAny = false;
-        
-        if (activePersistancesClearable.ContainsKey(utilityField))
-        {
-            Debug.Log($"PersistenceRegistry: [FOUND] Clearable object persistance exists for key '{utilityField}'.");
-            foundAny = true;
-        }
-        
-        if (activeObjectPersistancesNonclearable.ContainsKey(utilityField))
-        {
-            Debug.Log($"PersistenceRegistry: [FOUND] Non-clearable object persistance exists for key '{utilityField}'.");
-            foundAny = true;
-        }
-
-        if (!foundAny)
-        {
-            Debug.LogWarning($"PersistenceRegistry: No active persistance found for key '{utilityField}'.");
-        }
-    }
-
-    [Button, Tooltip("Deactivate active persistances for the key entered in Utility Field (the only way to deactivate non-clearable persistances)")] 
-    private void RemoveActivePersistancesForUtilityFieldKey()
-    {
-        if (!allKeys.Contains(utilityField))
-        {
-            Debug.LogWarning($"PersistenceRegistry: Key '{utilityField}' not found in allKeys. No persistances were removed.");
-            return;
-        }
-
-        bool removedAny = false;
-
-        if (activePersistancesClearable.ContainsKey(utilityField))
-        {
-            activePersistancesClearable.Remove(utilityField);
-            Debug.Log($"PersistenceRegistry: Clearable object persistance for key '{utilityField}' removed.");
-            removedAny = true;
-        }
-
-        if (activeObjectPersistancesNonclearable.ContainsKey(utilityField))
-        {
-            activeObjectPersistancesNonclearable.Remove(utilityField);
-            Debug.Log($"PersistenceRegistry: Non-clearable object persistance for key '{utilityField}' removed.");
-            removedAny = true;
-        }
-
-        if (!removedAny)
-        {
-            Debug.LogWarning($"PersistenceRegistry: No active persistance found for key '{utilityField}' to remove.");
-        }
-        else
-        {
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-    }
-
-    [Button] private void CheckAllActivePersistances()
-    {
-        if (allKeys.Count == 0)
-        {
-            Debug.LogWarning($"PersistenceRegistry: No keys found in allKeys. There are {activePersistancesClearable.Count + activeObjectPersistancesNonclearable.Count} active persistances, but no keys to check against.");
-            return;
-        }
-
-        Debug.Log($"PersistenceRegistry: Checking all active persistances...");
-        foreach (var key in allKeys)
-        {
-            utilityField = key;
-            CheckActivePersistancesForUtilityFieldKey();
-        }
-    }
-
-    [Button] private void RemoveAllActivePersistances()
-    {
-        ClearAllPersistences();
-        Debug.Log($"PersistenceRegistry: All active persistances removed.");
-    }
-#endif
 }
