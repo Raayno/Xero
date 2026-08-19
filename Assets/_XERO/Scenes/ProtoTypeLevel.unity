@@ -29727,7 +29727,11 @@ PrefabInstance:
       objectReference: {fileID: 907420420}
     - target: {fileID: 1536802669774322269, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
       propertyPath: managedReferences[4969785128794980352].DestinationSceneAddressibleKey
-      value: Zone01/Arenas/Combat01
+      value: Zone00/Arenas/Combat01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536802669774322269, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
+      propertyPath: managedReferences[4969785128794980352].participantsData.sceneToLoadAfterCombat
+      value: Zone00/FreeRoam
       objectReference: {fileID: 0}
     - target: {fileID: 1536802669774322269, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
       propertyPath: managedReferences[4969785128794980352].participantsData.freeRoamEnemyPersistenceKey
@@ -29811,7 +29815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6754893653042069938, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
       propertyPath: ZoneAndArenaID.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6754893653042069938, guid: c2ba98e4c75858a4b8d61425171dbb00, type: 3}
       propertyPath: ZoneAndArenaID.y

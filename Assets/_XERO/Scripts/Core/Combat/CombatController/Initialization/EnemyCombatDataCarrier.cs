@@ -4,15 +4,21 @@ using UnityEngine;
 public class EnemiesCombatData
 {
     [SerializeField] private EnemyParticipant[] enemyParticipantPrefabs;
+    [SerializeField] private bool canReappearInFreeRoam;
     [SerializeField, Gaskellgames.ReadOnly] private string freeRoamEnemyPersistenceKey;
+    [SerializeField] private string sceneToLoadAfterCombat;
 
     public EnemyParticipant[] EnemyParticipants => enemyParticipantPrefabs;
     public string FreeRoamEnemyPersistenceKey => freeRoamEnemyPersistenceKey;
-
-    public EnemiesCombatData(EnemiesCombatData defaultEnemiesData = null, EnemyParticipant[] enemyParticipantPrefabs = null, string freeRoamEnemyPersistenceKey = null)
+    public bool CanReappearInFreeRoam => canReappearInFreeRoam;
+    public string SceneToLoadAfterCombatAddressibleKey => sceneToLoadAfterCombat;
+    
+    public EnemiesCombatData(EnemiesCombatData defaultEnemiesData = null, EnemyParticipant[] enemyParticipantPrefabs = null, string freeRoamEnemyPersistenceKey = null, bool? canReappearInFreeRoam = null, string sceneToLoadAfterCombat = null)
     {
-        this.enemyParticipantPrefabs = enemyParticipantPrefabs ?? defaultEnemiesData.enemyParticipantPrefabs ?? new EnemyParticipant[0];
-        this.freeRoamEnemyPersistenceKey = freeRoamEnemyPersistenceKey ?? defaultEnemiesData.freeRoamEnemyPersistenceKey ?? string.Empty;
+        this.enemyParticipantPrefabs = enemyParticipantPrefabs ?? (defaultEnemiesData != null ? defaultEnemiesData.enemyParticipantPrefabs : new EnemyParticipant[0]);
+        this.freeRoamEnemyPersistenceKey = freeRoamEnemyPersistenceKey ?? (defaultEnemiesData != null ? defaultEnemiesData.freeRoamEnemyPersistenceKey : string.Empty);
+        this.canReappearInFreeRoam = canReappearInFreeRoam ?? (defaultEnemiesData != null ? defaultEnemiesData.canReappearInFreeRoam : true);
+        this.sceneToLoadAfterCombat = sceneToLoadAfterCombat ?? (defaultEnemiesData != null ? defaultEnemiesData.sceneToLoadAfterCombat : string.Empty);
     }
 }
 

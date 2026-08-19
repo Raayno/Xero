@@ -79,7 +79,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   participantsData:
     enemyParticipantPrefabs: []
+    canReappearInFreeRoam: 0
     freeRoamEnemyPersistenceKey: 
+    sceneToLoadAfterCombat: Zone00/FreeRoam
   ZoneAndArenaID: {x: 0, y: 0}
   LoadCombatSceneFeedback: {fileID: 1536802669774322269}
   enemiesParent: {fileID: 2243924046051787628}
@@ -448,7 +450,9 @@ MonoBehaviour:
           EnumConditions: 0000000000000000000000000000000000000000000000000000000000000000
         participantsData:
           enemyParticipantPrefabs: []
+          canReappearInFreeRoam: 1
           freeRoamEnemyPersistenceKey: 
+          sceneToLoadAfterCombat: 
     - rid: 4969785184944390401
       type: {class: MMF_DebugLog, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:

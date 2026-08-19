@@ -48,7 +48,7 @@ public class EnemyGroupUtilities : MonoBehaviour
             return;
         }
         
-        if (ZoneAndArenaID.x > 0 && ZoneAndArenaID.y > 0)
+        if (ZoneAndArenaID.x >= 0 && ZoneAndArenaID.y >= 0)
         {
             string destinationSceneKey = $"Zone{IntToString(ZoneAndArenaID.x)}/Arenas/Combat{IntToString(ZoneAndArenaID.y)}";
 
@@ -57,8 +57,6 @@ public class EnemyGroupUtilities : MonoBehaviour
             EditorUtility.SetDirty(LoadCombatSceneFeedback);
 
             Debug.Log($"<color=orange>[EnemyGroupUtilities]</color> Updated LoadCombatScene feedback to destination scene key: {destinationSceneKey}");
-
-            static string IntToString(int num) => num < 10 ? $"0{num}" : num.ToString();
         }
         else
         {
@@ -160,6 +158,13 @@ public class EnemyGroupUtilities : MonoBehaviour
                 participantsData = new (participantsData, freeRoamEnemyPersistenceKey: persistenceKey.Key);
             }
         }
+
+        if (participantsData == null || participantsData.SceneToLoadAfterCombatAddressibleKey == null || participantsData.SceneToLoadAfterCombatAddressibleKey == string.Empty)
+        {
+            participantsData = new (participantsData, sceneToLoadAfterCombat: $"Zone{IntToString(ZoneAndArenaID.x)}/FreeRoam");
+        }
     }
+
+    static string IntToString(int num) => num < 10 ? $"0{num}" : num.ToString();
 }
 #endif
