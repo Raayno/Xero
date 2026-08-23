@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 3674125314111929754}
   - component: {fileID: 1153684855923267374}
   m_Layer: 0
-  m_Name: Combat Controller
+  m_Name: CombatController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -498,17 +498,21 @@ MonoBehaviour:
       centerPoint: {x: -3, y: 0, z: -2.3}
       spaceBetweenTeams: 7
       teamSpacing: 3
-  playersData:
+  fallbackPlayersData:
     playerParticipantPrefabs:
     - {fileID: 5951889126656808230, guid: 0bf74bf0e1746b74d962fdc5177349ed, type: 3}
-  enemiesData:
+  fallbackEnemiesData:
     enemyParticipantPrefabs:
-    - {fileID: 1364838482047800489, guid: 955dd9b1aa8c0f94eb99a1401c59f43c, type: 3}
+    - {fileID: 3483425334849337114, guid: bb3a38150d7f3284c8ac405fb887bc5a, type: 3}
     canReappearInFreeRoam: 0
     freeRoamEnemyPersistenceKey: 
     sceneToLoadAfterCombat: 
+  aliveEnemyParticipants: []
+  alivePlayerParticipants: []
+  defeatedEnemyParticipants: []
+  defeatedPlayerParticipants: []
   LoadSceneFeedback: {fileID: 270293316807787350}
-  persistenceRegistry: {fileID: 0}
+  persistenceRegistry: {fileID: 11400000, guid: 04472bac71be48a4b8ec7afaee6b78c0, type: 2}
 --- !u!1 &3053574720447126270
 GameObject:
   m_ObjectHideFlags: 0

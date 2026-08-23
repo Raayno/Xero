@@ -1,22 +1,23 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Gaskellgames;
 
 public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatController>
 {
     [Header("Participants")]
-    private readonly List<EnemyParticipant> aliveEnemyParticipants = new();
-    private readonly List<PlayerParticipant> alivePlayerParticipants = new();
+    [SerializeField, ReadOnly] private List<EnemyParticipant> aliveEnemyParticipants = new();
+    [SerializeField, ReadOnly] private List<PlayerParticipant> alivePlayerParticipants = new();
     
     public List<Participant> GetEnemiesAsParticipant() => new(aliveEnemyParticipants);
     public List<Participant> GetPlayersAsParticipant() => new(alivePlayerParticipants);
 
-    private readonly List<EnemyParticipant> defeatedEnemyParticipants = new();
-    private readonly List<PlayerParticipant> defeatedPlayerParticipants = new();
+    [SerializeField, ReadOnly] private List<EnemyParticipant> defeatedEnemyParticipants = new();
+    [SerializeField, ReadOnly] private List<PlayerParticipant> defeatedPlayerParticipants = new();
 
     public List<Participant> GetDefeatedEnemiesAsParticipant() => new(defeatedEnemyParticipants);
     public List<Participant> GetDefeatedPlayersAsParticipant() => new(defeatedPlayerParticipants);
 
-    private void MoveParticipantToAlive(Participant participant)
+    public void MoveParticipantToAlive(Participant participant)
     {
         if (participant is PlayerParticipant player)
         {
@@ -30,7 +31,7 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
         }
     }
 
-    private void MoveParticipantToDefeated(Participant participant)
+    public void MoveParticipantToDefeated(Participant participant)
     {
         if (participant is PlayerParticipant player)
         {

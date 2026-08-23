@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   participantsData:
     enemyParticipantPrefabs: []
-    canReappearInFreeRoam: 0
+    canReappearInFreeRoam: 1
     freeRoamEnemyPersistenceKey: 
     sceneToLoadAfterCombat: Zone00/FreeRoam
   ZoneAndArenaID: {x: 0, y: 0}
@@ -369,7 +369,7 @@ MonoBehaviour:
         Owner: {fileID: 1536802669774322269}
         DebugActive: 0
         LoadingSceneAddressibleKey: LoadingScreen
-        DestinationSceneAddressibleKey: Zone_ID/Arenas/Combat_ID
+        DestinationSceneAddressibleKey: Zone00/Arenas/Combat00
         LoadingMode: 1
         Priority: 4
         SecureLoad: 1
@@ -451,8 +451,8 @@ MonoBehaviour:
         participantsData:
           enemyParticipantPrefabs: []
           canReappearInFreeRoam: 1
-          freeRoamEnemyPersistenceKey: 
-          sceneToLoadAfterCombat: 
+          freeRoamEnemyPersistenceKey: 780ce78c-ad2f-4602-befd-0baeb040d3bf
+          sceneToLoadAfterCombat: Zone00/FreeRoam
     - rid: 4969785184944390401
       type: {class: MMF_DebugLog, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:

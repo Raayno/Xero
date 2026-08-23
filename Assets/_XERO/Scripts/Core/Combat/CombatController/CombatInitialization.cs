@@ -8,8 +8,8 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
     [Button("Add Current Positioning of Participants")] private void AddCurrentPositioningOfParticipants() => combatPositioning.AddCurrentPositioningOfParticipants(GetPlayersAsParticipant(), GetEnemiesAsParticipant());
     
     [Header("Fallback if DataCarrier was not set")]
-    [SerializeField] private PlayersCombatData playersData = new();
-    [SerializeField] private EnemiesCombatData enemiesData = new();
+    [SerializeField] private PlayersCombatData fallbackPlayersData = new();
+    [SerializeField] private EnemiesCombatData fallbackEnemiesData = new();
     private PlayersCombatData PlayersData
     {
         get
@@ -21,7 +21,7 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
             else
             {
                 Debug.LogWarning("[CombatInitialization] PlayerParticipants data is null or empty. Returning default arena preset.");
-                return playersData;
+                return fallbackPlayersData;
             }
         }
     }
@@ -36,7 +36,7 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
             else
             {
                 Debug.LogWarning("[CombatInitialization] CombatParticipantsDataCarrier data is null. Returning default arena preset.");
-                return enemiesData;
+                return fallbackEnemiesData;
             }
         }
     }
@@ -83,9 +83,7 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
                 // Add the instantiated participant to the appropriate list
                 MoveParticipantToAlive(instance);
 
-                // Subscribe to the OnDefeated and OnResurrected events of the instantiated participant's CombatDamageable component
-                instance.damageable.OnDefeated += MoveParticipantToDefeated;
-                instance.damageable.OnResurrected += MoveParticipantToAlive;
+                instance.Damageable.Initialize(instance, this);
             }
         }
     }

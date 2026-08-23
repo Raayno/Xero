@@ -10,7 +10,7 @@ public class Health : CombatDamageable
     public int MaxHealth => maxHP;
     public int CurrentHealth => currentHP;
 
-    public override void TakeDamage(DamageDataSO dmg)
+    protected override void TakeDamageVirt(DamageDataSO dmg)
     {
         Debug.Log($"<color=red>[Health]</color> {gameObject.name} took {dmg.DamageAmount} damage.");
         currentHP -= Mathf.Clamp(Mathf.RoundToInt(dmg.DamageAmount), 0, maxHP);

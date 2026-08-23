@@ -35,7 +35,7 @@ public abstract class TurnSelector : ScriptableObject
 
     private void ValidateParticipantList<T>(List<T> participants) where T : Participant
     {
-        if (participants.RemoveAll(p => p == null || p.damageable == null || p.damageable.IsDefeated) > 0)
+        if (participants.RemoveAll(p => p == null || p.Damageable == null || p.Damageable.IsDefeated) > 0)
         {
             Debug.LogWarning($"[CombatTimelineController] Some participants were removed from the list because they were null or defeated. This should not happen if participants are properly managed. Please verify participant lifecycle management.");
         }
@@ -43,7 +43,7 @@ public abstract class TurnSelector : ScriptableObject
 
     protected virtual void PlanTurnTimeline(List<PlayerParticipant> playerParticipants, List<EnemyParticipant> enemyParticipants)
     {
-        if (TurnTimeline.Count == 0 || TurnTimeline == null || TurnTimeline.All(p => p == null || p.damageable == null || p.damageable.IsDefeated))
+        if (TurnTimeline.Count == 0 || TurnTimeline == null || TurnTimeline.All(p => p == null || p.Damageable == null || p.Damageable.IsDefeated))
             InitializeTimeline(playerParticipants, enemyParticipants);
         else
             UpdateTimeline(playerParticipants, enemyParticipants);

@@ -20,6 +20,7 @@ public abstract class TurnExec: ScriptableObject
             return;
         }
 
+        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Awaiting attack selection for participant: {participant.name}");
         // Select an attack
         AttackDataSO attack = await attackSelector.SelectAttackAsync(availableAttacks, cancellationToken);
 
@@ -28,7 +29,7 @@ public abstract class TurnExec: ScriptableObject
             Debug.LogError("<color=purple>[TurnExec]</color> AttackSelector returned a null attack.");
             return;
         }
-        Debug.Log($"<color=purple>[TurnExec]</color> {participant.name} selected attack: {attack.name}");
+        if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> {participant.name} selected attack: {attack.name}");
 
         try
         {
@@ -38,6 +39,7 @@ public abstract class TurnExec: ScriptableObject
                 return;
             }
 
+            if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> Awaiting target selection for attack: {attack.name} by participant: {participant.name}");
             // Select targets
             List<Participant> targets = await attack.TargetSelector.SelectTargetsAsync(participant, cancellationToken);
 
@@ -46,7 +48,7 @@ public abstract class TurnExec: ScriptableObject
                 return;
             }
 
-            Debug.Log($"<color=purple>[TurnExec]</color> {participant.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
+            if (enableDebug) Debug.Log($"<color=purple>[TurnExec]</color> {participant.name} selected {targets.Count} target(s) for attack: {attack.name}. That is: {string.Join(", ", targets.ConvertAll(t => t.name))}");
 
             PrepareForExecution(participant, attack, targets, cancellationToken);
 

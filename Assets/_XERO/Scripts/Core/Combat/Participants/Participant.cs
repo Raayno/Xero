@@ -18,8 +18,8 @@ public abstract class Participant : MonoBehaviour
         }
     }
 
-    public CombatDamageable damageable;
-    public TurnExec turnExec;
+    public CombatDamageable Damageable;
+    public TurnExec TurnExec;
 
     [Header("Attack Sequence")]
     public ParticipantMovable ParticipantMovable;
@@ -37,7 +37,7 @@ public abstract class Participant : MonoBehaviour
 
     protected virtual void Reset()
     {
-        damageable = damageable != null ? damageable : GetComponent<CombatDamageable>();
+        Damageable = Damageable != null ? Damageable : GetComponent<CombatDamageable>();
         ParticipantMovable = ParticipantMovable != null ? ParticipantMovable : GetComponentInChildren<ParticipantMovable>();
         
         if (string.IsNullOrWhiteSpace(participantName))

@@ -4,7 +4,7 @@ using MoreMountains.Feedbacks;
 public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatController>
 {
     [SerializeField] private MMF_Player LoadSceneFeedback;
-    [HideInInspector, SerializeField] private PersistenceRegistry persistenceRegistry;
+    [SerializeField] private PersistenceRegistry persistenceRegistry;
 
     private void CheckForCombatEnd()
     {
@@ -30,9 +30,9 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
 
         void DisappearEnemyGroupInFreeRoam()
         {
-            if (enemiesData != null && !string.IsNullOrEmpty(enemiesData.FreeRoamEnemyPersistenceKey))
+            if (EnemiesData != null && !string.IsNullOrEmpty(EnemiesData.FreeRoamEnemyPersistenceKey))
             {
-                persistenceRegistry.ActivatePersistenceKey(enemiesData.FreeRoamEnemyPersistenceKey, isClearable: enemiesData.CanReappearInFreeRoam, value: true);
+                persistenceRegistry.ActivatePersistenceKey(EnemiesData.FreeRoamEnemyPersistenceKey, isClearable: EnemiesData.CanReappearInFreeRoam, value: true);
             }
             else
             {
@@ -56,7 +56,13 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
                 return;
             }
 
-            loadFeedback.DestinationSceneAddressibleKey = enemiesData.SceneToLoadAfterCombatAddressibleKey;
+            if (EnemiesData == null || string.IsNullOrEmpty(EnemiesData.SceneToLoadAfterCombatAddressibleKey))
+            {
+                Debug.LogWarning("[CombatController] No SceneToLoadAfterCombatAddressibleKey found in EnemiesData. Cannot load scene after combat.");
+                return;
+            }
+
+            loadFeedback.DestinationSceneAddressibleKey = EnemiesData.SceneToLoadAfterCombatAddressibleKey;
 
             LoadSceneFeedback.PlayFeedbacks();
         }

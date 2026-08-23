@@ -51,7 +51,7 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
                 Debug.Log($"<color=#55AAFF>[Combat]</color> {timeline}");
             }
 
-            if (currentParticipant.turnExec == null)
+            if (currentParticipant.TurnExec == null)
             {
                 Debug.LogError($"[CombatController] {currentParticipant.CombatantName} has no turn participant assigned.");
                 break;
@@ -62,7 +62,7 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
             // *without overwriting the global token, so that partcipant's destroy token is observed during his turn execution.
             using (var turnCancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, currentParticipant.GetCancellationTokenOnDestroy()))
             {
-                await currentParticipant.turnExec.ExecuteTurn(currentParticipant, turnCancellationTokenSource.Token);
+                await currentParticipant.TurnExec.ExecuteTurn(currentParticipant, turnCancellationTokenSource.Token);
             }
             Debug.Log($"<color=#55AAFF>[Combat]</color> {currentParticipant.CombatantName} completed their turn.");
         }

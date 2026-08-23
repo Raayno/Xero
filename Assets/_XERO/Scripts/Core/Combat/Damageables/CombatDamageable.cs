@@ -4,14 +4,34 @@ using UnityEngine;
 public abstract class CombatDamageable : MonoBehaviour
 {
     [SerializeField] private Participant participant;
+
+    public virtual void Initialize(Participant participant, CombatController combatController)
+    {
+        this.participant = participant;
+        OnDefeated += combatController.MoveParticipantToDefeated;
+        OnResurrected += combatController.MoveParticipantToAlive;
+    }
+
     /// <summary>
     /// Negative dmg should heal the Damageable
     /// </summary>
-    public virtual void TakeDamage(DamageDataSO dmg)
+    public void TakeDamage(DamageDataSO dmg)
+    {
+        if (IsDefeated)
+        {
+            Debug.LogWarning($"<color=orange>[Health]</color> {gameObject.name} is already defeated. Cannot take damage.");
+            return;
+        }
+
+        TakeDamageVirt(dmg);
+    }
+
+    protected virtual void TakeDamageVirt(DamageDataSO dmg)
     {
         PlayDamageFeedback(dmg.DamageAmount);
         Debug.LogWarning($"<color=orange>[CombatDamageable]</color> TakeDamage method not implemented in {GetType().Name}. Please override this method in a derived class.");
     }
+
     protected void PlayDamageFeedback(float damageAmount)
     {
         if (damageAmount > 0)

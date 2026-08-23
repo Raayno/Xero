@@ -112,7 +112,7 @@ public class EnemyTurnExec : TurnExec
         {
             if (target is PlayerParticipant player)
             {
-                counters.Add(player.OnPerformCounterattack(executingParticipant.damageable, executionCancellationToken));
+                counters.Add(player.OnPerformCounterattack(executingParticipant.Damageable, executionCancellationToken));
             }
         }
         // wait until all counters are completed
@@ -140,14 +140,14 @@ public class EnemyTurnExec : TurnExec
 
             hasMissedParry = true; // At least one target has missed the parry
 
-            if (target.damageable == null)
+            if (target.Damageable == null)
             {
                 Debug.LogWarning($"<color=purple>[EnemyTurnExec]</color> Target {target.name} does not have a CombatDamageable component. Skipping damage application.");
                 continue;
             }
 
             // SPOT 2
-            target.damageable.TakeDamage(damageData);
+            target.Damageable.TakeDamage(damageData);
         }
     }
 
