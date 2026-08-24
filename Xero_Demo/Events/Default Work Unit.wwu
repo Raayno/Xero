@@ -58,6 +58,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="Play_Parry" ID="{0248CF98-C155-4BD5-BFB2-CC6405494FBE}">
+									<ChildrenList>
+										<Action Name="" ID="{A9867122-7C4D-43CC-8C12-439AA9DDFA64}" ShortID="384950344">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Sfx_Parry" ID="{63758252-2A40-45B1-AC4B-9E1809E749BA}" WorkUnitID="{B4A9FA91-329C-43A9-8132-64D8B51006FC}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Locomotion_Events" ID="{CAC522C8-3B1D-47AE-A276-336BA79D2DEE}" ShortID="772819344">
