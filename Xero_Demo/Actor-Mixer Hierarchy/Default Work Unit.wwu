@@ -7330,6 +7330,43 @@
 										<ActiveSource Name="SwordSound2" ID="{CD9DBA97-217C-46E7-B3C5-616960A5869D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="Sfx_Parry" ID="{63758252-2A40-45B1-AC4B-9E1809E749BA}" ShortID="934859363">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{50EA2E4C-D4B8-4F78-BB4A-422265803E94}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-300"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4CC1DFFD-44AC-45F9-87EF-C7FCBFB695AD}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EEE4828A-CC38-4DBA-9F39-31D268AB4E7A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Sfx_Parry" ID="{DBDB52C4-0F2C-4B73-AE84-B60A7B2BDAF8}">
+											<Language>SFX</Language>
+											<AudioFile>Sfx_Parry.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="84661215"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Sfx_Parry" ID="{DBDB52C4-0F2C-4B73-AE84-B60A7B2BDAF8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
@@ -10545,7 +10582,6 @@
 																<PropertyList>
 																	<Property Name="PropertyName" Type="string" Value="Volume"/>
 																</PropertyList>
-																<ReferenceList/>
 															</RTPC>
 														</Local>
 													</Reference>

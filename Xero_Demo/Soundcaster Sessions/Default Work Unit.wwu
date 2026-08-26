@@ -46,6 +46,10 @@
 							<Position X="3" Y="2"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="Play_Parry" ID="{0248CF98-C155-4BD5-BFB2-CC6405494FBE}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
+							<Position X="4" Y="2"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Play_2D_Amb_Forest_Bed" ID="{1A82E65A-5C78-45ED-A641-C78604EEE338}" WorkUnitID="{EF416C6D-8A97-4739-8C95-A956F3DC6CC2}"/>
 							<Position X="4" Y="4"/>
 						</Module>
@@ -125,7 +129,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Firefliesammount" ID="{98F1E45A-B49B-47F1-B878-FA59D3A4457D}"/>
-							<Value>50</Value>
+							<Value>79</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SS_Air_Presence" ID="{E3B7811A-7B2F-490F-B44F-5FE51B468041}"/>
@@ -146,7 +150,7 @@
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true"/>
 					<CurrentSwitchList ShowAll="true">
-						<CurrentSwitchRef Name="Grass" ID="{213EF9B6-58A3-4C67-8F15-C01C0FE96F3F}"/>
+						<CurrentSwitchRef Name="Concrete" ID="{5D388D00-2499-4CEE-B304-1E42BF7A06E4}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
 				<SoundcasterSession Name="Enemie_Test" ID="{14C98879-C78C-4881-AF71-C4219DF0D401}">

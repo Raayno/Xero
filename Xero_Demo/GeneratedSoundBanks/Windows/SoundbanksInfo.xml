@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{72B82D4E-427B-A7F1-D0C4-6D0FF96D4979}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{DCC1A40A-B130-4AB1-16E1-9324ABBC0D64}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -34,6 +34,7 @@
 				<GameParameter Id="1029930033" Name="SS_Air_Fury"/>
 				<GameParameter Id="1062779386" Name="Player_Speed"/>
 				<GameParameter Id="1351367891" Name="SS_Air_Fear"/>
+				<GameParameter Id="1650119685" Name="Firefliesammount"/>
 				<GameParameter Id="1683958504" Name="Player_Fall_Velocity"/>
 				<GameParameter Id="2648548617" Name="SS_Air_Month"/>
 				<GameParameter Id="3002758120" Name="SS_Air_Freefall"/>
@@ -216,7 +217,7 @@
 			<ShortName>Weapon_Soundbank</ShortName>
 			<Path>Weapon_Soundbank.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2574191756" Type="User" Language="SFX" Hash="{83F0B27C-A92D-DF60-0057-EF4B3824C630}">
+		<SoundBank Id="2574191756" Type="User" Language="SFX" Hash="{93A423E5-7543-D9CD-E7B7-58730F4D1F44}">
 			<ShortName>Player_Sounbank</ShortName>
 			<Path>Player_Sounbank.bnk</Path>
 			<Media>
@@ -259,6 +260,10 @@
 				<File Id="73726384" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sfx_Plyr_run_Concrete_07.wav</ShortName>
 					<CachePath>SFX/Sfx_Plyr_run_Concrete_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="84661215" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sfx_Parry.wav</ShortName>
+					<CachePath>SFX/Sfx_Parry_818F3B66.wem</CachePath>
 				</File>
 				<File Id="97093616" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sfx_Plyr_walk_Grass_04.wav</ShortName>
@@ -746,6 +751,11 @@
 						<MediaRef Id="205504547"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="4115969904" Name="Play_Parry" DurationType="OneShot" DurationMin="1.9953698" DurationMax="2.5140085">
+					<MediaRefs>
+						<MediaRef Id="84661215"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="673033979" Name="Play_Plyr_Footsteps" DurationType="OneShot" DurationMin="0.1526875" DurationMax="0.25195834">
 					<SwitchContainers>
 						<SwitchContainer>
@@ -823,7 +833,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="4227840961" Name="Play_Plyr_Land" DurationType="OneShot" DurationMin="0.4767295" DurationMax="1.1094631">
+				<Event Id="4227840961" Name="Play_Plyr_Land" DurationType="OneShot" DurationMin="0.5067295" DurationMax="1.1394632">
 					<SwitchContainers>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1230601154" Id="841620460"/>
@@ -952,5 +962,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{EA697B92-C48D-E518-9474-7A7EABA19027}</FileHash>
+	<FileHash>{BF22D7A0-49A5-45EF-861F-2D2910215C75}</FileHash>
 </SoundBanksInfo>
