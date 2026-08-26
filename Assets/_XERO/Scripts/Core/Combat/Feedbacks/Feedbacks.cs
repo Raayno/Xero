@@ -17,7 +17,7 @@ public class Feedbacks : MonoBehaviour
         {
             Debug.LogWarning($"<color=orange>[Feedbacks]</color> No feedback found for FeedbackType: {feedbackType}");
         }
-        if (playGlobal) MMF_GlobalPlayer.Instance.PlayGlobalFeedback(feedbackType, position, intensity);
+        if (playGlobal) MMGlobalPlayer.Instance.PlayGlobalFeedback(feedbackType, position, intensity);
     }
 
     [Button("Sort Alphabetically by FeedbackType")]

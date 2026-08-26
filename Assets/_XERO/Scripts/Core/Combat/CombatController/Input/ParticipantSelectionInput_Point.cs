@@ -1,7 +1,6 @@
 using UnityEngine;
 using Vastav.Utils.Input;
 using UnityEngine.InputSystem;
-using Alchemy.Inspector;
 using UnityEngine.InputSystem.Interactions;
 
 public partial class ParticipantSelectionInput : MoreMountains.Tools.MMSingleton<ParticipantSelectionInput>

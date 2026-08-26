@@ -25,7 +25,7 @@ public static class PlayerCombatDataCarrier
         {
             if (playersCombatData == null || playersCombatData.PlayerParticipants.Length == 0)
             {
-                Debug.LogError("[PlayerCombatDataCarrier] PlayersCombatData is null or doesn't contain any players. Returning null.");
+                //Debug.LogError("[PlayerCombatDataCarrier] PlayersCombatData is null or doesn't contain any players. Returning null.");
                 return null;
             }
             return playersCombatData;

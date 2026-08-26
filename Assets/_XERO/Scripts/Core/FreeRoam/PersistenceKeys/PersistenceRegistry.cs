@@ -94,7 +94,7 @@ public partial class PersistenceRegistry : ScriptableObject, ISerializationCallb
         }
     }
 
-    public void ActivatePersistenceKey(string key, bool isClearable = true, object value = null)
+    public void SetValue(string key, object value = null, bool isClearable = true)
     {
         value ??= true; 
 
@@ -120,6 +120,7 @@ public partial class PersistenceRegistry : ScriptableObject, ISerializationCallb
             || activeObjectPersistancesNonclearable.ContainsKey(key);
     }
 
+    /// <returns>null if not found</returns>
     public object GetValue(string key)
     {
         if (activePersistancesClearable.TryGetValue(key, out var value))

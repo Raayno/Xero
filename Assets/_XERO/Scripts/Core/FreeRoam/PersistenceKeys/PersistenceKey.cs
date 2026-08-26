@@ -10,7 +10,7 @@ public class PersistenceKey : MonoBehaviour
     [SerializeField, HideInInspector] private PersistenceRegistry registry;
 
     [ContextMenu("Activate Persistence Key")]
-    private void ActivatePersistanceKey() => registry.ActivatePersistenceKey(key, true);
+    private void ActivatePersistanceKey() => registry.SetValue(key, true, true);
 
     [ContextMenu("Deactivate Persistence Key")]
     private void DeactivatePersistenceKey() => registry.RemovePersistenceKey(key);

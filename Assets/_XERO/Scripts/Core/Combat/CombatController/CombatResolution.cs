@@ -32,7 +32,7 @@ public partial class CombatController : MoreMountains.Tools.MMSingleton<CombatCo
         {
             if (EnemiesData != null && !string.IsNullOrEmpty(EnemiesData.FreeRoamEnemyPersistenceKey))
             {
-                persistenceRegistry.ActivatePersistenceKey(EnemiesData.FreeRoamEnemyPersistenceKey, isClearable: EnemiesData.CanReappearInFreeRoam, value: true);
+                persistenceRegistry.SetValue(EnemiesData.FreeRoamEnemyPersistenceKey, value: true, isClearable: EnemiesData.CanReappearInFreeRoam);
             }
             else
             {

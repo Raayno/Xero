@@ -77,7 +77,7 @@ public class EnemyGroupUtilities : MonoBehaviour
 
         foreach (var eyesTag in eyesTags)
         {
-            if (eyesTag.TryGetComponent(out MMF_ColliderActions colliderActions))
+            if (eyesTag.TryGetComponent(out MMColliderActions colliderActions))
             {
                 Undo.RecordObject(colliderActions, "Update MMF_ColliderActions Feedbacks");
                 colliderActions.Feedbacks = new MMF_Player[] { LoadCombatSceneFeedback };
