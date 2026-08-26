@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Gaskellgames;
 
-
 [System.Serializable]
 public struct PersistenceItem
 {
@@ -152,4 +151,28 @@ public partial class PersistenceRegistry : ScriptableObject, ISerializationCallb
         UnityEditor.EditorUtility.SetDirty(this);
 #endif
     }
+
+#if UNITY_EDITOR
+    [SerializeField] private bool preservePersistencesOnPlayModeExit = true;
+    private void OnEnable()
+    {
+        UnityEditor.EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+        UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        UnityEditor.EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+    }
+
+    private void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange state)
+    {
+        if (state == UnityEditor.PlayModeStateChange.EnteredEditMode &&
+            !preservePersistencesOnPlayModeExit)
+        {
+            Debug.Log("PersistenceRegistry: Clearing all persistences after play mode exit.");
+            ClearAllPersistences();
+        }
+    }
+#endif
 }

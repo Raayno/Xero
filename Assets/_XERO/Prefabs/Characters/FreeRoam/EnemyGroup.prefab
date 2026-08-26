@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 3586371403099691378}
   - component: {fileID: 6523721936176786782}
   - component: {fileID: 6754893653042069938}
+  - component: {fileID: 801794837733987450}
   m_Layer: 0
   m_Name: EnemyGroup
   m_TagString: Untagged
@@ -430,6 +431,21 @@ MonoBehaviour:
   LoadCombatSceneFeedback: {fileID: 1536802669774322269}
   enemiesParent: {fileID: 2243924046051787628}
   enemyRoamZone: {fileID: 492567026557445389}
+--- !u!114 &801794837733987450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299765487057132082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cfec70248717704dbecacb065b03d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  enemies: {fileID: 2243924046051787628}
+  persistenceKey: {fileID: 3586371403099691378}
+  registry: {fileID: 11400000, guid: 04472bac71be48a4b8ec7afaee6b78c0, type: 2}
 --- !u!1 &3978221736609409459
 GameObject:
   m_ObjectHideFlags: 0
