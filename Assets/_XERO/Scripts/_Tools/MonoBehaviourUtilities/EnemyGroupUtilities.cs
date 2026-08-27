@@ -5,6 +5,7 @@ using Unity.Behavior;
 using MoreMountains.Feedbacks;
 using UnityEditor;
 using System.Linq;
+using TheVayuputra;
 
 [StripOnBuild]
 public class EnemyGroupUtilities : MonoBehaviour
@@ -12,6 +13,7 @@ public class EnemyGroupUtilities : MonoBehaviour
     [SerializeField, OnValueChanged(nameof(UpdateLoadCombatSceneFeedback))] private EnemiesCombatData participantsData;
     [SerializeField, OnValueChanged(nameof(UpdateLoadCombatSceneFeedback))] private Vector2Int ZoneAndArenaID = new(0, 0);
     [SerializeField, OnValueChanged(nameof(UpdateLoadCombatSceneFeedback))] private MMF_Player LoadCombatSceneFeedback;
+    [SerializeField, OnValueChanged(nameof(UpdateDissolveFeedback))] private DissolveController DissolveFeedback;
     [SerializeField] private Transform enemiesParent;
     [SerializeField, OnValueChanged(nameof(UpdateRoamZone))] private EnemyRoamZone enemyRoamZone;
 
@@ -106,6 +108,21 @@ public class EnemyGroupUtilities : MonoBehaviour
         }
 
         Debug.Log($"<color=orange>[EnemyGroupUtilities]</color> Updated {eyesTags.Length} enemies to use the group LoadCombatScene feedback instead of individual ones.");
+    }
+
+    [Button] private void UpdateDissolveFeedback()
+    {
+        if (DissolveFeedback == null)
+        {
+            Debug.LogWarning($"<color=orange>[EnemyGroupUtilities]</color> No DissolveFeedback assigned in {gameObject.name}. Please assign an EnemyRoamZone component that handles the dissolve feedback.");
+            return;
+        }
+
+        Undo.RecordObject(DissolveFeedback, "Update DissolveFeedback Renderers");
+        DissolveFeedback.FindAllRenderers();
+        EditorUtility.SetDirty(DissolveFeedback);
+
+        Debug.Log($"<color=orange>[EnemyGroupUtilities]</color> Updated DissolveFeedback with all enemy renderers.");
     }
 
     void OnValidate()

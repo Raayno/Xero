@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(PersistenceKey))]
 public class PersistenceMover : MonoBehaviour
 {
+    [SerializeField] private bool saveOnDestroy = false;
     [SerializeField] private PersistenceKey persistenceKey;
     [SerializeField, HideInInspector] private PersistenceRegistry registry;
 
@@ -19,6 +20,11 @@ public class PersistenceMover : MonoBehaviour
     }
 
     private void OnDestroy()
+    {
+        if (saveOnDestroy) SavePose();
+    }
+
+    public void SavePose()
     {
         transform.GetPositionAndRotation(out Vector3 position, out Quaternion rotation);
         registry.SetValue(persistenceKey.Key, value: new Pose(position, rotation), isClearable: true);

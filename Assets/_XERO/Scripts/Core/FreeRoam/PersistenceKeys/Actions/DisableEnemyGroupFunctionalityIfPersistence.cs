@@ -4,6 +4,7 @@ using UnityEngine;
 public class DisableEnemyGroupFunctionalityIfPersistence : MonoBehaviour
 {
     [SerializeField] private Transform enemies;
+    [SerializeField] private Behaviour[] behavioursToKeepEnabled;
     [SerializeField] private PersistenceKey persistenceKey;
     [SerializeField, HideInInspector] private PersistenceRegistry registry;
     private void Awake()
@@ -20,14 +21,26 @@ public class DisableEnemyGroupFunctionalityIfPersistence : MonoBehaviour
             {
                 var enemy = enemies.GetChild(i).gameObject;
                 if (enemy == null) continue;
-                DestroyNonRendererAndNonTransformComponents();
+                DisableNonRendererAndNonTransformComponents();
 
-                void DestroyNonRendererAndNonTransformComponents()
+                void DisableNonRendererAndNonTransformComponents()
                 {
+                    foreach (var collider in enemy.GetComponentsInChildren<Collider>())
+                    {
+                        collider.enabled = false;
+                    }
+                    bool thereAreBehavioursToKeepEnabled = behavioursToKeepEnabled != null && behavioursToKeepEnabled.Length > 0;
                     foreach (var behaviour in enemy.GetComponentsInChildren<Behaviour>())
                     {
+                        if (behaviour == this
+                            || (thereAreBehavioursToKeepEnabled && System.Array.Exists(behavioursToKeepEnabled, b => b == behaviour)))
+                        {
+                            continue;
+                        }
+
                         behaviour.enabled = false;
                     }
+                    Debug.Log($"[DisableEnemyGroupFunctionalityIfPersistence] Disabled all components on {enemy.name} except for Transform, Renderer, and specified behaviours.");
                 }
             }
         }

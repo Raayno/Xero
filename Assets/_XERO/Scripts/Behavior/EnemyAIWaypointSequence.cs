@@ -23,4 +23,15 @@ public class EnemyAIWaypointSequence : MonoBehaviour
             }
         }
     }
+
+    [Gaskellgames.Button] private void AddWaypointsInOrder()
+    {
+        Waypoints = GetComponentsInChildren<EnemyAIWaypoint>();
+    }
+
+    private void OnValidate()
+    {
+        if (Waypoints == null || Waypoints.Length == 0)
+            AddWaypointsInOrder();
+    }
 }

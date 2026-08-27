@@ -102,19 +102,7 @@ MonoBehaviour:
     TriggerUnityEvents: 1
     OnPlay:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerAttackBattleEntrySetter, Assembly-CSharp
-          m_MethodName: SetBattleEntryTypeToPlayerAttack
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     OnPause:
       m_PersistentCalls:
         m_Calls: []
@@ -329,15 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9103b4617d18f04b8fbdbdd6cd9f234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheVayuputra.DissolveController
-  targetRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  targetRenderers: []
   duration: 1
   dissolveEase: 1
   dissolveParticleSystem: {fileID: 0}
@@ -429,6 +409,7 @@ MonoBehaviour:
     sceneToLoadAfterCombat: Zone00/FreeRoam
   ZoneAndArenaID: {x: 0, y: 0}
   LoadCombatSceneFeedback: {fileID: 1536802669774322269}
+  DissolveFeedback: {fileID: 6730422977100837504}
   enemiesParent: {fileID: 2243924046051787628}
   enemyRoamZone: {fileID: 492567026557445389}
 --- !u!114 &801794837733987450
@@ -444,6 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   enemies: {fileID: 2243924046051787628}
+  behavioursToKeepEnabled: []
   persistenceKey: {fileID: 3586371403099691378}
   registry: {fileID: 11400000, guid: 04472bac71be48a4b8ec7afaee6b78c0, type: 2}
 --- !u!1 &3978221736609409459
@@ -642,8 +624,8 @@ MonoBehaviour:
   DebugActive: 0
   InScriptDrivenPause: 0
   FeedbacksList:
-  - rid: 4969785128794980352
   - rid: 4969785184944390401
+  - rid: 4969785128794980352
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   RestoreInitialValuesOnDisable: 0

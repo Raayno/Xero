@@ -33,7 +33,10 @@ namespace TheVayuputra
         private void Awake()
         {
             if (targetRenderers == null || targetRenderers.Length == 0)
+            {
                 FindAllRenderers();
+                InitializeRenderers();
+            }
             else
                 InitializeRenderers();
         }
@@ -45,7 +48,7 @@ namespace TheVayuputra
         }
 
         [Gaskellgames.Button]
-        private void FindAllRenderers()
+        public void FindAllRenderers()
         {
             Transform parentTransform =
                 findRenderersOverrideParent != null
@@ -54,8 +57,6 @@ namespace TheVayuputra
 
             targetRenderers =
                 parentTransform.GetComponentsInChildren<Renderer>(true);
-
-            InitializeRenderers();
         }
 
         private void InitializeRenderers()
